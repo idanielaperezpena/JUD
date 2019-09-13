@@ -14,7 +14,14 @@
         Me.no_empleado = usuario
         Me.password = password
         Me.nombre = "Andres"
+        Me.ap_pat = "Mitzi"
     End Sub
+
+    Public Function get_nombre() As String
+        Return Me.nombre & "  " & Me.ap_pat
+    End Function
+
+
 
 
 

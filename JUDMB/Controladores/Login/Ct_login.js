@@ -60,9 +60,9 @@ function mensaje_exito(response) {
         Swal.fire({
             type: 'success',
             title: 'Datos Correctos',
-            text: 'Bienvenido!!',
-            onAfterClose:() => {
-                console.log("xd");
+            text: response.d[0],
+            onAfterClose: () => {
+                window.location.href = 'Vistas/Principal.aspx'; 
             }
         })
     }
