@@ -1,0 +1,112 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout-Login.cshtml";
+}
+
+
+
+<div class="login-box">
+    <div class="login-logo">
+        <b>INVI</b>CDMX
+    </div>
+    <form id="formulario_login">
+        <div class="login-box-body">
+            <p class="login-box-msg">Inicie sesion</p>
+            <div class="form-group has-feedback">
+                <input type="text" id="no_empleado" name="No_empleado" class="form-control" placeholder="Numero de empleado">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" id="password" name="Password" class="form-control" placeholder="Contraseña">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 pull-right">
+                    <button type="submit" id="btn_logear" class="btn btn-success btn-block btn-flat">Ingresar</button>
+                </div>
+            </div>
+
+            <a href="#">¿Olvido la contraseña?</a><br>
+        </div>
+    </form>
+
+</div>
+
+@section Scripts {
+    <script>
+        $.fn.serializeObject = function () {
+            var o = {};
+            var a = this.serializeArray();
+            $.each(a, function () {
+                if (o[this.name] !== undefined) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
+                }
+            });
+            return o;
+        };
+
+        $(document).ready(function () {
+            $('#formulario_login').validate({
+                rules:
+                {
+                    No_empleado: { required: true, regex: /^[0-9]{5}$/ },
+                    Password: { required: true }
+                },
+                messages:
+                {
+                    No_empleado: { required: "Necesita ingresar su numero de empleado", regex: "El formato no es el correcto" },
+                    Password: "Necesita ingresar su password"
+                },
+                errorPlacement: function (error, element) {
+                    error.appendTo(element.parent("div"));
+                }
+            });
+        });
+
+
+        $("#btn_logear").click(function (e) {
+            e.preventDefault();
+            enviar_formulario();
+        });
+
+
+        $("#formulario_login").submit(function () {
+            e.preventDefault();
+            enviar_formulario();
+        });
+
+
+        function enviar_formulario() {
+            if ($('#formulario_login').valid()) {
+                var json_form = JSON.stringify($('#formulario_login').serializeObject());  
+                console.log(json_form);
+                $.ajax({
+                    type: "POST",
+                    url: "Login/Logear",
+                    data: json_form,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: mensaje_exito,
+                    failure: mensaje_mal
+                });
+            }
+        }
+
+        function mensaje_exito(d) {
+            console.log(d)
+        }
+
+        function mensaje_mal(d) {
+            console.log(d)
+        }
+
+
+    </script>
+}
+
+
+
