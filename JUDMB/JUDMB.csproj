@@ -142,7 +142,6 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers_API\EmpleadoController.cs" />
-    <Compile Include="Controllers_API\LoginController.cs" />
     <Compile Include="Controllers_API\TokenGenerator.cs" />
     <Compile Include="Controllers_API\TokenValidationHandler.cs" />
     <Compile Include="Global.asax.cs">
