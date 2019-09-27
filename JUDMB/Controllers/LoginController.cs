@@ -20,14 +20,14 @@ namespace JUDMB.Controllers
 
         public ActionResult Recuperar()
         {
-            ViewBag.Title = "INVI | LOGIN Logeo";
+            ViewBag.Title = "INVI | Recuperar Contraseña";
             return View();
         }
 
 
         [AcceptVerbs("POST")]
         [ActionName("Logear")]
-        public ActionResult Logear(Empleado emp)
+        public ActionResult Logear(LoginRequest emp)
         {
             Notificacion mensaje = new Notificacion();
             if (String.IsNullOrWhiteSpace(emp.Password) || String.IsNullOrEmpty(emp.Password))
@@ -37,7 +37,7 @@ namespace JUDMB.Controllers
             }
             else
             {
-                var mensaje_api = new EmpleadoController().Logear(emp);
+                var mensaje_api = new Controllers_API.LoginController().Authenticate(emp);
                 return Json(mensaje_api);
             }
 

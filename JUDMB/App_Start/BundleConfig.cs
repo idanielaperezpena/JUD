@@ -9,7 +9,7 @@ namespace JUDMB
         public static void RegisterBundles(BundleCollection bundles)
         {
            
-            bundles.Add(new ScriptBundle("~/bundles/login_js").Include(
+            bundles.Add(new ScriptBundle("~/bundles/general_js").Include(
                         "~/Scripts/jquery.min.js",
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/adminlte.min.js"
@@ -20,11 +20,23 @@ namespace JUDMB
                         "~/Scripts/validaciones_general.js"
                         ));
 
-            bundles.Add(new StyleBundle("~/bundles/login_css").Include(
+            bundles.Add(new ScriptBundle("~/bundles/select2_js").Include(
+                        "~/Scripts/select2.full.min.js"
+                        ));
+
+            bundles.Add(new StyleBundle("~/bundles/general_css").Include(
                         "~/Content/bootstrap.css",
                         "~/Content/font-awesome.min.css",
                         "~/Content/ionicons.min.css",
                         "~/Content/AdminLTE.min.css"
+                        ));
+
+            bundles.Add(new StyleBundle("~/bundles/estilos").Include(
+                        "~/Content/estilos.css"
+                        ));
+
+            bundles.Add(new StyleBundle("~/bundles/select2_css").Include(
+                        "~/Content/select2.min.css"
                         ));
 
             // Utilice la versión de desarrollo de Modernizr para desarrollar y obtener información sobre los formularios. De este modo, estará

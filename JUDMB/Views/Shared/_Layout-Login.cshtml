@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/bundles/login_css")
+    @Styles.Render("~/bundles/general_css")
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    @Styles.Render("~/bundles/estilos")
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -14,7 +16,7 @@
     @RenderBody()
 </body>
 
-    @Scripts.Render("~/bundles/login_js")
+    @Scripts.Render("~/bundles/general_js")
     @Scripts.Render("~/bundles/jquery_validate")
     @RenderSection("scripts", required: false)
 

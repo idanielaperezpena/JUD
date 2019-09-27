@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JUDMB.Controllers_API;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -15,6 +16,8 @@ namespace JUDMB
 
             // Rutas de API web
             config.MapHttpAttributeRoutes();
+
+            config.MessageHandlers.Add(new TokenValidationHandler());
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApiPOST",

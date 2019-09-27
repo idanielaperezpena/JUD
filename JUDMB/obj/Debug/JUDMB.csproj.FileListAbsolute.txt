@@ -70,3 +70,11 @@ C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\JUDMB\obj\Debug\JUDMB.cspr
 C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\JUDMB\obj\Debug\JUDMB.csproj.CopyComplete
 C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\JUDMB\obj\Debug\JUDMB.dll
 C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\JUDMB\obj\Debug\JUDMB.pdb
+C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\JUDMB\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\JUDMB\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\JUDMB\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\JUDMB\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\JUDMB\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\JUDMB\bin\Microsoft.IdentityModel.Logging.xml
+C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\JUDMB\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\JUDMB\bin\System.IdentityModel.Tokens.Jwt.xml
