@@ -14,9 +14,9 @@ namespace JUDMB.Controllers_API
 
         Empleado[] empleados = new Empleado[]
         {
-            new Empleado { No_empleado = "45072", Nombre = "Andres", Password = "1234"},
-            new Empleado { No_empleado = "12345", Nombre = "Daniela", Password = "1234"},
-            new Empleado { No_empleado = "54321", Nombre = "Carlos", Password = "1234" }
+            new Empleado { No_empleado = "45072", Nombre = "Andres", Password = "1234" , Perfil ="ADMIN"},
+            new Empleado { No_empleado = "12345", Nombre = "Daniela", Password = "1234",Perfil ="NORMAL"},
+            new Empleado { No_empleado = "54321", Nombre = "Carlos", Password = "1234",Perfil ="ADMIN" }
         };
 
         [AcceptVerbs("POST" , "GET")]
@@ -24,16 +24,8 @@ namespace JUDMB.Controllers_API
         public Empleado GetCurrent_User()
         {
             var identity = Thread.CurrentPrincipal.Identity;
-            if (identity.IsAuthenticated)
-            {
-                var empleado = empleados.FirstOrDefault((p) => p.No_empleado == identity.Name);
-                return empleado;
-            }
-            else
-            {
-                return new Empleado{ No_empleado = "XXXXX", Nombre = "NO estas logeado" };
-            }
-            
+            var empleado = empleados.FirstOrDefault((p) => p.No_empleado == identity.Name);
+            return empleado;  
         }
 
         [AcceptVerbs("POST", "GET")]

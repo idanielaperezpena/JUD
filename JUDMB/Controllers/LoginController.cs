@@ -13,16 +13,37 @@ namespace JUDMB.Controllers
 {
     public class LoginController : Controller
     {
+        HttpClient client = new HttpClient();
 
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            ViewBag.Title = "INVI | LOGIN";
-            ViewBag.cadena_error = "";
-            ViewBag.error = 0;
-            return View();
+            if (Session["token"] is null)
+            {
+                ViewBag.Title = "INVI | LOGIN";
+                ViewBag.cadena_error = "";
+                ViewBag.error = 0;
+                return View();
+            }
+            else
+            {
+                bool estatus = await Verificar_LoginAsync();
+                if (estatus)
+                {
+                    ViewBag.Title = "INVI | Menu principal ";
+                    return RedirectToAction("Index", "Principal");
+                }
+                else
+                {
+                    ViewBag.Title = "INVI | LOGIN";
+                    ViewBag.cadena_error = "";
+                    ViewBag.error = 0;
+                    return View();
+                }
+            }
+            
         }
 
-        public ActionResult Index_Error(int error = 1)
+        public ActionResult Index_Error(int error)
         {
             ViewBag.Title = "INVI | LOGIN";
             if(error == 1)
@@ -70,7 +91,7 @@ namespace JUDMB.Controllers
                     var responseString = await response.Content.ReadAsAsync<Empleado>();
 
                     mensaje.Error = false;
-                    mensaje.Mensaje = "Bienvenido" + responseString.Nombre;
+                    mensaje.Mensaje = "Bienvenido " + responseString.Nombre;
 
                     client.Dispose();
                 }
@@ -78,6 +99,17 @@ namespace JUDMB.Controllers
             }
 
             return Json(mensaje);
+        }
+
+
+        public async Task<bool> Verificar_LoginAsync()
+        {
+            client.DefaultRequestHeaders.Add("TokenINVI", Session["token"].ToString());
+            var response = await client.GetAsync("http://localhost:54971/api/Empleado/IsLogin");
+            var responseString = await response.Content.ReadAsAsync<Boolean>();
+            client.Dispose();
+
+            return responseString;
         }
     }
 }

@@ -20,7 +20,7 @@
 
         <a href="/index2.html" class="logo">
             <span class="logo-mini"><b>INVI</b></span>
-            <span class="logo-lg"><b>INVI</b>JUDMB</span>
+            <span class="logo-lg"><b>INVI </b>JUDMB</span>
         </a>
 
         <nav class="navbar navbar-static-top">
@@ -118,88 +118,34 @@
             <div class="user-panel">
                 <div class="pull-right info">
                     <p>
-                        <asp:Label ID="lbl_user" runat="server" Text=""></asp:Label>
-
+                        @ViewBag.Nombre
+                    </p>
+                    <p>
+                        @ViewBag.Perfil
                     </p>
                     <a href="#"> Mesa de tramite XD</a>
                 </div>
             </div>
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MENU PRINCIPAL</li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="../../index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                        <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-                    </ul>
-                </li>
 
 
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-table"></i> <span>Tables</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="/tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-                        <li><a href="/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="../calendar.html">
-                        <i class="fa fa-calendar"></i> <span>Calendar</span>
-                        <span class="pull-right-container">
-                            <small class="label pull-right bg-red">3</small>
-                            <small class="label pull-right bg-blue">17</small>
-                        </span>
-                    </a>
-                </li>
+                @if (ViewBag.Perfil == "ADMIN")
+                {
+                    <li class="header">Administrador</li>
+                    <li class="treeview menu-open" style="height: auto;">
+                        <a href="#">
+                            <i class="fa fa-dashboard"></i> <span>Catalogos</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu" style="display: block;">
+                            <li><a href="/Catalogos/Sexo"><i class="fa fa-circle-o"></i>Sexo</a></li>
+                        </ul>
+                    </li>         
+                }
 
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-share"></i> <span>Multilevel</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-circle-o"></i> Level One
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                                <li class="treeview">
-                                    <a href="#">
-                                        <i class="fa fa-circle-o"></i> Level Two
-                                        <span class="pull-right-container">
-                                            <i class="fa fa-angle-left pull-right"></i>
-                                        </span>
-                                    </a>
-                                    <ul class="treeview-menu">
-                                        <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                                        <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-                    </ul>
-                </li>
-
-                <li class="header">Administrador</li>
-                <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
             </ul>
         </section>
     </aside>
@@ -208,10 +154,9 @@
 
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
-            <b>Version</b> 2.4.18
+            <b>Version</b> Alpha 1.0.4
         </div>
-        <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
-        reserved.
+        <strong>Empleado: @ViewBag.Nombre  </strong> IP : @ViewBag.IP
     </footer>
 
     <aside class="control-sidebar control-sidebar-dark" style="display: none;">

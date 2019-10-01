@@ -48,7 +48,10 @@ function mensaje_exito(d) {
     if (d.Error == false) {
         Swal.fire({
             type: 'success',
-            title: d.Mensaje
+            title: d.Mensaje,
+            onClose: function () {
+                window.location = "/Principal";
+            }
         });
     } else {
         Swal.fire({
@@ -57,7 +60,6 @@ function mensaje_exito(d) {
             text : 'Intente otra vez.'
         });
     }
-    console.log(d)
 }
 
 function mensaje_mal(d) {
@@ -66,5 +68,4 @@ function mensaje_mal(d) {
         title: 'Ocurrio un error',
         text: 'Intente otra vez.'
     });
-    console.log(d)
 }
