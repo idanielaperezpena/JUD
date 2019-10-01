@@ -150,10 +150,12 @@
     <Compile Include="Controllers_API\EmpleadoController.cs" />
     <Compile Include="Controllers_API\TokenGenerator.cs" />
     <Compile Include="Controllers_API\TokenValidationHandler.cs" />
+    <Compile Include="Controllers_API\CatalogosController.cs" />
     <Compile Include="Funciones\Validar_Login.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Catalogos.cs" />
     <Compile Include="Models\Empleado.cs" />
     <Compile Include="Models\LoginRequest.cs" />
     <Compile Include="Models\Notificacion.cs" />
