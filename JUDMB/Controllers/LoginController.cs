@@ -17,7 +17,27 @@ namespace JUDMB.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "INVI | LOGIN";
+            ViewBag.cadena_error = "";
+            ViewBag.error = 0;
             return View();
+        }
+
+        public ActionResult Index_Error(int error = 1)
+        {
+            ViewBag.Title = "INVI | LOGIN";
+            if(error == 1)
+            {
+                ViewBag.error = 1;
+                ViewBag.cadena_error = "No puede acceder al sistema sin anter Logearse ";
+            }
+            else
+            {
+                ViewBag.error = 1;
+                ViewBag.cadena_error = "Su sesion ha expirado, por favor ingrese nuevamente";
+            }
+            
+
+            return View("~/Views/Login/Index.cshtml");
         }
 
         public ActionResult Recuperar()
@@ -40,7 +60,6 @@ namespace JUDMB.Controllers
             else
             {
                 HttpClient client = new HttpClient();
-                //Un valor anonimo
                 mensaje = new EmpleadoController().Logear(emp);
                 if (mensaje.Error == false)
                 {
@@ -51,7 +70,7 @@ namespace JUDMB.Controllers
                     var responseString = await response.Content.ReadAsAsync<Empleado>();
 
                     mensaje.Error = false;
-                    mensaje.Mensaje = "Bienvenido perroooooooo" responseString.Nombre;
+                    mensaje.Mensaje = "Bienvenido" + responseString.Nombre;
 
                     client.Dispose();
                 }

@@ -36,6 +36,22 @@ namespace JUDMB.Controllers_API
             
         }
 
+        [AcceptVerbs("POST", "GET")]
+        [ActionName("IsLogin")]
+        public bool Get_Login()
+        {
+            var identity = Thread.CurrentPrincipal.Identity;
+            if (identity.IsAuthenticated)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
         [AllowAnonymous]
         [AcceptVerbs("POST")]
         [ActionName("Logear")]

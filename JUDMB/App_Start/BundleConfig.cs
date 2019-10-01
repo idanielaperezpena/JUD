@@ -32,6 +32,7 @@ namespace JUDMB
                         ));
 
             bundles.Add(new StyleBundle("~/bundles/estilos").Include(
+                        "~/Content/skin-green-light.min.css",
                         "~/Content/estilos.css"
                         ));
 
