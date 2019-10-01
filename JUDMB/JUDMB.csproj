@@ -229,6 +229,8 @@
     <Content Include="Views\Shared\_Layout-Principal.cshtml" />
     <Content Include="Views\Principal\Index.cshtml" />
     <Content Include="Views\Catalogos\Mostrar.cshtml" />
+    <Content Include="Views\Catalogos\Insertar.cshtml" />
+    <Content Include="Views\Catalogos\Actualizar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="API\" />
