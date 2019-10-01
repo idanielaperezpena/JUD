@@ -21,8 +21,9 @@ namespace JUDMB
                 defaults: new { controller = "Catalogos", action = "Index", catalogo = RouteParameter.Optional }
             );
 
+
             routes.MapRoute(
-                name: "Catalogo_Action",
+                name: "Catalogo_Mostrar",
                 url: "Catalogos/{catalogo}/{action}",
                 defaults: new { controller = "Catalogos", action = "Mostrar", catalogo = RouteParameter.Optional }
             );
