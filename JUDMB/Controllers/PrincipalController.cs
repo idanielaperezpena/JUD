@@ -17,6 +17,7 @@ namespace JUDMB.Controllers
 
   
         // GET: Principal
+        /*
         public async Task<ActionResult> Index()
         {
             if (Session["token"] is null ) {
@@ -41,6 +42,13 @@ namespace JUDMB.Controllers
                     return RedirectToAction("Index_Error", "Login", 2);
                 }     
             }
+        }*/
+
+        public ActionResult Index()
+        {
+            ViewBag.IP = "127.0.0.1";
+            ViewBag.Title = "INVI | Menu principal ";
+            return View();
         }
 
 

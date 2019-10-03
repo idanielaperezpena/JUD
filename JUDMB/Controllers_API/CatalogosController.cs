@@ -16,7 +16,7 @@ namespace JUDMB.Controllers_API
 
         [AcceptVerbs("POST")]
         [ActionName("GetData")]
-        public Object GetData([FromBody] Catalogos cat)
+        public Object GetData([FromBody] string cat)
         {
             Notificacion mensaje = new Notificacion();
             if (cat == null)
@@ -30,7 +30,7 @@ namespace JUDMB.Controllers_API
                 try {
                     SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["MejoramientoJUD"].ConnectionString);
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("select * from " + cat.Nombre_Tabla, con);
+                    SqlCommand cmd = new SqlCommand("select * from " + cat, con);
                     SqlDataReader reader = cmd.ExecuteReader();
 
 
@@ -38,7 +38,7 @@ namespace JUDMB.Controllers_API
                     tabla.Load(reader);
 
                     Catalogos catalogo = new Catalogos();
-                    catalogo.Nombre_Tabla = cat.Nombre_Tabla;
+                    catalogo.Nombre_Tabla = cat;
                     catalogo.Data = tabla;
 
                     return catalogo.Data;

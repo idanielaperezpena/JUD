@@ -18,7 +18,7 @@ namespace JUDMB
             routes.MapRoute(
                 name: "Default_Catalogo",
                 url: "Catalogos",
-                defaults: new { controller = "Catalogos", action = "Index", catalogo = RouteParameter.Optional }
+                defaults: new { controller = "Catalogos", action = "Index" }
             );
 
 
@@ -37,7 +37,7 @@ namespace JUDMB
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}",
-                defaults: new { controller = "Login", action = "Index" }
+                defaults: new { controller = "Principal", action = "Index" }
             );
 
             
