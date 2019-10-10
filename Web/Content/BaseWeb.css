@@ -1,0 +1,165 @@
+﻿/* Web */
+.th-control {
+    width: 45px;
+}
+/* Web */
+/* Validation */
+.input-validation-error {
+    box-shadow: 0 0 5px #fe4640;
+    border: 1px solid #fe4640;
+}
+/* Validation */
+/* Loader */
+.loader-container {
+    background: rgba(255, 255, 255, 0.3);
+    color: rgb(51, 51, 51);
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 100041;
+    overflow: hidden;
+    outline: 0px;
+    display: none;
+}
+.loader-backdrop {
+    z-index: 100041;
+    background-color: #303030;
+    filter: alpha(opacity=30);
+    opacity: 0.30;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    position: fixed;
+    height: 100%;
+}
+.loader-dialog {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -45px;
+    margin-top: -15px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+    z-index: 100041;
+    font-size: 14px;
+}
+/* Loader */
+/* JQueryUI Autocomplete */
+.ui-autocomplete {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 250px;
+}
+.ui-widget-content {
+    border-radius: 8px;
+    padding: 8px 0;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+.ui-menu-item-wrapper {
+    border-bottom: 1px solid #e7e7e7;
+}
+.ui-state-active {
+    border-bottom: 1px solid rgba(0,0,0,0.075) !important;
+    background-color: rgba(0,0,0,0.075) !important;
+}
+.ui-menu-item-header {
+}
+.ui-menu-item-detail {
+    font-size: 75%;
+    font-weight: bold;
+}
+/* JQueryUI Autocomplete */
+/* EmptyContainer*/
+.empty-container {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+.empty-content {
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.4);
+    font-weight: bold;
+    text-align: center;
+    padding: 1em 0 !important;
+    font-size: .9em;
+}
+/* EmptyContainer */
+/* Custom Pager */
+.pager-container {
+    border-top: 1px solid #D8D8D8;
+    padding: 10px 0;
+}
+.pager-caption {
+    font-weight: bold;
+    color: #6c757d;
+    margin: 0;
+}
+.pager-container .pager-controls {
+    float: right;
+    padding: 2px 15px;
+    border: 1px solid #D8D8D8;
+    border-radius: 50px;
+}
+.pager-controls p, .pager-controls select {
+    float: left;
+}
+.pager-controls p {
+    line-height: 30px;
+    margin: 0 12px;
+}
+.pager-controls select {
+    width: auto;
+}
+/* Custom Pager */
+/* Calendar Control */
+.calendar-control {
+    position: relative;
+}
+.calendar-control input[type=text] {
+    padding-left: 36px;
+}
+.calendar-control input[type=text][readonly] {
+    background-color: inherit;
+    cursor: default;
+}
+.calendar-control .icon-calendar, .calendar-control .icon-clear {
+    position: absolute;
+    top: 0;
+    margin: 8px 0;
+    width: 32px;
+    text-align: center;
+}
+.calendar-control .icon-calendar {
+    left: 0;
+    border-right: 1px solid #ccc;
+}
+.calendar-control .icon-clear {
+    right: 0;
+    border-left: 1px solid #ccc;
+    cursor: pointer;
+    color: #7F7F7F;
+}
+.calendar-control .icon-clear:hover {
+    color: #000;
+}
+/* Calendar Control */
+/* PNotify */
+.ui-pnotify {
+    word-break: break-word;
+}
+ul.pnotify-errors {
+    padding-left: 1.5em;
+    margin-bottom: 0;
+}
+ul.pnotify-errors li {
+    list-style: none;
+}
+ul.pnotify-errors li:not(:last-child) {
+    margin-bottom: 0.5em;
+}
+.ui-pnotify-icon span {
+    line-height: 1.5;
+}
+/* PNotify */

@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>@SettingsProvider.AppTitulo</title>
+
+    <link href="~/Content/images/favicon.png" rel="icon" type="image/x-icon" />
+    @Styles.Render("~/Content/Base", "~/Content/Utilidades", "~/Content/Custom")
+    @Scripts.Render("~/Bundles/Base", "~/Bundles/Utilidades", "~/Bundles/Custom")
+    @RenderSection("Styles", false)
+    @RenderSection("Scripts", false)
+    @Html.CustomValidationSummary()
+</head>
+<body>
+    @Html.Partial("_Loader", LoaderId)
+    @RenderBody()
+</body>
+</html>

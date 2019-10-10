@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <style>
+        .parent {
+            width: 97%;
+            margin: 0 auto;
+            font-family: Tahoma;
+            font-size: 12px;
+        }
+
+        .parent {
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+        }
+
+            .parent tr.footer {
+                text-align: center;
+                color: #888888;
+                font-size: 11px;
+            }
+
+            .parent th {
+                background-color: #343a40;
+                color: #FFFFFF;
+                padding: 6px;
+                text-align: left;
+            }
+
+                .parent th img, .parent th h5 {
+                    float: left;
+                }
+
+                .parent th h5 {
+                    margin: 0;
+                    margin-left: 10px;
+                }
+
+                    .parent th h5 span {
+                        color: #fff;
+                    }
+
+            .parent td {
+                padding: .5em 1em;
+            }
+
+            .parent th.header {
+                text-align: left;
+            }
+
+        .table {
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+            text-align: center;
+            width: 95%;
+            margin: 0 auto;
+        }
+
+            .table td {
+                color: #585858;
+            }
+
+            .table td, .table th {
+                font-size: 0.75em;
+            }
+
+            .table th, .table td {
+                padding: 4px;
+                border: 1px solid #ddd;
+            }
+
+        .container {
+            text-align: center;
+        }
+
+        .body, .body p {
+            text-align: left
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <table class="parent">
+            <thead>
+                <tr>
+                    <th style="width:1%;">
+                        <img src="@AppUrl@/Content/images/app-logo.png" width="45" title="@AppNombre@" alt="@AppNombre@">
+                    </th>
+                    <th class="header">
+                        <h3>@Header@</h3>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="body" colspan="2">
+                        @Body@
+                    </td>
+                </tr>
+                <tr class="footer">
+                    <td style="border-bottom: 1px solid #fff;border-left: 1px solid #fff;border-right: 1px solid #fff;border-top: 1px solid #ccc;" colspan="2">
+                        @Footer@
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

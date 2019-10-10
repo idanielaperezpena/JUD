@@ -1,0 +1,15 @@
+﻿@model Negocio.ViewModels.ExceptionLogViewModel
+<div class="card-body text-center">
+    <h2 class="card-title">
+        <span class="fa-stack text-danger">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-exclamation-triangle fa-stack-1x fa-inverse"></i>
+        </span>
+    </h2>
+    @Html.Raw(Model.MensajeView)
+    @if (!Model.IsAjax)
+    {
+        <hr />
+        <a href="@Model.RegresarUrl" class="btn btn-sm btn-primary"><i class="fa fa-home"></i> Inicio</a>
+    }
+</div>
