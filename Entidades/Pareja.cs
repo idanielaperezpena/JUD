@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class Pareja
+    public class Pareja
     {
-        public string PAR_IDPareja { get; set; }
+        public int? PAR_IDPareja { get; set; }
         public string PAR_Nombre { get; set; }
         public string PAR_ApellidoPaterno { get; set; }
         public string PAR_ApellidoMaterno { get; set; }
         public int PAR_IDGenero { get; set; }
+        public int PAR_IDEstado { get; set; }
+        public DateTime PAR_FechaNacimiento { get; set; }
+
     }
 }
