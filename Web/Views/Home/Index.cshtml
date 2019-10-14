@@ -1,9 +1,58 @@
-﻿@model Negocio.ViewModels.HomeIndexViewModel
+﻿@{
+    Layout = "~/Views/Shared/_Layout-Login.cshtml";
+}
 
-@using (Html.BeginForm())
-{
-    @Html.EditorFor(m => m);
-    <input type="submit" value="Save" class="submit" />
+@model Negocio.ViewModels.HomeIndexViewModel
+
+<div class="login-box">
+    <div class="login-logo">
+        <b>INVI</b>CDMX
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="login-box-body">
+            <p class="login-box-msg">Inicie sesion</p>
+
+            <div class="form-group has-feedback">
+                @Html.TextBoxFor(m => m.USU_Usuario, new { @class = "form-control", placeholder = "Usuario Dominio *" })
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                @Html.ValidationMessageFor(m => m.USU_Usuario, "")
+            </div>
+
+            <div class="form-group has-feedback">
+                @Html.PasswordFor(m => m.USU_Password, new { @class = "form-control", placeholder = "Contraseña *" })
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                @Html.ValidationMessageFor(m => m.USU_Password, "")
+            </div>
+
+            <div class="row">
+                <div class="col-xs-4 pull-right">
+                    <button type="submit" id="btn_logear" class="btn btn-success btn-block btn-flat">Ingresar</button>
+                </div>
+            </div>
+
+
+            @Html.ActionLink("¿Olvido la contraseña?", "Recuperar", "Login")
+        </div>
+    }
+
+
+    @{
+        if (ViewBag.error != 0)
+        {
+            <div class="alert alert-danger alert-dismissible" style="margin-top: 50px; ">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-ban"></i> Error</h4>
+                @ViewBag.cadena_error
+            </div>
+        }
+    }
+</div>
+
+@section scripts{
+<script src="~/Scripts/Negocio/HomeIndexJS.js"></script>
 }
 
 

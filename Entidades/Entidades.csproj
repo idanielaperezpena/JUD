@@ -97,6 +97,7 @@
     <Compile Include="CIDictamenJuridico.cs" />
     <Compile Include="CIDictamenTecnico.cs" />
     <Compile Include="CIDictamenSocial.cs" />
+    <Compile Include="Catalogos.cs" />
     <Compile Include="Ciudadano.cs" />
     <Compile Include="Constantes.cs" />
     <Compile Include="CreditoComplementario.cs" />

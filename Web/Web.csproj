@@ -106,26 +106,44 @@
   <ItemGroup>
     <Content Include="App_Files\Notificaciones\Errores.html" />
     <Content Include="App_Files\Notificaciones\Plantilla.html" />
+    <Content Include="Content\BaseInvi.css" />
     <Content Include="Content\BaseWeb.css" />
     <Content Include="Content\bootstrap-datepicker\bootstrap-datepicker3-1.8.0.css" />
     <Content Include="Content\bootstrap-datepicker\bootstrap-datepicker3-1.8.0.min.css" />
+    <Content Include="Content\bootstrap\bootstrap.css" />
+    <Content Include="Content\bootstrap\bootstrap.min.css" />
     <Content Include="Content\daterangepicker\daterangepicker-3.0.3.css" />
+    <Content Include="Content\estilos_base\AdminLTE.css" />
+    <Content Include="Content\estilos_base\AdminLTE.min.css" />
+    <Content Include="Content\estilos_base\skin-green-light.css" />
+    <Content Include="Content\estilos_base\skin-green-light.min.css" />
+    <Content Include="Content\estilos_base\skin-green.css" />
+    <Content Include="Content\estilos_base\skin-green.min.css" />
     <Content Include="Content\fontawesome\css\all-5.9.css" />
     <Content Include="Content\fontawesome\webfonts\fa-brands-400.svg" />
     <Content Include="Content\fontawesome\webfonts\fa-regular-400.svg" />
     <Content Include="Content\fontawesome\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\ionicons\ionicons.css" />
+    <Content Include="Content\ionicons\ionicons.min.css" />
     <Content Include="Content\jquery-ui\jquery-ui.min-1.12.1.css" />
     <Content Include="Content\pnotify\pnotify-3.2.1.css" />
     <Content Include="Content\pnotify\pnotify.buttons-3.2.1.css" />
     <Content Include="Content\pnotify\pnotify.mobile-3.2.1.css" />
+    <Content Include="Content\select2\select2.css" />
+    <Content Include="Content\select2\select2.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\BaseInit.js" />
     <Content Include="Scripts\BaseWeb.js" />
+    <Content Include="Scripts\Negocio\HomeIndexJS.js" />
+    <Content Include="Scripts\UI\admin\adminlte.min.js" />
+    <Content Include="Scripts\UI\admin\validaciones_general.js" />
     <Content Include="Scripts\UI\autoNumeric\autoNumeric-2.0.13.js" />
     <Content Include="Scripts\UI\autoNumeric\autoNumeric-2.0.13.min.js" />
     <Content Include="Scripts\UI\bootstrap-datepicker\bootstrap-datepicker-1.8.0.js" />
     <Content Include="Scripts\UI\bootstrap-datepicker\bootstrap-datepicker-1.8.0.min.js" />
     <Content Include="Scripts\UI\bootstrap-datepicker\bootstrap-datepicker-es-1.8.0.js" />
+    <Content Include="Scripts\UI\bootstrap\bootstrap.js" />
+    <Content Include="Scripts\UI\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\UI\daterangepicker\daterangepicker-3.0.3.js" />
     <Content Include="Scripts\UI\jquery-ui\jquery-ui.min-1.12.1.js" />
     <Content Include="Scripts\UI\jquery\jquery-3.4.1.js" />
@@ -139,6 +157,8 @@
     <Content Include="Scripts\UI\pnotify\pnotify-3.2.1.js" />
     <Content Include="Scripts\UI\pnotify\pnotify.buttons-3.2.1.js" />
     <Content Include="Scripts\UI\pnotify\pnotify.mobile-3.2.1.js" />
+    <Content Include="Scripts\UI\select2\select2.full.min.js" />
+    <Content Include="Scripts\UI\select2\select2.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -148,6 +168,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CatalogosController.cs" />
     <Compile Include="Controllers\ExceptionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -181,6 +202,10 @@
     <Content Include="Content\fontawesome\webfonts\fa-solid-900.ttf" />
     <Content Include="Content\fontawesome\webfonts\fa-solid-900.woff" />
     <Content Include="Content\fontawesome\webfonts\fa-solid-900.woff2" />
+    <Content Include="Content\estilos_base\adminlte.css.map" />
+    <Content Include="Content\estilos_base\adminlte.min.css.map" />
+    <Content Include="Content\bootstrap\bootstrap.css.map" />
+    <Content Include="Content\bootstrap\bootstrap.min.css.map" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -191,6 +216,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Exception\_Ex.cshtml" />
     <Content Include="Views\Shared\_LoaderSecondary.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Shared\_Layout-Login.cshtml" />
+    <Content Include="Views\Shared\_Layout-Principal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -201,7 +229,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\" />
-    <Folder Include="Scripts\Negocio\" />
+    <Folder Include="Views\Catalogos\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entidades\Entidades.csproj">

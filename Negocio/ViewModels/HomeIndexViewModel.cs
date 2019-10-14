@@ -10,11 +10,8 @@ namespace Negocio.ViewModels
     public class HomeIndexViewModel
     {
         [CustomRequired]
-        [StringLength(5,ErrorMessage = "The First Name must be less than {1} characters.")]
-        [Display(Name = "Usuario")]
+        [Display(Name = "Usuario Dominio")]
         public string USU_Usuario { get; set; }
-
-
 
         [CustomRequired]
         [Display(Name = "Contraseña")]
