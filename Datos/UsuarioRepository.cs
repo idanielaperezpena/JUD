@@ -34,7 +34,8 @@ namespace Datos
 
         public Usuario Login(Usuario pGeneric)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            return new Usuario { USU_Id =1 , USU_Usuario="jams", USU_Password = "1234" , MDL_DefaultController = "Menu" , MDL_DefaultAction = "Index"};
         }
 
         public List<string> ObtenerPermisos(Usuario pGeneric)

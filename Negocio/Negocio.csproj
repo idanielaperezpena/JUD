@@ -90,7 +90,9 @@
     <Compile Include="Base\ServiceBase.cs" />
     <Compile Include="Base\UnitOfWork.cs" />
     <Compile Include="Base\ViewPageBase.cs" />
+    <Compile Include="CatalogosService.cs" />
     <Compile Include="ExceptionService.cs" />
+    <Compile Include="ParejaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\AuthProvider.cs" />
     <Compile Include="Providers\RoleProviderBase.cs" />

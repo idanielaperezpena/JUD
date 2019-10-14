@@ -1,0 +1,39 @@
+﻿.swal2-popup {
+    font-size: 1.6rem !important;
+}
+
+.user-panel > .info {
+    left: 0px;
+}
+
+.user-panel {
+    height: 50px;
+    padding-bottom: 50px;
+}
+
+.small-box .inner {
+    min-height: 126px;
+}
+
+    .small-box .inner > p {
+        font-size: 20px;
+    }
+
+.small-box h3 {
+    font-size: 35px;
+}
+
+.small-box .icon {
+    right: 45px;
+    font-size: 110px;
+}
+
+
+.timeline > .time-label > span {
+    width: 100%;
+}
+
+.field-validation-error{
+    color : red;
+
+}

@@ -10,6 +10,41 @@ namespace Web
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
+            //Bundles SINVI
+            bundles.Add(new ScriptBundle("~/bundles/general_js").Include(
+                        "~/Scripts/UI/jquery/jquery-{version}.js",
+                        "~/Scripts/UI/bootstrap/bootstrap.js",
+                        "~/Scripts/UI/admin/adminlte.min.js"
+                        ));
+
+            bundles.Add(new ScriptBundle("~/bundles/jquery_validate").Include(
+                        "~/Scripts/UI/jquery/jquery.validate-{version}.js",
+                        "~/Scripts/UI/jquery/jquery.validate.unobtrusive-{version}.js",
+                        "~/Scripts/UI/admin/validaciones_general.js"
+                        ));
+
+            bundles.Add(new ScriptBundle("~/bundles/select2_js").Include(
+                        "~/Scripts/select2/select2.full.min.js"
+                        ));
+
+            bundles.Add(new StyleBundle("~/bundles/general_css").Include(
+                        "~/Content/bootstrap/bootstrap.css",
+                        "~/Content/fontawesome/css/all-{version}.css",
+                        "~/Content/ionicons/ionicons.min.css",
+                        "~/Content/estilos_base/AdminLTE.min.css"
+                        ));
+
+            bundles.Add(new StyleBundle("~/bundles/estilos").Include(
+                        "~/Content/estilos_base/skin-green-light.min.css",
+                        "~/Content/BaseInvi.css"
+                        ));
+
+            bundles.Add(new StyleBundle("~/bundles/select2_css").Include(
+                        "~/Content/select2/elect2.min.css"
+                        ));
+
+
+            // Bundles de la pLantilla
             bundles.Add(new StyleBundle("~/Content/Base").Include(
                 "~/Content/fontawesome/css/all-{version}.css", new CssRewriteUrlTransform()));
 

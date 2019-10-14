@@ -90,6 +90,7 @@
     <Compile Include="Base\AjaxResult.cs" />
     <Compile Include="Base\AutocompleteRQ.cs" />
     <Compile Include="Base\AutocompleteRS.cs" />
+    <Compile Include="Catalogos.cs" />
     <Compile Include="Constantes.cs" />
     <Compile Include="Enumeraciones.cs" />
     <Compile Include="ErrorLog.cs" />
