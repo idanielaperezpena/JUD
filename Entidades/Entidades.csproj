@@ -91,9 +91,13 @@
     <Compile Include="Base\AutocompleteRQ.cs" />
     <Compile Include="Base\AutocompleteRS.cs" />
     <Compile Include="Catalogos.cs" />
+    <Compile Include="Ciudadano.cs" />
     <Compile Include="Constantes.cs" />
+    <Compile Include="DeudorSolidario.cs" />
+    <Compile Include="Domicilio.cs" />
     <Compile Include="Enumeraciones.cs" />
     <Compile Include="ErrorLog.cs" />
+    <Compile Include="Pareja.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Utilidades\Catalogos\CustomSelectList.cs" />
