@@ -8,19 +8,19 @@ namespace Entidades
 {
     public class Domicilio
     {
-        public int? DOC_IDDomicilio { get; set; }
-        public int DOC_IDVialidad { get; set; }
-        public string DOC_NombreVialidad { get; set; }
-        public string DOC_NumeroExterior { get; set; }
-        public string DOC_NumeroInterior { get; set; }
-        public string DOC_Manzana { get; set; }
-        public string DOC_Lote { get; set; }
-        public string DOC_Colonia { get; set; }
-        public int DOC_IDAlcaldia { get; set; }
-        public string DOC_CodigoPostal { get; set; }
-        public int DOC_IDEstado { get; set; }
-        public string DOC_Latitud { get; set; }
-        public string DOC_Longitud { get; set; }
-        public string DOC_Otro { get; set; }
+        public int? DOM_IDDomicilio { get; set; }
+        public int DOM_IDVialidad { get; set; }
+        public string DOM_NombreVialidad { get; set; }
+        public string DOM_NumeroExterior { get; set; }
+        public string DOM_NumeroInterior { get; set; }
+        public string DOM_Manzana { get; set; }
+        public string DOM_Lote { get; set; }
+        public string DOM_Colonia { get; set; }
+        public int DOM_IDAlcaldia { get; set; }
+        public string DOM_CodigoPostal { get; set; }
+        public int DOM_IDEstado { get; set; }
+        public string DOM_Latitud { get; set; }
+        public string DOM_Longitud { get; set; }
+        public string DOM_Otro { get; set; }
     }
 }
