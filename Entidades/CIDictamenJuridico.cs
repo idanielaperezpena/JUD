@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class CIDictamenJuridico
+    public class CIDictamenJuridico
     {
         public int? CIDJ_IDDictamenJuridico { get; set; }
         public int CIDJ_IDCreditoInicial { get; set; }
