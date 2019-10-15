@@ -26,6 +26,7 @@ namespace Entidades
         public int CIU_IDGradoEstudios { get; set; }
         public int CIU_IDgrupoEtnico { get; set; }
         public int CIU_IDRegimen { get; set; }
+        public int? CIU_IDPareja { get; set; }
         public string CIU_Proposito { get; set; }
         public bool CIU_CreditosOtorgados { get; set; }
         public float CIU_IngresoFamiliar { get; set; }
@@ -34,7 +35,7 @@ namespace Entidades
         public int CIU_IDProfesion { get; set; }
         public string CIU_NombreTrabajo { get; set; }
         public int? CIU_IDDomicilioTrabajo { get; set; }    
-        public float CIU_CapacidadPago { get; set; }
+        public float CIU_CapacidadPAgo { get; set; }
         public string CIU_CorreoElectronico { get; set; }
     }
 }

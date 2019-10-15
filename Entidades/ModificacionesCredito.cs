@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-   public class ModificacionesCredito
+    class ModificacionesCredito
     {
         public int? MC_IDModificacionesCredito { get; set; }
         public int MC_IDCreditoInicial { get; set; }

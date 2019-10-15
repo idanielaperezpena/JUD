@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class CSDictamenFinanciero
+    class CSDictamenFinanciero
     {
         public int? CSDF_IDDictamenFinanciero { get; set; }
         public int CSDF_IDCreditoSustentabilidad { get; set; }

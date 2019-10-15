@@ -68,30 +68,9 @@
   <ItemGroup>
     <Compile Include="Base\DatabaseContext.cs" />
     <Compile Include="Base\IRepository.cs" />
-    <Compile Include="CreditoComplementarioRepository.cs" />
-    <Compile Include="CreditoInicialRepository.cs" />
-    <Compile Include="CreditoSustentabilidadRepositoy.cs" />
-    <Compile Include="MCDictamenFinancieroRepository.cs" />
-    <Compile Include="MCDictamenJuridicoRepository.cs" />
-    <Compile Include="MCDictamenSocialRepository.cs" />
-    <Compile Include="MCDictamenTecnicoRepository.cs" />
-    <Compile Include="CSDictamenFinancieroRepository.cs" />
-    <Compile Include="CSDictamenJuridicoRepository.cs" />
-    <Compile Include="CSDictamenSocialRepository.cs" />
-    <Compile Include="CSDictamenTecnicoRepository.cs" />
-    <Compile Include="CIDictamenFinancieroRepository.cs" />
-    <Compile Include="CCDictamenFinancieroRepository.cs" />
-    <Compile Include="CIDictamenJuridicoRepository.cs" />
-    <Compile Include="CCDictamenJuridicoRepository.cs" />
-    <Compile Include="CIDictamenSocialRepository.cs" />
-    <Compile Include="CCDictamenSocialRepository.cs" />
-    <Compile Include="CIDictamenTecnicoRepository.cs" />
-    <Compile Include="CCDictamenTecnicoRepository.cs" />
-    <Compile Include="CiudadanoRepository.cs" />
     <Compile Include="ErrorLogRepository.cs" />
     <Compile Include="CatalogosRepository.cs" />
     <Compile Include="Base\RepositoryBase.cs" />
-    <Compile Include="ModificacionesCreditoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuarioRepository.cs" />
   </ItemGroup>

@@ -21,7 +21,7 @@ namespace Entidades
         public int DOMC_IDEstado { get; set; }
         public string DOMC_Latitud { get; set; }
         public string DOMC_Longitud { get; set; }
-        public float DOMC_MontoRenta { get; set; }
+        public string DOMC_MontoRenta { get; set; }
         public string DOMC_Otro { get; set; }
     }
 }
