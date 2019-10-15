@@ -26,7 +26,7 @@ function enviar_formulario() {
 
 function mensaje_exito(d) {
     console.log(d);
-    if (d == "exito") {
+    if (d.Error == false ) {
         Swal.fire({
             type: 'success',
             title: d.Mensaje,

@@ -14,6 +14,8 @@ namespace Negocio
         private CatalogosRepository _catsRepo;
         private ErrorLogRepository _errorRepo;
         private UsuarioRepository _usrRepo;
+        //private ParejaRepository _parejaRepo;
+        //private CiudadanoRepository _ciudadanoRepo;
 
         private EmailUtility _emailSender;
         private EncriptarUtility _encriptador;
@@ -55,6 +57,29 @@ namespace Negocio
                 return _usrRepo;
             }
         }
+
+        /*
+        public ParejaRepository Parejas
+        {
+            get
+            {
+                if (_parejaRepo == null)
+                    _parejaRepo = new ParejaRepository(_context);
+
+                return _parejaRepo;
+            }
+        }
+
+        public CiudadanoRepository Ciudadano
+        {
+            get
+            {
+                if (_ciudadanoRepo == null)
+                    _ciudadanoRepo = new CiudadanoRepository(_context);
+
+                return _ciudadanoRepo;
+            }
+        }*/
 
         public EmailUtility EmailSender
         {

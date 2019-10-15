@@ -22,7 +22,7 @@ namespace Negocio
             {
                 return UoW.Pareja.ObtenerEntidad(new Pareja
                 {
-                    ID = id_solicitante
+                    PAR_IDPareja = id_solicitante
                 });
             }
             catch (Exception ex)

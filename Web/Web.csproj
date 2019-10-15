@@ -171,6 +171,7 @@
     <Compile Include="Controllers\CatalogosController.cs" />
     <Compile Include="Controllers\ExceptionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PrincipalController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -186,6 +187,7 @@
     <Compile Include="Models\Helpers\EditorHelper.cs" />
     <Compile Include="Models\Helpers\TableHelper.cs" />
     <Compile Include="Models\Helpers\ValidationHelper.cs" />
+    <Compile Include="Models\INVI\Notificacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -219,6 +221,11 @@
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Shared\_Layout-Login.cshtml" />
     <Content Include="Views\Shared\_Layout-Principal.cshtml" />
+    <Content Include="Views\Principal\Index.cshtml" />
+    <Content Include="Views\Catalogos\Actualizar.cshtml" />
+    <Content Include="Views\Catalogos\Insertar.cshtml" />
+    <Content Include="Views\Catalogos\Mostrar.cshtml" />
+    <Content Include="Views\Catalogos\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -229,7 +236,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\" />
-    <Folder Include="Views\Catalogos\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entidades\Entidades.csproj">

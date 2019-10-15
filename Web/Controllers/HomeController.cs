@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Web.Models.INVI;
 
 namespace Web.Controllers
 {
@@ -70,10 +71,19 @@ namespace Web.Controllers
         {
             var _usuario = _service2.Login(viewModel);
 
-            if (ModelState.IsValid)
-                return Json("exito");
+            Notificacion noti = new Notificacion();
 
-            return Json("mal");
+            if (ModelState.IsValid)
+            {
+                noti.Error = false;
+                noti.Mensaje = "Bienvenido " + _usuario.USU_Usuario;
+                this.SetAuthCookieAndRedirect(_usuario);
+                return Json(noti);
+            }
+
+            noti.Error = true;
+            noti.Mensaje = "Error en las credenciales, intente otra vez";
+            return Json(noti);
         }
 
     }

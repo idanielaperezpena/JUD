@@ -19,35 +19,22 @@ namespace Web.Controllers
             _service = new CatalogosService(ModelState);
         }
 
-        [HttpGet]
-        [AllowAnonymous]
-        [Permiso(Disabled = true)]
-        public ActionResult Prueba(string catalago)
-        {
-            if (Request.IsAuthenticated)
-            {
-                var resultado_catalogo = _service.Listado(catalago);
-                return Json(resultado_catalogo);
-            }
-            else
-            {
-                var resultado_catalogo = _service.Listado(catalago);
-                return Json(resultado_catalogo);
-            }
-
-        }
-
-
-        // GET: Catalogos
-        [AllowAnonymous]
-        [Permiso(Disabled = true)]
         public ActionResult Index()
         {
-            return View();
+            var _vm = _service.Index();
+            ViewBag.Tittle = "Catalogos";
+
+            return View(_vm);
         }
 
-        
 
+        public ActionResult Mostrar(string nombre)
+        {
+            var _vm = _service.Mostrar(nombre);
+            ViewBag.Tittle = "Catalogos";
+
+            return View(_vm);
+        }
 
     }
 }

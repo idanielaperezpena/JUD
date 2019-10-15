@@ -31,5 +31,10 @@ namespace Datos
             return ObtenerLista("Catalogos_Select", pGeneric.NombreCatalogo);
         }
 
+        public  List<Catalogos> ObtenerListado_NombreTablas(Catalogos pGeneric)
+        {
+            return ObtenerLista("Catalogos_Select_NombreTablas", pGeneric.NombreCatalogo);
+        }
+
     }
 }

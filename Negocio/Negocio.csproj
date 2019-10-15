@@ -91,6 +91,7 @@
     <Compile Include="Base\UnitOfWork.cs" />
     <Compile Include="Base\ViewPageBase.cs" />
     <Compile Include="CatalogosService.cs" />
+    <Compile Include="CiudadanoService.cs" />
     <Compile Include="ExceptionService.cs" />
     <Compile Include="ParejaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Providers\SettingsProvider.cs" />
     <Compile Include="Validators\CustomEmailAddress.cs" />
     <Compile Include="Validators\CustomRequired.cs" />
+    <Compile Include="ViewModels\Catalogos\CatalogosIndexViewModel.cs" />
     <Compile Include="ViewModels\ExceptionIndexViewModel.cs" />
     <Compile Include="ViewModels\ExceptionLogViewModel.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />

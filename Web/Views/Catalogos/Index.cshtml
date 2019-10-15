@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout-Principal.cshtml";
+}
+
+@model Negocio.ViewModels.CatalogosIndexViewModel
+
+
+<div class="content-wrapper" style="min-height: 901px;">
+    <section class="content-header">
+        <h1>
+            Catalogos
+            <small>Todos los catalogos</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li class="active"><a href="#"><i class="fa fa-dashboard"></i>Menu principal</a></li>
+        </ol>
+    </section>
+
+    <section class="content">
+
+        <div class="row">
+            @foreach (var _catalogo in Model.Listado) {
+            <div class="col-md-4 col-sm-12 col-lg-4">
+                <a href="@Url.Action("Mostrar", "Catalogos", new { nombre = _catalogo.NombreCatalogo }) ">
+                    <div class="info-box @_catalogo.Color_Caja">
+                        <span class="info-box-icon"><i class="fas fa-atlas"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">No. del catalogo : @_catalogo.NoCatalogo</span>
+                            <span class="info-box-number">Nombre del catalgo : @_catalogo.NombreCatalogo_Mostrar</span>
+                        </div>
+                    </div>
+                </a>
+                
+            </div>
+            }
+        </div>
+        
+    </section>
+</div>
