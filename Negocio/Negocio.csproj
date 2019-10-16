@@ -104,6 +104,7 @@
     <Compile Include="Validators\CustomEmailAddress.cs" />
     <Compile Include="Validators\CustomRequired.cs" />
     <Compile Include="ViewModels\Catalogos\CatalogosIndexViewModel.cs" />
+    <Compile Include="ViewModels\Catalogos\CatalogosMostrarViewModel.cs" />
     <Compile Include="ViewModels\ExceptionIndexViewModel.cs" />
     <Compile Include="ViewModels\ExceptionLogViewModel.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />

@@ -20,7 +20,7 @@ namespace Negocio.ViewModels
 
     }
 
-    public class CatalogosIndexListadoViewModel : Catalogos
+    public class CatalogosIndexListadoViewModel : Entidades.Catalogos
     {
         [Display(Name = "Nombre del Catalogo")]
         public string NombreCatalogo_Mostrar { get; set; }
