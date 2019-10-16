@@ -10,7 +10,8 @@ namespace Entidades
     {
         public int? CIDS_IDDictamenSocial { get; set; } 
         public int CIDS_IDCreditoInicial { get; set; }
-        public int CIDS_IDTipoVivienda { get; set; }
+        public int CIDS_IDTipoPredio { get; set; }
+        public int CIDS_IDCaracteristicasPredio { get; set; }
         public int CIDS_NoFamiliasLote { get; set; }
         public int CIDS_NoFamiliasVivienda { get; set; }
         public int CIDS_NoViviendasLote { get; set; }
