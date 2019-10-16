@@ -31,7 +31,7 @@ namespace Web.Controllers
         public ActionResult Mostrar(string nombre)
         {
             var _vm = _service.Mostrar(nombre);
-            ViewBag.Tittle = "Catalogos";
+            ViewBag.Tittle = "Detalle Catalogo";
 
             return View(_vm);
         }
