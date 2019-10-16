@@ -24,7 +24,12 @@ namespace Web
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/select2_js").Include(
-                        "~/Scripts/select2/select2.full.min.js"
+                        "~/Scripts/UI/select2/select2.full.min.js"
+                        ));
+
+            bundles.Add(new ScriptBundle("~/bundles/datatables_js").Include(
+                        "~/Scripts/UI/datatables.net/jquery.dataTables.min.js",
+                        "~/Scripts/UI/datatables.net-bs/dataTables.bootstrap.min.js"
                         ));
 
             bundles.Add(new StyleBundle("~/bundles/general_css").Include(
@@ -41,6 +46,10 @@ namespace Web
 
             bundles.Add(new StyleBundle("~/bundles/select2_css").Include(
                         "~/Content/select2/elect2.min.css"
+                        ));
+
+            bundles.Add(new StyleBundle("~/bundles/datatables_css").Include(
+                        "~/Content/datatables.net-bs/dataTables.bootstrap.min.css"
                         ));
 
 

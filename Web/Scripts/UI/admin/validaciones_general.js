@@ -34,3 +34,5 @@ jQuery.validator.setDefaults({
         $(element).closest('.form-group').addClass('has-success');
     }
 });
+
+

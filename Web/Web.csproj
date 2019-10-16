@@ -112,6 +112,8 @@
     <Content Include="Content\bootstrap-datepicker\bootstrap-datepicker3-1.8.0.min.css" />
     <Content Include="Content\bootstrap\bootstrap.css" />
     <Content Include="Content\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\datatables.net-bs\dataTables.bootstrap.css" />
+    <Content Include="Content\datatables.net-bs\dataTables.bootstrap.min.css" />
     <Content Include="Content\daterangepicker\daterangepicker-3.0.3.css" />
     <Content Include="Content\estilos_base\AdminLTE.css" />
     <Content Include="Content\estilos_base\AdminLTE.min.css" />
@@ -134,6 +136,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\BaseInit.js" />
     <Content Include="Scripts\BaseWeb.js" />
+    <Content Include="Scripts\Negocio\Catalogos\CatalogosMostrarJS.js" />
     <Content Include="Scripts\Negocio\HomeIndexJS.js" />
     <Content Include="Scripts\UI\admin\adminlte.min.js" />
     <Content Include="Scripts\UI\admin\validaciones_general.js" />
@@ -144,6 +147,10 @@
     <Content Include="Scripts\UI\bootstrap-datepicker\bootstrap-datepicker-es-1.8.0.js" />
     <Content Include="Scripts\UI\bootstrap\bootstrap.js" />
     <Content Include="Scripts\UI\bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\UI\datatables.net-bs\dataTables.bootstrap.js" />
+    <Content Include="Scripts\UI\datatables.net-bs\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\UI\datatables.net\jquery.dataTables.js" />
+    <Content Include="Scripts\UI\datatables.net\jquery.dataTables.min.js" />
     <Content Include="Scripts\UI\daterangepicker\daterangepicker-3.0.3.js" />
     <Content Include="Scripts\UI\jquery-ui\jquery-ui.min-1.12.1.js" />
     <Content Include="Scripts\UI\jquery\jquery-3.4.1.js" />
