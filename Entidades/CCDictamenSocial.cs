@@ -10,7 +10,8 @@ namespace Entidades
     {
         public int? CCDS_IDDictamenSocial { get; set; }
         public int CCDS_IDCreditoComplementario { get; set; }
-        public int CCDS_IDTipoVivienda { get; set; }
+        public int CCDS_IDTipoPredio { get; set; }
+        public int CCDS_IDCaracteristicasPredio { get; set; }
         public int CCDS_NoFamiliasLote { get; set; }
         public int CCDS_NoFamiliasVivienda { get; set; }
         public int CCDS_NoViviendasLote { get; set; }

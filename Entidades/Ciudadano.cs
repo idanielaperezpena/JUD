@@ -30,7 +30,6 @@ namespace Entidades
         public bool CIU_CreditosOtorgados { get; set; }
         public float CIU_IngresoFamiliar { get; set; }
         public int CIU_IDEstructuraFamiliar { get; set; }
-        public int? CIU_IDSeguridadSocial { get; set; }
         public int CIU_IDProfesion { get; set; }
         public string CIU_NombreTrabajo { get; set; }
         public int? CIU_IDDomicilioTrabajo { get; set; }    

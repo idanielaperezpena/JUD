@@ -10,7 +10,8 @@ namespace Entidades
     {
         public int? CSDS_IDDictamenSocial { get; set; }
         public int CSDS_IDCreditoSustentabilidad { get; set; }
-        public int CSDS_IDTipoVivienda { get; set; }
+        public int CSDS_IDTipoPredio { get; set; }
+        public int IDCaracteristicasPredio { get; set; }
         public int CSDS_NoFamiliasLote { get; set; }
         public int CSDS_NoFamiliasVivienda { get; set; }
         public int CSDS_NoViviendasLote { get; set; }
