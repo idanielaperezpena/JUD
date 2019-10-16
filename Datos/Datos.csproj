@@ -71,6 +71,9 @@
     <Compile Include="CreditoComplementarioRepository.cs" />
     <Compile Include="CreditoInicialRepository.cs" />
     <Compile Include="CreditoSustentabilidadRepositoy.cs" />
+    <Compile Include="DeudorSolidarioRepository.cs" />
+    <Compile Include="DomicilioCreditoRepository.cs" />
+    <Compile Include="DomicilioRepository.cs" />
     <Compile Include="MCDictamenFinancieroRepository.cs" />
     <Compile Include="MCDictamenJuridicoRepository.cs" />
     <Compile Include="MCDictamenSocialRepository.cs" />
@@ -92,7 +95,9 @@
     <Compile Include="CatalogosRepository.cs" />
     <Compile Include="Base\RepositoryBase.cs" />
     <Compile Include="ModificacionesCreditoRepository.cs" />
+    <Compile Include="ParejaRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeguridadSocialRepository.cs" />
     <Compile Include="UsuarioRepository.cs" />
   </ItemGroup>
   <ItemGroup>

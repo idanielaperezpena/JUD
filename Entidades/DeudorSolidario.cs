@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class DeudorSolidario
+    public class DeudorSolidario
     {
         public int? DEU_IDDeudorSolidario { get; set; }
+        public int DEU_IDCiudadano { get; set; }
         public string DEU_CURP { get; set; }
         public string DEU_Nombre { get; set; }
         public string DEU_ApellidoPaterno { get; set; }

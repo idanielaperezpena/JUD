@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class DomicilioCredito
+    public class DomicilioCredito
     {
         public int? DOMC_IDDomicilio { get; set; }
         public int DOMC_IDVialidad { get; set; }
