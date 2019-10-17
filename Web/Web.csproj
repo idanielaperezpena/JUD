@@ -233,6 +233,7 @@
     <Content Include="Views\Catalogos\Insertar.cshtml" />
     <Content Include="Views\Catalogos\Mostrar.cshtml" />
     <Content Include="Views\Catalogos\Index.cshtml" />
+    <Content Include="Views\Catalogos\_MostrarModal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

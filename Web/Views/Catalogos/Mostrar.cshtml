@@ -23,6 +23,7 @@
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
+        @Html.HiddenFor(m => m.Tabla)
         <div class="box box-success">
             <div class="box-header with-border">
                 <h3 class="box-title">Datos del Catalogo</h3>
@@ -31,14 +32,14 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="pull-right" style="margin: 10px 0px">
-                            <button type="submit" class="btn bg-green">
+                            <button type="button" class="btn bg-green agregar">
                                 Agregar &nbsp;
                                 <i class="fas fa-plus-circle"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-                
+
                 <table id="tabla_catalogos" class="table table-bordered  table-striped" data-items="@Model.Listado.Count()">
                     @if (Model.Listado.Count() == 0)
                     {
@@ -98,20 +99,10 @@
 
 <div class="modal fade" id="modal-editar" style="display: none;">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-                <h4 class="modal-title">Editar / Agregar</h4>
-            </div>
-            <div class="modal-body">
-                <p>One fine body…</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Editar / Agregar</button>
-            </div>
+        <div class="modal-content" id="modal-cuerpo">
+
+            
+
         </div>
     </div>
 </div>

@@ -17,6 +17,8 @@ namespace Negocio.ViewModels.Catalogos
         [Display(Name = "No. Catalogo")]
         public string NoCatalogo { get; set; }
 
+        public string Tabla { get; set; }
+
         public bool TieneCGMA { get; set; }
 
         public List<CatalogosMostrarListadoViewModel> Listado { get; set; }
