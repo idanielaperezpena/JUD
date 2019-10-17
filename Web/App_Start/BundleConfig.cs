@@ -14,6 +14,7 @@ namespace Web
             bundles.Add(new ScriptBundle("~/bundles/general_js").Include(
                         "~/Scripts/UI/jquery/jquery-{version}.js",
                         "~/Scripts/UI/bootstrap/bootstrap.js",
+                        "~/Scripts/UI/bootstrap/bootstrap.min.js",
                         "~/Scripts/UI/admin/adminlte.min.js"
                         ));
 
@@ -34,8 +35,11 @@ namespace Web
 
             bundles.Add(new StyleBundle("~/bundles/general_css").Include(
                         "~/Content/bootstrap/bootstrap.css",
+                        "~/Content/bootstrap/bootstrap.min.css",
                         "~/Content/fontawesome/css/all-{version}.css",
+                        "~/Content/fontawesome/css/font-awesome.css",
                         "~/Content/ionicons/ionicons.min.css",
+                        "~/Content/ionicons/ionicons.css",
                         "~/Content/estilos_base/AdminLTE.min.css"
                         ));
 

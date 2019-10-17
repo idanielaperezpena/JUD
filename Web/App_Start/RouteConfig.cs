@@ -24,6 +24,11 @@ namespace Web
                 url: "{controller}/{action}/",
                 defaults: new { controller = "Home", action = "Index" }
             );
+            routes.MapRoute(
+               name: "Ciudadano",
+               url: "{controller}/{action}/",
+               defaults: new { controller = "Ciudadano", action = "Index" }
+           );
         }
     }
 }

@@ -7,14 +7,16 @@ using System.Web.Mvc;
 namespace Web.Controllers
 {
     [Permiso(Disabled = true)]
-    public class PrincipalController : Controller
+    public class CiudadanoController : Controller
     {
-        // GET: Principal
+        // GET: Ciudadano
         public ActionResult Index()
         {
-            ViewBag.Titulo = "Menú Principal";
             return View();
         }
-
+        public ActionResult Insertar()
+        {
+            return View();
+        }
     }
 }
