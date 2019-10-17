@@ -42,16 +42,33 @@ $(document).ready(function () {
 
 $(document).on('click', '.edit', function (event) {
     var id = $(this).attr('data-id');
-    $('#modal-editar').modal('open');
-    /*
+    var tabla = $('#Tabla').val();
+    console.log(tabla);
     $.ajax({
         type: "POST",
-        url: "/Catalogos/Add",
-        data: id,
-        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-        dataType: "json",
-        success: mensaje_exito,
-        failure: mensaje_mal
+        url: "/Catalogos/GetVistaModal",
+        data: {
+            Tabla: tabla,
+            ID : id
+        },
+        success: function (e) {
+            $('#modal-cuerpo').html(e);
+            $('#modal-editar').modal('show');
+        }
     });
-    */
+
+});
+
+$(document).on('click', '.agregar', function (event) {
+    var formData = new FormData();
+    formData.append("ID", 0);
+    $.ajax({
+        type: "POST",
+        url: "/Catalogos/GetVistaModal",
+        data: "ID=" + 0,
+        success: function (e) {
+            $('#modal-cuerpo').html(e);
+            $('#modal-editar').modal('show');
+        }
+    });
 });

@@ -22,20 +22,24 @@ namespace Web.Controllers
         public ActionResult Index()
         {
             var _vm = _service.Index();
-            ViewBag.Tittle = "Catalogos";
-
+            ViewBag.Titulo = "Catalogos";
             return View(_vm);
         }
-
 
         public ActionResult Mostrar(string nombre)
         {
             var _vm = _service.Mostrar(nombre);
-            ViewBag.Tittle = "Detalle Catalogo";
-
+            ViewBag.Titulo = "Detalle Catalogo ";
+            _vm.Tabla = nombre;
             return View(_vm);
         }
 
+        [HttpPost]
+        public ActionResult GetVistaModal(string Tabla,int ID)
+        {
+            var _vm = _service.GetModal(Tabla, ID);
+            return PartialView("_MostrarModal",_vm);
+        }
 
     }
 }

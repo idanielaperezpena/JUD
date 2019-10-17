@@ -14,9 +14,8 @@ namespace Negocio
 {
     public class CatalogosService : ServiceBase
     {
+        /* Vistas */
         public CatalogosService(ModelStateDictionary modelState) : base(modelState) { }
-
-        
 
         public CatalogosIndexViewModel Index(CatalogosIndexViewModel viewModel = null)
         {
@@ -60,7 +59,6 @@ namespace Negocio
 
             return viewModel;
         }
-
 
         public CatalogosMostrarViewModel Mostrar(string nombre)
         {
@@ -106,6 +104,48 @@ namespace Negocio
             return viewModel;
         }
 
+        public CatalogosMostrarModalViewModel GetModal(string nombre ,int ID )
+        {
+            var _ViewModel = new CatalogosMostrarModalViewModel();
+            
+            try {
+                if(ID != 0)
+                {
+
+                    _ViewModel.Label = this.UoW.Encriptador.Desencriptar(nombre) + "  Agregar " + ID;
+                    
+                    var _InfoCatalogo = this.UoW.Catalogos.ObtenerEntidad(new Catalogos { NombreCatalogo = this.UoW.Encriptador.Desencriptar(nombre), ID = ID });
+
+                    _ViewModel.Estatus = UoW.Catalogos.ObtenerEstatus().SelectListado();
+                    _ViewModel.Label = "Agregar" + ID;
+
+                    if (_InfoCatalogo != null)
+                    {
+                        _ViewModel.Label = "Editar";
+                        _ViewModel.ID = _InfoCatalogo.ID;
+                        _ViewModel.Clave = _InfoCatalogo.Clave;
+                        _ViewModel.ClaveCGMA = _InfoCatalogo.ClaveCGMA;
+                        _ViewModel.Descripcion = _InfoCatalogo.Descripcion;
+                        _ViewModel.Activo = _InfoCatalogo.Activo; 
+                    }
+
+                }
+                else
+                {
+                    _ViewModel.Label = "Agregar";
+                    _ViewModel.Estatus = UoW.Catalogos.ObtenerEstatus().SelectListado();
+                }
+
+            }
+            catch (Exception ex) {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+
+
+            return _ViewModel;
+        }
+
+        /* Funciones  */
         public List<Catalogos> Listado_Tablas()
         {
             try
@@ -125,12 +165,12 @@ namespace Negocio
 
         public List<Catalogos> Listado(string catalogo_nombre)
         {
-
             try
             {
                 return UoW.Catalogos.ObtenerListado(new Catalogos
                 {
-                    NombreCatalogo = catalogo_nombre
+                    NombreCatalogo = catalogo_nombre,
+                    ID = 0
                 });
             }
             catch (Exception ex)
@@ -153,5 +193,7 @@ namespace Negocio
 
             return cgma;
         }
+
+
     }
 }

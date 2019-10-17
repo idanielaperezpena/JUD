@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Catalogos
+    public class Catalogos : ICustomSelectList
     {
         public string NombreCatalogo { get; set; }
 
@@ -15,6 +15,10 @@ namespace Entidades
         public int ClaveCGMA { get; set; }
         public string Descripcion{ get; set; }
         public bool Activo { get; set; }
+
+
+        public string DataValueField => "ID";
+        public string DataTextField => "Descripcion";
 
     }
 }

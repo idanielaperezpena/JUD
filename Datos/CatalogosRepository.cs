@@ -23,17 +23,29 @@ namespace Datos
 
         public override Catalogos ObtenerEntidad(Catalogos pGeneric)
         {
-            throw new NotImplementedException();
+            return ObtenerPrimero("Catalogos_Select", pGeneric.NombreCatalogo, pGeneric.ID);
         }
 
         public override List<Catalogos> ObtenerListado(Catalogos pGeneric)
         {
-            return ObtenerLista("Catalogos_Select", pGeneric.NombreCatalogo);
+            return ObtenerLista("Catalogos_Select", pGeneric.NombreCatalogo, pGeneric.ID);
         }
 
         public  List<Catalogos> ObtenerListado_NombreTablas(Catalogos pGeneric)
         {
             return ObtenerLista("Catalogos_Select_NombreTablas", pGeneric.NombreCatalogo);
+        }
+
+        public  List<Catalogos> ObtenerEstatus()
+        {
+            Catalogos activo = new Catalogos{ ID = 1 , Descripcion = "Activo"};
+            Catalogos inactivo = new Catalogos{ ID = 0, Descripcion = "Inactivo" };
+
+            List<Catalogos> Estatus = new List<Catalogos>();
+            Estatus.Add(activo);
+            Estatus.Add(inactivo);
+
+            return Estatus;
         }
 
     }
