@@ -13,7 +13,7 @@ namespace Datos
 
         public override Catalogos Alta(Catalogos pGeneric)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public override void Baja(Catalogos pGeneric)

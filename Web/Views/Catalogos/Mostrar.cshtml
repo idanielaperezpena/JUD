@@ -39,59 +39,64 @@
                         </div>
                     </div>
                 </div>
-
-                <table id="tabla_catalogos" class="table table-bordered  table-striped" data-items="@Model.Listado.Count()">
-                    @if (Model.Listado.Count() == 0)
-                    {
-                        @Html.CustomTableEmptyResult()
-                    }
-                    else
-                    {
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Clave</th>
-                                @if (Model.TieneCGMA)
-                                {
-                                    <th>ClaveCGMA</th>
-                                }
-                                <th>Descripción</th>
-                                <th>Activo</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            @foreach (var item in Model.Listado)
-                            {
+                <div class="table-responsive">
+                    <table id="tabla_catalogos" class="table table-bordered  table-striped" data-items="@Model.Listado.Count()">
+                        @if (Model.Listado.Count() == 0)
+                        {
+                            @Html.CustomTableEmptyResult()
+                        }
+                        else
+                        {
+                            <thead>
                                 <tr>
-                                    <td>@item.ID</td>
-                                    <td>@item.Clave</td>
+                                    <th>ID</th>
+                                    <th>Clave</th>
                                     @if (Model.TieneCGMA)
                                     {
-                                        <td>@item.ClaveCGMA</td>
+                                        <th>ClaveCGMA</th>
                                     }
-                                    <td>@item.Descripcion</td>
-                                    <td>@item.Activo_Nombre</td>
-                                    <td>
-                                        <div class="text-center">
-
-                                            <button type="button" class="btn bg-yellow edit" data-id="@item.ID">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-
-                                            <button type="button" class="btn bg-red eliminate" data-id="@item.ID">
-                                                <i class="fas fa-times-circle"></i>
-                                            </button>
-                                        </div>
-                                    </td>
+                                    <th>Descripción</th>
+                                    <th>Activo</th>
+                                    <th>Acciones</th>
                                 </tr>
-                            }
-                        </tbody>
+                            </thead>
+                            <tbody>
 
-                    }
+                                @foreach (var item in Model.Listado)
+                                {
+                                    <tr>
+                                        <td>@item.ID</td>
+                                        <td>@item.Clave</td>
+                                        @if (Model.TieneCGMA)
+                                        {
+                                            <td>@item.ClaveCGMA</td>
+                                        }
+                                        <td>@item.Descripcion</td>
 
-                </table>
+                                        <td>
+                                            @item.Activo_Nombre
+                                        </td>
+                                        <td>
+                                            <div class="text-center">
+
+                                                <button type="button" class="btn bg-yellow edit" data-id="@item.ID">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+
+                                                <button type="button" class="btn bg-red eliminate" data-id="@item.ID">
+                                                    <i class="fas fa-times-circle"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        }
+
+                    </table>
+                </div>
+                
             </div>
         </div>
     </section>
