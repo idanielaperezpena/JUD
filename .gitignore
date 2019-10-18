@@ -1,0 +1,5 @@
+
+.vs/config/applicationhost.config
+*.config
+*.cache
+.vs/JUDMB/v15/.suo
