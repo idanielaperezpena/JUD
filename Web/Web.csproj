@@ -239,6 +239,8 @@
     <Content Include="Views\Ciudadano\Index.cshtml" />
     <Content Include="Views\Ciudadano\Insertar.cshtml" />
     <Content Include="Views\Ciudadano\Solicitudes.cshtml" />
+    <Content Include="Views\Domicilio\Insertar.cshtml" />
+    <Content Include="Views\DomicilioCiudadano\Insertar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

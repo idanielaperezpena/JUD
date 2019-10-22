@@ -1,0 +1,113 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout-Principal.cshtml";
+
+}
+<div  class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Ciudadano
+
+            <small>Datos Personales</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+            <li><a href="#">Ciudadano</a></li>
+            <li class="active">Solicitud</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-6">
+                <!-- general form elements -->
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Domicilio</h3>
+                        <small>Datos Personales</small>@*poner docimilio de que*@
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form role="form">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="DOM_IDVialidad">Tipo de Vialidad*:</label>
+                                <select class="form-control" id="CIU_IDVialidad"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="DOM_NombreVialidad">Vialidad*:</label>
+                                <input type="text" class="form-control" id="DOM_NombreVialidad">
+                            </div>
+                            <div class="row">
+                                <div class="form-control col-lg-6">
+                                    <label for="DOM_NumeroExterior">Número Exterior:</label>
+                                    <input type="text" class="form-control" id="DOM_NumeroExterior">
+
+                                </div>
+                                <div class="form-control col-lg-6">
+                                    <label for="DOM_NumeroInterior">Número Interior:</label>
+                                    <input type="text" class="form-control" id="DOM_NumeroExterior">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-control col-lg-6">
+                                    <label for="DOM_Manzana">Manzana:</label>
+                                    <input type="text" class="form-control" id="DOM_Manzana">
+
+                                </div>
+                                <div class="form-control col-lg-6">
+                                    <label for="DOM_Lote">Lote:</label>
+                                    <input type="text" class="form-control" id="DOM_Lote">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-control col-lg-6">
+                                    <label for="DOM_Colonia">Colonia*:</label>
+                                    <input type="text" class="form-control" id="DOM_Colonia" placeholder="Ingresa la Colonia">
+
+                                </div>
+                                <div class="form-control col-lg-6">
+                                    <label for="DOM_IDAlcaldia">Lote:</label>
+                                    <select class="form-control" id="DOM_IDAlcaldia"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                            </div>
+
+
+                            <div class="row">
+                                <div class="form-group col-lg-6">
+                                    <label for="DOM_codigoPostal">Código Postal: </label>
+                                    <input type="text" class="form-control" id="DOM_codigoPostal">
+                                </div>
+                                <div class="form-group  col-lg-6">
+                                    <label for="DOM_IDEstado">Estado*:</label>
+                                    <select class="form-control" id="DOM_IDEstado"></select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-6">
+                                    <label for="DOM_Latitud">Latitud: </label>
+                                    <input type="number" class="form-control" id="DOM_Latitud">
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label for="DOM_Longitud">Longitud: </label>
+                                    <input type="number" class="form-control" id="DOM_Latitud">
+
+                                </div>
+                            </div>
+                           
+
+                        </div>
+                        <!-- /.box-body -->
+
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+    </section>
+</div>
+

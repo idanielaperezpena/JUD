@@ -25,7 +25,7 @@ namespace Entidades
         public int CIU_IDEstadoCivil { get; set; }
         public int CIU_IDGradoEstudios { get; set; }
         public int CIU_IDgrupoEtnico { get; set; }
-        public int CIU_IDRegimen { get; set; }
+        public int CIU_NumeroIdentificacion { get; set; }
         public string CIU_Proposito { get; set; }
         public bool CIU_CreditosOtorgados { get; set; }
         public float CIU_IngresoFamiliar { get; set; }

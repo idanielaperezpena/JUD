@@ -72,7 +72,7 @@
     <Compile Include="CreditoInicialRepository.cs" />
     <Compile Include="CreditoSustentabilidadRepositoy.cs" />
     <Compile Include="DeudorSolidarioRepository.cs" />
-    <Compile Include="DomicilioCreditoRepository.cs" />
+    <Compile Include="DomicilioCiudadanoRepository.cs" />
     <Compile Include="DomicilioRepository.cs" />
     <Compile Include="MCDictamenFinancieroRepository.cs" />
     <Compile Include="MCDictamenJuridicoRepository.cs" />
