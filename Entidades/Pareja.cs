@@ -15,6 +15,7 @@ namespace Entidades
         public string PAR_ApellidoMaterno { get; set; }
         public int PAR_IDGenero { get; set; }
         public int PAR_IDEstado { get; set; }
+        public int PAR_IDRegimen { get; set; }
         public DateTime PAR_FechaNacimiento { get; set; }
 
     }

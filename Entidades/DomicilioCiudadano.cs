@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class DomicilioCredito
+    public class DomicilioCiudadano
     {
         public int? DOMC_IDDomicilio { get; set; }
         public int DOMC_IDVialidad { get; set; }
@@ -22,6 +22,7 @@ namespace Entidades
         public string DOMC_Latitud { get; set; }
         public string DOMC_Longitud { get; set; }
         public float DOMC_MontoRenta { get; set; }
+        public int DOMC_IDTipoVivienda { get; set; }
         public string DOMC_Otro { get; set; }
     }
 }

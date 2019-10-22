@@ -110,7 +110,7 @@
     <Compile Include="DeudorSolidario.cs" />
     <Compile Include="CIDictamenFinanciero.cs" />
     <Compile Include="Domicilio.cs" />
-    <Compile Include="DomicilioCredito.cs" />
+    <Compile Include="DomicilioCiudadano.cs" />
     <Compile Include="Enumeraciones.cs" />
     <Compile Include="ErrorLog.cs" />
     <Compile Include="MCDictamenFinanciero.cs" />

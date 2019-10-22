@@ -176,6 +176,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CatalogosController.cs" />
+    <Compile Include="Controllers\CiudadanoController.cs" />
     <Compile Include="Controllers\ExceptionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PrincipalController.cs" />
@@ -234,6 +235,10 @@
     <Content Include="Views\Catalogos\Mostrar.cshtml" />
     <Content Include="Views\Catalogos\Index.cshtml" />
     <Content Include="Views\Catalogos\_MostrarModal.cshtml" />
+    <Content Include="Views\Ciudadano\Index.cshtml" />
+    <Content Include="Views\Ciudadano\Insertar.cshtml" />
+    <Content Include="Views\Domicilio\Insertar.cshtml" />
+    <Content Include="Views\DomicilioCiudadano\Insertar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
