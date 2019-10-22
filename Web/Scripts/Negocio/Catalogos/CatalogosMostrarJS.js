@@ -43,7 +43,7 @@ $(document).ready(function () {
 $(document).on('click', '.edit', function (event) {
     var id = $(this).attr('data-id');
     var tabla = $('#Tabla').val();
-    console.log(tabla);
+    Swal.showLoading({ allowOutsideClick: false});
     $.ajax({
         type: "POST",
         url: "/Catalogos/GetVistaModal",
@@ -52,6 +52,7 @@ $(document).on('click', '.edit', function (event) {
             ID : id
         },
         success: function (e) {
+            Swal.close();
             $('#modal-cuerpo').html(e);
             $('#modal-editar').modal('show');
         }
@@ -60,15 +61,42 @@ $(document).on('click', '.edit', function (event) {
 });
 
 $(document).on('click', '.agregar', function (event) {
-    var formData = new FormData();
-    formData.append("ID", 0);
+    var tabla = $('#Tabla').val();
+    Swal.showLoading({ allowOutsideClick: false });
     $.ajax({
         type: "POST",
         url: "/Catalogos/GetVistaModal",
-        data: "ID=" + 0,
+        data: {
+            Tabla: tabla,
+            ID : 0
+        },
         success: function (e) {
+            Swal.close();
             $('#modal-cuerpo').html(e);
             $('#modal-editar').modal('show');
         }
     });
+});
+
+$(document).on('click', '.eliminate', function (event) {
+    var tabla = $('#Tabla').val();
+    var id = $(this).attr('data-id');
+    Swal.fire({
+        type: 'question',
+        title: '¿Estas seguro de eliminarlo ?',
+        text: 'Se Desactivara esta opcion para el sistema',
+        showCloseButton: true,
+        showCancelButton: true,
+        confirmButtonText:
+            'Confirmar',
+        cancelButtonText:
+            'Cancelar',
+    }).then((result) => {
+        if (result.value) {
+            Swal.fire({
+                type: 'success',
+                title: 'Eliminado'
+            })
+        }
+    })
 });

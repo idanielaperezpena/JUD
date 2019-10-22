@@ -1,6 +1,7 @@
 ﻿using Entidades;
 using Negocio;
 using Negocio.ViewModels;
+using Negocio.ViewModels.Catalogos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,8 @@ namespace Web.Controllers
             _service = new CatalogosService(ModelState);
         }
 
+        // Vistas
+
         public ActionResult Index()
         {
             var _vm = _service.Index();
@@ -34,12 +37,23 @@ namespace Web.Controllers
             return View(_vm);
         }
 
+
+        //Funciones
+
         [HttpPost]
         public ActionResult GetVistaModal(string Tabla,int ID)
         {
             var _vm = _service.GetModal(Tabla, ID);
             return PartialView("_MostrarModal",_vm);
         }
+
+        /*
+        [HttpPost]
+        public ActionResult Edit(CatalogosMostrarModalViewModel Formulario)
+        {
+            var _vm = _service.GetModal(Tabla, ID);
+            return PartialView("_MostrarModal", _vm);
+        }*/
 
     }
 }

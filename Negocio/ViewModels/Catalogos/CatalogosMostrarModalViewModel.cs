@@ -19,7 +19,7 @@ namespace Negocio.ViewModels.Catalogos
 
         [CustomRequired]
         [Display(Name = "Clave *")]
-        public int Clave { get; set; }
+        public string Clave { get; set; }
 
         [CustomRequired]
         [Display(Name = "Clave CGMA *")]
@@ -31,7 +31,7 @@ namespace Negocio.ViewModels.Catalogos
 
         [CustomRequired]
         [Display(Name = "Estatus *")]
-        public bool? Activo { get; set; }
+        public bool Activo { get; set; }
 
         public ICustomSelectList<Entidades.Catalogos> Estatus { get; set; }
 

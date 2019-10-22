@@ -145,6 +145,35 @@ namespace Negocio
             return _ViewModel;
         }
 
+        public void Editar(CatalogosMostrarModalViewModel ViewModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    using (UoW.Catalogos.TxScope = new TransactionScope())
+                    {
+                        var _entidad = UoW.Catalogos.Alta(new Catalogos
+                        {
+                            ID = ViewModel.ID,
+                            Clave = ViewModel.Clave,
+                            ClaveCGMA = ViewModel.ClaveCGMA,
+                            Descripcion = ViewModel.Descripcion,
+                            Activo = ViewModel.Activo
+                        });
+
+                        UoW.Catalogos.TxScope.Complete();
+                    }
+                }
+
+            }catch(Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+        }
+
+
+
         /* Funciones  */
         public List<Catalogos> Listado_Tablas()
         {
@@ -193,6 +222,7 @@ namespace Negocio
 
             return cgma;
         }
+
 
 
     }
