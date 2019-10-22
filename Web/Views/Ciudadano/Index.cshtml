@@ -2,39 +2,47 @@
     Layout = "~/Views/Shared/_Layout-Principal.cshtml";
 
 }
+
+@model Negocio.ViewModels.CiudadanosIndexViewModel
+
+@section estilos{
+    @Styles.Render("~/bundles/datatables_css")
+}
+
+
 <div class="content-wrapper" style="min-height: 901px;">
     <section class="content-header">
         <h1>
-           Ciudadano
+            Ciudadano
             <small>Solicitudes</small>
         </h1>
         <ol class="breadcrumb">
-            <li class="active"><a href="#"><i class="fa fa-dashboard"></i>Menú Principal</a></li>
+            <li>
+                <a href="@Url.Action("Index", "Principal")"><i class="fa fa-dashboard"></i>Menu principal</a>
+            </li>
+            <li class="active">
+                Solicitudes por Ciudadano
+
         </ol>
     </section>
 
     <section class="content">
 
-       
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="box box-success">
             <div class="box-header with-border">
                 <h3 class="box-title">Datos del Ciudadano</h3>
             </div>
             <div class="box-body">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="pull-right" style="margin: 10px 0px">
-                            <button type="submit" class="btn bg-green">
-                                Agregar &nbsp;
-                                <i class="fas fa-plus-circle"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
 
                 <table id="tabla_ciudadano" class="table table-bordered  table-striped table-responsive">
-                   
+                    @if (Model.Listado.Count() == 0)
+                    {
+                        @Html.CustomTableEmptyResult()
+                    }
+                    else
+                    {
                         <thead>
                             <tr>
                                 <th>CURP</th>
@@ -43,26 +51,33 @@
                                 <th>Datos de Nacimiento</th>
                                 <th>Contacto</th>
                                 <th>Domicilio</th>
-                                <th></th>
-     
+                                <th>Ver Solcitudes</th>
+
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>CURP</td>
-                                <td>Nombre Completo</td>
-                                <td>Género</td>
-                                <td>Datos de Nacimiento</td>
-                                <td>Contacto</td>
-                                <td>Domicilio</td>
-                                <td></td>
-
-                            </tr>
+                            @foreach (var item in Model.Listado)
+                            {
+                                <tr>
+                                    <td>@item.CURP</td>
+                                    <td>@item.NombreCompleto</td>
+                                    <td>@item.GeneroTexto</td>
+                                    <td>@item.DatosNacimiento</td>
+                                    <td>@item.Contacto</td>
+                                    <td>@item.DomicilioCompleto</td>
+                                    <td>
+                                        <div class="text-center">
+                                            <button type="button" class="btn bg-primary edit" data-id="@item.CIU_IDCiudadano">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
 
 
                         </tbody>
-
-                    
+                    }
 
                 </table>
             </div>
@@ -70,3 +85,7 @@
     </section>
 </div>
 
+@section scripts{
+    @Scripts.Render("~/bundles/datatables_js")
+    <script src="~/Scripts/Negocio/Ciudadano/CiudadanoMostrar.js"></script>
+}

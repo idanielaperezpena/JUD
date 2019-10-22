@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using Web.Models.INVI;
 
 namespace Web.Controllers
 {
@@ -22,8 +22,17 @@ namespace Web.Controllers
 
         // Vistas
 
-        public ActionResult Index()
+        public ActionResult Index(Notificacion notificacion = null )
         {
+            if (notificacion != null)
+            {
+                ViewBag.Error = notificacion.Error;
+                ViewBag.MensajeError = notificacion.Mensaje;
+            }
+            else
+            {
+                ViewBag.Error = false;
+            }
             var _vm = _service.Index();
             ViewBag.Titulo = "Catalogos";
             return View(_vm);
@@ -31,10 +40,16 @@ namespace Web.Controllers
 
         public ActionResult Mostrar(string nombre)
         {
+            if (String.IsNullOrEmpty(nombre))
+            {
+                ViewBag.Titulo = "Detalle Nulo ";
+                return RedirectToAction("Index",new Notificacion { Error = true , Mensaje = "Debe elegir un catalogo para mostrar su información"});
+            }
             var _vm = _service.Mostrar(nombre);
             ViewBag.Titulo = "Detalle Catalogo ";
             _vm.Tabla = nombre;
             return View(_vm);
+
         }
 
 

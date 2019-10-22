@@ -74,10 +74,15 @@ namespace Negocio
                 else
                     viewModel.TieneCGMA = false;
 
+                if (TieneTipo(_listado))
+                    viewModel.TieneTipo = true;
+                else
+                    viewModel.TieneTipo = false;
+
                 char[] spearator = { '_' };
                 String[] strlist = _nombre_desencriptar.Split(spearator);
                 viewModel.NombreCatalogo = strlist[3];
-                viewModel.NoCatalogo = _nombre_desencriptar;
+                viewModel.NoCatalogo = strlist[2];
 
                 foreach (Catalogos _cat in _listado)
                 {
@@ -86,6 +91,7 @@ namespace Negocio
                     _temp.ID = _cat.ID;
                     _temp.Clave = _cat.Clave;
                     _temp.ClaveCGMA = _cat.ClaveCGMA;
+                    _temp.Tipo = _cat.Tipo;
                     _temp.Descripcion = _cat.Descripcion;
 
                     _temp.Activo = _cat.Activo;
@@ -221,6 +227,20 @@ namespace Negocio
             }
 
             return cgma;
+        }
+
+        public bool TieneTipo(List<Catalogos> Catalogos)
+        {
+            bool tipo = false;
+            foreach (Catalogos Cat in Catalogos)
+            {
+                if (!String.IsNullOrEmpty(Cat.Tipo) )
+                {
+                    tipo = true;
+                }
+            }
+
+            return tipo;
         }
 
 

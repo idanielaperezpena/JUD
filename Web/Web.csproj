@@ -137,6 +137,7 @@
     <Content Include="Scripts\BaseInit.js" />
     <Content Include="Scripts\BaseWeb.js" />
     <Content Include="Scripts\Negocio\Catalogos\CatalogosMostrarJS.js" />
+    <Content Include="Scripts\Negocio\Ciudadano\CiudadanoMostrar.js" />
     <Content Include="Scripts\Negocio\HomeIndexJS.js" />
     <Content Include="Scripts\UI\admin\adminlte.min.js" />
     <Content Include="Scripts\UI\admin\validaciones_general.js" />
@@ -176,6 +177,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CatalogosController.cs" />
+    <Compile Include="Controllers\CiudadanoController.cs" />
     <Compile Include="Controllers\ExceptionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PrincipalController.cs" />
@@ -234,6 +236,9 @@
     <Content Include="Views\Catalogos\Mostrar.cshtml" />
     <Content Include="Views\Catalogos\Index.cshtml" />
     <Content Include="Views\Catalogos\_MostrarModal.cshtml" />
+    <Content Include="Views\Ciudadano\Index.cshtml" />
+    <Content Include="Views\Ciudadano\Insertar.cshtml" />
+    <Content Include="Views\Ciudadano\Solicitudes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

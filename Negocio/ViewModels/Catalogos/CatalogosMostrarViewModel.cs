@@ -20,6 +20,7 @@ namespace Negocio.ViewModels.Catalogos
         public string Tabla { get; set; }
 
         public bool TieneCGMA { get; set; }
+        public bool TieneTipo { get; set; }
 
         public List<CatalogosMostrarListadoViewModel> Listado { get; set; }
 
@@ -38,6 +39,7 @@ namespace Negocio.ViewModels.Catalogos
         [Display(Name = "Clave CGMA")]
         public int? ClaveCGMA { get; set; }
         public string Descripcion { get; set; }
+        public string Tipo { get; set; }
         public bool Activo { get; set; }
         [Display(Name = "Estatus")]
         public String Activo_Nombre { get; set; }

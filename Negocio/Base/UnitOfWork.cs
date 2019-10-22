@@ -15,7 +15,7 @@ namespace Negocio
         private ErrorLogRepository _errorRepo;
         private UsuarioRepository _usrRepo;
         //private ParejaRepository _parejaRepo;
-        //private CiudadanoRepository _ciudadanoRepo;
+        private CiudadanoRepository _ciudadanoRepo;
 
         private EmailUtility _emailSender;
         private EncriptarUtility _encriptador;
@@ -68,7 +68,7 @@ namespace Negocio
 
                 return _parejaRepo;
             }
-        }
+        }*/
 
         public CiudadanoRepository Ciudadano
         {
@@ -79,7 +79,7 @@ namespace Negocio
 
                 return _ciudadanoRepo;
             }
-        }*/
+        }
 
         public EmailUtility EmailSender
         {

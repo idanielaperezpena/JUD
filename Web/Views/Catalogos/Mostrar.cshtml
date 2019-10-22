@@ -12,10 +12,18 @@
     <section class="content-header">
         <h1>
             @Model.NombreCatalogo
-            <small>@Model.NoCatalogo</small>
+            <small>Catalogo No. : @Model.NoCatalogo</small>
         </h1>
         <ol class="breadcrumb">
-            <li class="active"><a href="#"><i class="fa fa-dashboard"></i>Menu principal</a></li>
+            <li >
+                <a href="@Url.Action("Index", "Principal")"><i class="fa fa-dashboard"></i>Menu principal</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "Catalogos")">Catalogos</a>
+            </li>
+            <li class="active">
+                Mostrar
+            </li>
         </ol>
     </section>
 
@@ -53,7 +61,11 @@
                                     <th>Clave</th>
                                     @if (Model.TieneCGMA)
                                     {
-                                        <th>ClaveCGMA</th>
+                                        <th>Clave CGMA</th>
+                                    }
+                                    @if (Model.TieneTipo)
+                                    {
+                                        <th>Tipo</th>
                                     }
                                     <th>Descripción</th>
                                     <th>Activo</th>
@@ -64,31 +76,35 @@
 
                                 @foreach (var item in Model.Listado)
                                 {
-                                    <tr>
-                                        <td>@item.ID</td>
-                                        <td>@item.Clave</td>
-                                        @if (Model.TieneCGMA)
-                                        {
-                                            <td>@item.ClaveCGMA</td>
-                                        }
-                                        <td>@item.Descripcion</td>
+                                <tr>
+                                    <td>@item.ID</td>
+                                    <td>@item.Clave</td>
+                                    @if (Model.TieneCGMA)
+                                    {
+                                        <td>@item.ClaveCGMA</td>
+                                    }
+                                    @if (Model.TieneTipo)
+                                    {
+                                        <td>@item.Tipo</td>
+                                    }
+                                    <td>@item.Descripcion</td>
 
-                                        <td>
-                                            @item.Activo_Nombre
-                                        </td>
-                                        <td>
-                                            <div class="text-center">
+                                    <td>
+                                        @item.Activo_Nombre
+                                    </td>
+                                    <td>
+                                        <div class="text-center">
 
-                                                <button type="button" class="btn bg-yellow edit" data-id="@item.ID">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
+                                            <button type="button" class="btn bg-yellow edit" data-id="@item.ID">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
 
-                                                <button type="button" class="btn bg-red eliminate" data-id="@item.ID">
-                                                    <i class="fas fa-times-circle"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                            <button type="button" class="btn bg-red eliminate" data-id="@item.ID">
+                                                <i class="fas fa-times-circle"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
                                 }
                             </tbody>
 

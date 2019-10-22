@@ -106,6 +106,7 @@
     <Compile Include="ViewModels\Catalogos\CatalogosIndexViewModel.cs" />
     <Compile Include="ViewModels\Catalogos\CatalogosMostrarModalViewModel.cs" />
     <Compile Include="ViewModels\Catalogos\CatalogosMostrarViewModel.cs" />
+    <Compile Include="ViewModels\Ciudadanos\CiudadanosIndexViewModel.cs" />
     <Compile Include="ViewModels\ExceptionIndexViewModel.cs" />
     <Compile Include="ViewModels\ExceptionLogViewModel.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />

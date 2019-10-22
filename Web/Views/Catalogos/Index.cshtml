@@ -12,22 +12,50 @@
             <small>Todos los catalogos</small>
         </h1>
         <ol class="breadcrumb">
-            <li class="active"><a href="#"><i class="fa fa-dashboard"></i>Menu principal</a></li>
+            <li>
+                <a href="@Url.Action("Index", "Principal")"><i class="fa fa-dashboard"></i>Menu principal</a>
+            </li>
+            <li class="active">
+                Catalogos
+            </li>
         </ol>
     </section>
 
     <section class="content">
 
+        @if(ViewBag.Error == true)
+        {
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-ban"></i> ¡Error!</h4>
+                @ViewBag.MensajeError
+            </div>
+        }
+
+        <div class="row" style="margin-bottom: 20px">
+            <div class="col-sm-12 col-md-6 pull-right">
+                <div class="input-group input-group-sm">
+                    <input type="text" id="buscador" name="buscador" class="form-control">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-info btn-flat">Buscar</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+
         <div class="row">
             @foreach (var _catalogo in Model.Listado)
             {
-                <div class="col-md-4 col-sm-12 col-lg-4">
+                <div class="col-md-4 col-sm-12 col-lg-4 catalogo_box">
                     <a href="@Url.Action("Mostrar", "Catalogos", new { nombre = _catalogo.NombreCatalogo }) ">
                         <div class="info-box @_catalogo.Color_Caja">
                             <span class="info-box-icon"><i class="fas fa-atlas"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text">No. del catalogo : @_catalogo.NoCatalogo</span>
-                                <span class="info-box-number">Nombre del catalgo : @_catalogo.NombreCatalogo_Mostrar</span>
+                                <span class="info-box-number">
+                                    Nombre del catalgo : <span class="nombre_cat">@_catalogo.NombreCatalogo_Mostrar</span> 
+                                </span>
                             </div>
                         </div>
                     </a>
@@ -38,3 +66,28 @@
 
     </section>
 </div>
+
+@section scripts{
+    <script>
+
+        $("#buscador").keyup(function (e) {
+            
+            var busqueda = $(this).val();
+            if (busqueda != "") {
+                $(".nombre_cat").each(function (e) {
+                    var nombre = $(this).text();
+                    if (nombre.toLowerCase().search(busqueda.toLowerCase()) == -1)
+                        $(this).closest(".catalogo_box").hide();
+                    else
+                        $(this).closest(".catalogo_box").show();
+                })
+            } else {
+                $(".catalogo_box").each(function (e) {
+                    $(this).show();
+                })
+            }
+            
+        })
+
+    </script>    
+}
