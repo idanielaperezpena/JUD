@@ -34,7 +34,7 @@ namespace Negocio.ViewModels.Catalogos
     {
 
         public int? ID { get; set; }
-        public int Clave { get; set; }
+        public string Clave { get; set; }
         [Display(Name = "Clave CGMA")]
         public int? ClaveCGMA { get; set; }
         public string Descripcion { get; set; }

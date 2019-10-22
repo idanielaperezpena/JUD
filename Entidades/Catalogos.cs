@@ -11,10 +11,11 @@ namespace Entidades
         public string NombreCatalogo { get; set; }
 
         public int? ID{ get; set; }
-        public int Clave { get; set; }
+        public string Clave { get; set; }
         public int ClaveCGMA { get; set; }
+        public string Tipo { get; set; }
         public string Descripcion{ get; set; }
-        public bool? Activo { get; set; }
+        public bool Activo { get; set; }
 
 
         public string DataValueField => "ID";

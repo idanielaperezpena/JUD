@@ -47,13 +47,13 @@ namespace Web.Controllers
             return PartialView("_MostrarModal",_vm);
         }
 
-
+        /*
         [HttpPost]
         public ActionResult Edit(CatalogosMostrarModalViewModel Formulario)
         {
             var _vm = _service.GetModal(Tabla, ID);
             return PartialView("_MostrarModal", _vm);
-        }
+        }*/
 
     }
 }
