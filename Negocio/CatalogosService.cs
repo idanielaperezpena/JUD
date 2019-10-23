@@ -115,11 +115,11 @@ namespace Negocio
             var _ViewModel = new CatalogosMostrarModalViewModel();
             
             try {
-                if(ID != 0)
+                if (ID != 0)
                 {
 
                     _ViewModel.Label = this.UoW.Encriptador.Desencriptar(nombre) + "  Agregar " + ID;
-                    
+
                     var _InfoCatalogo = this.UoW.Catalogos.ObtenerEntidad(new Catalogos { NombreCatalogo = this.UoW.Encriptador.Desencriptar(nombre), ID = ID });
 
                     _ViewModel.Estatus = UoW.Catalogos.ObtenerEstatus().SelectListado();
@@ -132,7 +132,7 @@ namespace Negocio
                         _ViewModel.Clave = _InfoCatalogo.Clave;
                         _ViewModel.ClaveCGMA = _InfoCatalogo.ClaveCGMA;
                         _ViewModel.Descripcion = _InfoCatalogo.Descripcion;
-                        _ViewModel.Activo = _InfoCatalogo.Activo; 
+                        _ViewModel.Activo = (_InfoCatalogo.Activo == true ? 1 : 0);
                     }
 
                 }
@@ -140,6 +140,7 @@ namespace Negocio
                 {
                     _ViewModel.Label = "Agregar";
                     _ViewModel.Estatus = UoW.Catalogos.ObtenerEstatus().SelectListado();
+                    _ViewModel.Activo = 1;
                 }
 
             }
@@ -165,7 +166,7 @@ namespace Negocio
                             Clave = ViewModel.Clave,
                             ClaveCGMA = ViewModel.ClaveCGMA,
                             Descripcion = ViewModel.Descripcion,
-                            Activo = ViewModel.Activo
+                            Activo = (ViewModel.Activo == 1 ? true : false)
                         });
 
                         UoW.Catalogos.TxScope.Complete();

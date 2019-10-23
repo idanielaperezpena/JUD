@@ -22,6 +22,8 @@ namespace Negocio.ViewModels
 
     public class CiudadanosIndexListadoViewModel : Entidades.Ciudadano
     {
+        public string IDEncriptado { get; set; }
+
         [Display(Name = "CURP")]
         public string CURP { get; set; }
 

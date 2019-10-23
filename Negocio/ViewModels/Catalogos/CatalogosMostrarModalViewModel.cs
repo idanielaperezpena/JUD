@@ -31,7 +31,7 @@ namespace Negocio.ViewModels.Catalogos
 
         [CustomRequired]
         [Display(Name = "Estatus *")]
-        public bool Activo { get; set; }
+        public int Activo { get; set; }
 
         public ICustomSelectList<Entidades.Catalogos> Estatus { get; set; }
 

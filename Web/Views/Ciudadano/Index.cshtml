@@ -28,6 +28,16 @@
 
     <section class="content">
 
+        @if (ViewBag.Error == true)
+        {
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-ban"></i> ¡Error!</h4>
+                @ViewBag.MensajeError
+            </div>
+        }
+
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="box box-success">
@@ -67,9 +77,9 @@
                                     <td>@item.DomicilioCompleto</td>
                                     <td>
                                         <div class="text-center">
-                                            <button type="button" class="btn bg-primary edit" data-id="@item.CIU_IDCiudadano">
+                                            <a class="btn bg-primary solicitudes" href="@Url.Action("Solicitudes","Ciudadano", new { ID = @item.IDEncriptado})">
                                                 <i class="fas fa-eye"></i>
-                                            </button>
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>

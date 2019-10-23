@@ -1,0 +1,107 @@
+﻿
+@model Negocio.ViewModels.DomicilioCiudadano.DomicilioFormViewModel
+
+<div class="box box-success">
+    <div class="box-header with-border">
+        <h3 class="box-title">Domicilio del Ciudadano</h3>
+    </div>
+    @using (Html.BeginForm("EditDomicilio"))
+    {
+        <div class="box-body">
+            <div class="row">
+                <div class="form-group col-lg-6">
+                    @Html.LabelFor(m => m.DOMC_IDVialidad)
+                    @Html.CustomDropDownListFor(m => m.DOMC_IDVialidad, Model.Vialidad, new { @class = "form-control form-control-sm " })
+                    @Html.ValidationMessageFor(m => m.DOMC_IDVialidad, "")
+                </div>
+                <div class="form-group col-lg-6">
+                    @Html.LabelFor(m => m.DOMC_NombreVialidad)
+                    @Html.EditorFor(m => m.DOMC_NombreVialidad, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                    @Html.ValidationMessageFor(m => m.DOMC_NombreVialidad, "")
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-6">
+                    @Html.LabelFor(m => m.DOMC_NumeroExterior)
+                    @Html.EditorFor(m => m.DOMC_NumeroExterior, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                </div>
+                <div class="form-group col-lg-6">
+                    @Html.LabelFor(m => m.DOMC_NumeroInterior)
+                    @Html.EditorFor(m => m.DOMC_NumeroInterior, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group  col-lg-6">
+                    @Html.LabelFor(m => m.DOMC_Manzana)
+                    @Html.EditorFor(m => m.DOMC_Manzana, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                </div>
+                <div class="form-group  col-lg-6">
+                    @Html.LabelFor(m => m.DOMC_Lote)
+                    @Html.EditorFor(m => m.DOMC_Lote, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group  col-lg-6">
+                    @Html.LabelFor(m => m.DOMC_Colonia)
+                    @Html.EditorFor(m => m.DOMC_Colonia, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                    @Html.ValidationMessageFor(m => m.DOMC_Colonia, "")
+                </div>
+                <div class="form-group  col-lg-6">
+                    @Html.LabelFor(m => m.DOMC_IDAlcaldia)
+                    @Html.CustomDropDownListFor(m => m.DOMC_IDAlcaldia, Model.Alcaldia, new { @class = "form-control form-control-sm " })
+                    @Html.ValidationMessageFor(m => m.DOMC_IDAlcaldia, "")
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-lg-6">
+                    @Html.LabelFor(m => m.DOMC_CodigoPostal)
+                    @Html.EditorFor(m => m.DOMC_CodigoPostal, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                </div>
+                <div class="form-group  col-lg-6">
+                    @Html.LabelFor(m => m.DOMC_IDEstado)
+                    @Html.CustomDropDownListFor(m => m.DOMC_IDEstado, Model.Estado, new { @class = "form-control form-control-sm " })
+                    @Html.ValidationMessageFor(m => m.DOMC_IDEstado, "")
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-6">
+                    @Html.LabelFor(m => m.DOMC_Latitud)
+                    @Html.EditorFor(m => m.DOMC_Latitud, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                    @Html.ValidationMessageFor(m => m.DOMC_Latitud, "")
+                </div>
+                <div class="form-group col-lg-6">
+                    @Html.LabelFor(m => m.DOMC_Longitud)
+                    @Html.EditorFor(m => m.DOMC_Longitud, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                    @Html.ValidationMessageFor(m => m.DOMC_Longitud, "")
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-6">
+                    @Html.LabelFor(m => m.DOMC_MontoRenta)
+                    @Html.EditorFor(m => m.DOMC_MontoRenta, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                </div>
+                <div class="form-group col-lg-6">
+                    @Html.LabelFor(m => m.DOMC_IDTipoVivienda)
+                    @Html.CustomDropDownListFor(m => m.DOMC_IDTipoVivienda, Model.TipoVivienda, new { @class = "form-control form-control-sm " })
+                    @Html.ValidationMessageFor(m => m.DOMC_IDTipoVivienda, "")
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-6">
+                    @Html.LabelFor(m => m.DOMC_Otro)
+                    @Html.TextAreaFor(m => m.DOMC_Otro,  new { @class = "form-control" } )
+                </div>
+            </div>
+
+            @Html.HiddenFor(m => m.DOMC_IDDomicilio)
+
+        </div>
+
+        <div class="box-footer">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+    }
+
+</div>
+

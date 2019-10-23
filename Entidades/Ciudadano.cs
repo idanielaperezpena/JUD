@@ -23,17 +23,23 @@ namespace Entidades
         public string CIU_TelTrabajo { get; set; }
         public string CIU_TelCelular { get; set; }
         public int CIU_IDEstadoCivil { get; set; }
+        public int CIU_IDOrganizacionCivilFamilia { get; set; }
         public int CIU_IDGradoEstudios { get; set; }
         public int CIU_IDgrupoEtnico { get; set; }
-        public int CIU_NumeroIdentificacion { get; set; }
+        public string CIU_NumeroIdentificacion { get; set; }
+        public int CIU_IDEnfermedadCronica { get; set; }
+        public string CIU_EnfermedadCronicaOtro { get; set; }
+        public int CIU_IDDiscapacidad { get; set; }
+        public string CIU_DiscapacidadOtro { get; set; }
+        public int CIU_IDGruposPrioritarios { get; set; }
         public string CIU_Proposito { get; set; }
         public bool CIU_CreditosOtorgados { get; set; }
-        public float CIU_IngresoFamiliar { get; set; }
+        public double CIU_IngresoFamiliar { get; set; }
         public int CIU_IDEstructuraFamiliar { get; set; }
-        public int CIU_IDProfesion { get; set; }
+        public int CIU_IDOcupacion { get; set; }
         public string CIU_NombreTrabajo { get; set; }
         public int? CIU_IDDomicilioTrabajo { get; set; }    
-        public float CIU_CapacidadPago { get; set; }
+        public double CIU_CapacidadPago { get; set; }
         public string CIU_CorreoElectronico { get; set; }
     }
 }

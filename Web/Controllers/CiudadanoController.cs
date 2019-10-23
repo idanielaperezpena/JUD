@@ -22,23 +22,39 @@ namespace Web.Controllers
         }
 
         // GET: Ciudadano
-        public ActionResult Index()
+        public ActionResult Index(Notificacion notificacion = null)
         {
+            if (notificacion != null)
+            {
+                ViewBag.Error = notificacion.Error;
+                ViewBag.MensajeError = notificacion.Mensaje;
+            }
+            else
+            {
+                ViewBag.Error = false;
+            }
             var _vm = _service.Index();
             ViewBag.Titulo = "Lista de ciudadanos";
             return View(_vm);
         }
+
+
+
+        public ActionResult Solicitudes(string ID)
+        {
+            if (String.IsNullOrEmpty(ID))
+            {
+                return RedirectToAction("Index", new Notificacion { Error = true, Mensaje = "Debe elegir un ciudadano para mostrar su informacion" });
+            }
+            var _vm = _service.Solicitudes(ID);
+            ViewBag.Titulo = "Solicitudes del Ciudadano";
+            return View(_vm);
+        }
+
+        [HttpPost]
         public ActionResult Insertar()
         {
             return View();
-        }
-
-        [AcceptVerbs ("POST")]
-        public ActionResult Solicitudes()
-        {
-            var _vm = _service.Index();
-            ViewBag.Titulo = "Solicitudes del Ciudadano";
-            return View(_vm);
         }
     }
 }

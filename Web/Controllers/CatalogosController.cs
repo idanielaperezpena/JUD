@@ -38,6 +38,7 @@ namespace Web.Controllers
             return View(_vm);
         }
 
+        [AcceptVerbs("GET")]
         public ActionResult Mostrar(string nombre)
         {
             if (String.IsNullOrEmpty(nombre))

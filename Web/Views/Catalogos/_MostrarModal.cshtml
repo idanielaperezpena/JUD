@@ -35,7 +35,7 @@
 
         <div class="form-group">
             @Html.LabelFor(m => m.Activo)
-            @Html.CustomDropDownListFor(m => m.Activo, Model.Estatus, new { @class = "form-control form-control-sm" }, (Model.Activo == true || Model.Activo == false) )
+            @Html.CustomDropDownListFor(m => m.Activo, Model.Estatus, new { @class = "form-control form-control-sm" }, true)
         </div>
     }
 </div>
