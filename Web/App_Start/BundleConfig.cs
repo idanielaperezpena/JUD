@@ -49,7 +49,7 @@ namespace Web
                         ));
 
             bundles.Add(new StyleBundle("~/bundles/select2_css").Include(
-                        "~/Content/select2/elect2.min.css"
+                        "~/Content/select2/select2.min.css"
                         ));
 
             bundles.Add(new StyleBundle("~/bundles/datatables_css").Include(
