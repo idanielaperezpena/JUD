@@ -241,6 +241,8 @@
     <Content Include="Views\Ciudadano\Solicitudes.cshtml" />
     <Content Include="Views\Domicilio\Insertar.cshtml" />
     <Content Include="Views\DomicilioCiudadano\Insertar.cshtml" />
+    <Content Include="Views\Pareja\Insertar.cshtml" />
+    <Content Include="Views\DeudorSolidario\Insertar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
