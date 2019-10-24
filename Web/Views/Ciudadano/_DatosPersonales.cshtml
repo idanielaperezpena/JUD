@@ -1,0 +1,142 @@
+﻿
+
+@model Negocio.ViewModels.Ciudadanos.CiudadanoDatosPersonalesViewModel
+
+<div class="box box-success">
+    <div class="box-header with-border">
+        <h1 class="box-title">1. Datos de la (el) Solicitante.</h1>
+    </div>
+    <div class="box-body">
+        <div class="form-group">
+            <label for="CIU_CURP">CURP*:</label>
+            <input type="text" class="form-control" id="CIU_CURP">
+        </div>
+        <div class="form-group">
+            <label for="CIU_Nombre">Nombre*:</label>
+            <input type="text" class="form-control" id="CIU_Nombre">
+        </div>
+        <div class="row">
+            <div class="form-group col-lg-6">
+                <label for="CIU_ApellidoPaterno">Apellido Paterno*:</label>
+                <input type="text" class="form-control" id="CIU_ApellidoPaterno">
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="CIU_ApellidoMaterno">Apellido Materno:</label>
+                <input type="text" class="form-control" id="CIU_ApellidoMaterno">
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="form-group col-lg-6">
+                <label for="CIU_NumeroIdentificacion">No. de Identificación*: </label>
+                <input type="text" class="form-control" id="CIU_NumeroIdentificacion">
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="CIU_IDGenero">Género*: </label>
+                <select class="form-control" id="CIU_IDGenero"></select>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="form-group  col-lg-6">
+                <label for="CIU_FechaNacimiento">Fecha de Nacimiento*:</label>
+                <div class="input-group date">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control" id="CIU_FechaNacimiento">
+                </div>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="CIU_Estado">Entidad de Nacimiento*: </label>
+                <select class="form-control" id="CIU_Estado" required></select>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="form-group col-lg-6">
+                <label for="CIU_TiempoResidencia">Tiempo de Residencia en la CDMX*: </label>
+                <input type="number" class="form-control" id="CIU_TiempoResidencia">
+                <p class="help-block">Tiempo en años.</p>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="CIU_IDGradoEstudios">Grado Máximo de Estudios*: </label>
+                <select class="form-control" id="CIU_IDGradoEstudios"></select>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="form-group col-lg-6">
+                <label for="CIU_GrupoEtnico">Grupo Étnico*: </label>
+                <select class="form-control" id="CIU_GrupoEtnico"></select>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="CIU_IDEstadoCivil">Estado Civil*: </label>
+                <select class="form-control" id="CIU_IDEstadoCivil"></select>
+            </div>
+
+        </div>
+    </div>
+    <!-- /.box-body -->
+
+
+
+    <div class="box-header with-border">
+        <h3 class="box-title">Datos de Contacto</h3>
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="form-group col-lg-6">
+                <label for="CIU_TelParticular">Tel. Particular*:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-phone"></i>
+                    </div>
+                    <input type="text" class="form-control" id="CIU_TelParticular">
+                </div>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="CIU_TelTrabajo">Tel. Trabajo:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-phone"></i>
+                    </div>
+                    <input type="text" class="form-control" id="CIU_TelRecados">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-lg-6">
+                <label for="CIU_TelCelular">Tel. Celular:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-phone"></i>
+                    </div>
+                    <input type="text" class="form-control" id="CIU_TelCelular">
+                </div>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="CIU_TelRecados">Tel. Recados:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-phone"></i>
+                    </div>
+                    <input type="text" class="form-control" id="CIU_TelRecados">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="CIU_CorreoElectronico">Correo Electrónico:</label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa  fa-envelope"></i>
+                </div>
+                <input type="text" class="form-control" id="CIU_CorreoElectronico">
+            </div>
+        </div>
+
+
+    </div>
+    <!-- /.box-body -->
+</div>

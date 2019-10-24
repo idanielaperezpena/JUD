@@ -11,11 +11,11 @@ namespace Negocio.ViewModels.Ciudadanos
 {
     public class CiudadanosSolicitudesViewModel
     {
-        public DomicilioFormViewModel Domicilio { get; set; }
+        public DomicilioCiudadanoFormViewModel Domicilio { get; set; }
 
 
         public CiudadanosSolicitudesViewModel() {
-            Domicilio = new DomicilioFormViewModel();
+            Domicilio = new DomicilioCiudadanoFormViewModel();
         }
 
     }
