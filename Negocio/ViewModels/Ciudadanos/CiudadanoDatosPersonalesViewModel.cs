@@ -75,6 +75,7 @@ namespace Negocio.ViewModels.Ciudadanos
         [Display(Name = "Telefono para Recados")]
         public string CIU_TelRecados { get; set; }
 
+        [CustomEmailAddress]
         [Display(Name = "Correo Electronico")]
         public string CIU_CorreoElectronico { get; set; }
 
@@ -87,7 +88,10 @@ namespace Negocio.ViewModels.Ciudadanos
         public ICustomSelectList<Entidades.Catalogos> EstadoCivil { get; set; }  
         public ICustomSelectList<Entidades.Catalogos> GradoEstudios { get; set; }
         public ICustomSelectList<Entidades.Catalogos> GrupoEtnico { get; set; }
-        // Calendarios
-        public CalendarControl FechaNacimiento { get; set; }
+
+
+        public CiudadanoDatosPersonalesViewModel() {
+
+        }
     }
 }

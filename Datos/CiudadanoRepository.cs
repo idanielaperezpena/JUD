@@ -29,6 +29,7 @@ namespace Datos
 
         public override Ciudadano ObtenerEntidad(Ciudadano pGeneric)
         {
+            /*
             Ciudadano _entidad;
             using (var reader = ObtenerDataReader("SP_SIM_CIUDADANO_S", pGeneric.CIU_IDCiudadano))
             {
@@ -36,55 +37,15 @@ namespace Datos
                
             }
 
-            return _entidad;
+            return _entidad;*/
+
+            return ObtenerPrimero("SP_SIM_CIUDADANO_S", pGeneric.CIU_IDCiudadano);
 
         }
 
         public override List<Ciudadano> ObtenerListado(Ciudadano pGeneric)
-        {
-            /*
-            var dateString = "2/04/1997";
-            DateTime date1 = DateTime.Parse(dateString,
-                                      System.Globalization.CultureInfo.InvariantCulture);
-            Ciudadano persona1 = new Ciudadano
-            {
-                CIU_IDCiudadano = 1,
-                CIU_CURP = "CURP 1",
-                CIU_Nombre = "Daniela",
-                CIU_ApellidoPaterno = "Perez",
-                CIU_ApellidoMaterno = "Peña",
-                CIU_IDGenero = 1,
-                CIU_FechaNacimiento = date1,
-                CIU_TelParticular = "134",
-                CIU_IDDomicilio = 1
-            };
-
-
-            var dateString2 = "3/04/1997";
-            DateTime date2 = DateTime.Parse(dateString2,
-                                      System.Globalization.CultureInfo.InvariantCulture);
-            Ciudadano persona2 = new Ciudadano
-            {
-                CIU_IDCiudadano = 2,
-                CIU_CURP = "CURP 2",
-                CIU_Nombre = "Carlos",
-                CIU_ApellidoPaterno = "Ascencio",
-                CIU_ApellidoMaterno = "Cuevas",
-                CIU_IDGenero = 1,
-                CIU_FechaNacimiento = date2,
-                CIU_TelParticular = "54321",
-                CIU_IDDomicilio = 2
-            };
-
-            List<Ciudadano> lista = new List<Ciudadano>();
-            lista.Add(persona1);
-            lista.Add(persona2);
-
-            return lista;*/
-
-            
-            return ObtenerLista("SP_SIM_Ciudadano_S", pGeneric.CIU_IDCiudadano);
-            
+        {     
+            return ObtenerLista("SP_SIM_Ciudadano_S", pGeneric.CIU_IDCiudadano);       
         }
     }
 }

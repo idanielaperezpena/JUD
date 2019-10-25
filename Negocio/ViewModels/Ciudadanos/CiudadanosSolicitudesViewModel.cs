@@ -13,9 +13,14 @@ namespace Negocio.ViewModels.Ciudadanos
     {
         public DomicilioCiudadanoFormViewModel Domicilio { get; set; }
 
+        public CiudadanoDatosPersonalesViewModel DatosPersonales { get; set; }
+
+        public CiudadanoTrabajoViewModel Trabajo { get; set; }
+
 
         public CiudadanosSolicitudesViewModel() {
             Domicilio = new DomicilioCiudadanoFormViewModel();
+            DatosPersonales = new CiudadanoDatosPersonalesViewModel();
         }
 
     }
