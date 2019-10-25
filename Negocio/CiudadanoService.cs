@@ -2,6 +2,7 @@
 using Entidades.Utilidades;
 using Negocio.ViewModels;
 using Negocio.ViewModels.Ciudadanos;
+using Negocio.ViewModels.DomicilioCiudadano;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,6 +61,7 @@ namespace Negocio
                 var _ID_desencriptar = Int32.Parse(this.UoW.Encriptador.Desencriptar(IDEncriptado));
 
                 viewModel.DatosPersonales = ObtenerDatosPersonales(_ID_desencriptar);
+                viewModel.Domicilio = ObtenerDomicilioCiudadano(viewModel.DatosPersonales.CIU_IDDomicilio);
 
                 //Listas Datos Personales
                 viewModel.DatosPersonales.Genero = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_06_Genero", ID = 0 }).SelectListado();
@@ -74,7 +76,6 @@ namespace Negocio
                 viewModel.Domicilio.Estado = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_SN_EstadoRepublica", ID = 0 }).SelectListado();
                 viewModel.Domicilio.TipoVivienda = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_SN_TipoVivienda", ID = 0 }).SelectListado();
 
-                viewModel.Domicilio.DOMC_IDAlcaldia = 10;
             }
             catch (Exception ex)
             {
@@ -131,12 +132,8 @@ namespace Negocio
                     viewModel.CIU_TelCelular = _entidad.CIU_TelCelular;
                     viewModel.CIU_TelRecados = _entidad.CIU_TelRecados;
                     viewModel.CIU_CorreoElectronico = _entidad.CIU_CorreoElectronico;
+                    viewModel.CIU_IDDomicilio = _entidad.CIU_IDDomicilio;
 
-                    return viewModel;
-                }
-                else
-                {
-                    viewModel.CIU_Nombre = "Es nulo";
                     return viewModel;
                 }
 
@@ -149,6 +146,45 @@ namespace Negocio
             return new CiudadanoDatosPersonalesViewModel();
         }
 
+        public DomicilioCiudadanoFormViewModel ObtenerDomicilioCiudadano(int? id)
+        {
+            try
+            {
+                var _entidad = UoW.DomicilioCiudadano.ObtenerEntidad(new DomicilioCiudadano
+                {
+                    DOMC_IDDomicilio = id
+                });
 
+                var viewModel = new DomicilioCiudadanoFormViewModel();
+
+                if (_entidad != null)
+                {
+                    viewModel.DOMC_IDVialidad = _entidad.DOMC_IDVialidad;
+                    viewModel.DOMC_NombreVialidad = _entidad.DOMC_NombreVialidad;
+                    viewModel.DOMC_NumeroExterior = _entidad.DOMC_NumeroExterior;
+                    viewModel.DOMC_NumeroInterior = _entidad.DOMC_NumeroInterior;
+                    viewModel.DOMC_Manzana = _entidad.DOMC_Manzana;
+                    viewModel.DOMC_Lote = _entidad.DOMC_Lote;
+                    viewModel.DOMC_Colonia = _entidad.DOMC_Colonia;
+                    viewModel.DOMC_IDAlcaldia = _entidad.DOMC_IDAlcaldia;
+                    viewModel.DOMC_CodigoPostal = _entidad.DOMC_CodigoPostal;
+                    viewModel.DOMC_IDEstado = _entidad.DOMC_IDEstado;
+                    viewModel.DOMC_Latitud = _entidad.DOMC_Latitud;
+                    viewModel.DOMC_Longitud = _entidad.DOMC_Longitud;
+                    viewModel.DOMC_MontoRenta = _entidad.DOMC_MontoRenta;
+                    viewModel.DOMC_IDTipoVivienda = _entidad.DOMC_IDTipoVivienda;
+                    viewModel.DOMC_Otro = _entidad.DOMC_Otro;
+
+                    return viewModel;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+
+            return new DomicilioCiudadanoFormViewModel();
+        }
     }
 }

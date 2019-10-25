@@ -51,7 +51,7 @@ namespace Web.Controllers
             return View(_vm);
         }
 
-        [HttpPost]
+
         public ActionResult Insertar()
         {
             return View();

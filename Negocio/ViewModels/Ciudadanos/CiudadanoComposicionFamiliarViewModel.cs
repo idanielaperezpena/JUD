@@ -40,7 +40,13 @@ namespace Negocio.ViewModels.Ciudadanos
         [Display(Name = "Ingreso Familiar *")]
         public double CIU_IngresoFamiliar { get; set; }
 
-        
+        public CiudadanoTrabajoViewModel Trabajo { get; set; }
+
+        public CiudadanoComposicionFamiliarViewModel() {
+            Trabajo = new CiudadanoTrabajoViewModel();
+        }
+
+
         //Listas
         public ICustomSelectList<Entidades.Catalogos> OrganizacionCivilFamilia { get; set; }
         public ICustomSelectList<Entidades.Catalogos> EstructuraFamiliar { get; set; }

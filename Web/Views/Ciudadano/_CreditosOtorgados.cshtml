@@ -1,0 +1,34 @@
+﻿
+@model Negocio.ViewModels.Ciudadanos.CiudadanoCreditosOtorgadosViewModel
+
+<div class=" box box-success">
+    <div class="box-header with-border">
+        <h3 class="box-title">4. Solución y Créditos Otorgados. </h3>
+    </div>
+    <div class="box-body">
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.CIU_Proposito)
+            @Html.TextBoxFor(m => m.CIU_Proposito, new { @class = "form-control form-control-sm" })
+            @Html.ValidationMessageFor(m => m.CIU_Proposito, "")
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.CIU_CreditosOtorgados)
+            <div class="radio">
+                <label>
+                    @Html.RadioButtonFor(m => m.CIU_Proposito,"1")
+                    Sí
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    @Html.RadioButtonFor(m => m.CIU_Proposito, "0")
+                    No
+                </label>
+            </div>
+        </div>
+    </div>
+
+</div>
