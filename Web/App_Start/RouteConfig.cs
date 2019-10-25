@@ -28,7 +28,7 @@ namespace Web
             routes.MapRoute(
               name: "Ciudadano",
               url: "{controller}/{action}/",
-              defaults: new { controller = "Ciudadano", action = "Insertar" }
+              defaults: new { controller = "Ciudadano", action = "Solicitud" }
           );
 
         }

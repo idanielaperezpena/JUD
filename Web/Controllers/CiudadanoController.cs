@@ -2,6 +2,7 @@
 using Negocio;
 using Negocio.ViewModels;
 using Negocio.ViewModels.Catalogos;
+using Negocio.ViewModels.Ciudadanos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,7 +55,19 @@ namespace Web.Controllers
 
         public ActionResult Insertar()
         {
-            return View();
+          
+            _service.Edit(viewModel);
+
+            if (ModelState.IsValid)
+                return RedirectToAction("Solicitudes", new { m = ModuloEncoded, c = viewModel.ID_Encriptado });
+
+            return View(viewModel);
         }
+
+        //[HttpPost]
+        //public ActionResult Insertar()
+        //{
+        //    return View();
+        //}
     }
 }
