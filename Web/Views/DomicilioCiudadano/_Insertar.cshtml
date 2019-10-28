@@ -1,12 +1,13 @@
 ﻿
 @model Negocio.ViewModels.DomicilioCiudadano.DomicilioCiudadanoFormViewModel
 
-<div class="box box-success">
-    <div class="box-header with-border">
-        <h3 class="box-title">Domicilio del Ciudadano</h3>
-    </div>
-    @using (Html.BeginForm("EditDomicilio"))
-    {
+
+    <div class="box box-success">
+        <div class="box-header with-border">
+            <h3 class="box-title">Domicilio del Ciudadano</h3>
+        </div>
+
+        @Html.HiddenFor(m => m.DOMC_IDDomicilio)
         <div class="box-body">
             <div class="row">
                 <div class="form-group col-lg-6">
@@ -90,7 +91,7 @@
             <div class="row">
                 <div class="form-group col-lg-6">
                     @Html.LabelFor(m => m.DOMC_Otro)
-                    @Html.TextAreaFor(m => m.DOMC_Otro,  new { @class = "form-control" } )
+                    @Html.TextAreaFor(m => m.DOMC_Otro, new { @class = "form-control" })
                 </div>
             </div>
 
@@ -101,7 +102,7 @@
         <div class="box-footer">
             <button type="submit" class="btn btn-primary">Guardar</button>
         </div>
-    }
 
-</div>
+
+    </div>
 

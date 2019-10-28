@@ -236,7 +236,6 @@
     <Content Include="Views\Catalogos\_MostrarModal.cshtml" />
     <Content Include="Views\Ciudadano\Index.cshtml" />
     <Content Include="Views\Ciudadano\Insertar.cshtml" />
-    <Content Include="Views\Ciudadano\Solicitudes.cshtml" />
     <Content Include="Views\Domicilio\Insertar.cshtml" />
     <Content Include="Views\DomicilioCiudadano\Insertar.cshtml" />
     <Content Include="Views\DomicilioCiudadano\_Insertar.cshtml" />
