@@ -178,6 +178,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CatalogosController.cs" />
     <Compile Include="Controllers\CiudadanoController.cs" />
+    <Compile Include="Controllers\CreditoInicialController.cs" />
     <Compile Include="Controllers\ExceptionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PrincipalController.cs" />
@@ -242,6 +243,10 @@
     <Content Include="Views\Pareja\Insertar.cshtml" />
     <Content Include="Views\DeudorSolidario\Insertar.cshtml" />
     <Content Include="Views\Ciudadano\_DatosPersonales.cshtml" />
+    <Content Include="Views\CreditoInicial\Nuevo.cshtml" />
+    <Content Include="Views\Pareja\_Insertar.cshtml" />
+    <Content Include="Views\Ciudadano\_CreditosOtorgados.cshtml" />
+    <Content Include="Views\Ciudadano\_ComposicionFamiliar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
