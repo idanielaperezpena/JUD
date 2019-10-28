@@ -65,6 +65,16 @@ namespace Negocio.ViewModels.DomicilioCiudadano
         [Display(Name = "Otro ")]
         public string DOMC_Otro { get; set; }
 
+        //Variables de Vista 
+        public bool Boton { get; set; }
+        public bool CreditoInicial { get; set; }
+
+
+        public DomicilioCiudadanoFormViewModel() {
+            Boton = true;
+            CreditoInicial = false;
+        }
+
         //Listas
 
         public ICustomSelectList<Entidades.Catalogos> Vialidad { get; set; }

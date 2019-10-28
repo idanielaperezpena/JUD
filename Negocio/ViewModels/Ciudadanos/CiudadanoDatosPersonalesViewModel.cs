@@ -81,6 +81,8 @@ namespace Negocio.ViewModels.Ciudadanos
 
         public int? CIU_IDDomicilioTrabajo { get; set; }
 
+        public bool Boton { get; set; } 
+
         //Listas
 
         public ICustomSelectList<Entidades.Catalogos> Genero { get; set; }
@@ -91,7 +93,7 @@ namespace Negocio.ViewModels.Ciudadanos
 
 
         public CiudadanoDatosPersonalesViewModel() {
-
+            Boton = true;
         }
     }
 }

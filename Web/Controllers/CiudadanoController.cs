@@ -52,7 +52,7 @@ namespace Web.Controllers
             return View(_vm);
         }
 
-
+        /*
         public ActionResult Insertar()
         {
           
@@ -62,12 +62,11 @@ namespace Web.Controllers
                 return RedirectToAction("Solicitudes", new { m = ModuloEncoded, c = viewModel.ID_Encriptado });
 
             return View(viewModel);
-        }
+        }*/
 
-        //[HttpPost]
-        //public ActionResult Insertar()
-        //{
-        //    return View();
-        //}
+        public ActionResult Insertar()
+        {
+            return View();
+        }
     }
 }

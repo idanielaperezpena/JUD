@@ -13,7 +13,7 @@ namespace Negocio.ViewModels.CreditoInicial
     {
         public CiudadanoDatosPersonalesViewModel DatosPersonales { get; set; }
         public CiudadanoParejaViewModel Pareja { get; set; }
-        public DomicilioFormViewModel Domicio { get; set; }
+        public DomicilioFormViewModel Domicilio { get; set; }
         public DomicilioCiudadanoFormViewModel DomicilioCiudadano { get; set; }
         public CiudadanoCreditosOtorgadosViewModel CreditosOtorgados { get; set; } 
         public CiudadanoComposicionFamiliarViewModel ComposicionFamiliar { get; set; }
@@ -23,7 +23,7 @@ namespace Negocio.ViewModels.CreditoInicial
         public CreditoInicialNuevoViewModel() {
             DatosPersonales = new CiudadanoDatosPersonalesViewModel();
             Pareja = new CiudadanoParejaViewModel();
-            Domicio = new DomicilioFormViewModel();
+            Domicilio = new DomicilioFormViewModel();
             DomicilioCiudadano = new DomicilioCiudadanoFormViewModel();
             CreditosOtorgados = new CiudadanoCreditosOtorgadosViewModel();
             ComposicionFamiliar = new CiudadanoComposicionFamiliarViewModel();

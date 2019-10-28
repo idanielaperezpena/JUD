@@ -149,11 +149,13 @@ namespace Negocio
 
         public DomicilioCiudadanoFormViewModel ObtenerDomicilioCiudadano(int? id)
         {
+
             try
             {
                 var _entidad = UoW.DomicilioCiudadano.ObtenerEntidad(new DomicilioCiudadano
                 {
                     DOMC_IDDomicilio = id
+
                 });
 
                 var viewModel = new DomicilioCiudadanoFormViewModel();
@@ -177,7 +179,17 @@ namespace Negocio
                     viewModel.DOMC_Otro = _entidad.DOMC_Otro;
 
                     return viewModel;
-                }
+                }   
+
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+
+            return new DomicilioCiudadanoFormViewModel();
+        }
+
         public void Edit (CiudadanoDatosPersonalesViewModel viewModel)
         {
             try
@@ -235,17 +247,7 @@ namespace Negocio
             catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, ex.Message);
-
             }
-        }
-
-            }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError(string.Empty, ex.Message);
-            }
-
-            return new DomicilioCiudadanoFormViewModel();
         }
     }
 }

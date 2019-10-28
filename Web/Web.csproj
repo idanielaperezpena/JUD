@@ -138,6 +138,7 @@
     <Content Include="Scripts\BaseWeb.js" />
     <Content Include="Scripts\Negocio\Catalogos\CatalogosMostrarJS.js" />
     <Content Include="Scripts\Negocio\Ciudadano\CiudadanoMostrar.js" />
+    <Content Include="Scripts\Negocio\CreditoInicial\Nuevo.js" />
     <Content Include="Scripts\Negocio\HomeIndexJS.js" />
     <Content Include="Scripts\UI\admin\adminlte.min.js" />
     <Content Include="Scripts\UI\admin\validaciones_general.js" />
@@ -248,6 +249,7 @@
     <Content Include="Views\Pareja\_Insertar.cshtml" />
     <Content Include="Views\Ciudadano\_CreditosOtorgados.cshtml" />
     <Content Include="Views\Ciudadano\_ComposicionFamiliar.cshtml" />
+    <Content Include="Views\Domicilio\_Insertar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

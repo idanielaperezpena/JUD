@@ -8,69 +8,49 @@
 <div class="content-wrapper">
     <section class="content-header">
         <h1>
-            Ciudadano
+            Credito Inicial
 
-            <small>Datos Personales</small>
+            <small>Nueva Solicitud</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-            <li><a href="#">Ciudadano</a></li>
-            <li class="active">Solicitud</li>
+            <li><a href="#">Credito Inicial</a></li>
+            <li class="active">Nueva Solicitud</li>
         </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
-        <form role="form">
+        @using (Html.BeginForm("Insertar"))
+        {
+        <fieldset id="step1">
             <div class="row">
                 <!-- left column -->
                 <div class="col-md-6">
 
-                    @Html.Partial("../Ciudadano/_DatosPersonales", Model.DatosPersonales)
+                    <div id="DatosPersonalesViewModel">
+                        @* 1. Datos Personales *@
+                        @Html.Partial("../Ciudadano/_DatosPersonales", Model.DatosPersonales)
+                    </div>
 
-                    @* 2. Pareja *@
-                    @Html.Partial("../Pareja/_Insertar", Model.Pareja)
-
-                    @*3. Domicilio del credito y del solicitante *@
-                    @Html.Partial("../DomicilioCiudadano/_Insertar", Model.DomicilioCiudadano)
-
-                    @* 4.CREDITOS OROTGADOS *@
-                    @Html.Partial("../Ciudadano/_CreditosOtorgados", Model.CreditosOtorgados)
+                    <div id="ParejaViewModel">
+                        @* 2. Pareja *@
+                    </div>
 
                 </div>
 
                 <div class="col-md-6">
 
-
-                    @* 5. COMPOSICIÓN FAMILIAR *@
-                    @Html.Partial("../Ciudadano/_ComposicionFamiliar", Model.ComposicionFamiliar)
-
-                    @Html.Partial("../Domicilio/Insertar")
-
-                    @* Deudor solidario *@
-                    @Html.Partial("../DeudorSolidario/Insertar")
-                    @* 7. Capacidad de pago del solicitante *@
-                    <div class=" box box-success">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">7. Capacidad de pago del solicitante. </h3>
-                        </div>
-                        <div class="box-body">
-
-                            <div class="form-group">
-                                <label for="CIU_CapacidadPago">
-                                    De su ingreso familiar mensual,
-                                    <br />  ¿Cuánto podrá destinar para el pago del crédito?*:
-                                </label>
-                                <input type="number" class="form-control" id="CIU_CapacidadPago" />
-
-                            </div>
-
-
-
-                        </div>
+                    <div id="DomicilioCiudadanoViewModel">
+                        @*3. Domicilio del credito y del solicitante *@
+                        @Html.Partial("../DomicilioCiudadano/_Insertar", Model.DomicilioCiudadano)
                     </div>
-                </div>
 
+                    <div id="DomicilioViewModel">
+                        @* 3.1 Domicilio Diferente  *@
+                    </div>
+
+                </div>
 
             </div>
 
@@ -78,12 +58,73 @@
                 <div class="col-lg-6 ">
                 </div>
                 <div class="col-lg-6 ">
-
-                    <button type="button" class="btn btn-block btn-success btn-lg">Guardar</button>
+                    <button data-step="2" type="button" class="siguiente btn btn-block btn-success btn-lg">Siguiente</button>
                 </div>
             </div>
 
+        </fieldset>
 
-        </form>
+        <fieldset id="step2" style="display:none">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-6">
+
+                    <div id="CreditosOtorgadosViewModel">
+                        @* 4. Solicion y creditos otrogados *@
+                        @Html.Partial("../Ciudadano/_CreditosOtorgados", Model.CreditosOtorgados)
+                    </div>
+
+                    <div id="DeudorSolidarioViewModel">
+                        @*6. DeudorSolidario *@
+                    </div>
+                    
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div id="ComposicionFamiliarViewModel">
+                        @* 5. Composicion Familiar *@
+                        @Html.Partial("../Ciudadano/_ComposicionFamiliar", Model.ComposicionFamiliar)
+                    </div>
+
+                    <div id="CapacidadPagoViewModel">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h1 class="box-title">7. Capacidad de Pago de la (el) Solicitante</h1>
+                            </div>
+
+                            <div class="box-body">
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.CapacidadPago.CIU_CapacidadPago)
+                                    @Html.EditorFor(m => m.CapacidadPago.CIU_CapacidadPago, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                    @Html.ValidationMessageFor(m => m.CapacidadPago.CIU_CapacidadPago, "")
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-6 ">
+                    <button data-step="1" type="button" class="siguiente btn btn-block btn-success btn-lg">Anterior</button>
+                </div>
+                <div class="col-lg-6 ">
+                    <button id="guardar" type="button" class="btn btn-block btn-success btn-lg">Guardar</button>
+                </div>
+            </div>
+        </fieldset>
+
+
+        }
     </section>
 </div>
+
+@section scripts{
+    <script src="~/Scripts/Negocio/CreditoInicial/Nuevo.js"></script>
+}

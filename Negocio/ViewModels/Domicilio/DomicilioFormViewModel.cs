@@ -53,6 +53,14 @@ namespace Negocio.ViewModels.Domicilio
         [Display(Name = "Longitud")]
         public string DOM_Longitud { get; set; }
 
+        //Variables de Vista 
+        public bool Boton { get; set; }
+
+
+        public DomicilioFormViewModel()
+        {
+            Boton = true;
+        }
         //Listas
 
         public ICustomSelectList<Entidades.Catalogos> Vialidad { get; set; }
