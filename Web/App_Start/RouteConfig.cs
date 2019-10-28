@@ -27,9 +27,10 @@ namespace Web
 
             routes.MapRoute(
               name: "Ciudadano",
-              url: "{controller}/{action}/",
-              defaults: new { controller = "Ciudadano", action = "Solicitud" }
+              url: "{controller}/{action}/{id}",
+              defaults: new { controller = "Ciudadano", action = "Index", id = UrlParameter.Optional }
           );
+           
 
         }
     }

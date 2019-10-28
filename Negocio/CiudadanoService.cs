@@ -52,7 +52,7 @@ namespace Negocio
             return viewModel;
         }
 
-        public CiudadanosSolicitudesViewModel Solicitudes(string IDEncriptado)
+        public CiudadanosSolicitudesViewModel Insertar(string IDEncriptado)
         {
             var viewModel = new CiudadanosSolicitudesViewModel();
 
@@ -115,6 +115,7 @@ namespace Negocio
 
                 if (_entidad != null)
                 {
+                    viewModel.ID_Encriptado = UoW.Encriptador.Encriptar(_entidad.CIU_IDCiudadano);
                     viewModel.CIU_CURP = _entidad.CIU_CURP;
                     viewModel.CIU_Nombre = _entidad.CIU_Nombre;
                     viewModel.CIU_ApellidoPaterno = _entidad.CIU_ApellidoPaterno;
@@ -192,8 +193,7 @@ namespace Negocio
 
         public void Edit (CiudadanoDatosPersonalesViewModel viewModel)
         {
-            try
-            {
+            
                 if (ModelState.IsValid)
                 {
                     using (UoW.Ciudadano.TxScope = new TransactionScope())
@@ -240,14 +240,14 @@ namespace Negocio
                 if (!ModelState.IsValid)
                 {
 
-
+                    Console.WriteLine("###################################################################################################");
                 }
-              
+
             }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError(string.Empty, ex.Message);
+            
+        }
+
             }
         }
     }
-}
+

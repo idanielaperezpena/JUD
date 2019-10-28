@@ -2,11 +2,15 @@
 
 @model Negocio.ViewModels.Ciudadanos.CiudadanoDatosPersonalesViewModel
 
+
+
+
 <div class="box box-success">
     <div class="box-header with-border">
         <h1 class="box-title">1. Datos de la (el) Solicitante.</h1>
     </div>
 
+    @Html.HiddenFor(m => m.ID_Encriptado)
     <div class="box-body">
         <div class="form-group">
             @Html.LabelFor(m => m.CIU_CURP)

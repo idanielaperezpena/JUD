@@ -41,32 +41,25 @@ namespace Web.Controllers
 
 
 
-        public ActionResult Solicitudes(string ID)
+        public ActionResult Insertar(string ID)
         {
             if (String.IsNullOrEmpty(ID))
             {
                 return RedirectToAction("Index", new Notificacion { Error = true, Mensaje = "Debe elegir un ciudadano para mostrar su informacion" });
             }
-            var _vm = _service.Solicitudes(ID);
+            var _vm = _service.Insertar(ID);
             ViewBag.Titulo = "Solicitudes del Ciudadano";
             return View(_vm);
         }
-
-        /*
-        public ActionResult Insertar()
+        [HttpPost]
+        public ActionResult Insertar(CiudadanosSolicitudesViewModel viewModel)
         {
-          
-            _service.Edit(viewModel);
+            //_service.Edit(viewModel);
+            //if (ModelState.IsValid)
+            //    return RedirectToAction("Insertar", new { m = ModuloEncoded, c = viewModel.ID_Encriptado });
 
-            if (ModelState.IsValid)
-                return RedirectToAction("Solicitudes", new { m = ModuloEncoded, c = viewModel.ID_Encriptado });
-
-            return View(viewModel);
-        }*/
-
-        public ActionResult Insertar()
-        {
-            return View();
+            return Json(viewModel.ToJSON());           
         }
+             
     }
 }
