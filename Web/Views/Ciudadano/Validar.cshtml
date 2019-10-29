@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Validar";
+    Layout = "~/Views/Shared/_Layout-Principal.cshtml";
+}
+
+
+@model Negocio.ViewModels.Ciudadanos.CiudadanoValidarViewModel
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Ciudadano
+
+            <small>Búsqueda de existencia</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+            <li><a href="#">Ciudadano</a></li>
+            <li class="active">Búsqueda</li>
+        </ol>
+    </section>
+
+    <section class="content">
+        <div class="row">
+          
+            <div class="col-md-12">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h1 class="box-title">1. Datos de la (el) Solicitante.</h1>
+                    </div>
+                    <div class="box box-body">
+
+                        @Html.LabelFor(m => m.busqueda, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                        @Html.EditorFor(m=>m.busqueda, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

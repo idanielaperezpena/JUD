@@ -39,7 +39,10 @@ namespace Web.Controllers
             return View(_vm);
         }
 
-
+        public ActionResult Validar()
+        {
+            return View();
+        }
 
         public ActionResult Insertar(string ID)
         {
