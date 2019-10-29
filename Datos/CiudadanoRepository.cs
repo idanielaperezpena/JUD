@@ -49,5 +49,11 @@ namespace Datos
         {     
             return ObtenerLista("SP_SIM_Ciudadano_S", pGeneric.CIU_IDCiudadano);       
         }
+
+        public List<Ciudadano> ObtenerListadoCURPNOMBRE(Ciudadano pGeneric)
+        {
+            return ObtenerLista("SP_SIM_Ciudadano_S_B", pGeneric.CIU_CURP);
+        }
+
     }
 }

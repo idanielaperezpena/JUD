@@ -11,7 +11,6 @@
     <section class="content-header">
         <h1>
             Ciudadano
-
             <small>Búsqueda de existencia</small>
         </h1>
         <ol class="breadcrumb">
@@ -23,17 +22,32 @@
 
     <section class="content">
         <div class="row">
-          
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="col-md-12">
                 <div class="box box-success">
                     <div class="box-header with-border">
-                        <h1 class="box-title">1. Datos de la (el) Solicitante.</h1>
+                        <h1 class="box-title">Buscar Ciudadano</h1>
                     </div>
-                    <div class="box box-body">
+                    <div class="box-body">
+                        @using (Html.BeginForm("Buscar"))
+                        {
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.CadenaBusqueda, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                <div class="input-group ">
+                                    @Html.EditorFor(m => m.CadenaBusqueda, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                    <span class="input-group-btn">
+                                        <button type="submit" id="btn_Buscar" class="btn btn-info btn-flat">Buscar</button>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.CadenaBusqueda, "")
 
-                        @Html.LabelFor(m => m.busqueda, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
-                        @Html.EditorFor(m=>m.busqueda, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                            </div>
 
+
+                            <div id="tabla_ciudadanos">
+
+                            </div>
+                        }
 
                     </div>
                 </div>
@@ -41,3 +55,24 @@
         </div>
     </section>
 </div>
+
+@section scripts{
+    <script>
+        $("#btn_Buscar").click(function (e) {
+            e.preventDefault();
+            if ($(this).closest('form').valid()) {
+                var CadenaBusqueda = $('#CadenaBusqueda').val();
+                $.ajax({
+                    type: "POST",
+                    url: "/Ciudadano/BusquedaExistente",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({ CadenaBusqueda: CadenaBusqueda }),
+                    success: function (e) {
+                        $('#tabla_ciudadanos').html(e)
+                    }
+                });
+            }
+            
+        });
+    </script>
+}

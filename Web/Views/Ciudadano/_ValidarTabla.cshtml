@@ -1,0 +1,40 @@
+﻿
+
+
+@model Negocio.ViewModels.Ciudadanos.CiudadanoValidarViewModel
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<table id="tabla_ciudadano" class="table table-bordered table-hover table-responsive">
+    @if (Model.Listado.Count() == 0)
+    {
+        @Html.CustomTableEmptyResult()
+    }
+    else
+    {
+        <thead>
+            <tr>
+                <th>CURP</th>
+                <th>Nombre Completo</th>
+                <th>Género</th>
+                <th>Datos de Nacimiento</th>
+                <th>Contacto</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Listado)
+            {
+                <tr>
+                    <td>@item.CURP</td>
+                    <td>@item.NombreCompleto</td>
+                    <td>@item.GeneroTexto</td>
+                    <td>@item.DatosNacimiento</td>
+                    <td>@item.Contacto</td>
+                </tr>
+            }
+
+
+        </tbody>
+    }
+
+</table>

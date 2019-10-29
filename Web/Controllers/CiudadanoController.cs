@@ -61,7 +61,13 @@ namespace Web.Controllers
             //if (ModelState.IsValid)
             //    return RedirectToAction("Insertar", new { m = ModuloEncoded, c = viewModel.ID_Encriptado });
 
-            return Json(viewModel.ToJSON());           
+            return Json(viewModel.ToJSON());
+        }
+
+        [HttpPost]
+        public ActionResult BusquedaExistente(string CadenaBusqueda)
+        {
+            return PartialView("../Ciudadano/_ValidarTabla", _service.BusquedaCURPNOMBRE(CadenaBusqueda));
         }
              
     }

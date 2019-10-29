@@ -250,6 +250,8 @@
     <Content Include="Views\Ciudadano\_ComposicionFamiliar.cshtml" />
     <Content Include="Views\Domicilio\_Insertar.cshtml" />
     <Content Include="Views\Ciudadano\Insertar.cshtml" />
+    <Content Include="Views\Ciudadano\Validar.cshtml" />
+    <Content Include="Views\Ciudadano\_ValidarTabla.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
