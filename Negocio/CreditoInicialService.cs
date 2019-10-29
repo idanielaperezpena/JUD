@@ -20,15 +20,15 @@ namespace Negocio
         public CreditoInicialService(ModelStateDictionary modelState) : base(modelState) { }
 
         //Vistas
-        public CreditoInicialInsertarViewModel Nuevo()
-        {
-            var _viewModel = new CreditoInicialInsertarViewModel();
+        //public CreditoInicialInsertarViewModel Nuevo()
+        //{
+        //    var _viewModel = new CreditoInicialInsertarViewModel();
 
-            //Listas
-            _viewModel.SeccionElectoral = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_03_SeccionElectoral", ID = 0 }).SelectListado();
+        //    //Listas
+        //    _viewModel.SeccionElectoral = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_03_SeccionElectoral", ID = 0 }).SelectListado();
 
-            return _viewModel;
-        }
+        //    return _viewModel;
+        //}
 
 
         public CiudadanoParejaViewModel GetParejaViewModel() {

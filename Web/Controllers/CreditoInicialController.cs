@@ -28,13 +28,13 @@ namespace Web.Controllers
             return View();
         }
 
-        public ActionResult Nuevo()
-        {
-            var _vm = _service.Nuevo();
-            ViewBag.Titulo = "Credito Inicial";
-            return View(_vm);
-        }
-
+        //public ActionResult Nuevo()
+        //{
+        //    var _vm = _service.Nuevo();
+        //    ViewBag.Titulo = "Credito Inicial";
+        //    return View(_vm);
+        //}
+        
         //Acciones
         [HttpPost]
         public ActionResult Insertar(CiudadanoInsertarViewModel viewModel)
