@@ -66,7 +66,13 @@ namespace Web.Controllers
             if (ModelState.IsValid)
                 return RedirectToAction("Index");
 
-            return Json(viewModel.ToJSON());           
+            return Json(viewModel.ToJSON());
+        }
+
+        [HttpPost]
+        public ActionResult BusquedaExistente(string CadenaBusqueda)
+        {
+            return PartialView("../Ciudadano/_ValidarTabla", _service.BusquedaCURPNOMBRE(CadenaBusqueda));
         }
              
     }
