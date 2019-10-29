@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Entidades;
 using System.ComponentModel.DataAnnotations;
 
-namespace Negocio.ViewModels.CreditoInicial
+namespace Negocio.ViewModels.Ciudadanos
 {
     public class CiudadanoInsertarViewModel
     {

@@ -2,7 +2,7 @@
 using Negocio;
 using Negocio.ViewModels;
 using Negocio.ViewModels.Catalogos;
-using Negocio.ViewModels.CreditoInicial;
+using Negocio.ViewModels.Ciudadanos;
 using System;
 using System.Collections.Generic;
 using System.Linq;

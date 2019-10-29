@@ -116,7 +116,8 @@
     <Compile Include="ViewModels\Ciudadanos\CiudadanosIndexViewModel.cs" />
     <Compile Include="ViewModels\Ciudadanos\CiudadanosSolicitudesViewModel.cs" />
     <Compile Include="ViewModels\Ciudadanos\CiudadanoTrabajoViewModel.cs" />
-    <Compile Include="ViewModels\CreditoInicial\CiudadanoInsertarViewModel.cs" />
+    <Compile Include="ViewModels\Ciudadanos\CiudadanoValidarViewModel.cs" />
+    <Compile Include="ViewModels\Ciudadanos\CiudadanoInsertarViewModel.cs" />
     <Compile Include="ViewModels\DeudorSolidario\DeudorSolidarioInsertarViewModel.cs" />
     <Compile Include="ViewModels\DomicilioCiudadano\DomicilioCiudadanoFormViewModel.cs" />
     <Compile Include="ViewModels\Domicilio\DomicilioFormViewModel.cs" />
@@ -138,6 +139,8 @@
       <Name>Entidades</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ViewModels\CreditoInicial\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

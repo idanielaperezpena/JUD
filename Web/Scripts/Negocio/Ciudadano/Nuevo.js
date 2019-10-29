@@ -38,20 +38,6 @@ $("#DiferenteDomicilio").change(function (e) {
 });
 
 
-$("#guardar").click(function (e) {
-    e.preventDefault();
-    var DatosPersonales = $('#DatosPersonalesViewModel').find('select, textarea, input').serializeObject();
-    var DomicilioCiudadano = $('#DomicilioCiudadanoViewModel').find('select, textarea, input').serializeObject();
-    $.ajax({
-        type: "POST",
-        url: "/CreditoInicial/Insertar",
-        contentType: "application/json; charset=utf-8", 
-        data: JSON.stringify({ DatosPersonales: DatosPersonales, DomicilioCiudadano: DomicilioCiudadano }),
-        success: function (e) {
-            console.log(e);
-        }
-    });
-});
 
 $('.siguiente').click(function (e) {
     var step = $(this).attr('data-step');

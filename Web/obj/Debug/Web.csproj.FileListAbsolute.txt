@@ -206,6 +206,8 @@ C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\Web\bin\ExcelNumberFormat.
 C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\Web\bin\Microsoft.Practices.EnterpriseLibrary.Data.xml
 C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\Web\bin\Microsoft.Practices.EnterpriseLibrary.Common.xml
 C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\Web\obj\Debug\Web.csproj.CopyComplete
+C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
+C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Web\obj\Debug\Web.csprojAssemblyReference.cache
 C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Web\bin\Web.dll.config
 C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Web\bin\Web.dll
 C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Web\bin\Web.pdb
@@ -305,8 +307,6 @@ C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Web\bin\DocumentFormat.OpenXml.xml
 C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Web\bin\ExcelNumberFormat.xml
 C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Web\bin\Microsoft.Practices.EnterpriseLibrary.Data.xml
 C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Web\bin\Microsoft.Practices.EnterpriseLibrary.Common.xml
-C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Web\obj\Debug\Web.csprojAssemblyReference.cache
-C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
 C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Web\obj\Debug\Web.csproj.CopyComplete
 C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Web\obj\Debug\Web.dll
 C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Web\obj\Debug\Web.pdb

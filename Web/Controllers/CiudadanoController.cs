@@ -54,12 +54,17 @@ namespace Web.Controllers
             ViewBag.Titulo = "Solicitudes del Ciudadano";
             return View(_vm);
         }
-        [HttpPost]
-        public ActionResult Insertar(CiudadanosSolicitudesViewModel viewModel)
+        public ActionResult Nuevo()
         {
-            //_service.Edit(viewModel);
-            //if (ModelState.IsValid)
-            //    return RedirectToAction("Insertar", new { m = ModuloEncoded, c = viewModel.ID_Encriptado });
+            return View("Insertar");
+        }
+
+        [HttpPost]
+        public ActionResult Insertar(CiudadanoInsertarViewModel viewModel)
+        {
+            _service.Edit(viewModel);
+            if (ModelState.IsValid)
+                return RedirectToAction("Index");
 
             return Json(viewModel.ToJSON());           
         }

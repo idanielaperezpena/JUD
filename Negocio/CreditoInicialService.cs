@@ -2,7 +2,7 @@
 using Entidades.Utilidades;
 using Negocio.ViewModels;
 using Negocio.ViewModels.Ciudadanos;
-using Negocio.ViewModels.CreditoInicial;
+
 using Negocio.ViewModels.Domicilio;
 using Negocio.ViewModels.DomicilioCiudadano;
 using System;
