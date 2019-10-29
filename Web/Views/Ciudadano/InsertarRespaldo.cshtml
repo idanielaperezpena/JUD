@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout-Principal.cshtml";
+}
+
+@model Negocio.ViewModels.Ciudadanos.CiudadanosSolicitudesViewModel
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Ciudadano
+
+            <small>Datos Personales y Solicitudes</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+            <li><a href="#">Ciudadano</a></li>
+            <li class="active">Solicitud</li>
+        </ol>
+    </section>
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @using (Html.BeginForm())
+        {
+            <section class="content">
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.Partial("../Ciudadano/_DatosPersonales", Model.DatosPersonales)
+                    </div>
+
+                    <div class="col-md-6">
+                        @Html.Partial("../DomicilioCiudadano/_Insertar", Model.Domicilio)
+                    </div>
+                </div>
+            </section>
+            <input type="submit" name="bueni" value="oprimeme" />
+        }
+    </div>
+
+
+

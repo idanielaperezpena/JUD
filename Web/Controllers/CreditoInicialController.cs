@@ -37,7 +37,7 @@ namespace Web.Controllers
 
         //Acciones
         [HttpPost]
-        public ActionResult Insertar(CreditoInicialNuevoViewModel viewModel)
+        public ActionResult Insertar(CiudadanoInsertarViewModel viewModel)
         {
             return Json(viewModel.ToJSON());
         }
