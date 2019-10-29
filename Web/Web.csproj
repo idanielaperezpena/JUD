@@ -237,7 +237,7 @@
     <Content Include="Views\Catalogos\Index.cshtml" />
     <Content Include="Views\Catalogos\_MostrarModal.cshtml" />
     <Content Include="Views\Ciudadano\Index.cshtml" />
-    <Content Include="Views\Ciudadano\Insertar.cshtml" />
+    <Content Include="Views\Ciudadano\InsertarRespaldo.cshtml" />
     <Content Include="Views\Domicilio\Insertar.cshtml" />
     <Content Include="Views\DomicilioCiudadano\Insertar.cshtml" />
     <Content Include="Views\DomicilioCiudadano\_Insertar.cshtml" />
@@ -249,6 +249,7 @@
     <Content Include="Views\Ciudadano\_CreditosOtorgados.cshtml" />
     <Content Include="Views\Ciudadano\_ComposicionFamiliar.cshtml" />
     <Content Include="Views\Domicilio\_Insertar.cshtml" />
+    <Content Include="Views\Ciudadano\Insertar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

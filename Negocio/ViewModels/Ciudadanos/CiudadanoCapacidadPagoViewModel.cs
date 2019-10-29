@@ -12,7 +12,7 @@ namespace Negocio.ViewModels.Ciudadanos
     public class CiudadanoCapacidadPagoViewModel
     {
         [CustomRequired]
-        [Display(Name = " De su ingreso familiar mensual,< br />  ¿Cuánto podrá destinar para el pago del crédito ? *")]
+        [Display(Name = " De su ingreso familiar mensual,\n¿Cuánto podrá destinar para el pago del crédito ? *")]
         public double CIU_CapacidadPago { get; set; }
     }
 }

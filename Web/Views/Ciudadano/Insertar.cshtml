@@ -1,40 +1,140 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout-Principal.cshtml";
-}
+﻿
+@model Negocio.ViewModels.CreditoInicial.CiudadanoInsertarViewModel
 
-@model Negocio.ViewModels.Ciudadanos.CiudadanosSolicitudesViewModel
 
-<div class="content-wrapper">
-    <section class="content-header">
-        <h1>
-            Ciudadano
+<section class="content">
+    @using (Html.BeginForm("Insertar"))
+    {
+    <fieldset id="step1">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-6">
 
-            <small>Datos Personales y Solicitudes</small>
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-            <li><a href="#">Ciudadano</a></li>
-            <li class="active">Solicitud</li>
-        </ol>
-    </section>
+                <div id="DatosPersonalesViewModel">
+                    @* 1. Datos Personales *@
+                    @Html.Partial("../Ciudadano/_DatosPersonales", Model.DatosPersonales)
+                </div>
 
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @using (Html.BeginForm())
-        {
-            <section class="content">
-                <div class="row">
-                    <div class="col-md-6">
-                        @Html.Partial("../Ciudadano/_DatosPersonales", Model.DatosPersonales)
-                    </div>
+                <div id="ParejaViewModel">
+                    @* 2. Pareja *@
+                </div>
 
-                    <div class="col-md-6">
-                        @Html.Partial("../DomicilioCiudadano/_Insertar", Model.Domicilio)
+            </div>
+
+            <div class="col-md-6">
+
+                <div id="DomicilioCiudadanoViewModel">
+                    @*3. Domicilio del credito y del solicitante *@
+                    @Html.Partial("../DomicilioCiudadano/_Insertar", Model.DomicilioCiudadano)
+                </div>
+
+                <div id="DomicilioViewModel">
+                    @* 3.1 Domicilio Diferente  *@
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 ">
+            </div>
+            <div class="col-lg-6 ">
+                <button data-step="2" type="button" class="siguiente btn btn-block btn-success btn-lg">Siguiente</button>
+            </div>
+        </div>
+
+    </fieldset>
+
+    <fieldset id="step2" style="display:none">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-6">
+
+                <div id="CreditosOtorgadosViewModel">
+                    @* 4. Solicion y creditos otrogados *@
+                    <div class=" box box-success">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">4. Solución y Créditos Otorgados. </h3>
+                        </div>
+                        <div class="box-body">
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.CIU_Proposito)
+                                @Html.TextBoxFor(m => m.CIU_Proposito, new { @class = "form-control form-control-sm" })
+                                @Html.ValidationMessageFor(m => m.CIU_Proposito, "")
+                            </div>
+
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.CIU_CreditosOtorgados)
+                                <div class="radio">
+                                    <label>
+                                        @Html.RadioButtonFor(m => m.CIU_Proposito, "1")
+                                        Sí
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        @Html.RadioButtonFor(m => m.CIU_Proposito, "0")
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-            </section>
-            <input type="submit" name="bueni" value="oprimeme" />
-        }
-    </div>
+
+                <div id="DeudorSolidarioViewModel">
+                    @*6. DeudorSolidario *@
+                </div>
+                    
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div id="ComposicionFamiliarViewModel">
+                    @* 5. Composicion Familiar *@
+                    @Html.Partial("../Ciudadano/_ComposicionFamiliar", Model.ComposicionFamiliar)
+                </div>
+
+                <div id="CapacidadPagoViewModel">
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                            <h1 class="box-title">7. Capacidad de Pago de la (el) Solicitante</h1>
+                        </div>
+
+                        <div class="box-body">
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.CapacidadPago.CIU_CapacidadPago)
+                                @Html.EditorFor(m => m.CapacidadPago.CIU_CapacidadPago, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                @Html.ValidationMessageFor(m => m.CapacidadPago.CIU_CapacidadPago, "")
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-6 ">
+                <button data-step="1" type="button" class="siguiente btn btn-block btn-success btn-lg">Anterior</button>
+            </div>
+            <div class="col-lg-6 ">
+                <button id="guardar" type="button" class="btn btn-block btn-success btn-lg">Guardar</button>
+            </div>
+        </div>
+    </fieldset>
+    }
+</section>
 
 
-
+@section scripts{
+    <script src="~/Scripts/Negocio/CreditoInicial/Nuevo.js"></script>
+}
