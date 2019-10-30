@@ -194,6 +194,13 @@
 
                     <div id="ParejaViewModel">
                         @* 2. Pareja *@
+                        
+                            @if (Model.Pareja.PAR_IDPareja != null)
+                            {
+                                @Html.Partial("../Pareja/_Insertar", Model.Pareja)
+                            }
+                           
+                        
                     </div>
 
                 </div>
@@ -204,7 +211,7 @@
                         @*3. Domicilio del credito y del solicitante *@
                         <div class="box box-success">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Domicilio del Ciudadano</h3>
+                                <h3 class="box-title">3. Domicilio del Ciudadano.</h3>
                             </div>
 
                             @Html.HiddenFor(m => m.CIU_IDDomicilio)
@@ -296,13 +303,7 @@
 
                                 </div>
 
-                                <div class="col-lg-12">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="DiferenteDomicilio"> ¿El solicitante Habita en un domicilio difetente de donde se pretende aplicar el credito?
-                                        </label>
-                                    </div>
-                                </div>
+                                
 
                                 @Html.HiddenFor(m => m.CIU_IDDomicilioTrabajo)
 
@@ -320,9 +321,7 @@
                         </div>
                     </div>
 
-                    <div id="DomicilioViewModel">
-                        @* 3.1 Domicilio Diferente  *@
-                    </div>
+                   
 
                 </div>
 
@@ -340,159 +339,176 @@
 
         <fieldset id="step2" style="display:none">
             <div class="row">
-                <!-- left column -->
                 <div class="col-md-6">
 
-                    <div id="CreditosOtorgadosViewModel">
-                        @* 4. Solicion y creditos otrogados *@
-                        <div class=" box box-success">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">4. Solución y Créditos Otorgados. </h3>
-                            </div>
-                            <div class="box-body">
+                    <!-- left column -->
+                    <div class="col-md-12">
 
-                                <div class="form-group">
-                                    @Html.LabelFor(m => m.CIU_Proposito)
-                                    @Html.TextBoxFor(m => m.CIU_Proposito, new { @class = "form-control form-control-sm" })
-                                    @Html.ValidationMessageFor(m => m.CIU_Proposito, "")
+                        <div id="CreditosOtorgadosViewModel">
+                            @* 4. Solicion y creditos otrogados *@
+                            <div class=" box box-success">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">4. Solución y Créditos Otorgados. </h3>
+                                </div>
+                                <div class="box-body">
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.CIU_Proposito)
+                                        @Html.TextBoxFor(m => m.CIU_Proposito, new { @class = "form-control form-control-sm" })
+                                        @Html.ValidationMessageFor(m => m.CIU_Proposito, "")
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.CIU_CreditosOtorgados)
+                                        <div class="radio">
+                                            <label>
+                                                @Html.RadioButtonFor(m => m.CIU_Proposito, "1")
+                                                Sí
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                @Html.RadioButtonFor(m => m.CIU_Proposito, "0")
+                                                No
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
 
-
-                                <div class="form-group">
-                                    @Html.LabelFor(m => m.CIU_CreditosOtorgados)
-                                    <div class="radio">
-                                        <label>
-                                            @Html.RadioButtonFor(m => m.CIU_Proposito, "1")
-                                            Sí
-                                        </label>
-                                    </div>
-                                    <div class="radio">
-                                        <label>
-                                            @Html.RadioButtonFor(m => m.CIU_Proposito, "0")
-                                            No
-                                        </label>
-                                    </div>
-                                </div>
                             </div>
-
                         </div>
+
+                    </div>
+                    <div class="col-md-12">
+                        <div id="ComposicionFamiliarViewModel">
+                            @* 5. Composicion Familiar *@
+                            <div class=" box box-success">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">5. Composición familiar de la (el) solicitante. </h3>
+                                </div>
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="form-group col-lg-6">
+                                            @Html.LabelFor(m => m.CIU_IDOrganizacionCivilFamilia)
+                                            @Html.CustomDropDownListFor(m => m.CIU_IDOrganizacionCivilFamilia, Model.OrganizacionCivilFamilia, new { @class = "form-control form-control-sm " })
+                                            @Html.ValidationMessageFor(m => m.CIU_IDOrganizacionCivilFamilia, "")
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            @Html.LabelFor(m => m.CIU_IDEstructuraFamiliar)
+                                            @Html.CustomDropDownListFor(m => m.CIU_IDEstructuraFamiliar, Model.EstructuraFamiliar, new { @class = "form-control form-control-sm " })
+                                            @Html.ValidationMessageFor(m => m.CIU_IDEstructuraFamiliar, "")
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-lg-6">
+                                            @Html.LabelFor(m => m.CIU_IDEnfermedadCronica)
+                                            @Html.CustomDropDownListFor(m => m.CIU_IDEnfermedadCronica, Model.EnfermedadCronica, new { @class = "form-control form-control-sm " })
+                                            @Html.ValidationMessageFor(m => m.CIU_IDEnfermedadCronica, "")
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            @Html.LabelFor(m => m.CIU_EnfermedadCronicaOtro)
+                                            @Html.EditorFor(m => m.CIU_EnfermedadCronicaOtro, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                            @Html.ValidationMessageFor(m => m.CIU_EnfermedadCronicaOtro, "")
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-lg-6">
+                                            @Html.LabelFor(m => m.CIU_IDDiscapacidad)
+                                            @Html.CustomDropDownListFor(m => m.CIU_IDDiscapacidad, Model.Discapacidad, new { @class = "form-control form-control-sm " })
+                                            @Html.ValidationMessageFor(m => m.CIU_IDDiscapacidad, "")
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            @Html.LabelFor(m => m.CIU_DiscapacidadOtro)
+                                            @Html.EditorFor(m => m.CIU_DiscapacidadOtro, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                            @Html.ValidationMessageFor(m => m.CIU_DiscapacidadOtro, "")
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-lg-6">
+                                            @Html.LabelFor(m => m.CIU_IDGruposPrioritarios)
+                                            @Html.CustomDropDownListFor(m => m.CIU_IDGruposPrioritarios, Model.GruposPrioritarios, new { @class = "form-control form-control-sm " })
+                                            @Html.ValidationMessageFor(m => m.CIU_IDGruposPrioritarios, "")
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            @Html.LabelFor(m => m.CIU_IngresoFamiliar)
+                                            @Html.EditorFor(m => m.CIU_IngresoFamiliar, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                            @Html.ValidationMessageFor(m => m.CIU_IngresoFamiliar, "")
+                                        </div>
+
+
+                                    </div>
+
+                                    <!-- /.box-body -->
+                                </div>
+
+                                @* Trabajo *@
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Datos laborales </h3>
+                                </div>
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="form-group col-lg-6">
+                                            @Html.LabelFor(m => m.CIU_IDOcupacion)
+                                            @Html.CustomDropDownListFor(m => m.CIU_IDOcupacion, Model.Ocupacion, new { @class = "form-control form-control-sm " })
+                                            @Html.ValidationMessageFor(m => m.CIU_IDOcupacion, "")
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            @Html.LabelFor(m => m.CIU_NombreTrabajo)
+                                            @Html.EditorFor(m => m.CIU_NombreTrabajo, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                            @Html.ValidationMessageFor(m => m.CIU_NombreTrabajo, "")
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
 
-                    <div id="DeudorSolidarioViewModel">
-                        @*6. DeudorSolidario *@
-                    </div>
-                    
 
                 </div>
-
                 <div class="col-md-6">
 
-                    <div id="ComposicionFamiliarViewModel">
-                        @* 5. Composicion Familiar *@
-                        <div class=" box box-success">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">5. Composición familiar de la (el) solicitante. </h3>
-                            </div>
-                            <div class="box-body">
-                                <div class="row">
-                                    <div class="form-group col-lg-6">
-                                        @Html.LabelFor(m => m.CIU_IDOrganizacionCivilFamilia)
-                                        @Html.CustomDropDownListFor(m => m.CIU_IDOrganizacionCivilFamilia, Model.OrganizacionCivilFamilia, new { @class = "form-control form-control-sm " })
-                                        @Html.ValidationMessageFor(m => m.CIU_IDOrganizacionCivilFamilia, "")
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        @Html.LabelFor(m => m.CIU_IDEstructuraFamiliar)
-                                        @Html.CustomDropDownListFor(m => m.CIU_IDEstructuraFamiliar, Model.EstructuraFamiliar, new { @class = "form-control form-control-sm " })
-                                        @Html.ValidationMessageFor(m => m.CIU_IDEstructuraFamiliar, "")
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-lg-6">
-                                        @Html.LabelFor(m => m.CIU_IDEnfermedadCronica)
-                                        @Html.CustomDropDownListFor(m => m.CIU_IDEnfermedadCronica, Model.EnfermedadCronica, new { @class = "form-control form-control-sm " })
-                                        @Html.ValidationMessageFor(m => m.CIU_IDEnfermedadCronica, "")
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        @Html.LabelFor(m => m.CIU_EnfermedadCronicaOtro)
-                                        @Html.EditorFor(m => m.CIU_EnfermedadCronicaOtro, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
-                                        @Html.ValidationMessageFor(m => m.CIU_EnfermedadCronicaOtro, "")
-                                    </div>
+                    <div class="col-md-12">
+                        <div id="DeudorSolidarioViewModel">
+                            @*6. DeudorSolidario *@
+                            @Html.Partial("../DeudorSolidario/_Insertar", Model.DeudorSolidario)
+                            @*@if (Model.DeudorSolidario.DEU_IDDeudorSolidario != null)
+        {
+            @Html.Partial("../DeudorSolidario/_Insertar", Model.DeudorSolidario)
+        }*@
+                        </div>
+                     
+                    </div>
 
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-lg-6">
-                                        @Html.LabelFor(m => m.CIU_IDDiscapacidad)
-                                        @Html.CustomDropDownListFor(m => m.CIU_IDDiscapacidad, Model.Discapacidad, new { @class = "form-control form-control-sm " })
-                                        @Html.ValidationMessageFor(m => m.CIU_IDDiscapacidad, "")
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        @Html.LabelFor(m => m.CIU_DiscapacidadOtro)
-                                        @Html.EditorFor(m => m.CIU_DiscapacidadOtro, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
-                                        @Html.ValidationMessageFor(m => m.CIU_DiscapacidadOtro, "")
-                                    </div>
-
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-lg-6">
-                                        @Html.LabelFor(m => m.CIU_IDGruposPrioritarios)
-                                        @Html.CustomDropDownListFor(m => m.CIU_IDGruposPrioritarios, Model.GruposPrioritarios, new { @class = "form-control form-control-sm " })
-                                        @Html.ValidationMessageFor(m => m.CIU_IDGruposPrioritarios, "")
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        @Html.LabelFor(m => m.CIU_IngresoFamiliar)
-                                        @Html.EditorFor(m => m.CIU_IngresoFamiliar, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
-                                        @Html.ValidationMessageFor(m => m.CIU_IngresoFamiliar, "")
-                                    </div>
-
-
+                    <div class="col-md-12">
+                        @* Capacidad de Pago *@
+                        <div id="CapacidadPagoViewModel">
+                            <div class="box box-success">
+                                <div class="box-header with-border">
+                                    <h1 class="box-title">7. Capacidad de Pago de la (el) Solicitante</h1>
                                 </div>
 
-                                <!-- /.box-body -->
-                            </div>
+                                <div class="box-body">
 
-                            @* Trabajo *@
-                            <div class="box-header with-border">
-                                <h3 class="box-title">Datos laborales </h3>
-                            </div>
-                            <div class="box-body">
-                                <div class="row">
-                                    <div class="form-group col-lg-6">
-                                        @Html.LabelFor(m => m.CIU_IDOcupacion)
-                                        @Html.CustomDropDownListFor(m => m.CIU_IDOcupacion, Model.Ocupacion, new { @class = "form-control form-control-sm " })
-                                        @Html.ValidationMessageFor(m => m.CIU_IDOcupacion, "")
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.CIU_CapacidadPago)
+                                        @Html.EditorFor(m => m.CIU_CapacidadPago, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                        @Html.ValidationMessageFor(m => m.CIU_CapacidadPago, "")
                                     </div>
-                                    <div class="form-group col-lg-6">
-                                        @Html.LabelFor(m => m.CIU_NombreTrabajo)
-                                        @Html.EditorFor(m => m.CIU_NombreTrabajo, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
-                                        @Html.ValidationMessageFor(m => m.CIU_NombreTrabajo, "")
-                                    </div>
-
 
                                 </div>
 
                             </div>
                         </div>
+
                     </div>
-
-                    <div id="CapacidadPagoViewModel">
-                        <div class="box box-success">
-                            <div class="box-header with-border">
-                                <h1 class="box-title">7. Capacidad de Pago de la (el) Solicitante</h1>
-                            </div>
-
-                            <div class="box-body">
-
-                                <div class="form-group">
-                                    @Html.LabelFor(m => m.CIU_CapacidadPago)
-                                    @Html.EditorFor(m => m.CIU_CapacidadPago, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
-                                    @Html.ValidationMessageFor(m => m.CIU_CapacidadPago, "")
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-
                 </div>
 
             </div>

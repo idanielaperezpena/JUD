@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Datos
 {
-    class DeudorSolidarioRepository : RepositoryBase<DeudorSolidario>
+    public class DeudorSolidarioRepository : RepositoryBase<DeudorSolidario>
     {
         public DeudorSolidarioRepository(DatabaseContext context) : base(context)
         {

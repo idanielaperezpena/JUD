@@ -12,7 +12,7 @@ namespace Negocio.ViewModels.Ciudadanos
     public class CiudadanoDeudorSolidarioViewModel
     {
         public int? DEU_IDDeudorSolidario { get; set; }
-        public int DEU_IDCiudadano { get; set; }
+        public int? DEU_IDCiudadano { get; set; }
         public int? DEU_IDDomicilio { get; set; }
         public int? DEU_IDDomicilioTrabajo { get; set; }
 
@@ -60,9 +60,11 @@ namespace Negocio.ViewModels.Ciudadanos
         public double DEU_Ingreso { get; set; }
 
         [CustomRequired]
-        [Display(Name = "De su ingreso familiar mensual,< br />  ¿Cuánto podrá destinar para el pago del crédito ? *")]
+        [Display(Name = "De su ingreso familiar mensual,\n¿Cuánto podrá destinar para el pago del crédito ? *")]
         public double DEU_CapacidadPago { get; set; }
 
+        [Display(Name = "Fecha de Solicitud")]
+        public DateTime DEU_FechaSolicitud { get; set; }
         //Listas
         public ICustomSelectList<Entidades.Catalogos> Genero { get; set; }
         public ICustomSelectList<Entidades.Catalogos> EstadoCivil { get; set; }

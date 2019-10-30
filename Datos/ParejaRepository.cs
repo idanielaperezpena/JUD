@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Datos
 {
-    class ParejaRepository : RepositoryBase<Pareja>
+    public class ParejaRepository : RepositoryBase<Pareja>
     {
         public ParejaRepository(DatabaseContext context) : base(context)
         {

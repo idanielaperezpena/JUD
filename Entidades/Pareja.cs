@@ -9,7 +9,7 @@ namespace Entidades
     public class Pareja
     {
         public int? PAR_IDPareja { get; set; }
-        public int PAR_IDCiudadano { get; set; }
+        public int? PAR_IDCiudadano { get; set; }
         public string PAR_Nombre { get; set; }
         public string PAR_ApellidoPaterno { get; set; }
         public string PAR_ApellidoMaterno { get; set; }

@@ -14,10 +14,11 @@ namespace Negocio
         private CatalogosRepository _catsRepo;
         private ErrorLogRepository _errorRepo;
         private UsuarioRepository _usrRepo;
-        //private ParejaRepository _parejaRepo;
+        private ParejaRepository _parejaRepo;
+        private DeudorSolidarioRepository _deudorRepo; 
         private CiudadanoRepository _ciudadanoRepo;
         private DomicilioCiudadanoRepository _domiciliociudadanoRepo;
-
+        private DomicilioRepository _domicilioRepo;
         private EmailUtility _emailSender;
         private EncriptarUtility _encriptador;
 
@@ -59,8 +60,8 @@ namespace Negocio
             }
         }
 
-        /*
-        public ParejaRepository Parejas
+        
+        public ParejaRepository Pareja
         {
             get
             {
@@ -69,7 +70,17 @@ namespace Negocio
 
                 return _parejaRepo;
             }
-        }*/
+        }
+        public DeudorSolidarioRepository DeudorSolidario
+        {
+            get
+            {
+                if (_deudorRepo == null)
+                    _deudorRepo = new DeudorSolidarioRepository(_context);
+
+                return _deudorRepo;
+            }
+        }
 
         public CiudadanoRepository Ciudadano
         {
@@ -90,6 +101,16 @@ namespace Negocio
                     _domiciliociudadanoRepo = new DomicilioCiudadanoRepository(_context);
 
                 return _domiciliociudadanoRepo;
+            }
+        }
+        public DomicilioRepository Domicilio
+        {
+            get
+            {
+                if (_domicilioRepo == null)
+                    _domicilioRepo = new DomicilioRepository(_context);
+
+                return _domicilioRepo;
             }
         }
 

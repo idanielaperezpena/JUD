@@ -216,14 +216,14 @@ namespace Negocio.ViewModels.Ciudadanos
         public CiudadanoParejaViewModel Pareja { get; set; }
         public DomicilioFormViewModel Domicilio_Diferente { get; set; }
         public DomicilioFormViewModel Domicilio_Trabajo{ get; set; }
-        public CiudadanoDeudorSolidarioViewModel DeudorSolidatio { get; set; }
+        public CiudadanoDeudorSolidarioViewModel DeudorSolidario { get; set; }
 
 
         public CiudadanoInsertarViewModel() {
             Pareja = new CiudadanoParejaViewModel();
             Domicilio_Trabajo = new DomicilioFormViewModel();
             Domicilio_Diferente = new DomicilioFormViewModel();
-            DeudorSolidatio = new CiudadanoDeudorSolidarioViewModel();
+            DeudorSolidario = new CiudadanoDeudorSolidarioViewModel();
         }
     }
 }

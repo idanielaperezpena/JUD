@@ -12,7 +12,7 @@ namespace Negocio.ViewModels.Ciudadanos
     {
         public int? PAR_IDPareja { get; set; }
 
-        public int PAR_IDCiudadano { get; set; }
+        public int? PAR_IDCiudadano { get; set; }
 
         [CustomRequired]
         [Display(Name = "Nombre *")]

@@ -53,6 +53,10 @@ namespace Negocio.ViewModels.Domicilio
         [Display(Name = "Longitud")]
         public string DOM_Longitud { get; set; }
 
+        [Display(Name = "Otro")]
+        public string DOM_Otro { get; set; }
+
+
         //Variables de Vista 
         public bool Boton { get; set; }
 
@@ -69,7 +73,7 @@ namespace Negocio.ViewModels.Domicilio
 
         public ICustomSelectList<Entidades.Catalogos> Estado { get; set; }
 
-        public ICustomSelectList<Entidades.Catalogos> TipoVivienda { get; set; }
+      
 
     }
 }
