@@ -289,6 +289,7 @@ namespace Negocio
             {
 
             }
+        }
 
 
 
@@ -420,9 +421,7 @@ namespace Negocio
             return _viewModel;
         }
         public CiudadanoDeudorSolidarioViewModel ObtenerDeudorSolidario(int? id_solicitante, CiudadanoDeudorSolidarioViewModel _viewModel)
-
-        public void Edit (CiudadanoInsertarViewModel viewModel)
-        {
+            {
             try
             {
                 var _entidad = UoW.DeudorSolidario.ObtenerEntidad(new DeudorSolidario
@@ -463,6 +462,7 @@ namespace Negocio
 
             return _viewModel;
         }
+        
 
 
     }
