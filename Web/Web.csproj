@@ -139,6 +139,7 @@
     <Content Include="Scripts\Negocio\Catalogos\CatalogosMostrarJS.js" />
     <Content Include="Scripts\Negocio\Ciudadano\CiudadanoMostrar.js" />
     <Content Include="Scripts\Negocio\Ciudadano\Nuevo.js" />
+    <Content Include="Scripts\Negocio\CreditoInicial\Nuevo.js" />
     <Content Include="Scripts\Negocio\HomeIndexJS.js" />
     <Content Include="Scripts\UI\admin\adminlte.min.js" />
     <Content Include="Scripts\UI\admin\validaciones_general.js" />
@@ -237,7 +238,7 @@
     <Content Include="Views\Catalogos\Index.cshtml" />
     <Content Include="Views\Catalogos\_MostrarModal.cshtml" />
     <Content Include="Views\Ciudadano\Index.cshtml" />
-    <Content Include="Views\Ciudadano\InsertarRespaldo.cshtml" />
+    <Content Include="Views\Ciudadano\_InsertarPrueba.cshtml" />
     <Content Include="Views\Domicilio\Insertar.cshtml" />
     <Content Include="Views\DomicilioCiudadano\Insertar.cshtml" />
     <Content Include="Views\DomicilioCiudadano\_Insertar.cshtml" />
@@ -250,6 +251,9 @@
     <Content Include="Views\Ciudadano\_ComposicionFamiliar.cshtml" />
     <Content Include="Views\Domicilio\_Insertar.cshtml" />
     <Content Include="Views\Ciudadano\Validar.cshtml" />
+    <Content Include="Views\Ciudadano\_ValidarTabla.cshtml" />
+    <Content Include="Views\CreditoInicial\Nuevo.cshtml" />
+    <Content Include="Views\Ciudadano\_Validar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -260,8 +264,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\" />
-    <Folder Include="Scripts\Negocio\CreditoInicial\" />
-    <Folder Include="Views\CreditoInicial\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entidades\Entidades.csproj">

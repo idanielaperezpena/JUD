@@ -36,6 +36,7 @@ namespace Datos
             return ObtenerLista("Catalogos_Select_NombreTablas", pGeneric.NombreCatalogo);
         }
 
+ 
         public  List<Catalogos> ObtenerEstatus()
         {
             Catalogos activo = new Catalogos{ ID = 1 , Descripcion = "Activo"};

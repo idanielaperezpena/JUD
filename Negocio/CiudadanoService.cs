@@ -111,25 +111,59 @@ namespace Negocio
                     viewModel.CIU_CapacidadPago = _entidad.CIU_CapacidadPago;
                     viewModel.CIU_CorreoElectronico = _entidad.CIU_CorreoElectronico;
                     viewModel.CIU_IDDomicilio = _entidad.CIU_IDDomicilio;
-                    
+
                     //domicilio del ciudadano
                     ObtenerDomicilioCiudadano(_entidad.CIU_IDDomicilio, viewModel);
-                   
+
                     //Domicilio de trabajo
                     ObtenerDomicilio(_entidad.CIU_IDDomicilioTrabajo,viewModel.Domicilio_Trabajo);
                     //PAREJA
                     ObtenerPareja(_entidad.CIU_IDCiudadano, viewModel.Pareja);
-                    //Deudor Solidario 
+                    //Deudor Solidario
                     ObtenerDeudorSolidario(_entidad.CIU_IDCiudadano, viewModel.DeudorSolidario);
                 }
-                
+
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, ex.Message);
             }
 
-            
+
+            return viewModel;
+        }
+
+        public CiudadanoValidarViewModel BusquedaCURPNOMBRE(string cadenaBusqueda)
+        {
+            var viewModel = new CiudadanoValidarViewModel();
+
+            try
+            {
+                var _listado = ListadoCURPNOMBRE(cadenaBusqueda);
+
+                foreach (Ciudadano _cat in _listado)
+                {
+                    var _temp = new CiudadanosIndexListadoViewModel();
+
+                    _temp.IDEncriptado = UoW.Encriptador.Encriptar(_cat.CIU_IDCiudadano);
+                    _temp.CURP = _cat.CIU_CURP;
+                    _temp.NombreCompleto = _cat.CIU_Nombre + " " + _cat.CIU_ApellidoPaterno + " " + _cat.CIU_ApellidoMaterno;
+
+                    var _InfoCatalogo = this.UoW.Catalogos.ObtenerEntidad(new Catalogos { NombreCatalogo = "SIM_Cat_06_Genero", ID = _cat.CIU_IDGenero });
+
+                    _temp.GeneroTexto = _InfoCatalogo.Descripcion;
+                    _temp.DatosNacimiento = _cat.CIU_FechaNacimiento.Date.ToShortDateString().ToString();
+                    _temp.Contacto = _cat.CIU_TelParticular;
+                    _temp.DomicilioCompleto = _cat.CIU_IDDomicilio.ToString();
+
+                    viewModel.Listado.Add(_temp);
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message + "Service : Mostrar");
+            }
+
             return viewModel;
         }
 
@@ -149,8 +183,8 @@ namespace Negocio
         private DomicilioFormViewModel GetDomicilio( )
         {
             var _viewModel = new DomicilioFormViewModel();
-          
-            
+
+
 
             _viewModel.Vialidad = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_12_Vialidad", ID = 0 }).SelectListado();
             _viewModel.Alcaldia = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_SN_Alcaldia", ID = 0 }).SelectListado();
@@ -195,7 +229,7 @@ namespace Negocio
             viewModel.GrupoEtnico = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_10_GrupoEtnico", ID = 0 }).SelectListado();
             viewModel.Vialidad = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_12_Vialidad", ID = 0 }).SelectListado();
             viewModel.Alcaldia = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_SN_Alcaldia", ID = 0 }).SelectListado();
-          
+
             viewModel.TipoVivienda = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_SN_TipoVivienda", ID = 0 }).SelectListado();
             viewModel.OrganizacionCivilFamilia = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_13_CondicionesOrganizacionCivilFamilia", ID = 0 }).SelectListado();
             viewModel.EstructuraFamiliar = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_66_EstructuraFamiliar", ID = 0 }).SelectListado();
@@ -258,6 +292,18 @@ namespace Negocio
 
 
 
+        public List<Ciudadano> ListadoCURPNOMBRE(string Cadena)
+        {
+            try
+            {
+                return UoW.Ciudadano.ObtenerListadoCURPNOMBRE(new Ciudadano { CIU_CURP = Cadena });
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message + "Service : Listado");
+            }
+
+            return new List<Ciudadano>();
         }
 
         public CiudadanoInsertarViewModel ObtenerDomicilioCiudadano(int? id, CiudadanoInsertarViewModel viewModel)
@@ -270,7 +316,7 @@ namespace Negocio
 
                 });
 
-                
+
 
                 if (_entidad != null)
                 {
@@ -292,7 +338,7 @@ namespace Negocio
 
 
                     return viewModel;
-                }   
+                }
 
             }
             catch (Exception ex)
@@ -374,6 +420,8 @@ namespace Negocio
             return _viewModel;
         }
         public CiudadanoDeudorSolidarioViewModel ObtenerDeudorSolidario(int? id_solicitante, CiudadanoDeudorSolidarioViewModel _viewModel)
+
+        public void Edit (CiudadanoInsertarViewModel viewModel)
         {
             try
             {
@@ -419,4 +467,3 @@ namespace Negocio
 
     }
  }
-

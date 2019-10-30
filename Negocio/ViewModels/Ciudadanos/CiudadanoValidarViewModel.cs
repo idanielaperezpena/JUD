@@ -10,7 +10,7 @@ namespace Negocio.ViewModels.Ciudadanos
    public class CiudadanoValidarViewModel
     {
         [CustomRequired]
-        [Display(Name = "CURP o Nombre Completo del Ciudadano *")]
+        [Display(Name = "CURP o Nombre Completo del Ciudadano (Nombre(s) , A. Paterno, A. Materno) *")]
         public string CadenaBusqueda { get; set; }
 
         public List<CiudadanosIndexListadoViewModel> Listado { get; set; }

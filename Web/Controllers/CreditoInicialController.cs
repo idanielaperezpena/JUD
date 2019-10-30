@@ -28,13 +28,13 @@ namespace Web.Controllers
             return View();
         }
 
-        //public ActionResult Nuevo()
-        //{
-        //    var _vm = _service.Nuevo();
-        //    ViewBag.Titulo = "Credito Inicial";
-        //    return View(_vm);
-        //}
-        
+        public ActionResult Nuevo()
+        {
+            var _vm = _service.Nuevo();
+            ViewBag.Titulo = "Credito Inicial";
+            return View(_vm);
+        }
+
         //Acciones
         [HttpPost]
         public ActionResult Insertar(CiudadanoInsertarViewModel viewModel)
@@ -53,6 +53,12 @@ namespace Web.Controllers
         public ActionResult GetDomicilioViewModel()
         {
             return PartialView("../Domicilio/_Insertar", _service.GetDomicilioViewModel());
+        }
+
+        [HttpPost]
+        public ActionResult GetCiudadanoInsertar(string ID = null)
+        {
+            return PartialView("../Ciudadano/_InsertarPrueba", _service.CiudadanoInsertar(ID));
         }
 
     }
