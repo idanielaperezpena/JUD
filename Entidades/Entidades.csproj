@@ -120,6 +120,7 @@
     <Compile Include="ModificacionesCredito.cs" />
     <Compile Include="Pareja.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeccionElectoral.cs" />
     <Compile Include="SeguridadSocial.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Utilidades\Catalogos\CustomSelectList.cs" />

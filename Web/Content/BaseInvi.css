@@ -37,3 +37,7 @@
     color : red;
 
 }
+
+#tabla_ciudadano tbody tr{
+    cursor:pointer;
+}

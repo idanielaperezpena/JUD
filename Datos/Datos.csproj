@@ -97,6 +97,7 @@
     <Compile Include="ModificacionesCreditoRepository.cs" />
     <Compile Include="ParejaRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeccionElectoralRepository.cs" />
     <Compile Include="SeguridadSocialRepository.cs" />
     <Compile Include="UsuarioRepository.cs" />
   </ItemGroup>

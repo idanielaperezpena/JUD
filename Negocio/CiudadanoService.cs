@@ -131,7 +131,39 @@ namespace Negocio
                 ModelState.AddModelError(string.Empty, ex.Message);
             }
 
-           
+            return viewModel;
+        }
+
+        public CiudadanoValidarViewModel BusquedaCURPNOMBRE(string cadenaBusqueda)
+        {
+            var viewModel = new CiudadanoValidarViewModel();
+
+            try
+            {
+                var _listado = ListadoCURPNOMBRE(cadenaBusqueda);
+
+                foreach (Ciudadano _cat in _listado)
+                {
+                    var _temp = new CiudadanosIndexListadoViewModel();
+
+                    _temp.IDEncriptado = UoW.Encriptador.Encriptar(_cat.CIU_IDCiudadano);
+                    _temp.CURP = _cat.CIU_CURP;
+                    _temp.NombreCompleto = _cat.CIU_Nombre + " " + _cat.CIU_ApellidoPaterno + " " + _cat.CIU_ApellidoMaterno;
+
+                    var _InfoCatalogo = this.UoW.Catalogos.ObtenerEntidad(new Catalogos { NombreCatalogo = "SIM_Cat_06_Genero", ID = _cat.CIU_IDGenero });
+
+                    _temp.GeneroTexto = _InfoCatalogo.Descripcion;
+                    _temp.DatosNacimiento = _cat.CIU_FechaNacimiento.Date.ToShortDateString().ToString();
+                    _temp.Contacto = _cat.CIU_TelParticular;
+                    _temp.DomicilioCompleto = _cat.CIU_IDDomicilio.ToString();
+
+                    viewModel.Listado.Add(_temp);
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message + "Service : Mostrar");
+            }
 
             return viewModel;
         }
@@ -152,8 +184,19 @@ namespace Negocio
             return new List<Ciudadano>();
         }
 
+        public List<Ciudadano> ListadoCURPNOMBRE(string Cadena)
+        {
+            try
+            {
+                return UoW.Ciudadano.ObtenerListadoCURPNOMBRE(new Ciudadano { CIU_CURP = Cadena });
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message + "Service : Listado");
+            }
 
-     
+            return new List<Ciudadano>();
+        }
 
         public CiudadanoInsertarViewModel ObtenerDomicilioCiudadano(int? id, CiudadanoInsertarViewModel viewModel)
         {
@@ -223,6 +266,7 @@ namespace Negocio
             _viewModel.RegimenPatrimonial = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_14_RegimenPatrimonial", ID = 0 }).SelectListado();
             return _viewModel;
         }
+
         public void Edit (CiudadanoInsertarViewModel viewModel)
         {
             

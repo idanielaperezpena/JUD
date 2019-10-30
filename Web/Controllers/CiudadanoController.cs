@@ -69,11 +69,11 @@ namespace Web.Controllers
             return Json(viewModel.ToJSON());
         }
 
-        //[HttpPost]
-        //public ActionResult BusquedaExistente(string CadenaBusqueda)
-        //{
-        //    return PartialView("../Ciudadano/_ValidarTabla", _service.BusquedaCURPNOMBRE(CadenaBusqueda));
-        //}
-             
+        [HttpPost]
+        public ActionResult BusquedaExistente(string CadenaBusqueda)
+        {
+            return PartialView("../Ciudadano/_ValidarTabla", _service.BusquedaCURPNOMBRE(CadenaBusqueda));
+        }
+
     }
 }

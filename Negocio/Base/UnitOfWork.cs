@@ -17,6 +17,7 @@ namespace Negocio
         //private ParejaRepository _parejaRepo;
         private CiudadanoRepository _ciudadanoRepo;
         private DomicilioCiudadanoRepository _domiciliociudadanoRepo;
+        private SeccionElectoralRepository _seccionRepo;
 
         private EmailUtility _emailSender;
         private EncriptarUtility _encriptador;
@@ -90,6 +91,17 @@ namespace Negocio
                     _domiciliociudadanoRepo = new DomicilioCiudadanoRepository(_context);
 
                 return _domiciliociudadanoRepo;
+            }
+        }
+
+        public SeccionElectoralRepository SeccionElectoral
+        {
+            get
+            {
+                if (_seccionRepo == null)
+                    _seccionRepo = new SeccionElectoralRepository(_context);
+
+                return _seccionRepo;
             }
         }
 
