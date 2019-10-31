@@ -65,8 +65,8 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa  fa-plus"></i>Registrar Nuevo</a></li>
-                        <li><a href="#"><i class="fa fa-search"></i>Consultar Solicitud</a></li>
+                        <li><a href="@Url.Action("Insertar","CreditoInicial")"><i class="fa  fa-plus"></i>Registrar Nuevo</a></li>
+                        <li><a href="@Url.Action("Index","CreditoInicial")"><i class="fa fa-search"></i>Consultar Solicitud</a></li>
                     </ul>
                 </li>
                 <li class="active treeview menu-open">
@@ -77,8 +77,8 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa  fa-plus"></i>Registrar Nuevo</a></li>
-                        <li><a href="#"><i class="fa fa-search"></i>Consultar Solicitud</a></li>
+                        <li><a href="@Url.Action("Insertar","CreditoComplementario")"><i class="fa  fa-plus"></i>Registrar Nuevo</a></li>
+                        <li><a href="@Url.Action("Index","CreditoComplementario")"><i class="fa fa-search"></i>Consultar Solicitud</a></li>
                     </ul>
                 </li>
                 <li class="active treeview menu-open">
@@ -89,8 +89,8 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa  fa-plus"></i>Registrar Nuevo</a></li>
-                        <li><a href="#"><i class="fa fa-search"></i>Consultar Solicitud</a></li>
+                        <li><a href="@Url.Action("Insertar","ModificacionesCredito")"><i class="fa  fa-plus"></i>Registrar Nuevo</a></li>
+                        <li><a href="@Url.Action("Index","ModificacionesCredito")"><i class="fa fa-search"></i>Consultar Solicitud</a></li>
                     </ul>
                 </li>
                 <li class="active treeview menu-open">
@@ -101,8 +101,8 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa  fa-plus"></i>Registrar Nuevo</a></li>
-                        <li><a href="#"><i class="fa fa-search"></i>Consultar Solicitud</a></li>
+                        <li><a href="@Url.Action("Insertar","CreditoSustentabilidad")"><i class="fa  fa-plus"></i>Registrar Nuevo</a></li>
+                        <li><a href="@Url.Action("Index","CreditoSustentabilidad")"><i class="fa fa-search"></i>Consultar Solicitud</a></li>
                     </ul>
                 </li>
                 <li class="active">
@@ -121,21 +121,17 @@
                 </li>
 
 
-                @if (ViewBag.Perfil == "ADMIN")
-                {
+                @*@if (ViewBag.Perfil == "ADMIN")
+                {*@
                     <li class="header">Administrador</li>
-                    <li class="treeview menu-open" style="height: auto;">
-                        <a href="#">
+                    <li class="active">
+                        <a href="@Url.Action("Index","Catalogos")">
                             <i class="fa fa-dashboard"></i> <span>Catalogos</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
+                         
                         </a>
-                        <ul class="treeview-menu" style="display: block;">
-                            <li><a href="/Catalogos/Sexo"><i class="fa fa-circle-o"></i>Sexo</a></li>
-                        </ul>
+                       
                     </li>
-                }
+                @*}*@
 
             </ul>
 </section>

@@ -17,7 +17,7 @@ namespace Datos
         {
             return ObtenerPrimero("SP_SIM_ModificacionesCredito_IU", pGeneric.MC_FechaCaptura, pGeneric.MC_FechaSolicitud, pGeneric.MC_FolioSolicitud
                 , pGeneric.MC_IDCiudadano, pGeneric.MC_IDCreditoInicial, pGeneric.MC_IDModificacionesCredito, pGeneric.MC_IDProblema
-                , pGeneric.MC_IDTipoSolicitante, pGeneric.MC_Ingreso, pGeneric.MC_Procedencia);
+                , pGeneric.MC_IDTipoTramite, pGeneric.MC_Ingreso, pGeneric.MC_Procedencia);
         }
 
         public override void Baja(ModificacionesCredito pGeneric)
@@ -42,7 +42,7 @@ namespace Datos
         {
             return ObtenerLista("SP_SIM_ModificacionesCredito_S", pGeneric.MC_FechaCaptura, pGeneric.MC_FechaSolicitud, pGeneric.MC_FolioSolicitud
               , pGeneric.MC_IDCiudadano, pGeneric.MC_IDCreditoInicial, pGeneric.MC_IDModificacionesCredito, pGeneric.MC_IDProblema
-              , pGeneric.MC_IDTipoSolicitante, pGeneric.MC_Ingreso, pGeneric.MC_Procedencia);
+              , pGeneric.MC_IDTipoTramite, pGeneric.MC_Ingreso, pGeneric.MC_Procedencia);
         }
     }
 }
