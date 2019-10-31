@@ -180,9 +180,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CatalogosController.cs" />
     <Compile Include="Controllers\CiudadanoController.cs" />
+    <Compile Include="Controllers\CreditoComplementarioController.cs" />
     <Compile Include="Controllers\CreditoInicialController.cs" />
+    <Compile Include="Controllers\CreditoSustentabilidadController.cs" />
     <Compile Include="Controllers\ExceptionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ModificacionesCreditoController.cs" />
     <Compile Include="Controllers\PrincipalController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -230,7 +233,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Exception\_Ex.cshtml" />
     <Content Include="Views\Shared\_LoaderSecondary.cshtml" />
-    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Shared\_Layout-Login.cshtml" />
     <Content Include="Views\Shared\_Layout-Principal.cshtml" />
     <Content Include="Views\Principal\Index.cshtml" />
@@ -239,11 +241,8 @@
     <Content Include="Views\Catalogos\_MostrarModal.cshtml" />
     <Content Include="Views\Ciudadano\Index.cshtml" />
     <Content Include="Views\Ciudadano\_InsertarPrueba.cshtml" />
-    <Content Include="Views\Domicilio\Insertar.cshtml" />
-    <Content Include="Views\DomicilioCiudadano\Insertar.cshtml" />
     <Content Include="Views\DomicilioCiudadano\_Insertar.cshtml" />
     <Content Include="Views\Pareja\Insertar.cshtml" />
-    <Content Include="Views\DeudorSolidario\Insertar.cshtml" />
     <Content Include="Views\Ciudadano\_DatosPersonales.cshtml" />
     <Content Include="Views\Ciudadano\Insertar.cshtml" />
     <Content Include="Views\Pareja\_Insertar.cshtml" />
@@ -255,6 +254,7 @@
     <Content Include="Views\CreditoInicial\Nuevo.cshtml" />
     <Content Include="Views\Ciudadano\_Validar.cshtml" />
     <Content Include="Views\DeudorSolidario\_Insertar.cshtml" />
+    <Content Include="Views\CreditoComplementario\Insertar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -265,6 +265,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\" />
+    <Folder Include="Views\CreditoSustentabilidad\" />
+    <Folder Include="Views\ModificacionesCredito\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
