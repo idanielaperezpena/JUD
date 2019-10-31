@@ -40,6 +40,7 @@ namespace Negocio
             return GetDomicilio();
         }
 
+
         public CiudadanoInsertarViewModel CiudadanoInsertar(string IDEncriptado)
         {
             return GetCiudadanoInsertar(IDEncriptado);
@@ -78,38 +79,27 @@ namespace Negocio
         private CiudadanoInsertarViewModel GetCiudadanoInsertar(string IDEncriptado)
         {
             var viewModel = new CiudadanoInsertarViewModel();
+            //Catalogos Ciudadano
+            ObtenerCatalogos(viewModel);
+            //DomicilioDeltrabajo
+            viewModel.Domicilio_Trabajo = GetDomicilio();
+            //deudor solidario
+            viewModel.DeudorSolidario = GetDeudorSolidario();
+            ////Domicilio otro
+            //viewModel.Domicilio_Diferente = GetDomicilio();
+            //Pareja
+            viewModel.Pareja = GetParejaCiudadano();
 
-            int? _ID_desencriptar = null;
+            //Es credito Inicial
+            viewModel.CreditoInicial = true;
 
-            if (!String.IsNullOrEmpty(IDEncriptado))
-            {
-                _ID_desencriptar = Int32.Parse(this.UoW.Encriptador.Desencriptar(IDEncriptado));
-            }
-            
+            if (String.IsNullOrEmpty(IDEncriptado))
+                return viewModel;
+
+            int? _ID_desencriptar = Int32.Parse(this.UoW.Encriptador.Desencriptar(IDEncriptado));
             try
             {
-                if (String.IsNullOrEmpty(IDEncriptado))
-                {
-                    viewModel.Genero = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_06_Genero", ID = 0 }).SelectListado();
-                    viewModel.Estado = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_SN_EstadoRepublica", ID = 0 }).SelectListado();
-                    viewModel.EstadoCivil = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_13_CondicionesOrganizacionCivilFamilia", ID = 0 }).SelectListado();
-                    viewModel.GradoEstudios = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_09_Escolaridad", ID = 0 }).SelectListado();
-                    viewModel.GrupoEtnico = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_10_GrupoEtnico", ID = 0 }).SelectListado();
-                    viewModel.Vialidad = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_12_Vialidad", ID = 0 }).SelectListado();
-                    viewModel.Alcaldia = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_SN_Alcaldia", ID = 0 }).SelectListado();
-                    // viewModel.Estado = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_13_CondicionesOrganizacionCivilFamilia", ID = 0 }).SelectListado();
-                    viewModel.TipoVivienda = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_SN_TipoVivienda", ID = 0 }).SelectListado();
-                    viewModel.OrganizacionCivilFamilia = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_13_CondicionesOrganizacionCivilFamilia", ID = 0 }).SelectListado();
-                    viewModel.EstructuraFamiliar = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_66_EstructuraFamiliar", ID = 0 }).SelectListado();
-                    viewModel.EnfermedadCronica = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_17_EnfermedadCronica", ID = 0 }).SelectListado();
-                    viewModel.Discapacidad = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_16_Discapacidad", ID = 0 }).SelectListado();
-                    viewModel.GruposPrioritarios = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_18_GruposPrioritarios", ID = 0 }).SelectListado();
-                    viewModel.Ocupacion = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_15_Ocupacion", ID = 0 }).SelectListado();
-                    viewModel.Domicilio_Trabajo = GetDomicilio();
-
-                    return viewModel;
-                }
-                    //CIUDADANO
+                //CIUDADANO
                 var _entidad = UoW.Ciudadano.ObtenerEntidad(new Ciudadano
                 {
                     CIU_IDCiudadano = _ID_desencriptar
@@ -129,7 +119,7 @@ namespace Negocio
                     viewModel.CIU_IDEstado = _entidad.CIU_IDEstado;
                     viewModel.CIU_TiempoResidencia = _entidad.CIU_TiempoResidencia;
                     viewModel.CIU_IDGradoEstudios = _entidad.CIU_IDGradoEstudios;
-                    viewModel.CIU_IDgrupoEtnico = _entidad.CIU_IDgrupoEtnico;
+                    viewModel.CIU_IDgrupoEtnico = _entidad.CIU_IDGrupoEtnico;
                     viewModel.CIU_IDEstadoCivil = _entidad.CIU_IDEstadoCivil;
                     viewModel.CIU_TelParticular = _entidad.CIU_TelParticular;
                     viewModel.CIU_TelTrabajo = _entidad.CIU_TelTrabajo;
@@ -155,24 +145,12 @@ namespace Negocio
                     //domicilio del ciudadano
                     ObtenerDomicilioCiudadano(_entidad.CIU_IDDomicilio, viewModel);
 
-                    //Listas
-                    viewModel.Genero = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_06_Genero", ID = 0 }).SelectListado();
-                    viewModel.Estado = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_SN_EstadoRepublica", ID = 0 }).SelectListado();
-                    viewModel.EstadoCivil = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_13_CondicionesOrganizacionCivilFamilia", ID = 0 }).SelectListado();
-                    viewModel.GradoEstudios = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_09_Escolaridad", ID = 0 }).SelectListado();
-                    viewModel.GrupoEtnico = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_10_GrupoEtnico", ID = 0 }).SelectListado();
-                    viewModel.Vialidad = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_12_Vialidad", ID = 0 }).SelectListado();
-                    viewModel.Alcaldia = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_SN_Alcaldia", ID = 0 }).SelectListado();
-                    // viewModel.Estado = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_13_CondicionesOrganizacionCivilFamilia", ID = 0 }).SelectListado();
-                    viewModel.TipoVivienda = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_SN_TipoVivienda", ID = 0 }).SelectListado();
-                    viewModel.OrganizacionCivilFamilia = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_13_CondicionesOrganizacionCivilFamilia", ID = 0 }).SelectListado();
-                    viewModel.EstructuraFamiliar = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_66_EstructuraFamiliar", ID = 0 }).SelectListado();
-                    viewModel.EnfermedadCronica = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_17_EnfermedadCronica", ID = 0 }).SelectListado();
-                    viewModel.Discapacidad = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_16_Discapacidad", ID = 0 }).SelectListado();
-                    viewModel.GruposPrioritarios = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_18_GruposPrioritarios", ID = 0 }).SelectListado();
-                    viewModel.Ocupacion = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_15_Ocupacion", ID = 0 }).SelectListado();
-                    viewModel.Domicilio_Trabajo = GetDomicilio();
-
+                    //Domicilio de trabajo
+                    ObtenerDomicilio(_entidad.CIU_IDDomicilioTrabajo, viewModel.Domicilio_Trabajo);
+                    //PAREJA
+                    ObtenerPareja(_entidad.CIU_IDCiudadano, viewModel.Pareja);
+                    //Deudor Solidario
+                    ObtenerDeudorSolidario(_entidad.CIU_IDCiudadano, viewModel.DeudorSolidario);
                 }
 
             }
@@ -181,7 +159,42 @@ namespace Negocio
                 ModelState.AddModelError(string.Empty, ex.Message);
             }
 
+
             return viewModel;
+        }
+
+        public CiudadanoInsertarViewModel ObtenerCatalogos(CiudadanoInsertarViewModel viewModel)
+        {
+            //Listas
+            viewModel.Genero = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_06_Genero", ID = 0 }).SelectListado();
+            viewModel.Estado = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_SN_EstadoRepublica", ID = 0 }).SelectListado();
+            viewModel.EstadoCivil = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_13_CondicionesOrganizacionCivilFamilia", ID = 0 }).SelectListado();
+            viewModel.GradoEstudios = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_09_Escolaridad", ID = 0 }).SelectListado();
+            viewModel.GrupoEtnico = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_10_GrupoEtnico", ID = 0 }).SelectListado();
+            viewModel.Vialidad = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_12_Vialidad", ID = 0 }).SelectListado();
+            viewModel.Alcaldia = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_SN_Alcaldia", ID = 0 }).SelectListado();
+
+            viewModel.TipoVivienda = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_SN_TipoVivienda", ID = 0 }).SelectListado();
+            viewModel.OrganizacionCivilFamilia = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_13_CondicionesOrganizacionCivilFamilia", ID = 0 }).SelectListado();
+            viewModel.EstructuraFamiliar = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_66_EstructuraFamiliar", ID = 0 }).SelectListado();
+            viewModel.EnfermedadCronica = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_17_EnfermedadCronica", ID = 0 }).SelectListado();
+            viewModel.Discapacidad = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_16_Discapacidad", ID = 0 }).SelectListado();
+            viewModel.GruposPrioritarios = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_18_GruposPrioritarios", ID = 0 }).SelectListado();
+            viewModel.Ocupacion = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_15_Ocupacion", ID = 0 }).SelectListado();
+            return viewModel;
+        }
+
+        public CiudadanoDeudorSolidarioViewModel GetDeudorSolidario()
+        {
+            var _viewModel = new CiudadanoDeudorSolidarioViewModel();
+            //Listas Datos Personales
+            _viewModel.Genero = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_06_Genero", ID = 0 }).SelectListado();
+            _viewModel.EstadoCivil = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_SN_EstadoRepublica", ID = 0 }).SelectListado();
+            _viewModel.Ocupacion = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_SN_EstadoRepublica", ID = 0 }).SelectListado();
+            _viewModel.DomicilioActual = GetDomicilio();
+            _viewModel.DomicilioTrabajo = GetDomicilio();
+            return _viewModel;
+
         }
 
         public CiudadanoInsertarViewModel ObtenerDomicilioCiudadano(int? id, CiudadanoInsertarViewModel viewModel)
@@ -225,6 +238,122 @@ namespace Negocio
             }
 
             return viewModel;
+        }
+
+        public DomicilioFormViewModel ObtenerDomicilio(int? id, DomicilioFormViewModel _viewModel)
+        {
+            try
+            {
+                var _entidad = UoW.Domicilio.ObtenerEntidad(new Domicilio
+                {
+                    DOM_IDDomicilio = id
+
+                });
+
+                if (_entidad != null)
+                {
+                    _viewModel.DOM_IDVialidad = _entidad.DOM_IDVialidad;
+                    _viewModel.DOM_NombreVialidad = _entidad.DOM_NombreVialidad;
+                    _viewModel.DOM_NumeroExterior = _entidad.DOM_NumeroExterior;
+                    _viewModel.DOM_NumeroInterior = _entidad.DOM_NumeroInterior;
+                    _viewModel.DOM_Manzana = _entidad.DOM_Manzana;
+                    _viewModel.DOM_Lote = _entidad.DOM_Lote;
+                    _viewModel.DOM_Colonia = _entidad.DOM_Colonia;
+                    _viewModel.DOM_IDAlcaldia = _entidad.DOM_IDAlcaldia;
+                    _viewModel.DOM_CodigoPostal = _entidad.DOM_CodigoPostal;
+                    _viewModel.DOM_IDEstado = _entidad.DOM_IDEstado;
+                    _viewModel.DOM_Latitud = _entidad.DOM_Latitud;
+                    _viewModel.DOM_Longitud = _entidad.DOM_Longitud;
+                    _viewModel.DOM_Otro = _entidad.DOM_Otro;
+
+                    return _viewModel;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+
+            return _viewModel;
+        }
+
+        public CiudadanoParejaViewModel ObtenerPareja(int? id_solicitante, CiudadanoParejaViewModel _viewModel)
+        {
+            try
+            {
+                var _entidad = UoW.Pareja.ObtenerEntidad(new Pareja
+                {
+                    PAR_IDCiudadano = id_solicitante
+                });
+                if (_entidad != null)
+                {
+                    //datos personales
+                    _viewModel.PAR_IDPareja = _entidad.PAR_IDPareja;
+                    _viewModel.PAR_IDCiudadano = _entidad.PAR_IDCiudadano;
+
+                    _viewModel.PAR_Nombre = _entidad.PAR_Nombre;
+                    _viewModel.PAR_ApellidoPaterno = _entidad.PAR_ApellidoPaterno;
+                    _viewModel.PAR_ApellidoMaterno = _entidad.PAR_ApellidoMaterno;
+
+                    _viewModel.PAR_IDGenero = _entidad.PAR_IDGenero;
+                    _viewModel.PAR_FechaNacimiento = _entidad.PAR_FechaNacimiento;
+                    _viewModel.PAR_IDEstado = _entidad.PAR_IDEstado;
+                    _viewModel.PAR_IDRegimen = _entidad.PAR_IDRegimen;
+
+                    return _viewModel;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+
+            return _viewModel;
+        }
+
+        public CiudadanoDeudorSolidarioViewModel ObtenerDeudorSolidario(int? id_solicitante, CiudadanoDeudorSolidarioViewModel _viewModel)
+        {
+            try
+            {
+                var _entidad = UoW.DeudorSolidario.ObtenerEntidad(new DeudorSolidario
+                {
+                    DEU_IDCiudadano = id_solicitante
+                });
+                if (_entidad != null)
+                {
+                    //datos personales
+                    _viewModel.DEU_IDDeudorSolidario = _entidad.DEU_IDDeudorSolidario;
+                    _viewModel.DEU_IDCiudadano = _entidad.DEU_IDCiudadano;
+                    _viewModel.DEU_CURP = _entidad.DEU_CURP;
+                    _viewModel.DEU_Nombre = _entidad.DEU_Nombre;
+                    _viewModel.DEU_ApellidoPaterno = _entidad.DEU_ApellidoPaterno;
+                    _viewModel.DEU_ApellidoMaterno = _entidad.DEU_ApellidoMaterno;
+                    _viewModel.DEU_IDGenero = _entidad.DEU_IDGenero;
+                    _viewModel.DEU_IDDomicilio = _entidad.DEU_IDDomicilio;
+                    _viewModel.DEU_Ingreso = _entidad.DEU_Ingreso;
+                    _viewModel.DEU_CapacidadPago = _entidad.DEU_CapacidadPago;
+                    _viewModel.DEU_Telefono = _entidad.DEU_Telefono;
+                    _viewModel.DEU_IDEstadoCivil = _entidad.DEU_IDEstadoCivil;
+                    _viewModel.DEU_IDProfesion = _entidad.DEU_IDProfesion;
+                    _viewModel.DEU_NombreTrabajo = _entidad.DEU_NombreTrabajo;
+                    _viewModel.DEU_IDDomicilioTrabajo = _entidad.DEU_IDDomicilioTrabajo;
+                    _viewModel.DEU_FechaSolicitud = _entidad.DEU_FechaSolicitud;
+
+                    //casa
+                    ObtenerDomicilio(_entidad.DEU_IDDomicilio, _viewModel.DomicilioActual);
+                    //trabajo
+                    ObtenerDomicilio(_entidad.DEU_IDDomicilioTrabajo, _viewModel.DomicilioTrabajo);
+                    return _viewModel;
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+
+            return _viewModel;
         }
 
 

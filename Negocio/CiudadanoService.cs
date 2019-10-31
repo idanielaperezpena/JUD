@@ -89,7 +89,7 @@ namespace Negocio
                     viewModel.CIU_IDEstado = _entidad.CIU_IDEstado;
                     viewModel.CIU_TiempoResidencia = _entidad.CIU_TiempoResidencia;
                     viewModel.CIU_IDGradoEstudios = _entidad.CIU_IDGradoEstudios;
-                    viewModel.CIU_IDgrupoEtnico = _entidad.CIU_IDgrupoEtnico;
+                    viewModel.CIU_IDgrupoEtnico = _entidad.CIU_IDGrupoEtnico;
                     viewModel.CIU_IDEstadoCivil = _entidad.CIU_IDEstadoCivil;
                     viewModel.CIU_TelParticular = _entidad.CIU_TelParticular;
                     viewModel.CIU_TelTrabajo = _entidad.CIU_TelTrabajo;
@@ -267,7 +267,7 @@ namespace Negocio
                         CIU_IDEstructuraFamiliar = viewModel.CIU_IDEstructuraFamiliar,
                         CIU_IDGenero = viewModel.CIU_IDGenero,
                         CIU_IDGradoEstudios = viewModel.CIU_IDGradoEstudios,
-                        CIU_IDgrupoEtnico = viewModel.CIU_IDgrupoEtnico,
+                        CIU_IDGrupoEtnico = viewModel.CIU_IDgrupoEtnico,
                         CIU_IDGruposPrioritarios = viewModel.CIU_IDGruposPrioritarios,
                         CIU_IDOcupacion = viewModel.CIU_IDOcupacion,
                         CIU_IDOrganizacionCivilFamilia = viewModel.CIU_IDOrganizacionCivilFamilia,

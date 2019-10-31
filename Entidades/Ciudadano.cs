@@ -25,7 +25,7 @@ namespace Entidades
         public int CIU_IDEstadoCivil { get; set; }
         public int CIU_IDOrganizacionCivilFamilia { get; set; }
         public int CIU_IDGradoEstudios { get; set; }
-        public int CIU_IDgrupoEtnico { get; set; }
+        public int CIU_IDGrupoEtnico { get; set; }
         public string CIU_NumeroIdentificacion { get; set; }
         public int CIU_IDEnfermedadCronica { get; set; }
         public string CIU_EnfermedadCronicaOtro { get; set; }

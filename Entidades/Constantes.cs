@@ -11,6 +11,7 @@ namespace Entidades
         public const string MESSAGE_REQUIRED_FIELD = "Favor de completar todos los campos obligatorios (*).";
         public const string MESSAGE_EMAIL_FORMAT = "Favor de ingresar un formato correcto para los campos de correo electrónico.";
         public const string MESSAGE_MULTIPLE_EMAIL_FORMAT = "Los correos electrónicos deben tener un formato correcto y estar separados por ;";
+        public const string MESSAGE_DATE_FORMAT = "Favor de ingresar un formato correcto para el campo de fecha (dd/mm/yyyy).";
 
         public const string ATTR_ONCLICK = "onclick";
         public const string ATTR_TYPE = "type";

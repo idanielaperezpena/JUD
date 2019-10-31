@@ -34,6 +34,8 @@ namespace Negocio.ViewModels.Ciudadanos
 
         [CustomRequired]
         [Display(Name = "Fecha de Nacimiento *")]
+        [DataType(DataType.Date, ErrorMessage = "Favor de ingresar un formato correcto para el campo de fecha (dd/mm/yyyy)")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime PAR_FechaNacimiento { get; set; }
 
         [CustomRequired]
@@ -44,8 +46,5 @@ namespace Negocio.ViewModels.Ciudadanos
         public ICustomSelectList<Entidades.Catalogos> Genero { get; set; }
         public ICustomSelectList<Entidades.Catalogos> Estado { get; set; }
         public ICustomSelectList<Entidades.Catalogos> RegimenPatrimonial { get; set; }
-
-        // Calendarios
-        public CalendarControl FechaNacimiento { get; set; }
     }
 }

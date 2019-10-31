@@ -52,6 +52,7 @@ namespace Web.Controllers
         [HttpPost]
         public ActionResult GetDomicilioViewModel()
         {
+            ViewBag.Adicional = " En donde se pretende aplicar el credito";
             return PartialView("../Domicilio/_Insertar", _service.GetDomicilioViewModel());
         }
 
@@ -59,6 +60,12 @@ namespace Web.Controllers
         public ActionResult GetCiudadanoInsertar(string ID = null)
         {
             return PartialView("../Ciudadano/_InsertarPrueba", _service.CiudadanoInsertar(ID));
+        }
+
+        [HttpPost]
+        public ActionResult GetDeudorSolidarioViewModel()
+        {
+            return PartialView("../DeudorSolidario/_Insertar", _service.GetDeudorSolidario());
         }
 
     }

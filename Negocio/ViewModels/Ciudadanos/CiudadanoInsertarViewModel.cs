@@ -13,6 +13,10 @@ namespace Negocio.ViewModels.Ciudadanos
 {
     public class CiudadanoInsertarViewModel
     {
+        //Variables de vista
+        public bool CiudadanoExistente { get; set; }
+        public bool CreditoInicial { get; set; }
+
         //Datos Personales
         public string ID_Encriptado { get; set; }
 
@@ -41,6 +45,8 @@ namespace Negocio.ViewModels.Ciudadanos
 
         [CustomRequired]
         [Display(Name = "Fecha de Nacimiento *")]
+        [DataType(DataType.Date, ErrorMessage = "Favor de ingresar un formato correcto para el campo de fecha (dd/mm/yyyy)")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime CIU_FechaNacimiento { get; set; }
 
         [CustomRequired]
@@ -83,8 +89,6 @@ namespace Negocio.ViewModels.Ciudadanos
         public string CIU_CorreoElectronico { get; set; }
 
         public int? CIU_IDDomicilioTrabajo { get; set; }
-
-        public bool Boton { get; set; }
 
         //DomicilioCiudadano
         public string DOMC_IDDomicilio { get; set; }
@@ -141,6 +145,7 @@ namespace Negocio.ViewModels.Ciudadanos
 
         [Display(Name = "Otro ")]
         public string DOMC_Otro { get; set; }
+
 
         //Creditos Otorgados
         [CustomRequired]

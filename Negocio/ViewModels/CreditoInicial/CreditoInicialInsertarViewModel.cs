@@ -18,6 +18,8 @@ namespace Negocio.ViewModels.CreditoInicial
         public string CI_FolioSolicitud { get; set; }
 
         [CustomRequired]
+        [DataType(DataType.Date, ErrorMessage = "Favor de ingresar un formato correcto para el campo de fecha (dd/mm/yyyy)")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Fecha Solicitud *")]
         public DateTime CI_FechaSolicitud { get; set; }
 

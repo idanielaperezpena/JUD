@@ -49,7 +49,7 @@
                     <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                     </div>
-                    @Html.EditorFor(m => m.PAR_FechaNacimiento, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                    @Html.TextBox("PAR_FechaNacimiento", Model.PAR_FechaNacimiento, "{0:yyyy-MM-dd}", new { @style = "width:100%", type = "date", @class = "form-control form-control-sm datepicker" })
                 </div>
                 @Html.ValidationMessageFor(m => m.PAR_FechaNacimiento, "")
             </div>

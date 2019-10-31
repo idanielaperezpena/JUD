@@ -254,6 +254,7 @@
     <Content Include="Views\Ciudadano\_ValidarTabla.cshtml" />
     <Content Include="Views\CreditoInicial\Nuevo.cshtml" />
     <Content Include="Views\Ciudadano\_Validar.cshtml" />
+    <Content Include="Views\DeudorSolidario\_Insertar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
