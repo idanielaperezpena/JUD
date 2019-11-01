@@ -23,6 +23,7 @@ namespace Negocio
         public CreditoInicialInsertarViewModel Nuevo()
         {
             var _viewModel = new CreditoInicialInsertarViewModel();
+            _viewModel.ValidarCiudadano = new CiudadanoValidarViewModel();
 
             //Listas
             _viewModel.SeccionElectoral = UoW.SeccionElectoral.ObtenerListado(new SeccionElectoral { ID = 0 }).SelectListado();
@@ -47,8 +48,7 @@ namespace Negocio
         }
 
 
-        //Funciones
-
+        //Funciones de View Model
 
         private DomicilioFormViewModel GetDomicilio()
         {
@@ -356,6 +356,131 @@ namespace Negocio
             return _viewModel;
         }
 
+        //Funciones DB
 
+        public void EditarCreditoInicial(CreditoInicialInsertarViewModel viewModel)
+        {
+            //try
+            //{
+                //if (ModelState.IsValid)
+                //{
+                    var DomicilioC = EditarDomicilio(viewModel.CiudadanoInsertar);
+                    viewModel.CiudadanoInsertar.CIU_IDDomicilio = DomicilioC.DOMC_IDDomicilio;
+                    EditarCiudadano(viewModel.CiudadanoInsertar);
+                //}
+            //}
+            //catch (Exception ex)
+            //{
+            //    ModelState.AddModelError(string.Empty, ex.Message);
+            //}
+        }
+
+        private DomicilioCiudadano EditarDomicilio(CiudadanoInsertarViewModel viewModel)
+        {
+            //try {
+                //if (ModelState.IsValid)
+                //{
+                    int? IDDomicilio = null;
+                    if (!String.IsNullOrEmpty(viewModel.DOMC_IDDomicilio))
+                        IDDomicilio = Int32.Parse(UoW.Encriptador.Desencriptar(viewModel.DOMC_IDDomicilio));
+
+                    using (UoW.DomicilioCiudadano.TxScope = new TransactionScope())
+                    {
+
+                        var _entidad = UoW.DomicilioCiudadano.Alta(new DomicilioCiudadano
+                        {
+                            DOMC_IDDomicilio = IDDomicilio,
+                            DOMC_IDVialidad = viewModel.DOMC_IDVialidad,
+                            DOMC_NombreVialidad = viewModel.DOMC_NombreVialidad,
+                            DOMC_NumeroExterior = viewModel.DOMC_NumeroExterior,
+                            DOMC_NumeroInterior = viewModel.DOMC_NumeroInterior,
+                            DOMC_Manzana = viewModel.DOMC_Manzana,
+                            DOMC_Lote = viewModel.DOMC_Lote,
+                            DOMC_Colonia = viewModel.DOMC_Colonia,
+                            DOMC_IDAlcaldia = viewModel.DOMC_IDAlcaldia,
+                            DOMC_CodigoPostal = viewModel.DOMC_CodigoPostal,
+                            DOMC_IDEstado = viewModel.DOMC_IDEstado,
+                            DOMC_Latitud = viewModel.DOMC_Latitud,
+                            DOMC_Longitud = viewModel.DOMC_Longitud,
+                            DOMC_MontoRenta = viewModel.DOMC_MontoRenta,
+                            DOMC_IDTipoVivienda = viewModel.DOMC_IDTipoVivienda,
+                            DOMC_Otro = viewModel.DOMC_Otro
+                        });
+
+                        UoW.DomicilioCiudadano.TxScope.Complete();
+                        return _entidad;
+                    }
+
+                   
+                //}
+                //}
+                //catch (Exception ex)
+                //{
+                //    Console.WriteLine(ex.Message);
+                //    ModelState.AddModelError(string.Empty, ex.Message);
+                //}
+
+        }
+
+        private void EditarCiudadano(CiudadanoInsertarViewModel viewModel)
+        {
+            //try {
+            //if (ModelState.IsValid)
+            //{
+            int? IDCiudadano= null;
+            if (!String.IsNullOrEmpty(viewModel.DOMC_IDDomicilio))
+                IDCiudadano = Int32.Parse(UoW.Encriptador.Desencriptar(viewModel.ID_Encriptado));
+
+                using (UoW.Ciudadano.TxScope = new TransactionScope())
+                {
+                    var _entidad = UoW.Ciudadano.Alta(new Ciudadano
+                    {
+                        CIU_IDCiudadano = IDCiudadano,
+                        CIU_ApellidoMaterno = viewModel.CIU_ApellidoMaterno,
+                        CIU_ApellidoPaterno = viewModel.CIU_ApellidoPaterno,
+                        CIU_CorreoElectronico = viewModel.CIU_CorreoElectronico,
+                        CIU_CURP = viewModel.CIU_CURP,
+                        CIU_CapacidadPago = viewModel.CIU_CapacidadPago,
+                        CIU_CreditosOtorgados = viewModel.CIU_CreditosOtorgados,
+                        CIU_DiscapacidadOtro = viewModel.CIU_DiscapacidadOtro,
+                        CIU_EnfermedadCronicaOtro = viewModel.CIU_EnfermedadCronicaOtro,
+                        CIU_FechaNacimiento = viewModel.CIU_FechaNacimiento,
+                        CIU_IDDiscapacidad = viewModel.CIU_IDDiscapacidad,
+                        CIU_IDDomicilio = viewModel.CIU_IDDomicilio,
+                        CIU_IDDomicilioTrabajo = viewModel.CIU_IDDomicilioTrabajo,
+                        CIU_IDEnfermedadCronica = viewModel.CIU_IDEnfermedadCronica,
+                        CIU_IDEstado = viewModel.CIU_IDEstado,
+                        CIU_IDEstadoCivil = viewModel.CIU_IDEstadoCivil,
+                        CIU_IDEstructuraFamiliar = viewModel.CIU_IDEstructuraFamiliar,
+                        CIU_IDGenero = viewModel.CIU_IDGenero,
+                        CIU_IDGradoEstudios = viewModel.CIU_IDGradoEstudios,
+                        CIU_IDGrupoEtnico = viewModel.CIU_IDgrupoEtnico,
+                        CIU_IDGruposPrioritarios = viewModel.CIU_IDGruposPrioritarios,
+                        CIU_IDOcupacion = viewModel.CIU_IDOcupacion,
+                        CIU_IDOrganizacionCivilFamilia = viewModel.CIU_IDOrganizacionCivilFamilia,
+                        CIU_IngresoFamiliar = viewModel.CIU_IngresoFamiliar,
+                        CIU_Nombre = viewModel.CIU_Nombre,
+                        CIU_NombreTrabajo = viewModel.CIU_NombreTrabajo,
+                        CIU_NumeroIdentificacion = viewModel.CIU_NumeroIdentificacion,
+                        CIU_Proposito = viewModel.CIU_Proposito,
+                        CIU_TelCelular = viewModel.CIU_TelCelular,
+                        CIU_TelParticular = viewModel.CIU_TelCelular,
+                        CIU_TelRecados = viewModel.CIU_TelRecados,
+                        CIU_TelTrabajo = viewModel.CIU_TelTrabajo,
+                        CIU_TiempoResidencia = viewModel.CIU_TiempoResidencia
+                    });
+                    UoW.Ciudadano.TxScope.Complete();
+                }
+
+
+            //}
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //    ModelState.AddModelError(string.Empty, ex.Message);
+            //}
+
+        }
     }
 }

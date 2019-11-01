@@ -15,10 +15,11 @@ namespace Datos
 
         public override DomicilioCiudadano Alta(DomicilioCiudadano pGeneric)
         {
-            return ObtenerPrimero("SP_SIM_DomicilioCiudadano_IU", pGeneric.DOMC_CodigoPostal, pGeneric.DOMC_Colonia, pGeneric.DOMC_IDAlcaldia
-                , pGeneric.DOMC_IDDomicilio, pGeneric.DOMC_IDEstado, pGeneric.DOMC_IDVialidad, pGeneric.DOMC_Latitud, pGeneric.DOMC_Longitud
-                , pGeneric.DOMC_Lote, pGeneric.DOMC_Manzana, pGeneric.DOMC_NombreVialidad, pGeneric.DOMC_NumeroExterior, pGeneric.DOMC_NumeroInterior
-                , pGeneric.DOMC_Otro, pGeneric.DOMC_MontoRenta, pGeneric.DOMC_IDTipoVivienda);
+            return ObtenerPrimero("SP_SIM_DomicilioCiudadano_IU",
+                  pGeneric.DOMC_IDDomicilio, pGeneric.DOMC_IDVialidad, pGeneric.DOMC_NombreVialidad, pGeneric.DOMC_NumeroExterior
+                , pGeneric.DOMC_NumeroInterior, pGeneric.DOMC_Manzana, pGeneric.DOMC_Lote, pGeneric.DOMC_Colonia, pGeneric.DOMC_IDAlcaldia
+                , pGeneric.DOMC_CodigoPostal, pGeneric.DOMC_IDEstado, pGeneric.DOMC_Latitud, pGeneric.DOMC_Longitud, pGeneric.DOMC_MontoRenta
+                , pGeneric.DOMC_IDTipoVivienda, pGeneric.DOMC_Otro);
         }
 
         public override void Baja(DomicilioCiudadano pGeneric)

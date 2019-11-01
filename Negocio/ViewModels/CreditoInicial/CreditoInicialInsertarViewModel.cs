@@ -50,7 +50,6 @@ namespace Negocio.ViewModels.CreditoInicial
 
         public CreditoInicialInsertarViewModel()
         {
-            ValidarCiudadano = new CiudadanoValidarViewModel();
             CI_FechaSolicitud = DateTime.Today;
         }
 

@@ -3,6 +3,7 @@ using Negocio;
 using Negocio.ViewModels;
 using Negocio.ViewModels.Catalogos;
 using Negocio.ViewModels.Ciudadanos;
+using Negocio.ViewModels.CreditoInicial;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,9 +37,11 @@ namespace Web.Controllers
         }
 
         //Acciones
+
         [HttpPost]
-        public ActionResult Insertar(CiudadanoInsertarViewModel viewModel)
+        public ActionResult Insertar(CreditoInicialInsertarViewModel viewModel)
         {
+            _service.EditarCreditoInicial(viewModel);
             return Json(viewModel.ToJSON());
         }
 

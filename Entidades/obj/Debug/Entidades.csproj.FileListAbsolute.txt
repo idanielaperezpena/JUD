@@ -49,7 +49,6 @@ C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\Entidades\bin\Debug\ExcelN
 C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\Entidades\bin\Debug\Newtonsoft.Json.xml
 C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\Entidades\bin\Debug\SendGrid.pdb
 C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\Entidades\bin\Debug\SendGrid.xml
-C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
 C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
 C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\Entidades\obj\Debug\Entidades.csproj.CopyComplete
 C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\Entidades\obj\Debug\Entidades.dll

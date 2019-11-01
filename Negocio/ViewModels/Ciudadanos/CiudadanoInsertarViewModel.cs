@@ -14,10 +14,13 @@ namespace Negocio.ViewModels.Ciudadanos
     public class CiudadanoInsertarViewModel
     {
         //Variables de vista
+        #region  Variables de vista
         public bool CiudadanoExistente { get; set; }
         public bool CreditoInicial { get; set; }
+        #endregion
 
         //Datos Personales
+        #region Datos Personales
         public string ID_Encriptado { get; set; }
 
         [CustomRequired]
@@ -90,7 +93,11 @@ namespace Negocio.ViewModels.Ciudadanos
 
         public int? CIU_IDDomicilioTrabajo { get; set; }
 
+        #endregion
+
         //DomicilioCiudadano
+        #region Domicilio Ciudadano
+
         public string DOMC_IDDomicilio { get; set; }
 
         [CustomRequired]
@@ -146,6 +153,7 @@ namespace Negocio.ViewModels.Ciudadanos
         [Display(Name = "Otro ")]
         public string DOMC_Otro { get; set; }
 
+        #endregion
 
         //Creditos Otorgados
         [CustomRequired]
@@ -225,10 +233,6 @@ namespace Negocio.ViewModels.Ciudadanos
 
 
         public CiudadanoInsertarViewModel() {
-            Pareja = new CiudadanoParejaViewModel();
-            Domicilio_Trabajo = new DomicilioFormViewModel();
-            Domicilio_Diferente = new DomicilioFormViewModel();
-            DeudorSolidario = new CiudadanoDeudorSolidarioViewModel();
         }
     }
 }

@@ -143,7 +143,29 @@ $(document).on('change', "input[name=RequiereDS]", function (e) {
 
 //Guardar CI con ciudadano Insertado
 $(document).on('click', '#guardar', function (e) {
-
+    e.preventDefault();
+    if ($(this).closest('form').valid()) {
+        var CreditoInicial = $(this).closest('form').serializeObject();
+        var Ciudadano = $(this).closest('form').serializeObject();
+        var Pareja = $('#ParejaViewModel').find('select, textarea, input').serializeObject();
+        var Domicilio_Diferente = $('#DomicilioViewModel').find('select, textarea, input').serializeObject();
+        var Deudor_Solidario = $('#DeudorSolidarioViewModel').find('select, textarea, input').serializeObject();
+        CreditoInicial.CiudadanoInsertar = Ciudadano;
+        CreditoInicial.CiudadanoInsertar.Pareja = Pareja;
+        CreditoInicial.CiudadanoInsertar.Domicilio_Diferente = Domicilio_Diferente;
+        CreditoInicial.CiudadanoInsertar.DeudorSolidario = Deudor_Solidario;
+        console.log(CreditoInicial);
+        $.ajax({
+            type: "POST",
+            url: "/CreditoInicial/Insertar",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ viewModel: CreditoInicial }),
+            success: function (e) {
+                console.log(e)
+            }
+        });
+    }
+    
 });
 
 
@@ -151,9 +173,9 @@ $(document).on('click', '#guardar', function (e) {
 
 //Funcionamiento siguiente anterior
 $(document).on('click', '.siguiente', function (e) {
-    //if ($(this).closest('form').valid()) {
+    if ($(this).closest('form').valid()) {
         var step = $(this).attr('data-step');
         $(this).closest('fieldset').slideUp('slow');
         $('#step' + step).slideDown('slow');
-    //}
+    }
 });
