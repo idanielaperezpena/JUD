@@ -56,8 +56,6 @@ namespace Negocio.ViewModels.Ciudadanos
         [Display(Name = "Entidad de Nacimiento *")]
         public int CIU_IDEstado { get; set; }
 
-        public int? CIU_IDDomicilio { get; set; }
-
         [CustomRequired]
         [Display(Name = "Tiempo de Residencia en la CDMX *")]
         public int CIU_TiempoResidencia { get; set; }
@@ -98,7 +96,8 @@ namespace Negocio.ViewModels.Ciudadanos
         //DomicilioCiudadano
         #region Domicilio Ciudadano
 
-        public string DOMC_IDDomicilio { get; set; }
+        public int? DOMC_IDDomicilio { get; set; }
+        public int? DOMC_IDCiudadano { get; set; }
 
         [CustomRequired]
         [Display(Name = "Vialidad *")]

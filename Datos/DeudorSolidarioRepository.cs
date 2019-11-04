@@ -15,10 +15,12 @@ namespace Datos
 
         public override DeudorSolidario Alta(DeudorSolidario pGeneric)
         {
-            return ObtenerPrimero("SP_SIM_DeudorSolidario_IU", pGeneric.DEU_ApellidoMaterno, pGeneric.DEU_ApellidoPaterno, pGeneric.DEU_CapacidadPago
-                , pGeneric.DEU_CURP, pGeneric.DEU_FechaSolicitud, pGeneric.DEU_IDDeudorSolidario, pGeneric.DEU_IDDomicilio, pGeneric.DEU_IDDomicilioTrabajo
-                , pGeneric.DEU_IDEstadoCivil, pGeneric.DEU_IDGenero, pGeneric.DEU_IDProfesion, pGeneric.DEU_Ingreso, pGeneric.DEU_Nombre
-                , pGeneric.DEU_NombreTrabajo, pGeneric.DEU_Telefono, pGeneric.DEU_IDCiudadano);
+            return ObtenerPrimero("SP_SIM_DeudorSolidario_IU"
+                , pGeneric.DEU_IDDeudorSolidario, pGeneric.DEU_IDCiudadano, pGeneric.DEU_CURP
+                , pGeneric.DEU_Nombre, pGeneric.DEU_ApellidoPaterno, pGeneric.DEU_ApellidoMaterno
+                , pGeneric.DEU_IDGenero, pGeneric.DEU_IDDomicilio, pGeneric.DEU_Ingreso, pGeneric.DEU_CapacidadPago
+                , pGeneric.DEU_Telefono, pGeneric.DEU_IDEstadoCivil, pGeneric.DEU_IDProfesion
+                , pGeneric.DEU_NombreTrabajo, pGeneric.DEU_IDDomicilioTrabajo, pGeneric.DEU_FechaSolicitud);
         }
 
         public override void Baja(DeudorSolidario pGeneric)

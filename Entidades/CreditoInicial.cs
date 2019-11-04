@@ -18,7 +18,7 @@ namespace Entidades
         public int? CI_IDSesionComite { get; set; }
         public string CI_IDMejoramiento { get; set; }
         public string CI_FolioCredito { get; set; }
-        public float CI_Ingreso { get; set; }
+        public double CI_Ingreso { get; set; }
         public bool CI_ComprobanteIngresos { get; set; }
         public bool CI_CartaResponsiva { get; set; }
     }

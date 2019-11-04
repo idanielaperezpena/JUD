@@ -20,6 +20,7 @@ namespace Negocio
         private DomicilioCiudadanoRepository _domiciliociudadanoRepo;
         private DomicilioRepository _domicilioRepo;
         private SeccionElectoralRepository _seccionRepo;
+        private CreditoInicialRepository _creditoinicial;
 
         private EmailUtility _emailSender;
         private EncriptarUtility _encriptador;
@@ -124,6 +125,17 @@ namespace Negocio
                     _seccionRepo = new SeccionElectoralRepository(_context);
 
                 return _seccionRepo;
+            }
+        }
+
+        public CreditoInicialRepository CreditoInicial
+        {
+            get
+            {
+                if (_creditoinicial == null)
+                    _creditoinicial = new CreditoInicialRepository(_context);
+
+                return _creditoinicial;
             }
         }
 

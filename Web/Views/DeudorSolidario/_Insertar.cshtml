@@ -36,17 +36,19 @@
 
             <div class="form-group col-lg-6">
                 @Html.LabelFor(model => model.DEU_IDGenero, htmlAttributes: new { @class = "control-label " })
-                
-                    @Html.EditorFor(model => model.DEU_IDGenero, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
-                    @Html.ValidationMessageFor(model => model.DEU_IDGenero, "", new { @class = "text-danger" })
-                
+
+                @Html.CustomDropDownListFor(m => m.DEU_IDGenero, Model.Genero, new { @class = "form-control form-control-sm " })
+
+                @Html.ValidationMessageFor(model => model.DEU_IDGenero, "", new { @class = "text-danger" })
+
             </div>
             <div class="form-group col-lg-6">
                 @Html.LabelFor(model => model.DEU_IDEstadoCivil, htmlAttributes: new { @class = "control-label" })
-               
-                    @Html.EditorFor(model => model.DEU_IDEstadoCivil, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
-                    @Html.ValidationMessageFor(model => model.DEU_IDEstadoCivil, "", new { @class = "text-danger" })
-            
+
+                @Html.CustomDropDownListFor(m => m.DEU_IDEstadoCivil, Model.EstadoCivil, new { @class = "form-control form-control-sm " })
+
+                @Html.ValidationMessageFor(model => model.DEU_IDEstadoCivil, "", new { @class = "text-danger" })
+
             </div>
         </div>
 

@@ -16,7 +16,7 @@ namespace Datos
         public override DomicilioCiudadano Alta(DomicilioCiudadano pGeneric)
         {
             return ObtenerPrimero("SP_SIM_DomicilioCiudadano_IU",
-                  pGeneric.DOMC_IDDomicilio, pGeneric.DOMC_IDVialidad, pGeneric.DOMC_NombreVialidad, pGeneric.DOMC_NumeroExterior
+                  pGeneric.DOMC_IDDomicilioCiudadano,pGeneric.DOMC_IDCiudadano, pGeneric.DOMC_IDVialidad, pGeneric.DOMC_NombreVialidad, pGeneric.DOMC_NumeroExterior
                 , pGeneric.DOMC_NumeroInterior, pGeneric.DOMC_Manzana, pGeneric.DOMC_Lote, pGeneric.DOMC_Colonia, pGeneric.DOMC_IDAlcaldia
                 , pGeneric.DOMC_CodigoPostal, pGeneric.DOMC_IDEstado, pGeneric.DOMC_Latitud, pGeneric.DOMC_Longitud, pGeneric.DOMC_MontoRenta
                 , pGeneric.DOMC_IDTipoVivienda, pGeneric.DOMC_Otro);
@@ -29,7 +29,7 @@ namespace Datos
 
         public override DomicilioCiudadano ObtenerEntidad(DomicilioCiudadano pGeneric)
         {
-            return ObtenerPrimero("SP_SIM_DomicilioCiudadano_S", pGeneric.DOMC_IDDomicilio);
+            return ObtenerPrimero("SP_SIM_DomicilioCiudadano_S", pGeneric.DOMC_IDCiudadano);
         }
 
         public override List<DomicilioCiudadano> ObtenerListado(DomicilioCiudadano pGeneric)

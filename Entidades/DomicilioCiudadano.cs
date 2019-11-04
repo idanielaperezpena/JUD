@@ -8,7 +8,8 @@ namespace Entidades
 {
     public class DomicilioCiudadano
     {
-        public int? DOMC_IDDomicilio { get; set; }
+        public int? DOMC_IDDomicilioCiudadano { get; set; }
+        public int? DOMC_IDCiudadano { get; set; }
         public int DOMC_IDVialidad { get; set; }
         public string DOMC_NombreVialidad { get; set; }
         public string DOMC_NumeroExterior { get; set; }

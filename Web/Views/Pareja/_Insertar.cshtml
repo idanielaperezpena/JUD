@@ -8,7 +8,8 @@
     </div>
 
     <div class="box-body">
-
+        @Html.HiddenFor(m => m.PAR_IDPareja)
+        @Html.HiddenFor(m => m.PAR_IDCiudadano)
         <div class="form-group">
             @Html.LabelFor(m => m.PAR_Nombre)
             @Html.EditorFor(m => m.PAR_Nombre, new { htmlAttributes = new { @class = "form-control form-control-sm" } })

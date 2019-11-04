@@ -16,7 +16,6 @@ namespace Entidades
         public int CIU_IDGenero { get; set; }
         public DateTime CIU_FechaNacimiento { get; set; }
         public int CIU_IDEstado { get; set; }
-        public int? CIU_IDDomicilio { get; set; }
         public int CIU_TiempoResidencia { get; set; }
         public string CIU_TelParticular { get; set; }
         public string CIU_TelRecados { get; set; }

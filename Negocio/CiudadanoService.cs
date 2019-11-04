@@ -40,7 +40,6 @@ namespace Negocio
                     _temp.GeneroTexto = _InfoCatalogo.Descripcion;
                     _temp.DatosNacimiento = _cat.CIU_FechaNacimiento.Date.ToShortDateString().ToString();
                     _temp.Contacto = _cat.CIU_TelParticular;
-                    _temp.DomicilioCompleto = _cat.CIU_IDDomicilio.ToString();
 
                     viewModel.Listado.Add(_temp);
                 }
@@ -110,10 +109,8 @@ namespace Negocio
                     viewModel.CIU_IDDomicilioTrabajo = _entidad.CIU_IDDomicilioTrabajo;
                     viewModel.CIU_CapacidadPago = _entidad.CIU_CapacidadPago;
                     viewModel.CIU_CorreoElectronico = _entidad.CIU_CorreoElectronico;
-                    viewModel.CIU_IDDomicilio = _entidad.CIU_IDDomicilio;
-
                     //domicilio del ciudadano
-                    ObtenerDomicilioCiudadano(_entidad.CIU_IDDomicilio, viewModel);
+                    ObtenerDomicilioCiudadano(1,viewModel);
 
                     //Domicilio de trabajo
                     ObtenerDomicilio(_entidad.CIU_IDDomicilioTrabajo,viewModel.Domicilio_Trabajo);
@@ -154,7 +151,6 @@ namespace Negocio
                     _temp.GeneroTexto = _InfoCatalogo.Descripcion;
                     _temp.DatosNacimiento = _cat.CIU_FechaNacimiento.Date.ToShortDateString().ToString();
                     _temp.Contacto = _cat.CIU_TelParticular;
-                    _temp.DomicilioCompleto = _cat.CIU_IDDomicilio.ToString();
 
                     viewModel.Listado.Add(_temp);
                 }
@@ -259,7 +255,6 @@ namespace Negocio
                         CIU_FechaNacimiento = viewModel.CIU_FechaNacimiento,
                         CIU_IDCiudadano = Int32.Parse(this.UoW.Encriptador.Desencriptar(viewModel.ID_Encriptado)),
                         CIU_IDDiscapacidad = viewModel.CIU_IDDiscapacidad,
-                        CIU_IDDomicilio = viewModel.CIU_IDDomicilio,
                         CIU_IDDomicilioTrabajo = viewModel.CIU_IDDomicilioTrabajo,
                         CIU_IDEnfermedadCronica = viewModel.CIU_IDEnfermedadCronica,
                         CIU_IDEstado = viewModel.CIU_IDEstado,
@@ -313,7 +308,7 @@ namespace Negocio
             {
                 var _entidad = UoW.DomicilioCiudadano.ObtenerEntidad(new DomicilioCiudadano
                 {
-                    DOMC_IDDomicilio = id
+                    DOMC_IDDomicilioCiudadano = id
 
                 });
 

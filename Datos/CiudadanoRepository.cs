@@ -16,7 +16,7 @@ namespace Datos
         public override Ciudadano Alta(Ciudadano pGeneric)
         {
             return ObtenerPrimero("SP_SIM_Ciudadano_IU", pGeneric.CIU_IDCiudadano, pGeneric.CIU_CURP, pGeneric.CIU_Nombre, pGeneric.CIU_ApellidoPaterno
-                , pGeneric.CIU_ApellidoMaterno, pGeneric.CIU_IDGenero, pGeneric.CIU_FechaNacimiento, pGeneric.CIU_IDEstado, pGeneric.CIU_IDDomicilio
+                , pGeneric.CIU_ApellidoMaterno, pGeneric.CIU_IDGenero, pGeneric.CIU_FechaNacimiento, pGeneric.CIU_IDEstado
                 , pGeneric.CIU_TiempoResidencia, pGeneric.CIU_TelParticular, pGeneric.CIU_TelRecados, pGeneric.CIU_TelTrabajo, pGeneric.CIU_TelCelular, pGeneric.CIU_IDEstadoCivil
                 , pGeneric.CIU_IDOrganizacionCivilFamilia, pGeneric.CIU_IDGradoEstudios, pGeneric.CIU_IDGrupoEtnico, pGeneric.CIU_NumeroIdentificacion
                 , pGeneric.CIU_IDEnfermedadCronica, pGeneric.CIU_EnfermedadCronicaOtro, pGeneric.CIU_IDDiscapacidad, pGeneric.CIU_DiscapacidadOtro, pGeneric.CIU_IDGruposPrioritarios, pGeneric.CIU_Proposito
