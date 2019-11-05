@@ -31,11 +31,11 @@ namespace Negocio.ViewModels.CreditoInicial
         [Display(Name = "Unidad Territorial *")]
         public string UnidadTerritorial { get; set; }
 
-        [CustomRequired]
-        [Display(Name = "Ingreso *")]
-        public double CI_Ingreso { get; set; }
 
+        public double CI_Ingreso { get; set; }
+        [Display(Name = "¿Require comprobante de ingresos? *")]
         public bool CI_ComprobanteIngresos { get; set; }
+        [Display(Name = "¿Require carta responsiva? *")]
         public bool CI_CartaResponsiva { get; set; }
 
 

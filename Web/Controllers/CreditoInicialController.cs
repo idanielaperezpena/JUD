@@ -23,10 +23,20 @@ namespace Web.Controllers
             _service = new CreditoInicialService(ModelState);
         }
 
-        // GET: CreditoInicial
-        public ActionResult Index()
+        public ActionResult Index(Notificacion notificacion = null)
         {
-            return View();
+            if (notificacion != null)
+            {
+                ViewBag.Error = notificacion.Error;
+                ViewBag.MensajeError = notificacion.Mensaje;
+            }
+            else
+            {
+                ViewBag.Error = false;
+            }
+            var _vm = _service.Index();
+            ViewBag.Titulo = "Lista de Creditos Iniciales";
+            return View(_vm);
         }
 
         public ActionResult Nuevo()

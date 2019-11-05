@@ -15,9 +15,11 @@ namespace Datos
 
         public override CreditoInicial Alta(CreditoInicial pGeneric)
         {
-            return ObtenerPrimero("SP_SIM_CreditoInicial_IU", pGeneric.CI_CartaResponsiva, pGeneric.CI_ComprobanteIngresos, pGeneric.CI_FechaCaptura, pGeneric.CI_FechaSolicitud
-                , pGeneric.CI_FolioCredito, pGeneric.CI_FolioSolicitud, pGeneric.CI_IDCiudadano, pGeneric.CI_IDCreditoInicial, pGeneric.CI_IDDomicilio, pGeneric.CI_IDMejoramiento
-                , pGeneric.CI_IDSeccionElectoral, pGeneric.CI_IDSesionComite, pGeneric.CI_Ingreso);
+            return ObtenerPrimero("SP_SIM_CreditoInicial_IU"
+                , pGeneric.CI_IDCreditoInicial, pGeneric.CI_FolioSolicitud, pGeneric.CI_IDCiudadano
+                , pGeneric.CI_FechaCaptura, pGeneric.CI_FechaSolicitud, pGeneric.CI_IDSeccionElectoral
+                , pGeneric.CI_IDDomicilio, pGeneric.CI_IDSesionComite, pGeneric.CI_IDMejoramiento
+                , pGeneric.CI_FolioCredito, pGeneric.CI_Ingreso, pGeneric.CI_ComprobanteIngresos, pGeneric.CI_CartaResponsiva);
         }
 
         public override void Baja(CreditoInicial pGeneric)
@@ -41,9 +43,8 @@ namespace Datos
 
         public override List<CreditoInicial> ObtenerListado(CreditoInicial pGeneric)
         {
-            return ObtenerLista("SP_SIM_CreditoInicial_S", pGeneric.CI_CartaResponsiva, pGeneric.CI_ComprobanteIngresos, pGeneric.CI_FechaCaptura, pGeneric.CI_FechaSolicitud
-                , pGeneric.CI_FolioCredito, pGeneric.CI_FolioSolicitud, pGeneric.CI_IDCiudadano, pGeneric.CI_IDCreditoInicial, pGeneric.CI_IDDomicilio, pGeneric.CI_IDMejoramiento
-                , pGeneric.CI_IDSeccionElectoral, pGeneric.CI_IDSesionComite, pGeneric.CI_Ingreso);
+            return ObtenerLista("SP_SIM_CreditoInicial_S"
+                , pGeneric.CI_IDCreditoInicial);
         }
     }
 }

@@ -41,3 +41,7 @@
 #tabla_ciudadano tbody tr{
     cursor:pointer;
 }
+
+.icono_tabla{
+    font-size : 20px ;
+}

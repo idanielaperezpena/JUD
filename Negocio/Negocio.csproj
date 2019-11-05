@@ -119,6 +119,7 @@
     <Compile Include="ViewModels\Ciudadanos\CiudadanoTrabajoViewModel.cs" />
     <Compile Include="ViewModels\Ciudadanos\CiudadanoValidarViewModel.cs" />
     <Compile Include="ViewModels\CreditoComplementario\CreditoComplementarioInsertarViewModel.cs" />
+    <Compile Include="ViewModels\CreditoInicial\CreditoInicialIndexViewModel.cs" />
     <Compile Include="ViewModels\CreditoInicial\CreditoInicialInsertarViewModel.cs" />
     <Compile Include="ViewModels\CreditoSustentabilidad\CreditoSustentabilidadInsertarViewModel.cs" />
     <Compile Include="ViewModels\DeudorSolidario\DeudorSolidarioInsertarViewModel.cs" />

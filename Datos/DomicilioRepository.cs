@@ -15,9 +15,11 @@ namespace Datos
 
         public override Domicilio Alta(Domicilio pGeneric)
         {
-            return ObtenerPrimero("SP_SIM_Domicilio_IU", pGeneric.DOM_CodigoPostal, pGeneric.DOM_Colonia, pGeneric.DOM_IDAlcaldia
-                , pGeneric.DOM_IDDomicilio, pGeneric.DOM_IDEstado, pGeneric.DOM_IDVialidad, pGeneric.DOM_Latitud, pGeneric.DOM_Longitud
-                , pGeneric.DOM_Lote, pGeneric.DOM_Manzana, pGeneric.DOM_NombreVialidad, pGeneric.DOM_NumeroExterior, pGeneric.DOM_NumeroInterior
+            return ObtenerPrimero("SP_SIM_Domicilio_IU"
+                , pGeneric.DOM_IDDomicilio, pGeneric.DOM_IDVialidad, pGeneric.DOM_NombreVialidad
+                , pGeneric.DOM_NumeroExterior, pGeneric.DOM_NumeroInterior, pGeneric.DOM_Manzana
+                , pGeneric.DOM_Lote, pGeneric.DOM_Colonia, pGeneric.DOM_IDAlcaldia, pGeneric.DOM_CodigoPostal
+                , pGeneric.DOM_IDEstado, pGeneric.DOM_Latitud, pGeneric.DOM_Longitud
                 );
         }
 

@@ -154,22 +154,33 @@ $(document).on('click', '#guardar', function (e) {
         CreditoInicial.CiudadanoInsertar.Pareja = Pareja;
         CreditoInicial.CiudadanoInsertar.Domicilio_Diferente = Domicilio_Diferente;
         CreditoInicial.CiudadanoInsertar.DeudorSolidario = Deudor_Solidario;
-        console.log(CreditoInicial);
+        Swal.fire({
+            title: 'Ingresando la Solicitud',
+            allowOutsideClick: false,
+            onBeforeOpen: () => {
+                Swal.showLoading()
+            }
+        })
         $.ajax({
             type: "POST",
             url: "/CreditoInicial/Insertar",
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({ viewModel: CreditoInicial }),
             success: function (e) {
+                Swal.close();
                 console.log(e)
+                Swal.fire({
+                    title: 'Solicitud Ingresada con exito',
+                    allowOutsideClick: false,
+                    onClose: () => {
+                        window.location = "/CreditoInicial";
+                    }
+                })
             }
         });
     }
     
 });
-
-
-//GUardar CI con nuevo ciudadano
 
 //Funcionamiento siguiente anterior
 $(document).on('click', '.siguiente', function (e) {
