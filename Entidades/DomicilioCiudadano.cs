@@ -25,5 +25,25 @@ namespace Entidades
         public double DOMC_MontoRenta { get; set; }
         public int DOMC_IDTipoVivienda { get; set; }
         public string DOMC_Otro { get; set; }
+
+        public override string ToString()
+        {
+            string _domicilioCompleto = string.Empty;
+            _domicilioCompleto += "Vialidad: " + DOMC_NombreVialidad + ", ";
+
+            if(!string.IsNullOrEmpty(DOMC_NumeroExterior))
+                _domicilioCompleto += "Número Exterior: " + DOMC_NumeroExterior + ", ";
+            if (!string.IsNullOrEmpty(DOMC_NumeroInterior))
+                _domicilioCompleto += "Número Interior: " + DOMC_NumeroInterior + ", ";
+            if (!string.IsNullOrEmpty(DOMC_Manzana))
+                _domicilioCompleto += "MZ: " + DOMC_Manzana + ", ";
+            if(!string.IsNullOrEmpty(DOMC_Lote))
+                _domicilioCompleto += "LT: " + DOMC_Manzana + ", ";
+            _domicilioCompleto += "Colonia" + DOMC_Colonia + ", ";
+            _domicilioCompleto += "Código Postal" + DOMC_CodigoPostal + ", ";
+
+            return _domicilioCompleto.ToUpper();
+            
+        }
     }
 }

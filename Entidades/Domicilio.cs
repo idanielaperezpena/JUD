@@ -21,7 +21,7 @@ namespace Entidades
         public int DOM_IDEstado { get; set; }
         public string DOM_Latitud { get; set; }
         public string DOM_Longitud { get; set; }
-        public string DOM_Otro { get; set; }
+        
 
     }
 }

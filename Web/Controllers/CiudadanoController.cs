@@ -63,18 +63,21 @@ namespace Web.Controllers
         public ActionResult Insertar(CiudadanoInsertarViewModel viewModel)
         {
             _service.Edit(viewModel);
-            if (ModelState.IsValid)
-                return RedirectToAction("Index");
-
             return Json(viewModel.ToJSON());
         }
 
+        [HttpPost]
+        public ActionResult GetParejaViewModel()
+        {
+            return PartialView("../Pareja/_Insertar", _service.GetParejaCiudadano());
+        }
 
-        //[HttpPost]
-        //public ActionResult BusquedaExistente(string CadenaBusqueda)
-        //{
-        //    return PartialView("../Ciudadano/_ValidarTabla", _service.BusquedaCURPNOMBRE(CadenaBusqueda));
-        //}
+        [HttpPost]
+        public ActionResult GetDomicilioViewModel()
+        {
+           
+            return PartialView("../Domicilio/_Insertar", _service.GetDomicilio());
+        }
         [HttpPost]
         public ActionResult BusquedaExistente(string CadenaBusqueda)
         {

@@ -19,16 +19,17 @@ namespace Negocio.ViewModels.Domicilio
         [Display(Name = "Vialidad *")]
         public string DOM_NombreVialidad { get; set; }
 
+        [CustomRequired]
         [Display(Name = "Número Exterior *")]
         public string DOM_NumeroExterior { get; set; }
 
-        [Display(Name = "Número Interior *")]
+        [Display(Name = "Número Interior ")]
         public string DOM_NumeroInterior { get; set; }
 
-        [Display(Name = "Manzana *")]
+        [Display(Name = "Manzana ")]
         public string DOM_Manzana { get; set; }
 
-        [Display(Name = "Lote *")]
+        [Display(Name = "Lote ")]
         public string DOM_Lote { get; set; }
 
         [CustomRequired]
@@ -53,8 +54,7 @@ namespace Negocio.ViewModels.Domicilio
         [Display(Name = "Longitud")]
         public string DOM_Longitud { get; set; }
 
-        [Display(Name = "Otro")]
-        public string DOM_Otro { get; set; }
+        
 
 
         //Variables de Vista 

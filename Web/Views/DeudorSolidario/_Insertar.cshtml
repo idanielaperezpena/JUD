@@ -4,6 +4,8 @@
         <h1 class="box-title">6. Datos de la (el) Deudor Solidario.</h1>
     </div>
     @Html.ValidationSummary(true,"", new { @class = "text-danger" })
+    @Html.HiddenFor(m=>m.DEU_IDDeudorSolidario)
+    @Html.HiddenFor(m=>m.DEU_IDCiudadano)
     <div class="box-body">
         <div class="form-group">
             @Html.LabelFor(model => model.DEU_CURP, htmlAttributes: new { @class = "control-label" })

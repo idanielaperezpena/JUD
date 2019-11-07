@@ -298,7 +298,7 @@ namespace Negocio
                     _viewModel.DOM_IDEstado = _entidad.DOM_IDEstado;
                     _viewModel.DOM_Latitud = _entidad.DOM_Latitud;
                     _viewModel.DOM_Longitud = _entidad.DOM_Longitud;
-                    _viewModel.DOM_Otro = _entidad.DOM_Otro;
+                   
 
                     return _viewModel;
                 }
@@ -520,7 +520,7 @@ namespace Negocio
                                 DOM_IDEstado = viewModel.DOM_IDEstado,
                                 DOM_Latitud = viewModel.DOM_Latitud,
                                 DOM_Longitud = viewModel.DOM_Longitud,
-                                DOM_Otro = viewModel.DOM_Otro
+                                
                             });
 
                             UoW.Domicilio.TxScope.Complete();
@@ -543,7 +543,7 @@ namespace Negocio
                                 DOM_IDEstado = viewModel.DOMC_IDEstado,
                                 DOM_Latitud = viewModel.DOMC_Latitud,
                                 DOM_Longitud = viewModel.DOMC_Longitud,
-                                DOM_Otro = viewModel.DOMC_Otro
+                                
                             });
 
                             UoW.Domicilio.TxScope.Complete();

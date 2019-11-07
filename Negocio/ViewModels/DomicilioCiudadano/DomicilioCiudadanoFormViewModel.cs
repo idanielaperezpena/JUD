@@ -10,7 +10,7 @@ namespace Negocio.ViewModels.DomicilioCiudadano
     public class DomicilioCiudadanoFormViewModel
     {
 
-        public string DOMC_IDDomicilio { get; set; }
+        public int? DOMC_IDDomicilio { get; set; }
 
         [CustomRequired]
         [Display(Name = "Vialidad *")]

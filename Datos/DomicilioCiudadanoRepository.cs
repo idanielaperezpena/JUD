@@ -34,7 +34,7 @@ namespace Datos
 
         public override List<DomicilioCiudadano> ObtenerListado(DomicilioCiudadano pGeneric)
         {
-            throw new NotImplementedException();
+            return ObtenerLista("SP_SIM_DomicilioCiudadano_S", pGeneric.DOMC_IDCiudadano);
         }
     }
 }

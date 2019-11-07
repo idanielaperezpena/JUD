@@ -15,8 +15,8 @@ namespace Web
 
             routes.MapRoute(
                 name: "DefaultPrueba",
-                url: "{controller}/{action}/{id}",
-                defaults: new { id = UrlParameter.Optional }
+                url: "{controller}/{action}/{cve}",
+                defaults: new { cve = UrlParameter.Optional }
             );
 
             routes.MapRoute(
