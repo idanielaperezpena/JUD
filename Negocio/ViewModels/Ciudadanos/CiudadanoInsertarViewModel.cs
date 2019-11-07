@@ -25,6 +25,7 @@ namespace Negocio.ViewModels.Ciudadanos
 
         [CustomRequired]
         [Display(Name = "CURP *")]
+        [RegularExpression("^[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$",ErrorMessage = "El CURP no es valido")]
         public string CIU_CURP { get; set; }
 
         [CustomRequired]
@@ -39,6 +40,7 @@ namespace Negocio.ViewModels.Ciudadanos
         public string CIU_ApellidoMaterno { get; set; }
 
         [CustomRequired]
+        [RegularExpression("^[0-9]{9}$", ErrorMessage = "El Numero de Identificacion no es valido")]
         [Display(Name = "Numero de Identificacion *")]
         public string CIU_NumeroIdentificacion { get; set; }
 
@@ -57,6 +59,7 @@ namespace Negocio.ViewModels.Ciudadanos
         public int CIU_IDEstado { get; set; }
 
         [CustomRequired]
+        [Range(1, 120)]
         [Display(Name = "Tiempo de Residencia en la CDMX *")]
         public int CIU_TiempoResidencia { get; set; }
 
@@ -73,6 +76,7 @@ namespace Negocio.ViewModels.Ciudadanos
         public int CIU_IDEstadoCivil { get; set; }
 
         [CustomRequired]
+        [MinLength(8)]
         [Display(Name = "Telefono Particular *")]
         public string CIU_TelParticular { get; set; }
 
@@ -127,6 +131,7 @@ namespace Negocio.ViewModels.Ciudadanos
         [Display(Name = "Alcaldia *")]
         public int DOMC_IDAlcaldia { get; set; }
 
+        [RegularExpression("^[0-9]{5}$", ErrorMessage = "El CP no es valido")]
         [Display(Name = "Codigo Postal")]
         public string DOMC_CodigoPostal { get; set; }
 
@@ -135,10 +140,12 @@ namespace Negocio.ViewModels.Ciudadanos
         public int DOMC_IDEstado { get; set; }
 
         [CustomRequired]
+        [RegularExpression("^(-?[1-8]?\\d(?:.\\d{1,18})?|90(?:.0{1,18})?)$", ErrorMessage = "La Latitud no es valida")]
         [Display(Name = "Latitud *")]
         public string DOMC_Latitud { get; set; }
 
         [CustomRequired]
+        [RegularExpression("^(-?(?:1[0-7]|[1-9])?\\d(?:.\\d{1,18})?|180(?:.0{1,18})?)$", ErrorMessage = "La Logitud no es valida")]
         [Display(Name = "Longitud *")]
         public string DOMC_Longitud { get; set; }
 
@@ -205,6 +212,7 @@ namespace Negocio.ViewModels.Ciudadanos
         //Capacidad de Pago
         [CustomRequired]
         [Display(Name = " De su ingreso familiar mensual,\n¿Cuánto podrá destinar para el pago del crédito ? *")]
+        [Range(0,Double.MaxValue)]
         public double CIU_CapacidadPago { get; set; }
 
 

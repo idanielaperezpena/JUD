@@ -39,9 +39,12 @@ namespace Web
                         "~/Content/fontawesome/css/all-{version}.css",
                         "~/Content/fontawesome/css/font-awesome.css",
                         "~/Content/ionicons/ionicons.min.css",
-                        "~/Content/ionicons/ionicons.css",
-                        "~/Content/estilos_base/AdminLTE.min.css"
+                        "~/Content/ionicons/ionicons.css"
                         ));
+
+            bundles.Add(new StyleBundle("~/bundles/adminlte_css").Include(
+                       "~/Content/estilos_base/AdminLTE.min.css"
+                       ));
 
             bundles.Add(new StyleBundle("~/bundles/estilos").Include(
                         "~/Content/estilos_base/skin-green-light.min.css",
