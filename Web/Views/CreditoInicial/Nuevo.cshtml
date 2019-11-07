@@ -4,6 +4,10 @@
 
 @model Negocio.ViewModels.CreditoInicial.CreditoInicialInsertarViewModel
 
+@section estilos{
+    @Styles.Render("~/bundles/select2_css")
+}
+
 <div class="content-wrapper">
     <section class="content-header">
         <h1>
@@ -112,10 +116,11 @@
 
             </fieldset>
 
-         }
+        }
     </section>
 </div>
 
 @section scripts{
+    @Scripts.Render("~/bundles/select2_js")
     <script src="~/Scripts/Negocio/CreditoInicial/Nuevo.js"></script>
 }

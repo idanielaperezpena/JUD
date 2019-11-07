@@ -1,4 +1,11 @@
 ﻿
+//Inicializacion
+
+$(document).ready(function (e) {
+    $()
+});
+
+
 // Buscar Ciudadano
 $("#btn_Buscar").click(function (e) {
     e.preventDefault();
@@ -15,6 +22,41 @@ $("#btn_Buscar").click(function (e) {
         });
     }
 });
+
+//Curp datos automaticos
+$(document).on('change', '#CIU_CURP', function (e) {
+    if ($(this).valid()) {
+        var curp = $(this).val();
+        var fecha = curp.substring(4, 10);
+        var siglo_digito = curp.substring(16, 17);
+        var fecha_array = fecha.split("");
+        if (siglo_digito >= '0' && siglo_digito <= '9') {
+            // Es de  1999
+            siglo_digito = "19";
+        } else {
+            // Es de 2000
+            siglo_digito = "20";
+        }
+        fecha = siglo_digito + fecha.substring(0, 2) + "-" + fecha.substring(2, 4) + "-" + fecha.substring(4, 6);
+        $("#CIU_FechaNacimiento").val(fecha)
+        var sexo = curp.substring(10, 11);
+        if (sexo == "H")
+            $("#CIU_IDGenero").val(1);
+        else
+            $("#CIU_IDGenero").val(2);
+        var entidad = curp.substring(11, 13);
+        nacimiento(entidad);
+
+    }
+});
+
+var entidades_federativas = ["AS", "BC", "BS", "CC", "CS", "CH", "DF" ,"CL","CM","DG","GT","GR","HG","JC","MC","MN","MS","NT","NL","OC","PL","QO","QR","SP","SL","SR","TC","TS","TL","VZ","YN","ZS"]
+
+function nacimiento(entidad) {
+    if (jQuery.inArray(entidad, entidades_federativas) !== -1) {
+        $("#CIU_IDEstado").val(jQuery.inArray(entidad, entidades_federativas) + 1)
+    }
+}
 
 //Cargar vistas parciales
 $(document).on('click', '#tabla_ciudadano tbody > tr', function (e) {
@@ -36,6 +78,7 @@ $(document).on('click', '#tabla_ciudadano tbody > tr', function (e) {
             success: function (e) {
                 $('#div_buscar_ciudadano').slideUp();
                 $('form').append(e);
+                $('#CIU_IDGruposPrioritarios').select2({ multiple :true});
                 $("form").each(function () { $.data($(this)[0], 'validator', false); });
                 $.validator.unobtrusive.parse("form");
                 Swal.close();
@@ -61,6 +104,7 @@ $("#nuevo_ciudadano").click(function (e) {
         success: function (e) {
             $('#div_buscar_ciudadano').slideUp();
             $('form').append(e);
+            $('#CIU_IDGruposPrioritarios').select2({ multiple: true });
             $("form").each(function () { $.data($(this)[0], 'validator', false); });
             $.validator.unobtrusive.parse("form");
             Swal.close();
