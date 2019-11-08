@@ -15,9 +15,9 @@ namespace Datos
 
         public override CIDictamenFinanciero Alta(CIDictamenFinanciero pGeneric)
         {
-            return ObtenerPrimero("SP_SIM_CI_DictamenFinanciero_IU", pGeneric.CIDF_FechaDictaminacion, pGeneric.CIDF_IDCreditoInicial, pGeneric.CIDF_IDDictamenFinanciero
-                , pGeneric.CIDF_IDUMA, pGeneric.CIDF_MotivosProcedencia, pGeneric.CIDF_NoMesesAmortizacion, pGeneric.CIDF_NoMontoCreditoUMA, pGeneric.CIDF_NoPagoUMA
-                , pGeneric.CIDF_Procedencia, pGeneric.CIDF_UsuarioDominio);
+            return ObtenerPrimero("SP_SIM_CI_DictamenFinanciero_IU", pGeneric.CIDF_IDDictamenFinanciero, pGeneric.CIDF_IDCreditoInicial
+                , pGeneric.CIDF_Procedencia, pGeneric.CIDF_MotivosProcedencia, pGeneric.CIDF_IDUMA, pGeneric.CIDF_NoMontoCreditoUMA
+                , pGeneric.CIDF_NoMesesAmortizacion, pGeneric.CIDF_NoPagoUMA, pGeneric.CIDF_FechaDictaminacion, pGeneric.CIDF_UsuarioDominio);
         }
 
         public override void Baja(CIDictamenFinanciero pGeneric)
@@ -27,14 +27,12 @@ namespace Datos
 
         public override CIDictamenFinanciero ObtenerEntidad(CIDictamenFinanciero pGeneric)
         {
-          return  ObtenerPrimero("SP_SIM_CI_DictamenFinanciero_S", pGeneric.CIDF_IDDictamenFinanciero);
+          return  ObtenerPrimero("SP_SIM_CI_DictamenFinanciero_S", pGeneric.CIDF_IDCreditoInicial);
         }
 
         public override List<CIDictamenFinanciero> ObtenerListado(CIDictamenFinanciero pGeneric)
         {
-            return ObtenerLista("SP_SIM_CI_DictamenFinanciero_S", pGeneric.CIDF_FechaDictaminacion, pGeneric.CIDF_IDCreditoInicial, pGeneric.CIDF_IDDictamenFinanciero
-                , pGeneric.CIDF_IDUMA, pGeneric.CIDF_MotivosProcedencia, pGeneric.CIDF_NoMesesAmortizacion, pGeneric.CIDF_NoMontoCreditoUMA, pGeneric.CIDF_NoPagoUMA
-                , pGeneric.CIDF_Procedencia, pGeneric.CIDF_UsuarioDominio);
+            return ObtenerLista("SP_SIM_CI_DictamenFinanciero_S", pGeneric.CIDF_IDCreditoInicial);
         }
     }
 }

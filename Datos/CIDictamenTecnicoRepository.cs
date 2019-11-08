@@ -15,8 +15,9 @@ namespace Datos
 
         public override CIDictamenTecnico Alta(CIDictamenTecnico pGeneric)
         {
-            return ObtenerPrimero("SP_SIM_CI_DictamenTecnico_IU", pGeneric.CIDT_FechaDictaminacion, pGeneric.CIDT_IDCreditoInicial, pGeneric.CIDT_IDDictamenTecnico
-                , pGeneric.CIDT_MontoSugerido, pGeneric.CIDT_MotivosProcedencia, pGeneric.CIDT_NoAsesorTecnico, pGeneric.CIDT_Procedencia, pGeneric.CIDT_UsuarioDominio);
+            return ObtenerPrimero("SP_SIM_CI_DictamenTecnico_IU", pGeneric.CIDT_IDDictamenTecnico, pGeneric.CIDT_IDCreditoInicial, pGeneric.CIDT_Procedencia
+                , pGeneric.CIDT_MotivosProcedencia, pGeneric.CIDT_MontoSugerido, pGeneric.CIDT_FechaDictaminacion
+                , pGeneric.CIDT_NoAsesorTecnico,  pGeneric.CIDT_UsuarioDominio);
         }
 
         public override void Baja(CIDictamenTecnico pGeneric)
