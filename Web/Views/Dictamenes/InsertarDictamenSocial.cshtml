@@ -1,0 +1,333 @@
+﻿@model Negocio.ViewModels.DictamenSocial.DictamenSocialViewModel
+
+@{
+    ViewBag.Title = "DictamenSocial";
+    Layout = "~/Views/Shared/_Layout-Principal.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Dictamen Social
+            <small>Solicitud</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+            <li><a href="#">Dictamen Social</a></li>
+
+        </ol>
+    </section>
+
+    <section class="content">
+
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.AntiForgeryToken()
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h1 class="box-title">Dictamen Social</h1>
+                </div>
+                <div class="box-body">
+
+
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                    @Html.HiddenFor(model => model.TipoCredito)
+                    @Html.HiddenFor(model => model.IDDictamenSocial)
+                    @Html.HiddenFor(model => model.IDCreditoInicial)
+
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.IDTipoPredio)
+
+                                @Html.CustomDropDownListFor(model => model.IDTipoPredio, Model.TipoPredio, new { @class = "form-control form-control-sm " })
+                                @Html.ValidationMessageFor(model => model.IDTipoPredio, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.IDCaracteristicaPredio)
+                                @Html.CustomDropDownListFor(model => model.IDCaracteristicaPredio, Model.CaracteristicasPredio, new { @class = "form-control form-control-sm " })
+                                @Html.ValidationMessageFor(model => model.IDCaracteristicaPredio, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NoViviendasLote)
+
+                                @Html.EditorFor(model => model.NoViviendasLote, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                @Html.ValidationMessageFor(model => model.NoViviendasLote, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NoFamiliasLote)
+
+                                @Html.EditorFor(model => model.NoFamiliasLote, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                @Html.ValidationMessageFor(model => model.NoFamiliasLote, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NoFamiliasVivienda)
+
+                                @Html.EditorFor(model => model.NoFamiliasVivienda, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                @Html.ValidationMessageFor(model => model.NoFamiliasVivienda, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NoPersonasVivienda)
+
+                                @Html.EditorFor(model => model.NoPersonasVivienda, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                @Html.ValidationMessageFor(model => model.NoPersonasVivienda, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.IDServicioAgua)
+
+                                @Html.CustomDropDownListFor(model => model.IDServicioAgua, Model.ServicioAgua, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.IDServicioAgua, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6 ">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Desdoblamiento)
+                                <div class="radio">
+                                    <label>
+                                        @Html.RadioButtonFor(model => model.Desdoblamiento, true)
+                                        Sí
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        @Html.RadioButtonFor(model => model.Desdoblamiento, false)
+                                        No
+                                    </label>
+                                </div>
+
+                                @Html.ValidationMessageFor(model => model.Desdoblamiento, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                       
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                              <div class="form-group">
+                                @Html.LabelFor(model => model.IDServicioDrenaje)
+
+                                @Html.CustomDropDownListFor(model => model.IDServicioDrenaje, Model.ServicioDrenaje, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.IDServicioDrenaje, "", new { @class = "text-danger" })
+
+                            </div>
+                       
+                         
+                        </div>
+                        <div class="col-lg-6 ">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.BanoCompartido)
+                                <div class="radio">
+                                    <label>
+                                        @Html.RadioButtonFor(model => model.BanoCompartido, true)
+                                        Sí
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        @Html.RadioButtonFor(model => model.BanoCompartido, false)
+                                        No
+                                    </label>
+                                </div>
+
+                                @Html.ValidationMessageFor(model => model.BanoCompartido, "", new { @class = "text-danger" })
+
+                            </div>
+                           
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.IDServicioElectrico)
+
+                                @Html.CustomDropDownListFor(model => model.IDServicioElectrico, Model.ServicioElectrico, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.IDServicioElectrico, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6 ">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CocinaCompartida)
+                                <div class="radio">
+                                    <label>
+                                        @Html.RadioButtonFor(model => model.CocinaCompartida, true)
+                                        Sí
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        @Html.RadioButtonFor(model => model.CocinaCompartida, false)
+                                        No
+                                    </label>
+                                </div>
+
+                                @Html.ValidationMessageFor(model => model.CocinaCompartida, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.IDInsalubridad)
+                                @Html.CustomDropDownListFor(model => model.IDInsalubridad, Model.Insalubridad, new { @class = "form-control form-control-sm " })
+                                @Html.ValidationMessageFor(model => model.IDInsalubridad, "", new { @class = "text-danger" })
+
+                            </div>
+               
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.IDHacinamiento)
+
+                                @Html.CustomDropDownListFor(model => model.IDHacinamiento, Model.Hacinamiento, new { @class = "form-control form-control-sm " })
+                                @Html.ValidationMessageFor(model => model.IDHacinamiento, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.OtroInsalubridad)
+
+                                @Html.EditorFor(model => model.OtroInsalubridad, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                @Html.ValidationMessageFor(model => model.OtroInsalubridad, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.FechaVisita)
+
+                                @Html.EditorFor(model => model.FechaVisita, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                @Html.ValidationMessageFor(model => model.FechaVisita, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Observaciones)
+
+                                @Html.TextAreaFor(model => model.Observaciones, new { @class = "form-control form-control-sm" })
+                                @Html.ValidationMessageFor(model => model.Observaciones, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NoEmpleadoVisita)
+
+                                @Html.EditorFor(model => model.NoEmpleadoVisita, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                @Html.ValidationMessageFor(model => model.NoEmpleadoVisita, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Procedencia)
+
+                                @Html.CustomDropDownListFor(model => model.Procedencia, Model.Dictaminacion, new { @class = "form-control form-control-sm " })
+                                @Html.ValidationMessageFor(model => model.Procedencia, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.IDVulnerabilidad)
+                                @Html.CustomDropDownListFor(model => model.IDVulnerabilidad, Model.Vulnerabilidad, new { @class = "form-control form-control-sm " })
+                                @Html.ValidationMessageFor(model => model.IDVulnerabilidad, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MotivosProcedencia)
+
+                                @Html.TextAreaFor(model => model.MotivosProcedencia, new { @class = "form-control form-control-sm " })
+                                @Html.ValidationMessageFor(model => model.MotivosProcedencia, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.FechaDictaminacion)
+                                @Html.EditorFor(model => model.FechaDictaminacion, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                @Html.ValidationMessageFor(model => model.FechaDictaminacion, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 "> </div>
+                        <div class="col-lg-6 ">
+                            <input type="submit" id="guardar" value="Guardar" class="btn btn-block btn-success btn-lg" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        }
+    </section>
+</div>
+
+
+
+        

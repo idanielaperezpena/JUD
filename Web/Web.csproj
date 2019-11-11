@@ -184,6 +184,7 @@
     <Compile Include="Controllers\CreditoComplementarioController.cs" />
     <Compile Include="Controllers\CreditoInicialController.cs" />
     <Compile Include="Controllers\CreditoSustentabilidadController.cs" />
+    <Compile Include="Controllers\DictamenesController.cs" />
     <Compile Include="Controllers\ExceptionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModificacionesCreditoController.cs" />
@@ -257,6 +258,10 @@
     <Content Include="Views\DeudorSolidario\_Insertar.cshtml" />
     <Content Include="Views\CreditoComplementario\Insertar.cshtml" />
     <Content Include="Views\CreditoInicial\Index.cshtml" />
+    <Content Include="Views\Dictamenes\InsertarDictamenJuridico.cshtml" />
+    <Content Include="Views\Dictamenes\InsertarDictamenSocial.cshtml" />
+    <Content Include="Views\Dictamenes\InsertarDictamenTecnico.cshtml" />
+    <Content Include="Views\Dictamenes\InsertarDictamenFinanciero.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

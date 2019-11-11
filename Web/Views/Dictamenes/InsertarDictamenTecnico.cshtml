@@ -1,0 +1,115 @@
+﻿@model Negocio.ViewModels.DictamenTecnico.DictamenTecnicoViewModel
+
+@{
+    ViewBag.Title = "Dictamen Técnico";
+    Layout = "~/Views/Shared/_Layout-Principal.cshtml";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Dictamen Técnico
+            <small>Solicitud</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+            <li><a href="#">Dictamen Técnico</a></li>
+
+        </ol>
+    </section>
+
+    <section class="content">
+
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.AntiForgeryToken()
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h1 class="box-title">Dictamen Técnico</h1>
+                </div>
+                <div class="box-body">
+
+
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                    @Html.HiddenFor(model => model.TipoCredito)
+                    @Html.HiddenFor(model => model.IDDictamenTecnico)
+                    @Html.HiddenFor(model => model.IDCreditoInicial)
+
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.IDProcedencia)
+
+                                @Html.CustomDropDownListFor(model => model.IDProcedencia, Model.Dictaminacion, new { @class = "form-control form-control-sm " })
+                                @Html.ValidationMessageFor(model => model.IDProcedencia, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MotivosProcedencia)
+                                @Html.TextAreaFor(model => model.MotivosProcedencia, new { @class = "form-control form-control-sm " })
+                                @Html.ValidationMessageFor(model => model.MotivosProcedencia, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MontoSugerido)
+
+                                @Html.EditorFor(model => model.MontoSugerido, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                @Html.ValidationMessageFor(model => model.MontoSugerido, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.FechaDictaminacion)
+
+                                @Html.EditorFor(model => model.FechaDictaminacion, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                @Html.ValidationMessageFor(model => model.FechaDictaminacion, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NoAsesorTecnico)
+
+                                @Html.EditorFor(model => model.NoAsesorTecnico, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                @Html.ValidationMessageFor(model => model.NoAsesorTecnico, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                         
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6 "> </div>
+                        <div class="col-lg-6 ">
+                            <input type="submit" id="guardar" value="Guardar" class="btn btn-block btn-success btn-lg" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        }
+    </section>
+</div>
+

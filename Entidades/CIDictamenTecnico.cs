@@ -12,7 +12,7 @@ namespace Entidades
         public int CIDT_IDCreditoInicial { get; set; }
         public int CIDT_Procedencia { get; set; }
         public string CIDT_MotivosProcedencia { get; set; }
-        public float CIDT_MontoSugerido { get; set; }
+        public double CIDT_MontoSugerido { get; set; }
         public DateTime CIDT_FechaDictaminacion { get; set; }
         public string CIDT_NoAsesorTecnico { get; set; }
         public string CIDT_UsuarioDominio { get; set; }
