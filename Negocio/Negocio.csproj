@@ -124,9 +124,9 @@
     <Compile Include="ViewModels\CreditoInicial\CreditoInicialInsertarViewModel.cs" />
     <Compile Include="ViewModels\CreditoSustentabilidad\CreditoSustentabilidadInsertarViewModel.cs" />
     <Compile Include="ViewModels\DeudorSolidario\DeudorSolidarioInsertarViewModel.cs" />
-    <Compile Include="ViewModels\DictamenFinanciero\DictamenFinanciero.cs" />
-    <Compile Include="ViewModels\DictamenJuridico\DictamenJuridico.cs" />
-    <Compile Include="ViewModels\DictamenSocial\DictamenSocial.cs" />
+    <Compile Include="ViewModels\DictamenFinanciero\DictamenFinancieroViewModel.cs" />
+    <Compile Include="ViewModels\DictamenJuridico\DictamenJuridicoViewModel.cs" />
+    <Compile Include="ViewModels\DictamenSocial\DictamenSocialViewModel.cs" />
     <Compile Include="ViewModels\DictamenTecnico\DictamenTecnicoViewModel.cs" />
     <Compile Include="ViewModels\DomicilioCiudadano\DomicilioCiudadanoFormViewModel.cs" />
     <Compile Include="ViewModels\Domicilio\DomicilioFormViewModel.cs" />
