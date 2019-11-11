@@ -75,7 +75,6 @@ namespace Web.Controllers
         [HttpPost]
         public ActionResult GetDomicilioViewModel()
         {
-           
             return PartialView("../Domicilio/_Insertar", _service.GetDomicilio());
         }
         [HttpPost]

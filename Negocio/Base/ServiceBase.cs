@@ -20,6 +20,11 @@ namespace Negocio
             ModelState = modelState;
         }
 
+        public ServiceBase()
+        {
+            UoW = new UnitOfWork();
+        }
+
         public ServiceBase(ModelStateDictionary modelState, TempDataDictionary tempData) : this(modelState)
         {
             TempData = tempData;

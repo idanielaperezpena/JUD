@@ -252,7 +252,7 @@
     <Content Include="Views\Domicilio\_Insertar.cshtml" />
     <Content Include="Views\Ciudadano\Validar.cshtml" />
     <Content Include="Views\Ciudadano\_ValidarTabla.cshtml" />
-    <Content Include="Views\CreditoInicial\Nuevo.cshtml" />
+    <Content Include="Views\CreditoInicial\Insertar.cshtml" />
     <Content Include="Views\Ciudadano\_Validar.cshtml" />
     <Content Include="Views\DeudorSolidario\_Insertar.cshtml" />
     <Content Include="Views\CreditoComplementario\Insertar.cshtml" />

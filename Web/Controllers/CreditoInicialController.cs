@@ -39,9 +39,20 @@ namespace Web.Controllers
             return View(_vm);
         }
 
-        public ActionResult Nuevo()
+        //public ActionResult Insertar() { 
+        
+        //    var _vm = _service.Insertar();
+        //    ViewBag.Titulo = "Credito Inicial";
+        //    return View(_vm);
+        //}
+
+        public ActionResult Insertar(String ID )
         {
-            var _vm = _service.Nuevo();
+            var _vm = new CreditoInicialInsertarViewModel();
+            if (String.IsNullOrEmpty(ID))
+                _vm = _service.Insertar();
+            else
+                _vm = _service.Insertar(ID);
             ViewBag.Titulo = "Credito Inicial";
             return View(_vm);
         }
@@ -52,7 +63,10 @@ namespace Web.Controllers
         public ActionResult Insertar(CreditoInicialInsertarViewModel viewModel)
         {
             _service.EditarCreditoInicial(viewModel);
-            return Json(viewModel.ToJSON());
+            var errors = ModelState.Select(x => x.Value.Errors)
+                           .Where(y => y.Count > 0)
+                           .ToList();
+            return Json(errors.ToJSON());
         }
 
         //Get partial Views

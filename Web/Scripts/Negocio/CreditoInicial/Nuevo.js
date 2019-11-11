@@ -1,23 +1,78 @@
 ﻿
-//Inicializacion
+//Grupos vulnerables
 
-$(document).ready(function (e) {
-    $()
+$(document).on('change', '#CIU_FechaNacimiento', function (e) {
+    var fecha_nacimiento = new Date($(this).val());
+    var ageDifMs = Date.now() - fecha_nacimiento;
+    var ageDate = new Date(ageDifMs);
+    var diff = ageDate.getUTCFullYear() - 1970;
+    if (diff >= 60) {
+        agregar_GP(3);
+    } else {
+        quitar_GP(3);
+    }
 });
 
+$(document).on('change', '#CIU_IDgrupoEtnico', function (e) {
+    var id = $(this).val();
+    if (id != 1) {
+        agregar_GP(4);
+    } else {
+        quitar_GP(4);
+    }
+});
+
+$(document).on('change', '#CIU_IDEstadoCivil', function (e) {
+    var id = $(this).val();
+    if (id == 3 || id == 4) {
+        agregar_GP(1);
+    } else {
+        quitar_GP(1);
+    }
+});
+
+$(document).on('change', '#CIU_IDDiscapacidad', function (e) {
+    var id = $(this).val();
+    if (id != 6) {
+        agregar_GP(5);
+    } else {
+        quitar_GP(5);
+    }
+});
+
+
+function agregar_GP(id) {
+    var ids = $('#CIU_IDGruposPrioritarios').val();
+    if (jQuery.inArray(id, ids) === -1) {
+        ids.push(id);
+        $('#CIU_IDGruposPrioritarios').val(ids).trigger('change');
+    }
+}
+
+function quitar_GP(id) {
+    var ids = $('#CIU_IDGruposPrioritarios').val();
+    if (jQuery.inArray(id, ids) !== -1) {
+        var index = jQuery.inArray(id, ids);
+        ids.splice(index, 1);
+        $('#CIU_IDGruposPrioritarios').val(ids).trigger('change');
+    }
+}
 
 // Buscar Ciudadano
 $("#btn_Buscar").click(function (e) {
     e.preventDefault();
     if ($('#CadenaBusqueda').valid()) {
         var CadenaBusqueda = $('#CadenaBusqueda').val();
+        $(this).closest('.box').append('<div class="overlay" id="cargar_busqueda"><i class= "fa fa-refresh fa-spin" ></i></div >');
+        
         $.ajax({
             type: "POST",
             url: "/Ciudadano/BusquedaExistente",
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({ CadenaBusqueda: CadenaBusqueda }),
             success: function (e) {
-                $('#tabla_ciudadanos').html(e)
+                $('#cargar_busqueda').remove();
+                $('#tabla_ciudadanos').html(e)              
             }
         });
     }
@@ -78,7 +133,8 @@ $(document).on('click', '#tabla_ciudadano tbody > tr', function (e) {
             success: function (e) {
                 $('#div_buscar_ciudadano').slideUp();
                 $('form').append(e);
-                $('#CIU_IDGruposPrioritarios').select2({ multiple :true});
+                $('#CIU_IDGruposPrioritarios').select2({ multiple: true });
+                $('#foo').select2({ multiple: true });
                 $("form").each(function () { $.data($(this)[0], 'validator', false); });
                 $.validator.unobtrusive.parse("form");
                 Swal.close();
@@ -105,6 +161,7 @@ $("#nuevo_ciudadano").click(function (e) {
             $('#div_buscar_ciudadano').slideUp();
             $('form').append(e);
             $('#CIU_IDGruposPrioritarios').select2({ multiple: true });
+            $('#foo').select2({ multiple: true });
             $("form").each(function () { $.data($(this)[0], 'validator', false); });
             $.validator.unobtrusive.parse("form");
             Swal.close();
@@ -216,9 +273,9 @@ $(document).on('click', '#guardar', function (e) {
                 Swal.fire({
                     title: 'Solicitud Ingresada con exito',
                     allowOutsideClick: false,
-                    onClose: () => {
+                    /*onClose: () => {
                         window.location = "/CreditoInicial";
-                    }
+                    }*/
                 })
             }
         });

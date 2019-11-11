@@ -93,6 +93,8 @@
     <Compile Include="CatalogosService.cs" />
     <Compile Include="CiudadanoService.cs" />
     <Compile Include="CreditoInicialService.cs" />
+    <Compile Include="DeudorSolidarioService.cs" />
+    <Compile Include="DomicilioService.cs" />
     <Compile Include="ExceptionService.cs" />
     <Compile Include="ParejaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,6 +1,25 @@
 ﻿
 @model Negocio.ViewModels.Ciudadanos.CiudadanoInsertarViewModel
 
+@{
+    var foo = new List<SelectListItem>();
+    foreach(var item in Model.GruposPrioritarios)
+    {
+        var select = false;
+        if (Model.CIU_IDGruposPrioritarios != null)
+        {
+            if (Array.Find(Model.CIU_IDGruposPrioritarios, s => s.Equals(item.ID)) > 0)
+            {
+                select = true;
+            }
+        }
+
+        var list = new SelectListItem { Text = item.Descripcion, Value = item.ID.ToString(), Selected = select };
+        foo.Add(list);
+    }
+
+
+}
 <fieldset id="step2">
     <div class="row">
         <!-- left column -->
@@ -17,7 +36,7 @@
                     <div class="box-body">
                         <div class="form-group">
                             @Html.LabelFor(m => m.CIU_CURP)
-                            @Html.EditorFor(m => m.CIU_CURP, new { htmlAttributes = new { @class = "form-control form-control-sm"} })
+                            @Html.EditorFor(m => m.CIU_CURP, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
                             @Html.ValidationMessageFor(m => m.CIU_CURP, "")
                         </div>
                         <div class="form-group">
@@ -306,14 +325,14 @@
 
         </div>
     </div>
-        
-        <div class="row">
-            <div class="col-lg-6 ">
-            </div>
-            <div class="col-lg-6 ">
-                <button data-step="3" type="button" class="siguiente btn btn-block btn-success btn-lg">Siguiente</button>
-            </div>
+
+    <div class="row">
+        <div class="col-lg-6 ">
         </div>
+        <div class="col-lg-6 ">
+            <button data-step="3" type="button" class="siguiente btn btn-block btn-success btn-lg">Siguiente</button>
+        </div>
+    </div>
 
 </fieldset>
 
@@ -376,7 +395,7 @@
                                 </div>
                                 <div class="form-group col-lg-6">
                                     @Html.LabelFor(m => m.CIU_IDEstructuraFamiliar)
-                                    @Html.CustomDropDownListFor(m => m.CIU_IDEstructuraFamiliar, Model.EstructuraFamiliar, new { @class = "form-control form-control-sm "})
+                                    @Html.CustomDropDownListFor(m => m.CIU_IDEstructuraFamiliar, Model.EstructuraFamiliar, new { @class = "form-control form-control-sm " })
                                     @Html.ValidationMessageFor(m => m.CIU_IDEstructuraFamiliar, "")
                                 </div>
                             </div>
@@ -407,9 +426,9 @@
 
                             </div>
                             <div class="row">
-                                <div class="form-group col-lg-6">
+                                <div class="form-group col-lg-12">
                                     @Html.LabelFor(m => m.CIU_IDGruposPrioritarios)
-                                    @Html.CustomDropDownListFor(m => m.CIU_IDGruposPrioritarios, Model.GruposPrioritarios, new { @style = "width:100%",@class = "form-control select2" })
+                                    @Html.ListBox("CIU_IDGruposPrioritarios", foo, new { @style = "width:100%", @class = "form-control select2" })
                                     @Html.ValidationMessageFor(m => m.CIU_IDGruposPrioritarios, "")
                                 </div>
                                 <div class="form-group col-lg-6">

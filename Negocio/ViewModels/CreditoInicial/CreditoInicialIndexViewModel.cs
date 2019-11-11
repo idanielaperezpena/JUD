@@ -39,15 +39,15 @@ namespace Negocio.ViewModels.CreditoInicial
         public int? CI_IDSeccionElectoral { get; set; }
 
         [Display(Name = "Dictamen Social")]
-        public string ImgDS { get; set; }
+        public string[] ImgDS { get; set; }
 
         [Display(Name = "Dictamen Tecnico")]
-        public string ImgDT { get; set; }
+        public string[] ImgDT { get; set; }
 
         [Display(Name = "Dictamen Juridico")]
-        public string ImgDJ { get; set; }
+        public string[] ImgDJ { get; set; }
 
         [Display(Name = "Dictamen Financiero")]
-        public string ImgDF { get; set; }
+        public string[] ImgDF { get; set; }
     }
 }

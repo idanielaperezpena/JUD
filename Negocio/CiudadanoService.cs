@@ -16,9 +16,18 @@ namespace Negocio
 {
     public class CiudadanoService : ServiceBase
     {
-        public CiudadanoService(ModelStateDictionary modelState) : base(modelState) { }
+        public DeudorSolidarioService _serviceDSolidario;
+        public DomicilioService _serviceDomicilio ;
+
+
+        public CiudadanoService(ModelStateDictionary modelState) : base(modelState) {
+            _serviceDSolidario = new DeudorSolidarioService(modelState);
+            _serviceDomicilio = new DomicilioService(modelState);
+        }
+
 
         /* Vista */
+
         public CiudadanosIndexViewModel Index()
         {
             var viewModel = new CiudadanosIndexViewModel();
@@ -65,9 +74,9 @@ namespace Negocio
             //Catalogos Ciudadano
             ObtenerCatalogos(viewModel);
             //DomicilioDeltrabajo
-            viewModel.Domicilio_Trabajo = GetDomicilio();
+            viewModel.Domicilio_Trabajo = _serviceDomicilio.GetDomicilio();
             //deudor solidario
-            viewModel.DeudorSolidario = GetDeudorSolidario();
+            viewModel.DeudorSolidario = _serviceDSolidario.GetDeudorSolidario();
             //Pareja
             viewModel.Pareja = GetParejaCiudadano();
             var _ID_desencriptar = Int32.Parse(this.UoW.Encriptador.Desencriptar(IDEncriptado));
@@ -104,7 +113,7 @@ namespace Negocio
                     viewModel.CIU_EnfermedadCronicaOtro = _entidad.CIU_EnfermedadCronicaOtro;
                     viewModel.CIU_IDDiscapacidad = _entidad.CIU_IDDiscapacidad;
                     viewModel.CIU_DiscapacidadOtro = _entidad.CIU_DiscapacidadOtro;
-                    viewModel.CIU_IDGruposPrioritarios = _entidad.CIU_IDGruposPrioritarios;
+                    viewModel.CIU_IDGruposPrioritarios = _entidad.CIU_IDGruposPrioritarios.Split(',').Select(n => Convert.ToInt32(n)).ToArray();
                     viewModel.CIU_Proposito = _entidad.CIU_Proposito;
                     viewModel.CIU_CreditosOtorgados = _entidad.CIU_CreditosOtorgados;
                     viewModel.CIU_IngresoFamiliar = _entidad.CIU_IngresoFamiliar;
@@ -118,11 +127,11 @@ namespace Negocio
                     ObtenerDomicilioCiudadano(_entidad.CIU_IDCiudadano, viewModel);
 
                     //Domicilio de trabajo
-                    ObtenerDomicilio(_entidad.CIU_IDDomicilioTrabajo,viewModel.Domicilio_Trabajo);
+                    _serviceDomicilio.ObtenerDomicilio(_entidad.CIU_IDDomicilioTrabajo,viewModel.Domicilio_Trabajo);
                     //PAREJA
                     ObtenerPareja(_entidad.CIU_IDCiudadano, viewModel.Pareja);
                     //Deudor Solidario
-                    ObtenerDeudorSolidario(_entidad.CIU_IDCiudadano, viewModel.DeudorSolidario);
+                    _serviceDSolidario.ObtenerDeudorSolidario(_entidad.CIU_IDCiudadano, viewModel.DeudorSolidario);
                 }
 
             }
@@ -169,48 +178,21 @@ namespace Negocio
             return viewModel;
         }
 
-        public List<Ciudadano> Listado()
+        //Funciones de View Model vacias
+
+        public DomicilioFormViewModel GetDomicilio()
         {
-            try
-            {
-                return UoW.Ciudadano.ObtenerListado(new Ciudadano());
-            }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError(string.Empty, ex.Message + "Service : Listado");
-            }
-
-            return new List<Ciudadano>();
+            return _serviceDomicilio.GetDomicilio();
         }
-        public List<DomicilioCiudadano> ListadoDomicilioCiudadano()
+
+        public CiudadanoDeudorSolidarioViewModel GetDeudorSolidario()
         {
-            try
-            {
-                return UoW.DomicilioCiudadano.ObtenerListado(new DomicilioCiudadano());
-            }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError(string.Empty, ex.Message + "Service : Listado Domicilio Ciudadano");
-            }
+            return _serviceDSolidario.GetDeudorSolidario();
 
-            return new List<DomicilioCiudadano>();
         }
-        public DomicilioFormViewModel GetDomicilio( )
-        {
-            var _viewModel = new DomicilioFormViewModel();
 
-
-
-            _viewModel.Vialidad = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_12_Vialidad", ID = 0 }).SelectListado();
-            _viewModel.Alcaldia = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_SN_Alcaldia", ID = 0 }).SelectListado();
-            _viewModel.Estado = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_SN_EstadoRepublica", ID = 0 }).SelectListado();
-            _viewModel.Boton = false;
-
-            return _viewModel;
-        }
         public CiudadanoParejaViewModel GetParejaCiudadano()
         {
-
             var _viewModel = new CiudadanoParejaViewModel();
 
             //Listas Datos Personales
@@ -219,21 +201,94 @@ namespace Negocio
             _viewModel.RegimenPatrimonial = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_14_RegimenPatrimonial", ID = 0 }).SelectListado();
             return _viewModel;
         }
-        public CiudadanoDeudorSolidarioViewModel GetDeudorSolidario()
-        {
-            var _viewModel = new CiudadanoDeudorSolidarioViewModel();
-            //Listas Datos Personales
-            _viewModel.Genero = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_06_Genero", ID = 0 }).SelectListado();
-            _viewModel.EstadoCivil = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_SN_EstadoRepublica", ID = 0 }).SelectListado();
-            _viewModel.Ocupacion = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_SN_EstadoRepublica", ID = 0 }).SelectListado();
-            _viewModel.DomicilioActual = GetDomicilio();
-            _viewModel.DomicilioTrabajo = GetDomicilio();
-            return _viewModel;
 
+        public CiudadanoInsertarViewModel GetCiudadanoInsertar(string IDEncriptado)
+        {
+            var viewModel = new CiudadanoInsertarViewModel();
+            //Catalogos Ciudadano
+            ObtenerCatalogos(viewModel);
+            //DomicilioDeltrabajo
+            viewModel.Domicilio_Trabajo = _serviceDomicilio.GetDomicilio();
+            //deudor solidario
+            viewModel.DeudorSolidario = _serviceDSolidario.GetDeudorSolidario();
+            ////Domicilio otro
+            //viewModel.Domicilio_Diferente = GetDomicilio();
+            //Pareja
+            viewModel.Pareja = GetParejaCiudadano();
+
+            //Es credito Inicial
+            viewModel.CreditoInicial = true;
+
+            if (String.IsNullOrEmpty(IDEncriptado))
+                return viewModel;
+
+            int? _ID_desencriptar = Int32.Parse(this.UoW.Encriptador.Desencriptar(IDEncriptado));
+            try
+            {
+                //CIUDADANO
+                var _entidad = UoW.Ciudadano.ObtenerEntidad(new Ciudadano
+                {
+                    CIU_IDCiudadano = _ID_desencriptar
+                });
+
+                if (_entidad != null)
+                {
+                    //datos personales
+                    viewModel.ID_Encriptado = UoW.Encriptador.Encriptar(_entidad.CIU_IDCiudadano);
+                    viewModel.CIU_CURP = _entidad.CIU_CURP;
+                    viewModel.CIU_Nombre = _entidad.CIU_Nombre;
+                    viewModel.CIU_ApellidoPaterno = _entidad.CIU_ApellidoPaterno;
+                    viewModel.CIU_ApellidoMaterno = _entidad.CIU_ApellidoMaterno;
+                    viewModel.CIU_NumeroIdentificacion = _entidad.CIU_NumeroIdentificacion;
+                    viewModel.CIU_IDGenero = _entidad.CIU_IDGenero;
+                    viewModel.CIU_FechaNacimiento = _entidad.CIU_FechaNacimiento;
+                    viewModel.CIU_IDEstado = _entidad.CIU_IDEstado;
+                    viewModel.CIU_TiempoResidencia = _entidad.CIU_TiempoResidencia;
+                    viewModel.CIU_IDGradoEstudios = _entidad.CIU_IDGradoEstudios;
+                    viewModel.CIU_IDgrupoEtnico = _entidad.CIU_IDGrupoEtnico;
+                    viewModel.CIU_IDEstadoCivil = _entidad.CIU_IDEstadoCivil;
+                    viewModel.CIU_TelParticular = _entidad.CIU_TelParticular;
+                    viewModel.CIU_TelTrabajo = _entidad.CIU_TelTrabajo;
+                    viewModel.CIU_TelCelular = _entidad.CIU_TelCelular;
+                    viewModel.CIU_TelRecados = _entidad.CIU_TelRecados;
+                    viewModel.CIU_IDOrganizacionCivilFamilia = _entidad.CIU_IDOrganizacionCivilFamilia;
+                    viewModel.CIU_IDEnfermedadCronica = _entidad.CIU_IDEnfermedadCronica;
+                    viewModel.CIU_EnfermedadCronicaOtro = _entidad.CIU_EnfermedadCronicaOtro;
+                    viewModel.CIU_IDDiscapacidad = _entidad.CIU_IDDiscapacidad;
+                    viewModel.CIU_DiscapacidadOtro = _entidad.CIU_DiscapacidadOtro;
+                    viewModel.CIU_IDGruposPrioritarios = _entidad.CIU_IDGruposPrioritarios.Split(',').Select(n => Convert.ToInt32(n)).ToArray();
+                    viewModel.CIU_Proposito = _entidad.CIU_Proposito;
+                    viewModel.CIU_CreditosOtorgados = _entidad.CIU_CreditosOtorgados;
+                    viewModel.CIU_IngresoFamiliar = _entidad.CIU_IngresoFamiliar;
+                    viewModel.CIU_IDOcupacion = _entidad.CIU_IDOcupacion;
+                    viewModel.CIU_IDEstructuraFamiliar = _entidad.CIU_IDEstructuraFamiliar;
+                    viewModel.CIU_NombreTrabajo = _entidad.CIU_NombreTrabajo;
+                    viewModel.CIU_IDDomicilioTrabajo = _entidad.CIU_IDDomicilioTrabajo;
+                    viewModel.CIU_CapacidadPago = _entidad.CIU_CapacidadPago;
+                    viewModel.CIU_CorreoElectronico = _entidad.CIU_CorreoElectronico;
+
+                    //domicilio del ciudadano
+                    ObtenerDomicilioCiudadano(_ID_desencriptar, viewModel);
+
+                    //Domicilio de trabajo
+                    _serviceDomicilio.ObtenerDomicilio(_entidad.CIU_IDDomicilioTrabajo, viewModel.Domicilio_Trabajo);
+                    //PAREJA
+                    ObtenerPareja(_entidad.CIU_IDCiudadano, viewModel.Pareja);
+                    //Deudor Solidario
+                    _serviceDSolidario.ObtenerDeudorSolidario(_entidad.CIU_IDCiudadano, viewModel.DeudorSolidario);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+
+
+            return viewModel;
         }
 
-
-        /* Funciones */
+        //Funciones de View Model Llenas
         public CiudadanoInsertarViewModel ObtenerCatalogos(CiudadanoInsertarViewModel viewModel)
         {
             //Listas
@@ -254,6 +309,87 @@ namespace Negocio
             viewModel.Ocupacion = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_15_Ocupacion", ID = 0 }).SelectListado();
             return viewModel;
         }
+
+        public CiudadanoInsertarViewModel ObtenerDomicilioCiudadano(int? id, CiudadanoInsertarViewModel viewModel)
+        {
+            try
+            {
+                var _entidad = UoW.DomicilioCiudadano.ObtenerEntidad(new DomicilioCiudadano
+                {
+                    DOMC_IDCiudadano = id
+
+                });
+
+                if (_entidad != null)
+                {
+                    viewModel.DOMC_IDDomicilio = _entidad.DOMC_IDDomicilioCiudadano;
+                    viewModel.DOMC_IDCiudadano = _entidad.DOMC_IDCiudadano;
+                    viewModel.DOMC_IDVialidad = _entidad.DOMC_IDVialidad;
+                    viewModel.DOMC_NombreVialidad = _entidad.DOMC_NombreVialidad;
+                    viewModel.DOMC_NumeroExterior = _entidad.DOMC_NumeroExterior;
+                    viewModel.DOMC_NumeroInterior = _entidad.DOMC_NumeroInterior;
+                    viewModel.DOMC_Manzana = _entidad.DOMC_Manzana;
+                    viewModel.DOMC_Lote = _entidad.DOMC_Lote;
+                    viewModel.DOMC_Colonia = _entidad.DOMC_Colonia;
+                    viewModel.DOMC_IDAlcaldia = _entidad.DOMC_IDAlcaldia;
+                    viewModel.DOMC_CodigoPostal = _entidad.DOMC_CodigoPostal;
+                    viewModel.DOMC_IDEstado = _entidad.DOMC_IDEstado;
+                    viewModel.DOMC_Latitud = _entidad.DOMC_Latitud;
+                    viewModel.DOMC_Longitud = _entidad.DOMC_Longitud;
+                    viewModel.DOMC_MontoRenta = _entidad.DOMC_MontoRenta;
+                    viewModel.DOMC_IDTipoVivienda = _entidad.DOMC_IDTipoVivienda;
+                    viewModel.DOMC_Otro = _entidad.DOMC_Otro;
+
+
+                    return viewModel;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+
+            return viewModel;
+        }
+       
+        public CiudadanoParejaViewModel ObtenerPareja(int? id_solicitante, CiudadanoParejaViewModel _viewModel)
+        {
+            try
+            {
+                var _entidad = UoW.Pareja.ObtenerEntidad(new Pareja
+                {
+                    PAR_IDCiudadano = id_solicitante
+                });
+                if (_entidad != null)
+                {
+                    //datos personales
+                    _viewModel.PAR_IDPareja = _entidad.PAR_IDPareja;
+                    _viewModel.PAR_IDCiudadano = _entidad.PAR_IDCiudadano;
+
+                    _viewModel.PAR_Nombre = _entidad.PAR_Nombre;
+                    _viewModel.PAR_ApellidoPaterno = _entidad.PAR_ApellidoPaterno;
+                    _viewModel.PAR_ApellidoMaterno = _entidad.PAR_ApellidoMaterno;
+
+                    _viewModel.PAR_IDGenero = _entidad.PAR_IDGenero;
+                    _viewModel.PAR_FechaNacimiento = _entidad.PAR_FechaNacimiento;
+                    _viewModel.PAR_IDEstado = _entidad.PAR_IDEstado;
+                    _viewModel.PAR_IDRegimen = _entidad.PAR_IDRegimen;
+
+                    return _viewModel;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+
+            return _viewModel;
+        }
+
+        /* Funciones DB */
+
         public void Edit(CiudadanoInsertarViewModel viewModel)
         {
            
@@ -263,7 +399,7 @@ namespace Negocio
                 {
                     EditarDomicilioCiudadano(viewModel);
                     if (viewModel.DeudorSolidario != null)
-                        EditarDeudorSolidario(viewModel.DeudorSolidario);
+                        _serviceDSolidario.EditarDeudorSolidario(viewModel.DeudorSolidario);
                     if (viewModel.Domicilio_Trabajo != null)
                        EditarDomicilioTrabajo(viewModel.Domicilio_Trabajo);
                     if (viewModel.Pareja != null)
@@ -291,7 +427,7 @@ namespace Negocio
                             CIU_IDGenero = viewModel.CIU_IDGenero,
                             CIU_IDGradoEstudios = viewModel.CIU_IDGradoEstudios,
                             CIU_IDGrupoEtnico = viewModel.CIU_IDgrupoEtnico,
-                            CIU_IDGruposPrioritarios = viewModel.CIU_IDGruposPrioritarios,
+                            CIU_IDGruposPrioritarios = string.Join(",", viewModel.CIU_IDGruposPrioritarios),
                             CIU_IDOcupacion = viewModel.CIU_IDOcupacion,
                             CIU_IDOrganizacionCivilFamilia = viewModel.CIU_IDOrganizacionCivilFamilia,
                             CIU_IngresoFamiliar = viewModel.CIU_IngresoFamiliar,
@@ -322,10 +458,11 @@ namespace Negocio
 
 
         }
-        private void EditarDomicilioCiudadano(CiudadanoInsertarViewModel viewModel)
+
+        public void EditarDomicilioCiudadano(CiudadanoInsertarViewModel viewModel)
         {
-            //try
-            //{
+            try
+            {
                 if (ModelState.IsValid)
                 {
                     using (UoW.DomicilioCiudadano.TxScope = new TransactionScope())
@@ -333,7 +470,7 @@ namespace Negocio
 
                         var _entidad = UoW.DomicilioCiudadano.Alta(new DomicilioCiudadano
                         {
-                            DOMC_IDCiudadano = Int32.Parse(UoW.Encriptador.Desencriptar(viewModel.ID_Encriptado)),
+                            DOMC_IDCiudadano = Int32.Parse(viewModel.ID_Encriptado),
                             DOMC_IDDomicilioCiudadano = viewModel.DOMC_IDDomicilio,
                             DOMC_IDVialidad = viewModel.DOMC_IDVialidad,
                             DOMC_NombreVialidad = viewModel.DOMC_NombreVialidad,
@@ -356,18 +493,16 @@ namespace Negocio
                     }
 
                 }
-            //}
-            //catch (Exception ex)
-            //{
-
-            //    Console.WriteLine(ex.Message);
-            //    ModelState.AddModelError(string.Empty, ex.Message);
-            //}
-                
-          
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
 
         }
-        private Domicilio EditarDomicilioTrabajo(DomicilioFormViewModel viewModel)
+
+        public Domicilio EditarDomicilioTrabajo(DomicilioFormViewModel viewModel)
         {
             try
             {
@@ -410,7 +545,8 @@ namespace Negocio
             }
             return new Domicilio();
         }
-        private Pareja EditarPareja(CiudadanoParejaViewModel viewModel)
+
+        public Pareja EditarPareja(CiudadanoParejaViewModel viewModel)
         {
             try
             {
@@ -445,38 +581,58 @@ namespace Negocio
             }
             return new Pareja();
         }
-        private DeudorSolidario EditarDeudorSolidario(CiudadanoDeudorSolidarioViewModel viewModel)
+
+        public Ciudadano EditarCiudadano(CiudadanoInsertarViewModel viewModel)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-
+                    int? IDCiudadano = null;
+                    if (!String.IsNullOrEmpty(viewModel.ID_Encriptado))
+                        IDCiudadano = Int32.Parse(UoW.Encriptador.Desencriptar(viewModel.ID_Encriptado));
 
                     using (UoW.Ciudadano.TxScope = new TransactionScope())
                     {
-                        var _entidad = UoW.DeudorSolidario.Alta(new DeudorSolidario
+                        var _entidad = UoW.Ciudadano.Alta(new Ciudadano
                         {
-                            DEU_IDDeudorSolidario = viewModel.DEU_IDDeudorSolidario,
-                            DEU_IDCiudadano = viewModel.DEU_IDCiudadano,
-                            DEU_CURP = viewModel.DEU_CURP,
-                            DEU_Nombre = viewModel.DEU_Nombre,
-                            DEU_ApellidoPaterno = viewModel.DEU_ApellidoPaterno,
-                            DEU_ApellidoMaterno = viewModel.DEU_ApellidoMaterno,
-                            DEU_IDGenero = viewModel.DEU_IDGenero,
-                            DEU_IDDomicilio = viewModel.DEU_IDDeudorSolidario,
-                            DEU_Ingreso = viewModel.DEU_Ingreso,
-                            DEU_CapacidadPago = viewModel.DEU_CapacidadPago,
-                            DEU_Telefono = viewModel.DEU_Telefono,
-                            DEU_IDEstadoCivil = viewModel.DEU_IDEstadoCivil,
-                            DEU_IDProfesion = viewModel.DEU_IDProfesion,
-                            DEU_NombreTrabajo = viewModel.DEU_NombreTrabajo,
-                            DEU_IDDomicilioTrabajo = viewModel.DEU_IDDomicilioTrabajo,
-                            DEU_FechaSolicitud = viewModel.DEU_FechaSolicitud,
+                            CIU_IDCiudadano = IDCiudadano,
+                            CIU_ApellidoMaterno = viewModel.CIU_ApellidoMaterno,
+                            CIU_ApellidoPaterno = viewModel.CIU_ApellidoPaterno,
+                            CIU_CorreoElectronico = viewModel.CIU_CorreoElectronico,
+                            CIU_CURP = viewModel.CIU_CURP,
+                            CIU_CapacidadPago = viewModel.CIU_CapacidadPago,
+                            CIU_CreditosOtorgados = viewModel.CIU_CreditosOtorgados,
+                            CIU_DiscapacidadOtro = viewModel.CIU_DiscapacidadOtro,
+                            CIU_EnfermedadCronicaOtro = viewModel.CIU_EnfermedadCronicaOtro,
+                            CIU_FechaNacimiento = viewModel.CIU_FechaNacimiento,
+                            CIU_IDDiscapacidad = viewModel.CIU_IDDiscapacidad,
+                            CIU_IDDomicilioTrabajo = viewModel.CIU_IDDomicilioTrabajo,
+                            CIU_IDEnfermedadCronica = viewModel.CIU_IDEnfermedadCronica,
+                            CIU_IDEstado = viewModel.CIU_IDEstado,
+                            CIU_IDEstadoCivil = viewModel.CIU_IDEstadoCivil,
+                            CIU_IDEstructuraFamiliar = viewModel.CIU_IDEstructuraFamiliar,
+                            CIU_IDGenero = viewModel.CIU_IDGenero,
+                            CIU_IDGradoEstudios = viewModel.CIU_IDGradoEstudios,
+                            CIU_IDGrupoEtnico = viewModel.CIU_IDgrupoEtnico,
+                            CIU_IDGruposPrioritarios = string.Join(",", viewModel.CIU_IDGruposPrioritarios),
+                            CIU_IDOcupacion = viewModel.CIU_IDOcupacion,
+                            CIU_IDOrganizacionCivilFamilia = viewModel.CIU_IDOrganizacionCivilFamilia,
+                            CIU_IngresoFamiliar = viewModel.CIU_IngresoFamiliar,
+                            CIU_Nombre = viewModel.CIU_Nombre,
+                            CIU_NombreTrabajo = viewModel.CIU_NombreTrabajo,
+                            CIU_NumeroIdentificacion = viewModel.CIU_NumeroIdentificacion,
+                            CIU_Proposito = viewModel.CIU_Proposito,
+                            CIU_TelCelular = viewModel.CIU_TelCelular,
+                            CIU_TelParticular = viewModel.CIU_TelParticular,
+                            CIU_TelRecados = viewModel.CIU_TelRecados,
+                            CIU_TelTrabajo = viewModel.CIU_TelTrabajo,
+                            CIU_TiempoResidencia = viewModel.CIU_TiempoResidencia
                         });
                         UoW.Ciudadano.TxScope.Complete();
                         return _entidad;
                     }
+
 
                 }
             }
@@ -485,8 +641,11 @@ namespace Negocio
                 Console.WriteLine(ex.Message);
                 ModelState.AddModelError(string.Empty, ex.Message);
             }
-            return new DeudorSolidario();
+            return new Ciudadano();
+
         }
+
+        //Listados
 
         public List<Ciudadano> ListadoCURPNOMBRE(string Cadena)
         {
@@ -502,164 +661,33 @@ namespace Negocio
             return new List<Ciudadano>();
         }
 
-        public CiudadanoInsertarViewModel ObtenerDomicilioCiudadano(int? id, CiudadanoInsertarViewModel viewModel)
+        public List<Ciudadano> Listado()
         {
             try
             {
-                var _entidad = UoW.DomicilioCiudadano.ObtenerEntidad(new DomicilioCiudadano
-                {
-                    DOMC_IDCiudadano = id
-
-                });
-                
-
-                if (_entidad != null)
-                {
-                    viewModel.DOMC_IDDomicilio = _entidad.DOMC_IDDomicilioCiudadano;
-                    viewModel.DOMC_IDVialidad = _entidad.DOMC_IDVialidad;
-                    viewModel.DOMC_NombreVialidad = _entidad.DOMC_NombreVialidad;
-                    viewModel.DOMC_NumeroExterior = _entidad.DOMC_NumeroExterior;
-                    viewModel.DOMC_NumeroInterior = _entidad.DOMC_NumeroInterior;
-                    viewModel.DOMC_Manzana = _entidad.DOMC_Manzana;
-                    viewModel.DOMC_Lote = _entidad.DOMC_Lote;
-                    viewModel.DOMC_Colonia = _entidad.DOMC_Colonia;
-                    viewModel.DOMC_IDAlcaldia = _entidad.DOMC_IDAlcaldia;
-                    viewModel.DOMC_CodigoPostal = _entidad.DOMC_CodigoPostal;
-                    viewModel.DOMC_IDEstado = _entidad.DOMC_IDEstado;
-                    viewModel.DOMC_Latitud = _entidad.DOMC_Latitud;
-                    viewModel.DOMC_Longitud = _entidad.DOMC_Longitud;
-                    viewModel.DOMC_MontoRenta = _entidad.DOMC_MontoRenta;
-                    viewModel.DOMC_IDTipoVivienda = _entidad.DOMC_IDTipoVivienda;
-                    viewModel.DOMC_Otro = _entidad.DOMC_Otro;
-
-
-                    return viewModel;
-                }
-
+                return UoW.Ciudadano.ObtenerListado(new Ciudadano());
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, ex.Message);
+                ModelState.AddModelError(string.Empty, ex.Message + "Service : Listado");
             }
 
-            return viewModel;
+            return new List<Ciudadano>();
         }
-        public DomicilioFormViewModel ObtenerDomicilio(int? id, DomicilioFormViewModel _viewModel)
+
+        public List<DomicilioCiudadano> ListadoDomicilioCiudadano()
         {
             try
             {
-                var _entidad = UoW.Domicilio.ObtenerEntidad(new Domicilio
-                {
-                    DOM_IDDomicilio = id
-
-                });
-
-                if (_entidad != null)
-                {
-                    _viewModel.DOM_IDDomicilio = _entidad.DOM_IDDomicilio;
-                    _viewModel.DOM_IDVialidad = _entidad.DOM_IDVialidad;
-                    _viewModel.DOM_NombreVialidad = _entidad.DOM_NombreVialidad;
-                    _viewModel.DOM_NumeroExterior = _entidad.DOM_NumeroExterior;
-                    _viewModel.DOM_NumeroInterior = _entidad.DOM_NumeroInterior;
-                    _viewModel.DOM_Manzana = _entidad.DOM_Manzana;
-                    _viewModel.DOM_Lote = _entidad.DOM_Lote;
-                    _viewModel.DOM_Colonia = _entidad.DOM_Colonia;
-                    _viewModel.DOM_IDAlcaldia = _entidad.DOM_IDAlcaldia;
-                    _viewModel.DOM_CodigoPostal = _entidad.DOM_CodigoPostal;
-                    _viewModel.DOM_IDEstado = _entidad.DOM_IDEstado;
-                    _viewModel.DOM_Latitud = _entidad.DOM_Latitud;
-                    _viewModel.DOM_Longitud = _entidad.DOM_Longitud;
-                    
-
-                    return _viewModel;
-                }
-
+                return UoW.DomicilioCiudadano.ObtenerListado(new DomicilioCiudadano());
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, ex.Message);
+                ModelState.AddModelError(string.Empty, ex.Message + "Service : Listado Domicilio Ciudadano");
             }
 
-            return _viewModel;
+            return new List<DomicilioCiudadano>();
         }
-        public CiudadanoParejaViewModel ObtenerPareja(int? id_solicitante, CiudadanoParejaViewModel _viewModel)
-        {
-            try
-            {
-               var _entidad= UoW.Pareja.ObtenerEntidad(new Pareja
-                {
-                    PAR_IDCiudadano = id_solicitante
-                });
-                if (_entidad != null)
-                {
-                    //datos personales
-                    _viewModel.PAR_IDPareja = _entidad.PAR_IDPareja;
-                    _viewModel.PAR_IDCiudadano = _entidad.PAR_IDCiudadano;
-
-                    _viewModel.PAR_Nombre = _entidad.PAR_Nombre;
-                    _viewModel.PAR_ApellidoPaterno = _entidad.PAR_ApellidoPaterno;
-                    _viewModel.PAR_ApellidoMaterno = _entidad.PAR_ApellidoMaterno;
-
-                    _viewModel.PAR_IDGenero = _entidad.PAR_IDGenero;
-                    _viewModel.PAR_FechaNacimiento = _entidad.PAR_FechaNacimiento;
-                    _viewModel.PAR_IDEstado = _entidad.PAR_IDEstado;
-                    _viewModel.PAR_IDRegimen = _entidad.PAR_IDRegimen;
-
-                    return _viewModel;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError(string.Empty, ex.Message);
-            }
-
-            return _viewModel;
-        }
-        public CiudadanoDeudorSolidarioViewModel ObtenerDeudorSolidario(int? id_solicitante, CiudadanoDeudorSolidarioViewModel _viewModel)
-            {
-            try
-            {
-                var _entidad = UoW.DeudorSolidario.ObtenerEntidad(new DeudorSolidario
-                {
-                    DEU_IDCiudadano = id_solicitante
-                });
-                if (_entidad != null)
-                {
-                    //datos personales
-                    _viewModel.DEU_IDDeudorSolidario = _entidad.DEU_IDDeudorSolidario;
-                    _viewModel.DEU_IDCiudadano = _entidad.DEU_IDCiudadano;
-                    _viewModel.DEU_CURP = _entidad.DEU_CURP;
-                    _viewModel.DEU_Nombre = _entidad.DEU_Nombre;
-                    _viewModel.DEU_ApellidoPaterno = _entidad.DEU_ApellidoPaterno;
-                    _viewModel.DEU_ApellidoMaterno = _entidad.DEU_ApellidoMaterno;
-                    _viewModel.DEU_IDGenero = _entidad.DEU_IDGenero;
-                    _viewModel.DEU_IDDomicilio = _entidad.DEU_IDDomicilio;
-                    _viewModel.DEU_Ingreso = _entidad.DEU_Ingreso;
-                    _viewModel.DEU_CapacidadPago = _entidad.DEU_CapacidadPago;
-                    _viewModel.DEU_Telefono = _entidad.DEU_Telefono;
-                    _viewModel.DEU_IDEstadoCivil = _entidad.DEU_IDEstadoCivil;
-                    _viewModel.DEU_IDProfesion = _entidad.DEU_IDProfesion;
-                    _viewModel.DEU_NombreTrabajo = _entidad.DEU_NombreTrabajo;
-                    _viewModel.DEU_IDDomicilioTrabajo = _entidad.DEU_IDDomicilioTrabajo;
-                    _viewModel.DEU_FechaSolicitud = _entidad.DEU_FechaSolicitud;
-
-                    //casa
-                    ObtenerDomicilio(_entidad.DEU_IDDomicilio, _viewModel.DomicilioActual);
-                    //trabajo
-                    ObtenerDomicilio(_entidad.DEU_IDDomicilioTrabajo, _viewModel.DomicilioTrabajo);
-                    return _viewModel;
-                }
-            }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError(string.Empty, ex.Message);
-            }
-
-            return _viewModel;
-        }
-        
-
 
     }
  }

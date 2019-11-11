@@ -195,7 +195,7 @@ namespace Negocio.ViewModels.Ciudadanos
 
         [CustomRequired]
         [Display(Name = "Grupos Prioritarios *")]
-        public int CIU_IDGruposPrioritarios { get; set; }
+        public int[] CIU_IDGruposPrioritarios { get; set; }
 
         [CustomRequired]
         [Display(Name = "Ingreso Familiar *")]

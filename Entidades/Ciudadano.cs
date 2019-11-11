@@ -30,7 +30,7 @@ namespace Entidades
         public string CIU_EnfermedadCronicaOtro { get; set; }
         public int CIU_IDDiscapacidad { get; set; }
         public string CIU_DiscapacidadOtro { get; set; }
-        public int CIU_IDGruposPrioritarios { get; set; }
+        public string CIU_IDGruposPrioritarios { get; set; }
         public string CIU_Proposito { get; set; }
         public bool CIU_CreditosOtorgados { get; set; }
         public double CIU_IngresoFamiliar { get; set; }
