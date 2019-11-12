@@ -2,6 +2,7 @@
     Layout = "~/Views/Shared/_Layout-Principal.cshtml";
 }
 
+@model Negocio.ViewModels.Principal.PrincipalIndexViewModel
 
 <div class="content-wrapper" style="min-height: 901px;">
     <section class="content-header">
@@ -24,7 +25,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Total de tramites </span>
-                        <span class="info-box-number">1,410</span>
+                        <span class="info-box-number">@Model.TotalCreditos</span>
                     </div>
                 </div>
             </div>
@@ -35,7 +36,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Tramites nuevos </span>
-                        <span class="info-box-number">410</span>
+                        <span class="info-box-number">@Model.TotalCreditosNuevos</span>
                     </div>
                 </div>
             </div>
@@ -46,7 +47,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Tramites en dictaminacion</span>
-                        <span class="info-box-number">13,648</span>
+                        <span class="info-box-number">@Model.TotalCreditosDictaminados</span>
                     </div>
                 </div>
             </div>
@@ -57,7 +58,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Tramites finalizados</span>
-                        <span class="info-box-number">93,139</span>
+                        <span class="info-box-number">@Model.TotalCreditosTerminados</span>
                     </div>
                 </div>
             </div>
@@ -80,7 +81,7 @@
                             <div class="icon">
                                 <i class="fa fa-plus"></i>
                             </div>
-                            <a href="#" class="small-box-footer">
+                            <a href="@Url.Action("Insertar","CreditoInicial")" class="small-box-footer">
                                 Acceder <i class="fa fa-arrow-circle-right"></i>
                             </a>
                         </div>
@@ -95,7 +96,7 @@
                             <div class="icon">
                                 <i class="fa fa-search"></i>
                             </div>
-                            <a href="#" class="small-box-footer">
+                            <a href="@Url.Action("Index","CreditoInicial")" class="small-box-footer">
                                 Acceder <i class="fa fa-arrow-circle-right"></i>
                             </a>
                         </div>

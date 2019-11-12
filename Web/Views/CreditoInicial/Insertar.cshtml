@@ -123,4 +123,35 @@
 @section scripts{
     @Scripts.Render("~/bundles/select2_js")
     <script src="~/Scripts/Negocio/CreditoInicial/Nuevo.js"></script>
+    @if (Model.CI_IDCiudadano.HasValue)
+    {
+        <script type="text/javascript">
+        $(document).ready(function () {
+            Swal.fire({
+                title: 'Cargando los datos del Credito Inicial',
+                allowOutsideClick: false,
+                onBeforeOpen: () => {
+                    Swal.showLoading()
+                }
+            })
+            var IDCiudadano = "@Model.CI_IDCiudadanoEncriptado";
+            $.ajax({
+                type: "POST",
+                url: "/CreditoInicial/GetCiudadanoInsertar",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({ ID: IDCiudadano }),
+                success: function (e) {
+                    $('#div_buscar_ciudadano').slideUp();
+                    $('form').append(e);
+                    $('#CIU_IDGruposPrioritarios').select2({ multiple: true });
+                    $('#foo').select2({ multiple: true });
+                    $("form").each(function () { $.data($(this)[0], 'validator', false); });
+                    $.validator.unobtrusive.parse("form");
+                    Swal.close();
+                }
+            });
+        });
+        </script>
+
+    }
 }

@@ -40,6 +40,7 @@ namespace Negocio.ViewModels.CreditoInicial
 
 
         public int? CI_IDCiudadano { get; set; }
+        public string CI_IDCiudadanoEncriptado { get; set; }
         public DateTime CI_FechaCaptura { get; set; }
         public int? CI_IDDomicilio { get; set; }
 

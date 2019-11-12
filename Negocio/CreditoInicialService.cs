@@ -147,6 +147,8 @@ namespace Negocio
                 if (_entidad != null)
                 {
                     //datos personales
+                    viewModel.CI_IDCiudadano = _entidad.CI_IDCiudadano;
+                    viewModel.CI_IDCiudadanoEncriptado = UoW.Encriptador.Encriptar(_entidad.CI_IDCiudadano);
                     viewModel.CI_IDCreditoInicial = _entidad.CI_IDCreditoInicial;
                     viewModel.CI_FolioSolicitud = _entidad.CI_FolioSolicitud;
                     viewModel.CI_FechaSolicitud = _entidad.CI_FechaSolicitud;

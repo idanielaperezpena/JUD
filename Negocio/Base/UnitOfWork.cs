@@ -21,6 +21,8 @@ namespace Negocio
         private DomicilioRepository _domicilioRepo;
         private SeccionElectoralRepository _seccionRepo;
         private CreditoInicialRepository _creditoinicial;
+        private PrincipalRepository _principal;
+
 
         private EmailUtility _emailSender;
         private EncriptarUtility _encriptador;
@@ -138,6 +140,18 @@ namespace Negocio
                 return _creditoinicial;
             }
         }
+
+        public PrincipalRepository Principal
+        {
+            get
+            {
+                if (_principal == null)
+                    _principal = new PrincipalRepository(_context);
+
+                return _principal;
+            }
+        }
+        
 
 
         public EmailUtility EmailSender

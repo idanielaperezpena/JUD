@@ -39,12 +39,6 @@ namespace Web.Controllers
             return View(_vm);
         }
 
-        //public ActionResult Insertar() { 
-        
-        //    var _vm = _service.Insertar();
-        //    ViewBag.Titulo = "Credito Inicial";
-        //    return View(_vm);
-        //}
 
         public ActionResult Insertar(String ID )
         {

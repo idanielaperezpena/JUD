@@ -98,6 +98,7 @@
     <Compile Include="DictamenesService.cs" />
     <Compile Include="ExceptionService.cs" />
     <Compile Include="ParejaService.cs" />
+    <Compile Include="PrincipalService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\AuthProvider.cs" />
     <Compile Include="Providers\RoleProviderBase.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="ViewModels\ExceptionLogViewModel.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
     <Compile Include="ViewModels\ModificacionesCredito\ModificacionesCreditoInsertarViewModel.cs" />
+    <Compile Include="ViewModels\Principal\PrincipalIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
