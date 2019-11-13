@@ -36,7 +36,28 @@ namespace Datos
 
         public Principal ObtenerDatosPrincipal()
         {
-            throw new NotImplementedException();
+            Principal _entidad;
+
+            using (var reader = ObtenerDataReader("SP_NumeroDictamenes"))
+            {
+                _entidad = ObtenerPrimero(reader);
+
+            }
+
+            return _entidad;
+        }
+
+        public Principal ObetenerEstatusCI(CreditoInicial pGeneric)
+        {
+            Principal _entidad;
+
+            using (var reader = ObtenerDataReader("SP_VerificarDictamen_CI", pGeneric.CI_IDCreditoInicial))
+            {
+                _entidad = ObtenerPrimero(reader);
+
+            }
+
+            return _entidad;
         }
     }
 }

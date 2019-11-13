@@ -114,6 +114,8 @@
                     </div>
                 </div>
 
+                @Html.HiddenFor(m => m.CI_IDCreditoInicial)
+
             </fieldset>
 
         }
@@ -126,31 +128,43 @@
     @if (Model.CI_IDCiudadano.HasValue)
     {
         <script type="text/javascript">
-        $(document).ready(function () {
-            Swal.fire({
-                title: 'Cargando los datos del Credito Inicial',
-                allowOutsideClick: false,
-                onBeforeOpen: () => {
-                    Swal.showLoading()
-                }
-            })
-            var IDCiudadano = "@Model.CI_IDCiudadanoEncriptado";
-            $.ajax({
-                type: "POST",
-                url: "/CreditoInicial/GetCiudadanoInsertar",
-                contentType: "application/json; charset=utf-8",
-                data: JSON.stringify({ ID: IDCiudadano }),
-                success: function (e) {
-                    $('#div_buscar_ciudadano').slideUp();
-                    $('form').append(e);
-                    $('#CIU_IDGruposPrioritarios').select2({ multiple: true });
-                    $('#foo').select2({ multiple: true });
-                    $("form").each(function () { $.data($(this)[0], 'validator', false); });
-                    $.validator.unobtrusive.parse("form");
-                    Swal.close();
-                }
+            $(document).ready(function () {
+                Swal.fire({
+                    title: 'Cargando los datos del Credito Inicial',
+                    allowOutsideClick: false,
+                    onBeforeOpen: () => {
+                        Swal.showLoading()
+                    }
+                })
+                var IDCiudadano = "@Model.CI_IDCiudadanoEncriptado";
+                $.ajax({
+                    type: "POST",
+                    url: "/CreditoInicial/GetCiudadanoInsertar",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({ ID: IDCiudadano }),
+                    success: function (e) {
+                        $('#div_buscar_ciudadano').slideUp();
+                        $('form').append(e);
+                        $('#CIU_IDGruposPrioritarios').select2({ multiple: true });
+
+                        $.ajax({
+                            type: "POST",
+                            url: "/CreditoInicial/GetDomicilioViewModel",
+                            contentType: "application/json; charset=utf-8",
+                            data: JSON.stringify({ ID: @Model.CI_IDDomicilio }),
+                            success: function (e) {
+                                var html = '<div class="box box-success"> '+e+'</div>';
+                                $('#DomicilioViewModel').html(html);
+                            }
+                        });
+
+                        $('#foo').select2({ multiple: true });
+                        $("form").each(function () { $.data($(this)[0], 'validator', false); });
+                        $.validator.unobtrusive.parse("form");
+                        Swal.close();
+                    }
+                });
             });
-        });
         </script>
 
     }
