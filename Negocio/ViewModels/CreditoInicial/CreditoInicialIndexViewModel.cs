@@ -23,6 +23,8 @@ namespace Negocio.ViewModels.CreditoInicial
     {
         public string IDEncriptado { get; set; }
 
+        public int? CI_ID { get; set; }
+
         [Display(Name = "Folio Solicitud")]
         public string CI_FolioSolicitud { get; set; }
 

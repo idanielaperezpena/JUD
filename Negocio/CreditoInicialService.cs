@@ -51,6 +51,7 @@ namespace Negocio
                     var _temp = new CreditoInicialIndexListadoViewModel();
 
                     _temp.IDEncriptado = UoW.Encriptador.Encriptar(_cat.CI_IDCreditoInicial);
+                    _temp.CI_ID = _cat.CI_IDCreditoInicial;
                     _temp.CI_FolioSolicitud = _cat.CI_FolioSolicitud;
                     _temp.CURPCiudadano = _entidadCiudadano.CIU_CURP;
                     _temp.NombreCiudadano = _entidadCiudadano.CIU_Nombre + " " + _entidadCiudadano.CIU_ApellidoPaterno + " " + _entidadCiudadano.CIU_ApellidoMaterno;
