@@ -4,6 +4,7 @@ using Negocio.ViewModels;
 using Negocio.ViewModels.Catalogos;
 using Negocio.ViewModels.Ciudadanos;
 using Negocio.ViewModels.CreditoInicial;
+using Negocio.ViewModels.Domicilio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,10 +72,16 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetDomicilioViewModel()
+        public ActionResult GetDomicilioViewModel(int? ID =null)
         {
             ViewBag.Adicional = " En donde se pretende aplicar el credito";
-            return PartialView("../Domicilio/_Insertar", _service.GetDomicilioViewModel());
+            var vm = new DomicilioFormViewModel();
+            if (ID == null)
+                vm = _service.GetDomicilioViewModel();
+            else
+                vm =  _service.GetDomicilioViewModel(ID);
+
+            return PartialView("../Domicilio/_Insertar", vm);
         }
 
         [HttpPost]

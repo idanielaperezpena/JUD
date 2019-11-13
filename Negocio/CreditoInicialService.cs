@@ -18,11 +18,11 @@ namespace Negocio
 {
     public class CreditoInicialService : ServiceBase
     {
-        public CiudadanoService _serviceCiudadano ;
+        public CiudadanoService _serviceCiudadano;
 
-        public DeudorSolidarioService _serviceDSolidario ;
+        public DeudorSolidarioService _serviceDSolidario;
 
-        public DomicilioService _serviceDomicilio ;
+        public DomicilioService _serviceDomicilio;
 
         public CreditoInicialService(ModelStateDictionary modelState) : base(modelState) {
             _serviceCiudadano = new CiudadanoService(modelState);
@@ -57,21 +57,94 @@ namespace Negocio
                     _temp.CI_FechaSolicitud = _cat.CI_FechaSolicitud.Date.ToShortDateString().ToString();
                     _temp.CI_IDSeccionElectoral = _cat.CI_IDSeccionElectoral;
 
+                    var estatus = EstatusCI(_cat.CI_IDCreditoInicial);
+
+                    var cadena = estatus.Resultado.Split('-');
+
                     _temp.ImgDS = new String[2];
-                    _temp.ImgDS[0] = "darkgray";
-                    _temp.ImgDS[1] = "fas fa-folder-minus";
+                    switch (cadena[0])
+                    {
+                        case "0" :
+                            _temp.ImgDS[0] = "darkgray";
+                            _temp.ImgDS[1] = "fas fa-folder-minus";
+                            break;
+                        case "1":
+                            _temp.ImgDS[0] = "orange";
+                            _temp.ImgDS[1] = "fas fa-hourglass-half";
+                            break;
+                        case "2":
+                            _temp.ImgDS[0] = "forestgreen";
+                            _temp.ImgDS[1] = "fas fa-check-square";
+                            break;
+                        case "4":
+                            _temp.ImgDS[0] = "red";
+                            _temp.ImgDS[1] = "fas fa-times-circle";
+                            break;
+                    }
 
                     _temp.ImgDT = new String[2];
-                    _temp.ImgDT[0] = "orange";
-                    _temp.ImgDT[1] = "fas fa-hourglass-half";
+                    switch (cadena[1])
+                    {
+                        case "0":
+                            _temp.ImgDT[0] = "darkgray";
+                            _temp.ImgDT[1] = "fas fa-folder-minus";
+                            break;
+                        case "1":
+                            _temp.ImgDT[0] = "orange";
+                            _temp.ImgDT[1] = "fas fa-hourglass-half";
+                            break;
+                        case "2":
+                            _temp.ImgDT[0] = "forestgreen";
+                            _temp.ImgDT[1] = "fas fa-check-square";
+                            break;
+                        case "4":
+                            _temp.ImgDT[0] = "red";
+                            _temp.ImgDT[1] = "fas fa-times-circle";
+                            break;
+                    }
+
 
                     _temp.ImgDJ = new String[2];
-                    _temp.ImgDJ[0] = "red";
-                    _temp.ImgDJ[1] = "fas fa-times-circle";
+                    switch (cadena[2])
+                    {
+                        case "0":
+                            _temp.ImgDJ[0] = "darkgray";
+                            _temp.ImgDJ[1] = "fas fa-folder-minus";
+                            break;
+                        case "1":
+                            _temp.ImgDJ[0] = "orange";
+                            _temp.ImgDJ[1] = "fas fa-hourglass-half";
+                            break;
+                        case "2":
+                            _temp.ImgDJ[0] = "forestgreen";
+                            _temp.ImgDJ[1] = "fas fa-check-square";
+                            break;
+                        case "4":
+                            _temp.ImgDJ[0] = "red";
+                            _temp.ImgDJ[1] = "fas fa-times-circle";
+                            break;
+                    }
 
                     _temp.ImgDF = new String[2];
-                    _temp.ImgDF[0] = "forestgreen";
-                    _temp.ImgDF[1] = "fas fa-check-square";
+                    switch (cadena[3])
+                    {
+                        case "0":
+                            _temp.ImgDF[0] = "darkgray";
+                            _temp.ImgDF[1] = "fas fa-folder-minus";
+                            break;
+                        case "1":
+                            _temp.ImgDF[0] = "orange";
+                            _temp.ImgDF[1] = "fas fa-hourglass-half";
+                            break;
+                        case "2":
+                            _temp.ImgDF[0] = "forestgreen";
+                            _temp.ImgDF[1] = "fas fa-check-square";
+                            break;
+                        case "4":
+                            _temp.ImgDF[0] = "red";
+                            _temp.ImgDF[1] = "fas fa-times-circle";
+                            break;
+                    }
 
                     viewModel.Listado.Add(_temp);
                 }
@@ -116,6 +189,13 @@ namespace Negocio
             return _serviceDomicilio.GetDomicilio();
         }
 
+        public DomicilioFormViewModel GetDomicilioViewModel(int? ID)
+        {
+            var vm = _serviceDomicilio.GetDomicilio();
+            vm = _serviceDomicilio.ObtenerDomicilio(ID, vm);
+            return vm;
+        }
+
         public CiudadanoDeudorSolidarioViewModel GetDeudorSolidario()
         {
             return _serviceDSolidario.GetDeudorSolidario();
@@ -156,7 +236,7 @@ namespace Negocio
                     viewModel.CI_Ingreso = _entidad.CI_Ingreso;
                     viewModel.CI_ComprobanteIngresos = _entidad.CI_ComprobanteIngresos;
                     viewModel.CI_CartaResponsiva = _entidad.CI_CartaResponsiva;
-
+                    viewModel.CI_IDDomicilio = _entidad.CI_IDDomicilio;
                 }
 
             }
@@ -207,6 +287,7 @@ namespace Negocio
 
                         var _entidad = UoW.CreditoInicial.Alta(new CreditoInicial
                         {
+                            CI_IDCreditoInicial = viewModel.CI_IDCreditoInicial,
                             CI_FolioSolicitud = viewModel.CI_FolioSolicitud,
                             CI_IDCiudadano = viewModel.CI_IDCiudadano,
                             CI_FechaCaptura = viewModel.CI_FechaCaptura,
@@ -301,6 +382,20 @@ namespace Negocio
                 ModelState.AddModelError(string.Empty, ex.Message);
             }
             return new Domicilio();
+        }
+
+        public Principal EstatusCI(int? ID)
+        {
+            try
+            {
+                return UoW.Principal.ObetenerEstatusCI(new CreditoInicial { CI_IDCreditoInicial = ID });
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message + "Service : Listado");
+            }
+
+            return new Principal();
         }
 
         //Listados

@@ -194,25 +194,8 @@ $(document).on('change',"#DiferenteDomicilio",function (e) {
             type: "POST",
             url: "/CreditoInicial/GetDomicilioViewModel",
             success: function (e) {
-                $('#DomicilioViewModel').html(e);
-                $("form").each(function () { $.data($(this)[0], 'validator', false); });
-                $.validator.unobtrusive.parse("form");
-            }
-        });
-    } else {
-        $('#DomicilioViewModel').html("");
-        $("form").each(function () { $.data($(this)[0], 'validator', false); });
-        $.validator.unobtrusive.parse("form");
-    }
-});
-
-$(document).on('change', "#DiferenteDomicilio", function (e) {
-    if ($(this).is(":checked")) {
-        $.ajax({
-            type: "POST",
-            url: "/CreditoInicial/GetDomicilioViewModel",
-            success: function (e) {
-                $('#DomicilioViewModel').html(e);
+                var html = '<div class="box box-success"> ' + e + '</div>';
+                $('#DomicilioViewModel').html(html);
                 $("form").each(function () { $.data($(this)[0], 'validator', false); });
                 $.validator.unobtrusive.parse("form");
             }
@@ -255,13 +238,25 @@ $(document).on('click', '#guardar', function (e) {
         CreditoInicial.CiudadanoInsertar.Pareja = Pareja;
         CreditoInicial.CiudadanoInsertar.Domicilio_Diferente = Domicilio_Diferente;
         CreditoInicial.CiudadanoInsertar.DeudorSolidario = Deudor_Solidario;
+
+        var titulo = '';
+        var titulo2 = '';
+        if ($('#CI_IDCreditoInicial').val() != '') {
+            titulo = 'Modificando Solicitud';
+            titulo2 = 'modificada';
+        } else {
+            titulo = 'Ingresando la Solicitud';
+            titulo2 = 'Ingresada';
+        }
+
         Swal.fire({
-            title: 'Ingresando la Solicitud',
+            title: titulo,
             allowOutsideClick: false,
             onBeforeOpen: () => {
                 Swal.showLoading()
             }
         })
+
         $.ajax({
             type: "POST",
             url: "/CreditoInicial/Insertar",
@@ -271,7 +266,7 @@ $(document).on('click', '#guardar', function (e) {
                 Swal.close();
                 console.log(e)
                 Swal.fire({
-                    title: 'Solicitud Ingresada con exito',
+                    title: 'Solicitud ' + titulo2+' con exito',
                     allowOutsideClick: false,
                     /*onClose: () => {
                         window.location = "/CreditoInicial";

@@ -7,10 +7,10 @@
         <h3 class="box-title">Domicilio @ViewBag.Adicional</h3>
         
     </div>
+    <div class="box-body">
+        <form role="form">
 
-    <form role="form">
-        
-        @Html.HiddenFor(m=>m.DOM_IDDomicilio)
+            @Html.HiddenFor(m => m.DOM_IDDomicilio)
             <div class="form-group">
                 @Html.LabelFor(m => m.DOM_IDVialidad)
                 @Html.CustomDropDownListFor(m => m.DOM_IDVialidad, Model.Vialidad, new { @class = "form-control form-control-sm " })
@@ -77,21 +77,23 @@
                     @Html.ValidationMessageFor(m => m.DOM_Longitud, "")
                 </div>
             </div>
-          
-               
-                   
-                
-           
 
+
+
+
+
+
+
+
+            @if (Model.Boton == true)
+            {
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            }
+
+        </form>
+    </div>
     
-
-        @if (Model.Boton == true)
-        {
-            <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Guardar</button>
-            </div>
-        }
-
-    </form>
 
 

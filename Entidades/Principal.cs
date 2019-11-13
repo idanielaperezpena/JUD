@@ -12,5 +12,7 @@ namespace Entidades
         public int TotalCreditosDictaminados { get; set; }
         public int TotalCreditosTerminados { get; set; }
         public int TotalCreditosNuevos { get; set; }
+
+        public String Resultado { get; set; } 
     }
 }
