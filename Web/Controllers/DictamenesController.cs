@@ -1,5 +1,9 @@
 ﻿using Entidades;
 using Negocio;
+using Negocio.ViewModels.DictamenFinanciero;
+using Negocio.ViewModels.DictamenJuridico;
+using Negocio.ViewModels.DictamenSocial;
+using Negocio.ViewModels.DictamenTecnico;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,25 +23,54 @@ namespace Web.Controllers
         }
 
         // GET: Dictamenes
-        public ActionResult InsertarDictamenJuridico()
+        public ActionResult InsertarDictamenJuridico(String TipoCredito, int ID)
         {
-            var _vm = _service.InsertarDictamenJuridico();
+            var _vm = _service.InsertarDictamenJuridico(TipoCredito,ID);
             return View(_vm);
         }
-        public ActionResult InsertarDictamenSocial()
+        public ActionResult InsertarDictamenSocial(String TipoCredito, int ID)
         {
-            var _vm = _service.InsertarDictamenSocial();
+            var _vm = _service.InsertarDictamenSocial(TipoCredito, ID);
             return View(_vm);
         }
-        public ActionResult InsertarDictamenTecnico()
+        public ActionResult InsertarDictamenTecnico(String TipoCredito, int ID)
         {
-            var _vm = _service.InsertarDictamenTecnico();
+            var _vm = _service.InsertarDictamenTecnico(TipoCredito, ID);
             return View(_vm);
         }
-        public ActionResult InsertarDictamenFinanciero()
+        public ActionResult InsertarDictamenFinanciero(String TipoCredito, int ID)
         {
-            var _vm = _service.InsertarDictamenFinanciero();
+            var _vm = _service.InsertarDictamenFinanciero(TipoCredito, ID
+);
             return View(_vm);
         }
+
+        //POST:Dictamenes
+        [HttpPost]
+        public ActionResult InsertarDictamenJuridico(DictamenJuridicoViewModel _viewModel)
+        {
+            _service.EditDitamenJuridico(_viewModel);
+            return Json(_viewModel.ToJSON());
+        }
+        [HttpPost]
+        public ActionResult InsertarDictamenSocial(DictamenSocialViewModel _viewModel)
+        {
+            _service.EditDitamenSocial(_viewModel);
+            return Json(_viewModel.ToJSON());
+        }
+
+        [HttpPost]
+        public ActionResult InsertarDictamenTecnico(DictamenTecnicoViewModel _viewModel)
+        {
+            _service.EditDitamenTecnico(_viewModel);
+            return Json(_viewModel.ToJSON());
+        }
+        [HttpPost]
+        public ActionResult InsertarDictamenFinanciero(DictamenFinancieroViewModel _viewModel)
+        {
+            _service.EditDitamenFinanciero(_viewModel);
+            return Json(_viewModel.ToJSON());
+        }
+
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Datos
 {
-    class CIDictamenTecnicoRepository : RepositoryBase<CIDictamenTecnico>
+    public class CIDictamenTecnicoRepository : RepositoryBase<CIDictamenTecnico>
     {
         public CIDictamenTecnicoRepository(DatabaseContext context) : base(context)
         {
@@ -27,7 +27,7 @@ namespace Datos
 
         public override CIDictamenTecnico ObtenerEntidad(CIDictamenTecnico pGeneric)
         {
-            return ObtenerPrimero("SP_SIM_CI_DictamenTecnico_S", pGeneric.CIDT_IDDictamenTecnico);
+            return ObtenerPrimero("SP_SIM_CI_DictamenTecnico_S", pGeneric.CIDT_IDCreditoInicial);
         }
 
         public override List<CIDictamenTecnico> ObtenerListado(CIDictamenTecnico pGeneric)

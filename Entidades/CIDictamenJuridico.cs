@@ -9,7 +9,7 @@ namespace Entidades
     public class CIDictamenJuridico
     {
         public int? CIDJ_IDDictamenJuridico { get; set; }
-        public int CIDJ_IDCreditoInicial { get; set; }
+        public int? CIDJ_IDCreditoInicial { get; set; }
         public int CIDJ_IDPropiedad { get; set; }
         public int CIDJ_IDPosesion { get; set; }
         public string CIDJ_NoDocumentoPropiedad { get; set; }

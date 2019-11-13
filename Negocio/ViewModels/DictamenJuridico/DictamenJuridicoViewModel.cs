@@ -12,7 +12,7 @@ namespace Negocio.ViewModels.DictamenJuridico
     {
         public string TipoCredito { get; set; }
         public int? IDDictamenJuridico { get; set; }
-        public int IDCreditoInicial { get; set; }
+        public int? IDCredito { get; set; }
         [CustomRequired]
         [Display(Name = "Propiedad (Inscritos en el R.P.P)*")]
         public int IDPropiedad { get; set; }
@@ -26,9 +26,9 @@ namespace Negocio.ViewModels.DictamenJuridico
         public string NoDocumentoPropiedad { get; set; }
 
         [CustomRequired]
+        [Display(Name = "Fecha del Documento*")]
         [DataType(DataType.Date, ErrorMessage = "Favor de ingresar un formato correcto para el campo de fecha (dd/mm/yyyy)")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Fecha del Documento*")]
         public DateTime FechaDocumento { get; set; }
 
         [CustomRequired]
@@ -63,7 +63,7 @@ namespace Negocio.ViewModels.DictamenJuridico
         [DataType(DataType.Date, ErrorMessage = "Favor de ingresar un formato correcto para el campo de fecha (dd/mm/yyyy)")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Fecha de la Dictaminación*")]
-        public DateTime FechaDicaminacion { get; set; }
+        public DateTime FechaDictaminacion { get; set; }
 
         
         public string UsuarioDominio { get; set; }

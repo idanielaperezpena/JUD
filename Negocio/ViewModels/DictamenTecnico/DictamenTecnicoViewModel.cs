@@ -12,7 +12,7 @@ namespace Negocio.ViewModels.DictamenTecnico
     {
         public string TipoCredito { get; set; }
         public int? IDDictamenTecnico { get; set; }
-        public int IDCreditoInicial { get; set; }
+        public int? IDCredito{ get; set; }
 
         [CustomRequired]
         [Display(Name = "Con base en el reporte de la visita técnica se determina que la solicitud es*")]

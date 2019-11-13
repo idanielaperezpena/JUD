@@ -38,7 +38,7 @@
 
                     @Html.HiddenFor(model => model.TipoCredito)
                     @Html.HiddenFor(model => model.IDDictamenSocial)
-                    @Html.HiddenFor(model => model.IDCreditoInicial)
+                    @Html.HiddenFor(model => model.IDCredito)
 
 
                     <div class="row">
@@ -242,7 +242,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.FechaVisita)
 
-                                @Html.EditorFor(model => model.FechaVisita, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                @Html.TextBoxFor(model => model.FechaVisita, "{0:yyyy-MM-dd}", new { @style = "width:100%", type = "date", @class = "form-control form-control-sm" } )
                                 @Html.ValidationMessageFor(model => model.FechaVisita, "", new { @class = "text-danger" })
 
                             </div>
@@ -306,7 +306,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 @Html.LabelFor(model => model.FechaDictaminacion)
-                                @Html.EditorFor(model => model.FechaDictaminacion, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                @Html.TextBoxFor(model => model.FechaDictaminacion, "{0:yyyy-MM-dd}",  new { @style = "width:100%", type = "date", @class = "form-control form-control-sm"  })
                                 @Html.ValidationMessageFor(model => model.FechaDictaminacion, "", new { @class = "text-danger" })
 
                             </div>

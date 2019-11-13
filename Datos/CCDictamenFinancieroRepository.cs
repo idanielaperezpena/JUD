@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Datos
 {
-    class CCDictamenFinancieroRepository : RepositoryBase<CCDictamenFinanciero>
+    public class CCDictamenFinancieroRepository : RepositoryBase<CCDictamenFinanciero>
     {
         public CCDictamenFinancieroRepository(DatabaseContext context) : base(context)
         {

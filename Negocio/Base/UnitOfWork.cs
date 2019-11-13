@@ -21,6 +21,22 @@ namespace Negocio
         private DomicilioRepository _domicilioRepo;
         private SeccionElectoralRepository _seccionRepo;
         private CreditoInicialRepository _creditoinicial;
+        private CIDictamenJuridicoRepository _ciDictamenJuridico;
+        private CIDictamenSocialRepository _ciDictamenSocial;
+        private CIDictamenTecnicoRepository _ciDictamenTecnico;
+        private CIDictamenFinancieroRepository _ciDictamenFinanciero;
+        private CCDictamenJuridicoRepository _ccDictamenJuridico;
+        private CCDictamenSocialRepository _ccDictamenSocial;
+        private CCDictamenTecnicoRepository _ccDictamenTecnico;
+        private CCDictamenFinancieroRepository _ccDictamenFinanciero;
+        private CSDictamenJuridicoRepository _csDictamenJuridico;
+        private CSDictamenSocialRepository _csDictamenSocial;
+        private CSDictamenTecnicoRepository _csDictamenTecnico;
+        private CSDictamenFinancieroRepository _csDictamenFinanciero;
+        private MCDictamenJuridicoRepository _mcDictamenJuridico;
+        private MCDictamenSocialRepository _mcDictamenSocial;
+        private MCDictamenTecnicoRepository _mcDictamenTecnico;
+        private MCDictamenFinancieroRepository _mcDictamenFinanciero;
         private PrincipalRepository _principal;
 
 
@@ -174,6 +190,185 @@ namespace Negocio
 
                 return _encriptador;
             }
+        }
+
+        public CIDictamenJuridicoRepository CiDictamenJuridico
+        {
+            get
+            {
+                if (_ciDictamenJuridico == null)
+                    _ciDictamenJuridico = new CIDictamenJuridicoRepository(_context);
+                return _ciDictamenJuridico;
+                
+            }
+           
+        }
+        public CIDictamenSocialRepository CiDictamenSocial
+        {
+            get
+            {
+                if (_ciDictamenSocial == null)
+                    _ciDictamenSocial = new CIDictamenSocialRepository(_context);
+                return _ciDictamenSocial;
+
+            }
+
+        }
+        public CIDictamenTecnicoRepository CiDictamenTecnico
+        {
+            get
+            {
+                if (_ciDictamenTecnico == null)
+                    _ciDictamenTecnico = new CIDictamenTecnicoRepository(_context);
+                return _ciDictamenTecnico;
+
+            }
+
+        }
+        public CIDictamenFinancieroRepository CiDictamenFinanciero
+        {
+            get
+            {
+                if (_ciDictamenFinanciero == null)
+                    _ciDictamenFinanciero = new CIDictamenFinancieroRepository(_context);
+                return _ciDictamenFinanciero;
+
+            }
+
+        }
+
+        public CCDictamenJuridicoRepository CcDictamenJuridico
+        {
+            get
+            {
+                if (_ccDictamenJuridico == null)
+                    _ccDictamenJuridico = new CCDictamenJuridicoRepository(_context);
+                return _ccDictamenJuridico;
+                
+            }
+           
+        }
+        public CCDictamenSocialRepository CcDictamenSocial
+        {
+            get
+            {
+                if (_ccDictamenSocial == null)
+                    _ccDictamenSocial = new CCDictamenSocialRepository(_context);
+                return _ccDictamenSocial;
+
+            }
+
+        }
+        public CCDictamenTecnicoRepository CcDictamenTecnico
+        {
+            get
+            {
+                if (_ccDictamenTecnico == null)
+                    _ccDictamenTecnico = new CCDictamenTecnicoRepository(_context);
+                return _ccDictamenTecnico;
+
+            }
+
+        }
+        public CCDictamenFinancieroRepository CcDictamenFinanciero
+        {
+            get
+            {
+                if (_ccDictamenFinanciero == null)
+                    _ccDictamenFinanciero = new CCDictamenFinancieroRepository(_context);
+                return _ccDictamenFinanciero;
+
+            }
+
+        }
+
+        public CSDictamenJuridicoRepository CsDictamenJuridico
+        {
+            get
+            {
+                if (_csDictamenJuridico == null)
+                    _csDictamenJuridico = new CSDictamenJuridicoRepository(_context);
+                return _csDictamenJuridico;
+
+            }
+
+        }
+        public CSDictamenSocialRepository CsDictamenSocial
+        {
+            get
+            {
+                if (_csDictamenSocial == null)
+                    _csDictamenSocial = new CSDictamenSocialRepository(_context);
+                return _csDictamenSocial;
+
+            }
+
+        }
+        public CSDictamenTecnicoRepository CsDictamenTecnico
+        {
+            get
+            {
+                if (_csDictamenTecnico == null)
+                    _csDictamenTecnico = new CSDictamenTecnicoRepository(_context);
+                return _csDictamenTecnico;
+
+            }
+
+        }
+        public CSDictamenFinancieroRepository CsDictamenFinanciero
+        {
+            get
+            {
+                if (_csDictamenFinanciero == null)
+                    _csDictamenFinanciero = new CSDictamenFinancieroRepository(_context);
+                return _csDictamenFinanciero;
+
+            }
+
+        }
+        public MCDictamenJuridicoRepository McDictamenJuridico
+        {
+            get
+            {
+                if (_mcDictamenJuridico == null)
+                    _mcDictamenJuridico = new MCDictamenJuridicoRepository(_context);
+                return _mcDictamenJuridico;
+
+            }
+
+        }
+        public MCDictamenSocialRepository McDictamenSocial
+        {
+            get
+            {
+                if (_mcDictamenSocial == null)
+                    _mcDictamenSocial = new MCDictamenSocialRepository(_context);
+                return _mcDictamenSocial;
+
+            }
+
+        }
+        public MCDictamenTecnicoRepository McDictamenTecnico
+        {
+            get
+            {
+                if (_mcDictamenTecnico == null)
+                    _mcDictamenTecnico = new MCDictamenTecnicoRepository(_context);
+                return _mcDictamenTecnico;
+
+            }
+
+        }
+        public MCDictamenFinancieroRepository McDictamenFinanciero
+        {
+            get
+            {
+                if (_mcDictamenFinanciero == null)
+                    _mcDictamenFinanciero = new MCDictamenFinancieroRepository(_context);
+                return _mcDictamenFinanciero;
+
+            }
+
         }
     }
 }

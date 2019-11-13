@@ -12,7 +12,7 @@ namespace Negocio.ViewModels.DictamenSocial
     {
         public string TipoCredito { get; set; }
         public int? IDDictamenSocial { get; set; }
-        public int IDCreditoInicial { get; set; }
+        public int? IDCredito { get; set; }
 
         [CustomRequired]
         [Display(Name = "Vivienda en*")]
