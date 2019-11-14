@@ -92,6 +92,7 @@
     <Compile Include="Base\ViewPageBase.cs" />
     <Compile Include="CatalogosService.cs" />
     <Compile Include="CiudadanoService.cs" />
+    <Compile Include="CreditoComplementarioService.cs" />
     <Compile Include="CreditoInicialService.cs" />
     <Compile Include="DeudorSolidarioService.cs" />
     <Compile Include="DomicilioService.cs" />
@@ -123,6 +124,7 @@
     <Compile Include="ViewModels\Ciudadanos\CiudadanoTrabajoViewModel.cs" />
     <Compile Include="ViewModels\Ciudadanos\CiudadanoValidarViewModel.cs" />
     <Compile Include="ViewModels\CreditoComplementario\CreditoComplementarioInsertarViewModel.cs" />
+    <Compile Include="ViewModels\CreditoComplementario\CreditoComplementarioIndexViewModel.cs" />
     <Compile Include="ViewModels\CreditoInicial\CreditoInicialIndexViewModel.cs" />
     <Compile Include="ViewModels\CreditoInicial\CreditoInicialInsertarViewModel.cs" />
     <Compile Include="ViewModels\CreditoSustentabilidad\CreditoSustentabilidadInsertarViewModel.cs" />

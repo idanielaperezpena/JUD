@@ -264,14 +264,28 @@ $(document).on('click', '#guardar', function (e) {
             data: JSON.stringify({ viewModel: CreditoInicial }),
             success: function (e) {
                 Swal.close();
-                console.log(e)
-                Swal.fire({
-                    title: 'Solicitud ' + titulo2+' con exito',
-                    allowOutsideClick: false,
-                    /*onClose: () => {
-                        window.location = "/CreditoInicial";
-                    }*/
-                })
+                console.log(e);
+                if (!e.error) {
+                    Swal.fire({
+                        type: 'success',
+                        title: 'Solicitud ' + titulo2 + ' con exito',
+                        allowOutsideClick: false,
+                        /*onClose: () => {
+                            window.location = "/CreditoInicial";
+                        }*/
+                    })
+                } else {
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Error',
+                        text: e.mensaje,
+                        allowOutsideClick: false,
+                        /*onClose: () => {
+                            window.location = "/CreditoInicial";
+                        }*/
+                    })
+                }
+               
             }
         });
     }

@@ -38,7 +38,7 @@ namespace Negocio
         private MCDictamenTecnicoRepository _mcDictamenTecnico;
         private MCDictamenFinancieroRepository _mcDictamenFinanciero;
         private PrincipalRepository _principal;
-
+        private CreditoComplementarioRepository _creditocomplementario;
 
         private EmailUtility _emailSender;
         private EncriptarUtility _encriptador;
@@ -154,6 +154,17 @@ namespace Negocio
                     _creditoinicial = new CreditoInicialRepository(_context);
 
                 return _creditoinicial;
+            }
+        }
+
+        public CreditoComplementarioRepository CreditoComplementario
+        {
+            get
+            {
+                if (_creditocomplementario == null)
+                    _creditocomplementario = new CreditoComplementarioRepository(_context);
+
+                return _creditocomplementario;
             }
         }
 

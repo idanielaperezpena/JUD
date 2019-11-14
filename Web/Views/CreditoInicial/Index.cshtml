@@ -22,7 +22,7 @@
             </li>
             <li class="active">
                 Creditos Iniciales
-
+            </li>
         </ol>
     </section>
 
@@ -56,6 +56,11 @@
                         </ul>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="pull-right col-lg-6" >
+                        <a class="btn btn-success" href="@Url.Action("Insertar", "CreditoInicial")">Nuevo</a>
+                    </div>
+                </div>
                 <table id="tabla_ci" class="table table-bordered  table-striped table-responsive">
                     @if (Model.Listado.Count() == 0)
                     {
@@ -81,48 +86,56 @@
                         <tbody>
                             @foreach (var item in Model.Listado)
                             {
-                            <tr>
-                                <td>@item.CI_FolioSolicitud</td>
-                                <td>@item.CURPCiudadano</td>
-                                <td>@item.NombreCiudadano</td>
-                                <td>@item.CI_FechaSolicitud</td>
-                                <td>@item.CI_IDSeccionElectoral</td>
-                                <td>
-                                    <div class="text-center icono_tabla">
-                                        <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenSocial","Dictamenes", new { TipoCredito= "CI", ID = @item.CI_ID})">
-                                            <i style="color:@item.ImgDS[0]" class="@item.ImgDS[1]"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="text-center icono_tabla">
-                                        <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenTecnico","Dictamenes", new { TipoCredito= "CI", ID = @item.CI_ID})">
-                                            <i style="color:@item.ImgDT[0]" class="@item.ImgDT[1]"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="text-center icono_tabla">
-                                        <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenJuridico","Dictamenes", new { TipoCredito= "CI", ID = @item.CI_ID})">
-                                            <i style="color:@item.ImgDJ[0]" class="@item.ImgDJ[1]"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="text-center icono_tabla">
-                                        <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenFinanciero","Dictamenes", new { TipoCredito= "CI", ID = @item.CI_ID})">
-                                            <i style="color:@item.ImgDF[0]" class="@item.ImgDF[1]"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="text-center">
-                                        <a class="btn bg-primary solicitudes" href="@Url.Action("Insertar","CreditoInicial", new { TipoCredito= "CI", ID = @item.IDEncriptado})">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>@item.CI_FolioSolicitud</td>
+                                    <td>@item.CURPCiudadano</td>
+                                    <td>@item.NombreCiudadano</td>
+                                    <td>@item.CI_FechaSolicitud</td>
+                                    <td>@item.CI_IDSeccionElectoral</td>
+                                    <td>
+                                        <div class="text-center icono_tabla">
+                                            <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenSocial","Dictamenes", new { TipoCredito= "CI", ID = @item.CI_ID})">
+                                                <i style="color:@item.ImgDS[0]" class="@item.ImgDS[1]"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-center icono_tabla">
+                                            <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenTecnico","Dictamenes", new { TipoCredito= "CI", ID = @item.CI_ID})">
+                                                <i style="color:@item.ImgDT[0]" class="@item.ImgDT[1]"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-center icono_tabla">
+                                            <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenJuridico","Dictamenes", new { TipoCredito= "CI", ID = @item.CI_ID})">
+                                                <i style="color:@item.ImgDJ[0]" class="@item.ImgDJ[1]"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-center icono_tabla">
+                                            @if (item.ImgDS[0] == "forestgreen" && item.ImgDS[0] == "forestgreen" && item.ImgDJ[0] == "forestgreen")
+                                            {
+                                                <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenFinanciero","Dictamenes", new { TipoCredito= "CI", ID = @item.CI_ID})">
+                                                    <i style="color:@item.ImgDF[0]" class="@item.ImgDF[1]"></i>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <i style="color:@item.ImgDF[0]" class="@item.ImgDF[1]"></i>
+                                            }
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-center">
+                                            <a class="btn bg-primary solicitudes" href="@Url.Action("Insertar","CreditoInicial", new {ID = @item.IDEncriptado})">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
                             }
 
 
