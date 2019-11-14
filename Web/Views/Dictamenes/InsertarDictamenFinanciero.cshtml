@@ -14,7 +14,7 @@
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
             <li><a href="#">Dictamen Financiero</a></li>
-           
+
         </ol>
     </section>
 
@@ -116,34 +116,37 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.FechaDictaminacion)
 
-                                @Html.TextBoxFor(model => model.FechaDictaminacion, "{0:yyyy-MM-dd}", new { @style = "width:100%", type = "date", @class = "form-control" } )
+                                @Html.TextBoxFor(model => model.FechaDictaminacion, "{0:yyyy-MM-dd}", new { @style = "width:100%", type = "date", @class = "form-control" })
                                 @Html.ValidationMessageFor(model => model.FechaDictaminacion, "", new { @class = "text-danger" })
 
                             </div>
                         </div>
-                  
+
                     </div>
 
-                   
+
 
 
 
                     <div class="row">
                         <div class="col-lg-6 "> </div>
-                            <div class="col-lg-6 ">
-                                <input type="submit" id="guardar" value="Guardar" class="btn btn-block btn-success btn-lg" />
-                            </div>
+                        <div class="col-lg-6 ">
+                            <input type="submit" id="guardar" value="Guardar" class="btn btn-block btn-success btn-lg" />
                         </div>
                     </div>
+                </div>
             </div>
 
 
-                  
+
         }
-        </section>
+    </section>
 </div>
 
 
-       
 
-        
+@section scripts{
+
+    <script src="~/Scripts/Negocio/Dictamenes/NuevoDictamenFinanciero.js"></script>
+}
+

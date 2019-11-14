@@ -12,7 +12,7 @@ namespace Negocio.ViewModels.DictamenFinanciero
     {
         public string TipoCredito { get; set; }
         public int? IDDictamenFinanciero { get; set; }
-        public int? IDCredito{ get; set; }
+        public int IDCredito{ get; set; }
 
         [CustomRequired]
         [Display(Name = "Con base en la solicitud y documentación, se determina que el crédito es*")]

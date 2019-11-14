@@ -12,7 +12,7 @@ namespace Negocio.ViewModels.DictamenTecnico
     {
         public string TipoCredito { get; set; }
         public int? IDDictamenTecnico { get; set; }
-        public int? IDCredito{ get; set; }
+        public int IDCredito{ get; set; }
 
         [CustomRequired]
         [Display(Name = "Con base en el reporte de la visita técnica se determina que la solicitud es*")]
@@ -36,7 +36,7 @@ namespace Negocio.ViewModels.DictamenTecnico
         [Display(Name = "Asesor Técnico*")]
         public string NoAsesorTecnico { get; set; }
 
-        [CustomRequired]
+       
         public string UsuarioDominio { get; set; }
 
         #region Listas

@@ -136,20 +136,20 @@
 
                             </div>
                         </div>
-                       
+
                     </div>
 
                     <div class="row">
                         <div class="col-lg-6">
-                              <div class="form-group">
+                            <div class="form-group">
                                 @Html.LabelFor(model => model.IDServicioDrenaje)
 
                                 @Html.CustomDropDownListFor(model => model.IDServicioDrenaje, Model.ServicioDrenaje, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(model => model.IDServicioDrenaje, "", new { @class = "text-danger" })
 
                             </div>
-                       
-                         
+
+
                         </div>
                         <div class="col-lg-6 ">
                             <div class="form-group">
@@ -170,7 +170,7 @@
                                 @Html.ValidationMessageFor(model => model.BanoCompartido, "", new { @class = "text-danger" })
 
                             </div>
-                           
+
                         </div>
                     </div>
 
@@ -214,7 +214,7 @@
                                 @Html.ValidationMessageFor(model => model.IDInsalubridad, "", new { @class = "text-danger" })
 
                             </div>
-               
+
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
@@ -242,7 +242,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.FechaVisita)
 
-                                @Html.TextBoxFor(model => model.FechaVisita, "{0:yyyy-MM-dd}", new { @style = "width:100%", type = "date", @class = "form-control form-control-sm" } )
+                                @Html.TextBoxFor(model => model.FechaVisita, "{0:yyyy-MM-dd}", new { @style = "width:100%", type = "date", @class = "form-control form-control-sm" })
                                 @Html.ValidationMessageFor(model => model.FechaVisita, "", new { @class = "text-danger" })
 
                             </div>
@@ -306,7 +306,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 @Html.LabelFor(model => model.FechaDictaminacion)
-                                @Html.TextBoxFor(model => model.FechaDictaminacion, "{0:yyyy-MM-dd}",  new { @style = "width:100%", type = "date", @class = "form-control form-control-sm"  })
+                                @Html.TextBoxFor(model => model.FechaDictaminacion, "{0:yyyy-MM-dd}", new { @style = "width:100%", type = "date", @class = "form-control form-control-sm" })
                                 @Html.ValidationMessageFor(model => model.FechaDictaminacion, "", new { @class = "text-danger" })
 
                             </div>
@@ -328,6 +328,8 @@
     </section>
 </div>
 
+@section scripts{
 
+    <script src="~/Scripts/Negocio/Dictamenes/NuevoDictamenSocial.js"></script>
+}
 
-        

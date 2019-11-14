@@ -88,8 +88,6 @@ C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\Negocio\obj\Debug\Negocio.
 C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\Negocio\obj\Debug\Negocio.csproj.CopyComplete
 C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\Negocio\obj\Debug\Negocio.dll
 C:\Users\JUDMB\Documents\Proyecto MB\SOCIALISMO_JUDMB\Negocio\obj\Debug\Negocio.pdb
-C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Negocio\obj\Debug\Negocio.csprojAssemblyReference.cache
-C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
 C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Negocio\bin\Debug\Negocio.dll.config
 C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Negocio\bin\Debug\Negocio.dll
 C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Negocio\bin\Debug\Negocio.pdb
@@ -130,6 +128,8 @@ C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Negocio\bin\Debug\SendGrid.pdb
 C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Negocio\bin\Debug\SendGrid.xml
 C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Negocio\bin\Debug\Newtonsoft.Json.xml
 C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Negocio\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Negocio\obj\Debug\Negocio.csprojAssemblyReference.cache
+C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
 C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Negocio\obj\Debug\Negocio.csproj.CopyComplete
 C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Negocio\obj\Debug\Negocio.dll
 C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Negocio\obj\Debug\Negocio.pdb

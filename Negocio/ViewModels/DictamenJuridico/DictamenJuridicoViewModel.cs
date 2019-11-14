@@ -12,7 +12,7 @@ namespace Negocio.ViewModels.DictamenJuridico
     {
         public string TipoCredito { get; set; }
         public int? IDDictamenJuridico { get; set; }
-        public int? IDCredito { get; set; }
+        public int IDCredito { get; set; }
         [CustomRequired]
         [Display(Name = "Propiedad (Inscritos en el R.P.P)*")]
         public int IDPropiedad { get; set; }

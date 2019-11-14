@@ -141,6 +141,10 @@
     <Content Include="Scripts\Negocio\Ciudadano\Nuevo.js" />
     <Content Include="Scripts\Negocio\CreditoInicial\Index.js" />
     <Content Include="Scripts\Negocio\CreditoInicial\Nuevo.js" />
+    <Content Include="Scripts\Negocio\Dictamenes\NuevoDictamenJuridico.js" />
+    <Content Include="Scripts\Negocio\Dictamenes\NuevoDictamenFinanciero.js" />
+    <Content Include="Scripts\Negocio\Dictamenes\NuevoDictamenTecnico.js" />
+    <Content Include="Scripts\Negocio\Dictamenes\NuevoDictamenSocial.js" />
     <Content Include="Scripts\Negocio\HomeIndexJS.js" />
     <Content Include="Scripts\UI\admin\adminlte.min.js" />
     <Content Include="Scripts\UI\admin\validaciones_general.js" />
