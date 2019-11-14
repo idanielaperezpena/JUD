@@ -15,8 +15,8 @@
             <small>Nueva Solicitud</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-            <li><a href="#">Credito Inicial</a></li>
+            <li><a href="@Url.Action("Index", "Principal")"><i class="fa fa-dashboard"></i> Inicio</a></li>
+            <li><a href="@Url.Action("Index", "CreditoInicial")">Credito Inicial</a></li>
             <li class="active">Nueva Solicitud</li>
         </ol>
     </section>
@@ -155,6 +155,8 @@
                             success: function (e) {
                                 var html = '<div class="box box-success"> '+e+'</div>';
                                 $('#DomicilioViewModel').html(html);
+                                $("form").each(function () { $.data($(this)[0], 'validator', false); });
+                                $.validator.unobtrusive.parse("form");
                             }
                         });
 

@@ -24,7 +24,7 @@ namespace Negocio
                 {
                     _viewModel.TotalCreditos = _entidad.TotalCreditos;
                     _viewModel.TotalCreditosDictaminados = _entidad.TotalCreditosDictaminados;
-                    _viewModel.TotalCreditosNuevos = _entidad.TotalCreditosNuevos;
+                    _viewModel.TotalCreditosNuevos = _entidad.TotalCreditos - _entidad.TotalCreditosTerminados - _entidad.TotalCreditosDictaminados;
                     _viewModel.TotalCreditosTerminados = _entidad.TotalCreditosTerminados;
 
 

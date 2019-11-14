@@ -81,6 +81,10 @@ namespace Negocio
                             _temp.ImgDS[0] = "red";
                             _temp.ImgDS[1] = "fas fa-times-circle";
                             break;
+                        default:
+                            _temp.ImgDS[0] = "red";
+                            _temp.ImgDS[1] = "fas fa-times-circle";
+                            break;
                     }
 
                     _temp.ImgDT = new String[2];
@@ -99,6 +103,10 @@ namespace Negocio
                             _temp.ImgDT[1] = "fas fa-check-square";
                             break;
                         case "4":
+                            _temp.ImgDT[0] = "red";
+                            _temp.ImgDT[1] = "fas fa-times-circle";
+                            break;
+                        default:
                             _temp.ImgDT[0] = "red";
                             _temp.ImgDT[1] = "fas fa-times-circle";
                             break;
@@ -124,6 +132,10 @@ namespace Negocio
                             _temp.ImgDJ[0] = "red";
                             _temp.ImgDJ[1] = "fas fa-times-circle";
                             break;
+                        default:
+                            _temp.ImgDJ[0] = "red";
+                            _temp.ImgDJ[1] = "fas fa-times-circle";
+                            break;
                     }
 
                     _temp.ImgDF = new String[2];
@@ -142,6 +154,10 @@ namespace Negocio
                             _temp.ImgDF[1] = "fas fa-check-square";
                             break;
                         case "4":
+                            _temp.ImgDF[0] = "red";
+                            _temp.ImgDF[1] = "fas fa-times-circle";
+                            break;
+                        default:
                             _temp.ImgDF[0] = "red";
                             _temp.ImgDF[1] = "fas fa-times-circle";
                             break;

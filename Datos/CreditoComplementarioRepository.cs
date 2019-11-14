@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Datos
 {
-    class CreditoComplementarioRepository : RepositoryBase<CreditoComplementario>
+    public class CreditoComplementarioRepository : RepositoryBase<CreditoComplementario>
     {
         public CreditoComplementarioRepository(DatabaseContext context) : base(context)
         {
@@ -39,8 +39,7 @@ namespace Datos
 
         public override List<CreditoComplementario> ObtenerListado(CreditoComplementario pGeneric)
         {
-            return ObtenerLista("SP_SIM_CreditoComplementario_S", pGeneric.CC_FechaCaptura, pGeneric.CC_FechaSolicitud, pGeneric.CC_FolioSolicitud, pGeneric.CC_IDCreditoComplementario
-               , pGeneric.CC_IDCreditoInicial, pGeneric.CC_IDMejoramiento, pGeneric.CC_Ingreso, pGeneric.CC_NoSesionComite);
+            return ObtenerLista("SP_SIM_CreditoComplementario_S", pGeneric.CC_IDCreditoComplementario);
         }
     }
 }
