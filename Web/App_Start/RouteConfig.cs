@@ -14,9 +14,9 @@ namespace Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "DefaultPrueba",
-                url: "{controller}/{action}/{cve}",
-                defaults: new { cve = UrlParameter.Optional }
+                name: "Dictamenes",
+                url: "{controller}/{action}/{TipoCredito}/{ID}",
+                defaults: new { TipoCredito = "", ID = 0 }
             );
 
             routes.MapRoute(

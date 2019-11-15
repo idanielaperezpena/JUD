@@ -26,7 +26,11 @@ namespace Web.Controllers
         // GET: Dictamenes
         public ActionResult InsertarDictamenJuridico(String TipoCredito, int ID)
         {
+            if (String.IsNullOrEmpty(TipoCredito) || ID == 0)
+            {
+                return RedirectToAction("Index", "CreditoInicial");
 
+            }
             var _vm = _service.InsertarDictamenJuridico(TipoCredito, ID);
             return View(_vm);
             
@@ -35,17 +39,32 @@ namespace Web.Controllers
 
         public ActionResult InsertarDictamenSocial(String TipoCredito, int ID )
         {
+            if (String.IsNullOrEmpty(TipoCredito) || ID==0)
+            {
+                return RedirectToAction("Index", "CreditoInicial");
+
+            }
                var _vm = _service.InsertarDictamenSocial(TipoCredito, ID);
                return View(_vm);
             
         }
         public ActionResult InsertarDictamenTecnico(String TipoCredito, int ID)
         {
+            if (String.IsNullOrEmpty(TipoCredito) || ID == 0)
+            {
+                return RedirectToAction("Index", "CreditoInicial");
+
+            }
             var _vm = _service.InsertarDictamenTecnico(TipoCredito, ID);
             return View(_vm);
         }
         public ActionResult InsertarDictamenFinanciero(String TipoCredito, int ID)
         {
+            if (String.IsNullOrEmpty(TipoCredito) || ID == 0)
+            {
+                return RedirectToAction("Index", "CreditoInicial");
+
+            }
             var _vm = _service.InsertarDictamenFinanciero(TipoCredito, ID
 );
             return View(_vm);
