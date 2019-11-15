@@ -26,7 +26,7 @@ $(document).on('click', '#guardar', function (e) {
             type: "POST",
             url: "/Dictamenes/InsertarDictamenTecnico",
             contentType: "application/json; charset=utf-8",
-            data: JSON.stringify({ viewModel: DictamenTecnico }),
+            data: JSON.stringify({ _viewModel: DictamenTecnico }),
             success: function (e) {
                 Swal.close();
                 console.log(e)

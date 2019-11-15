@@ -14,16 +14,18 @@ namespace Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Dictamenes",
-                url: "{controller}/{action}/{TipoCredito}/{ID}",
-                defaults: new { TipoCredito = "", ID = 0 }
-            );
+               name: "Dictamenes",
+               url: "Dictamenes/{action}/{TipoCredito}/{ID}",
+               defaults: new { controller = "Dictamenes", TipoCredito = "", ID = 0 }
+           );
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/",
                 defaults: new { controller = "Home", action = "Index" }
             );
+
+           
 
             routes.MapRoute(
               name: "Ciudadano",
