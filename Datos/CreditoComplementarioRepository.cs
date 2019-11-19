@@ -15,8 +15,9 @@ namespace Datos
 
         public override CreditoComplementario Alta(CreditoComplementario pGeneric)
         {
-            return ObtenerPrimero("SP_SIM_CreditoComplementario_S", pGeneric.CC_FechaCaptura, pGeneric.CC_FechaSolicitud, pGeneric.CC_FolioSolicitud, pGeneric.CC_IDCreditoComplementario
-                , pGeneric.CC_IDCreditoInicial, pGeneric.CC_IDMejoramiento, pGeneric.CC_Ingreso, pGeneric.CC_NoSesionComite);
+            return ObtenerPrimero("SP_SIM_CreditoComplementario_IU", pGeneric.CC_IDCreditoComplementario, pGeneric.CC_IDCreditoInicial
+                , pGeneric.CC_FolioSolicitud, pGeneric.CC_FechaCaptura, pGeneric.CC_FechaSolicitud, pGeneric.CC_NoSesionComite
+                , pGeneric.CC_IDMejoramiento, pGeneric.CC_Ingreso);
         }
 
         public override void Baja(CreditoComplementario pGeneric)
@@ -26,20 +27,13 @@ namespace Datos
 
         public override CreditoComplementario ObtenerEntidad(CreditoComplementario pGeneric)
         {
-            CreditoComplementario _entidad;
-
-            using (var reader = ObtenerDataReader("SP_SIM_CreditoComplementario_S", pGeneric.CC_IDCreditoComplementario))
-            {
-                _entidad = ObtenerPrimero(reader);
-              
-            }
-
-            return _entidad;
+            return ObtenerPrimero("SP_SIM_CreditoComplementario_S", pGeneric.CC_IDCreditoComplementario);
+                                  
         }
 
         public override List<CreditoComplementario> ObtenerListado(CreditoComplementario pGeneric)
         {
-            return ObtenerLista("SP_SIM_CreditoComplementario_S", pGeneric.CC_IDCreditoComplementario);
+            return ObtenerLista("SP_SIM_CreditoComplementario_S");
         }
     }
 }

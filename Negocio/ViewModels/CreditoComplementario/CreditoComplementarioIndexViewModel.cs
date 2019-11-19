@@ -7,25 +7,25 @@ using System.Threading.Tasks;
 
 namespace Negocio.ViewModels.CreditoComplementario
 {
-    public class CreditoCompementarioIndexViewModel
+    public class CreditoComplementarioIndexViewModel
     {
 
-        public List<CreditoCompementarioIndexListadoViewModel> Listado { get; set; }
+        public List<CreditoComplementarioIndexListadoViewModel> Listado { get; set; }
 
-        public CreditoCompementarioIndexViewModel()
+        public CreditoComplementarioIndexViewModel()
         {
-            Listado = new List<CreditoCompementarioIndexListadoViewModel>();
+            Listado = new List<CreditoComplementarioIndexListadoViewModel>();
         }
 
     }
 
-    public class CreditoCompementarioIndexListadoViewModel
+    public class CreditoComplementarioIndexListadoViewModel
     {
-        public string IDEncriptado { get; set; }
+        
 
         public int? CC_IDCreditoComplementario { get; set; }
 
-        public int? CC_IDCreditoInicial { get; set; }
+        public int CC_IDCreditoInicial { get; set; }
 
         [Display(Name = "Folio Solicitud")]
         public string CC_FolioSolicitud { get; set; }

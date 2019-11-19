@@ -15,8 +15,8 @@ namespace Datos
 
         public override CreditoSustentabilidad Alta(CreditoSustentabilidad pGeneric)
         {
-            return ObtenerPrimero("SP_SIM_CreditoSustentabilidad_IU", pGeneric.CS_FechaCaptura, pGeneric.CS_FechaSolicitud, pGeneric.CS_FolioSolicitud
-                , pGeneric.CS_IDCreditoInicial, pGeneric.CS_IDCreditoSustentabilidad);
+            return ObtenerPrimero("SP_SIM_CreditoSustentabilidad_IU", pGeneric.CS_IDCreditoSustentabilidad, pGeneric.CS_IDCreditoInicial
+                , pGeneric.CS_FolioSolicitud, pGeneric.CS_FechaCaptura, pGeneric.CS_FechaSolicitud);
         }
 
         public override void Baja(CreditoSustentabilidad pGeneric)
@@ -26,20 +26,13 @@ namespace Datos
 
         public override CreditoSustentabilidad ObtenerEntidad(CreditoSustentabilidad pGeneric)
         {
-            CreditoSustentabilidad _entidad;
-            using (var reader = ObtenerDataReader("SP_SIM_CreditoSustentabilidad_S", pGeneric.CS_IDCreditoSustentabilidad))
-            {
-                _entidad = ObtenerPrimero(reader);
-                reader.NextResult();
-            }
-
-            return _entidad;
+             return ObtenerPrimero("SP_SIM_CreditoSustentabilidad_S", pGeneric.CS_IDCreditoSustentabilidad);
+                
         }
 
         public override List<CreditoSustentabilidad> ObtenerListado(CreditoSustentabilidad pGeneric)
         {
-            return ObtenerLista("SP_SIM_CreditoSustentabilidad_S", pGeneric.CS_FechaCaptura, pGeneric.CS_FechaSolicitud, pGeneric.CS_FolioSolicitud
-                , pGeneric.CS_IDCreditoInicial, pGeneric.CS_IDCreditoSustentabilidad);
+            return ObtenerLista("SP_SIM_CreditoSustentabilidad_S", pGeneric.CS_IDCreditoSustentabilidad);
         }
     }
 }

@@ -15,9 +15,9 @@ namespace Datos
 
         public override ModificacionesCredito Alta(ModificacionesCredito pGeneric)
         {
-            return ObtenerPrimero("SP_SIM_ModificacionesCredito_IU", pGeneric.MC_FechaCaptura, pGeneric.MC_FechaSolicitud, pGeneric.MC_FolioSolicitud
-                , pGeneric.MC_IDCiudadano, pGeneric.MC_IDCreditoInicial, pGeneric.MC_IDModificacionesCredito, pGeneric.MC_IDProblema
-                , pGeneric.MC_IDTipoTramite, pGeneric.MC_Ingreso, pGeneric.MC_Procedencia);
+            return ObtenerPrimero("SP_SIM_ModificacionesCredito_IU", pGeneric.MC_IDModificacionesCredito
+                , pGeneric.MC_IDCreditoInicial, pGeneric.MC_FechaSolicitud, pGeneric.MC_FechaCaptura, pGeneric.MC_IDProblema
+                , pGeneric.MC_IDCiudadano, pGeneric.MC_Procedencia, pGeneric.MC_IDTipoTramite, pGeneric.MC_Ingreso);
         }
 
         public override void Baja(ModificacionesCredito pGeneric)
@@ -27,22 +27,14 @@ namespace Datos
 
         public override ModificacionesCredito ObtenerEntidad(ModificacionesCredito pGeneric)
         {
-            ModificacionesCredito _entidad;
 
-            using (var reader = ObtenerDataReader("SP_SIM_ModificacionesCredito_S", pGeneric.MC_IDModificacionesCredito))
-            {
-                _entidad = ObtenerPrimero(reader);
+            return ObtenerPrimero("SP_SIM_ModificacionesCredito_S", pGeneric.MC_IDModificacionesCredito);
                
-            }
-
-            return _entidad;
         }
 
         public override List<ModificacionesCredito> ObtenerListado(ModificacionesCredito pGeneric)
         {
-            return ObtenerLista("SP_SIM_ModificacionesCredito_S", pGeneric.MC_FechaCaptura, pGeneric.MC_FechaSolicitud, pGeneric.MC_FolioSolicitud
-              , pGeneric.MC_IDCiudadano, pGeneric.MC_IDCreditoInicial, pGeneric.MC_IDModificacionesCredito, pGeneric.MC_IDProblema
-              , pGeneric.MC_IDTipoTramite, pGeneric.MC_Ingreso, pGeneric.MC_Procedencia);
+            return ObtenerLista("SP_SIM_ModificacionesCredito_S", pGeneric.MC_IDModificacionesCredito);
         }
     }
 }
