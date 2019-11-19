@@ -15,6 +15,6 @@ namespace Entidades
         public DateTime CC_FechaSolicitud { get; set; }
         public int? CC_NoSesionComite { get; set; }
         public int? CC_IDMejoramiento { get; set; }
-        public float CC_Ingreso { get; set; }
+        public double CC_Ingreso { get; set; }
     }
 }

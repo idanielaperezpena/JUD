@@ -12,25 +12,35 @@ namespace Negocio.ViewModels.ModificacionesCredito
     {
         public int? MC_IDModificacionesCredito { get; set; }
         public int MC_IDCreditoInicial { get; set; }
-        [CustomRequired]
+
+        [CustomRequired] 
         [Display(Name = "Folio Solicitud *")]
         public string MC_FolioSolicitud { get; set; }
-        
+
+        [DataType(DataType.Date, ErrorMessage = "Favor de ingresar un formato correcto para el campo de fecha (dd/mm/yyyy)")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime MC_FechaCaptura { get; set; }
+
         [CustomRequired]
+        [DataType(DataType.Date, ErrorMessage = "Favor de ingresar un formato correcto para el campo de fecha (dd/mm/yyyy)")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Fecha de Solicitud *")]
         public DateTime MC_FechaSolicitud { get; set; }
+
         [CustomRequired]
         [Display(Name = "Problemática*")]
         public int MC_IDProblema { get; set; }
 
         public int MC_IDCiudadano { get; set; }
+
         [CustomRequired]
         [Display(Name = "Procedencia *")]
         public int MC_Procedencia { get; set; }
+
         [CustomRequired]
         [Display(Name = "Tipo de Solicitante*")]
         public int MC_IDTipoTramite { get; set; }
+
         [CustomRequired]
         [Display(Name = "Ingreso*")]
         public float MC_Ingreso { get; set; }

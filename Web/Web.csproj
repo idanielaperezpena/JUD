@@ -139,6 +139,7 @@
     <Content Include="Scripts\Negocio\Catalogos\CatalogosMostrarJS.js" />
     <Content Include="Scripts\Negocio\Ciudadano\CiudadanoMostrar.js" />
     <Content Include="Scripts\Negocio\Ciudadano\Nuevo.js" />
+    <Content Include="Scripts\Negocio\CreditoComplementario\NuevoCreditoComplementario.js" />
     <Content Include="Scripts\Negocio\CreditoInicial\Index.js" />
     <Content Include="Scripts\Negocio\CreditoInicial\Nuevo.js" />
     <Content Include="Scripts\Negocio\Dictamenes\NuevoDictamenJuridico.js" />
@@ -260,6 +261,7 @@
     <Content Include="Views\Dictamenes\InsertarDictamenTecnico.cshtml" />
     <Content Include="Views\Dictamenes\InsertarDictamenFinanciero.cshtml" />
     <Content Include="Views\Ciudadano\Informacion.cshtml" />
+    <Content Include="Views\CreditoComplementario\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

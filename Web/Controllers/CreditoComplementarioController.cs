@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Negocio;
+using Negocio.ViewModels.CreditoComplementario;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,17 +10,39 @@ namespace Web.Controllers
 {
     public class CreditoComplementarioController : Controller
     {
+        private CreditoComplementarioService _service;
+
+        public CreditoComplementarioController()
+        {
+            _service = new CreditoComplementarioService(ModelState);
+        }
+
         // GET: CreditoComplementario
         public ActionResult Index()
         {
-            return View();
+           var _vm= _service.Index();
+            return View(_vm);
         }
 
         
         // GET: CreditoComplementario/Insertar
-        public ActionResult Insertar()
+        public ActionResult Insertar(/*int IDCreditoInicial, int? IDCreditoComplementario*/)
         {
-            return View();
+            int? IDCreditoComplementario = null;
+            int IDCreditoInicial = 21;
+           var _vm=_service.Insertar(IDCreditoInicial, IDCreditoComplementario);
+            return View(_vm);
+        }
+
+        [HttpPost]
+        public ActionResult Insertar(CreditoComplementarioInsertarViewModel _viewModel)
+        {
+            _service.EditCreditoComplementario(_viewModel);
+            var errors = ModelState.Select(x => x.Value.Errors)
+                     .Where(y => y.Count > 0)
+                     .ToList();
+            return Json(errors.ToJSON());
+
         }
 
        

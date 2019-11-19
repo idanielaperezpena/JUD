@@ -16,7 +16,10 @@ namespace Negocio.ViewModels.CreditoSustentabilidad
         public string CS_FolioSolicitud { get; set; }
       
         public DateTime CS_FechaCaptura { get; set; }
+
         [CustomRequired]
+        [DataType(DataType.Date, ErrorMessage = "Favor de ingresar un formato correcto para el campo de fecha (dd/mm/yyyy)")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Fecha de Solicitud *")]
         public DateTime CS_FechaSolicitud { get; set; }
     }
