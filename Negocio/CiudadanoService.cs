@@ -41,6 +41,7 @@ namespace Negocio
                     var _temp = new CiudadanosIndexListadoViewModel();
 
                     _temp.IDEncriptado = UoW.Encriptador.Encriptar(_cat.CIU_IDCiudadano);
+                    _temp.CIU_IDCiudadano = _cat.CIU_IDCiudadano;
                     _temp.CURP = _cat.CIU_CURP;
                     _temp.NombreCompleto = _cat.CIU_Nombre + " " + _cat.CIU_ApellidoPaterno + " " + _cat.CIU_ApellidoMaterno;
 
@@ -176,6 +177,38 @@ namespace Negocio
             }
 
             return viewModel;
+        }
+
+        public CiudadanoInformacionViewModel Informacion(string ID)
+        {
+            var _viewModel = new CiudadanoInformacionViewModel();
+            try
+            {
+                //CIUDADANO
+                var _entidad = UoW.Ciudadano.ObtenerEntidad(new Ciudadano
+                {
+                    CIU_IDCiudadano = Int32.Parse(UoW.Encriptador.Desencriptar(ID))
+                });
+
+                if (_entidad != null)
+                {
+                    //datos personales
+                    _viewModel.ciudadano.ID_Encriptado = UoW.Encriptador.Encriptar(_entidad.CIU_IDCiudadano);
+                    _viewModel.ciudadano.CIU_CURP = _entidad.CIU_CURP;
+                    _viewModel.ciudadano.CIU_Nombre = _entidad.CIU_Nombre;
+                    _viewModel.ciudadano.CIU_ApellidoPaterno = _entidad.CIU_ApellidoPaterno;
+                    _viewModel.ciudadano.CIU_ApellidoMaterno = _entidad.CIU_ApellidoMaterno;
+                    _viewModel.ciudadano.CIU_NumeroIdentificacion = _entidad.CIU_NumeroIdentificacion;
+                    _viewModel.ciudadano.CIU_FechaNacimiento = _entidad.CIU_FechaNacimiento;
+                    _viewModel.ciudadano.ID = _entidad.CIU_IDCiudadano;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+            return _viewModel;
         }
 
         //Funciones de View Model vacias
@@ -404,6 +437,7 @@ namespace Negocio
                        EditarDomicilioTrabajo(viewModel.Domicilio_Trabajo);
                     if (viewModel.Pareja != null)
                         EditarPareja(viewModel.Pareja);
+
                     using (UoW.Ciudadano.TxScope = new TransactionScope())
                     {
                         var _entidad = UoW.Ciudadano.Alta(new Ciudadano

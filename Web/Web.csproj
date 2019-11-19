@@ -233,12 +233,9 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\Exception\Log.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Shared\_Loader.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Exception\_Ex.cshtml" />
-    <Content Include="Views\Shared\_LoaderSecondary.cshtml" />
     <Content Include="Views\Shared\_Layout-Login.cshtml" />
     <Content Include="Views\Shared\_Layout-Principal.cshtml" />
     <Content Include="Views\Principal\Index.cshtml" />
@@ -246,14 +243,10 @@
     <Content Include="Views\Catalogos\Index.cshtml" />
     <Content Include="Views\Catalogos\_MostrarModal.cshtml" />
     <Content Include="Views\Ciudadano\Index.cshtml" />
-    <Content Include="Views\Ciudadano\_InsertarPrueba.cshtml" />
+    <Content Include="Views\Ciudadano\_Insertar.cshtml" />
     <Content Include="Views\DomicilioCiudadano\_Insertar.cshtml" />
-    <Content Include="Views\Pareja\Insertar.cshtml" />
-    <Content Include="Views\Ciudadano\_DatosPersonales.cshtml" />
     <Content Include="Views\Ciudadano\Insertar.cshtml" />
     <Content Include="Views\Pareja\_Insertar.cshtml" />
-    <Content Include="Views\Ciudadano\_CreditosOtorgados.cshtml" />
-    <Content Include="Views\Ciudadano\_ComposicionFamiliar.cshtml" />
     <Content Include="Views\Domicilio\_Insertar.cshtml" />
     <Content Include="Views\Ciudadano\Validar.cshtml" />
     <Content Include="Views\Ciudadano\_ValidarTabla.cshtml" />
@@ -266,6 +259,7 @@
     <Content Include="Views\Dictamenes\InsertarDictamenSocial.cshtml" />
     <Content Include="Views\Dictamenes\InsertarDictamenTecnico.cshtml" />
     <Content Include="Views\Dictamenes\InsertarDictamenFinanciero.cshtml" />
+    <Content Include="Views\Ciudadano\Informacion.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

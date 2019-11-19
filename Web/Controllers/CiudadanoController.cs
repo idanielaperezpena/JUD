@@ -54,16 +54,34 @@ namespace Web.Controllers
             ViewBag.Titulo = "Solicitudes del Ciudadano";
             return View(_vm);
         }
+
         public ActionResult Nuevo()
         {
             return View("Insertar");
         }
 
+        public ActionResult Informacion(string ID)
+        {
+            if (!String.IsNullOrEmpty(ID))
+            {
+                var vm = new CiudadanoInformacionViewModel();
+                vm = _service.Informacion(ID);
+                return View(vm);
+            }
+            else
+            {
+                return RedirectToAction("Index", new Notificacion { Error = true, Mensaje = "Debe elegir un ciudadano para mostrar su informacion" });
+            }
+            
+        }
+
         [HttpPost]
         public ActionResult Insertar(CiudadanoInsertarViewModel viewModel)
         {
-            _service.Edit(viewModel);
-            return Json(viewModel.ToJSON());
+            var errors = ModelState.Select(x => x.Value.Errors)
+                           .Where(y => y.Count > 0)
+                           .ToList();
+            return Json(errors.ToJSON());
         }
 
         [HttpPost]
@@ -77,6 +95,7 @@ namespace Web.Controllers
         {
             return PartialView("../Domicilio/_Insertar", _service.GetDomicilio());
         }
+
         [HttpPost]
         public ActionResult BusquedaExistente(string CadenaBusqueda)
         {

@@ -31,7 +31,7 @@ namespace Negocio.ViewModels.Catalogos
 
     }
 
-    public class CatalogosMostrarListadoViewModel : Entidades.Catalogos
+    public class CatalogosMostrarListadoViewModel 
     {
 
         public int? ID { get; set; }

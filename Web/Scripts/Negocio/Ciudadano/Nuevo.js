@@ -1,11 +1,8 @@
 ﻿//guardar ciudadano
 $(document).on('click', '#guardar', function (e) {
-    alert('hola');
-   
     e.preventDefault();
     if ($(this).closest('form').valid())
     {
-        alert('dentro if despues de ciudadano');
         var Ciudadano = $(this).closest('form').serializeObject();
         var Pareja = $('#ParejaViewModel').find('select, textarea, input').serializeObject();
         var Domicilio_Trabajo = $('#DomicilioTrabajoViewModel').find('select, textarea, input').serializeObject();
@@ -13,8 +10,6 @@ $(document).on('click', '#guardar', function (e) {
         Ciudadano.Pareja = Pareja;
         Ciudadano.Domicilio_Trabajo = Domicilio_Trabajo;
         Ciudadano.DeudorSolidario = Deudor_Solidario;
-        alert('dentro if despues de ciudadano');
-        alert(JSON.stringify({ viewModel: Ciudadano }));
         Swal.fire({
             title: 'Registrando al Ciudadano',
             allowOutsideClick: false,
@@ -34,7 +29,7 @@ $(document).on('click', '#guardar', function (e) {
                     title: 'Ciudadano registrado con exito',
                     allowOutsideClick: false,
                     onClose: () => {
-                        window.location = "/Ciudadano";
+                        //window.location = "/Ciudadano";
                     }
                 })
             }
@@ -81,8 +76,10 @@ $(document).on('change', "#CIU_IDOcupacion", function (e) {
 });
 
 
-$('.siguiente').click(function (e) {
-    var step = $(this).attr('data-step');
-    $(this).closest('fieldset').slideUp('slow');
-    $('#step' + step).slideDown('slow');
+$(document).on('click', '.siguiente', function (e) {
+    if ($(this).closest('form').valid()) {
+        var step = $(this).attr('data-step');
+        $(this).closest('fieldset').slideUp('slow');
+        $('#step' + step).slideDown('slow');
+    }
 });

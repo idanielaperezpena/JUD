@@ -1,0 +1,138 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout-Principal.cshtml";
+}
+
+
+@model Negocio.ViewModels.Ciudadanos.CiudadanoInformacionViewModel
+
+
+<div class="content-wrapper" style="min-height: 901px;">
+    <section class="content-header">
+        <h1>
+            Ciudadano
+            <small>Solicitudes</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="@Url.Action("Index", "Principal")"><i class="fa fa-dashboard"></i>Menu principal</a>
+            </li>
+            <li class="active">
+                Solicitudes por Ciudadano
+        </ol>
+    </section>
+
+    <section class="content">
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <h1 class="box-title">Datos de la (el) Solicitante.</h1>
+            </div>
+
+            @Html.HiddenFor(m => m.ciudadano.ID_Encriptado)
+            <div class="box-body">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ciudadano.CIU_CURP)
+                    @Html.EditorFor(m => m.ciudadano.CIU_CURP, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                    @Html.ValidationMessageFor(m => m.ciudadano.CIU_CURP, "")
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ciudadano.CIU_Nombre)
+                    @Html.EditorFor(m => m.ciudadano.CIU_Nombre, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                    @Html.ValidationMessageFor(m => m.ciudadano.CIU_Nombre, "")
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-6">
+                        @Html.LabelFor(m => m.ciudadano.CIU_ApellidoPaterno)
+                        @Html.EditorFor(m => m.ciudadano.CIU_ApellidoPaterno, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                        @Html.ValidationMessageFor(m => m.ciudadano.CIU_ApellidoPaterno, "")
+                    </div>
+                    <div class="form-group col-lg-6">
+                        @Html.LabelFor(m => m.ciudadano.CIU_ApellidoMaterno)
+                        @Html.EditorFor(m => m.ciudadano.CIU_ApellidoMaterno, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                        @Html.ValidationMessageFor(m => m.ciudadano.CIU_ApellidoMaterno, "")
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="form-group col-lg-6">
+                        @Html.LabelFor(m => m.ciudadano.CIU_NumeroIdentificacion)
+                        @Html.EditorFor(m => m.ciudadano.CIU_NumeroIdentificacion, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                        @Html.ValidationMessageFor(m => m.ciudadano.CIU_NumeroIdentificacion, "")
+                    </div>
+
+                    <div class="form-group  col-lg-6">
+                        @Html.LabelFor(m => m.ciudadano.CIU_FechaNacimiento)
+                        <div class="input-group date">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            @Html.EditorFor(m => m.ciudadano.CIU_FechaNacimiento, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                        </div>
+                        @Html.ValidationMessageFor(m => m.ciudadano.CIU_FechaNacimiento, "")
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="box-footer">
+                <a class="btn bg-primary" href="@Url.Action("Insertar","Ciudadano", new { ID = Model.ciudadano.ID_Encriptado})">
+                    Editar Informacion 
+                </a>
+            </div>
+        </div>
+
+
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <h3 class="box-title">Solicitudes del Ciudadano</h3>
+            </div>
+            <div class="box-body">
+
+                <table id="tabla_ciudadano_index" class="table table-bordered  table-striped table-responsive">
+                    @if (Model.Listado.Count() == 0)
+                    {
+                        @Html.CustomTableEmptyResult()
+                    }
+                    else
+                    {
+                        <thead>
+                            <tr>
+                                <th>CURP</th>
+                                <th>Nombre Completo</th>
+                                <th>Género</th>
+                                <th>Datos de Nacimiento</th>
+                                <th>Contacto</th>
+                                <th>Domicilio</th>
+                                <th>Ver Información</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Listado)
+                            {
+                                <tr>
+                                    <td>@item.FolioSolicitud</td>
+                                    <td>@item.TipoSolicitud</td>
+                                    <td>@item.FechaSolicitud</td>
+                                    <td>@item.Estatus</td>
+                                    <td>
+                                        <div class="text-center">
+                                            <a class="btn bg-primary solicitudes" href="">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    }
+                </table>
+            </div>
+        </div>
+    </section>
+</div>

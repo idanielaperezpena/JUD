@@ -35,7 +35,7 @@
 });
 
 $(document).ready(function () {
-    $('#tabla_ciudadano').DataTable();
+    $('#tabla_ciudadano_index').DataTable();
 });
 
 

@@ -87,7 +87,7 @@ namespace Web.Controllers
         [HttpPost]
         public ActionResult GetCiudadanoInsertar(string ID = null)
         {
-            return PartialView("../Ciudadano/_InsertarPrueba", _service.CiudadanoInsertar(ID));
+            return PartialView("../Ciudadano/_Insertar", _service.CiudadanoInsertar(ID));
         }
 
         [HttpPost]

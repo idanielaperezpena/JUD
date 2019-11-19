@@ -46,7 +46,7 @@
             </div>
             <div class="box-body">
 
-                <table id="tabla_ciudadano" class="table table-bordered  table-striped table-responsive">
+                <table id="tabla_ciudadano_index" class="table table-bordered  table-striped table-responsive">
                     @if (Model.Listado.Count() == 0)
                     {
                         @Html.CustomTableEmptyResult()
@@ -61,7 +61,7 @@
                                 <th>Datos de Nacimiento</th>
                                 <th>Contacto</th>
                                 <th>Domicilio</th>
-                                <th>Ver Solcitudes</th>
+                                <th>Ver Información</th>
 
                             </tr>
                         </thead>
@@ -77,18 +77,15 @@
                                     <td>@item.DomicilioCompleto</td>
                                     <td>
                                         <div class="text-center">
-                                            <a class="btn bg-primary solicitudes" href="@Url.Action("Insertar","Ciudadano", new { ID = @item.IDEncriptado})">
+                                            <a class="btn bg-primary solicitudes" href="@Url.Action("Informacion","Ciudadano", new { ID = @item.IDEncriptado})">
                                                 <i class="fas fa-eye"></i>
                                             </a>
                                         </div>
                                     </td>
                                 </tr>
                             }
-
-
                         </tbody>
                     }
-
                 </table>
             </div>
         </div>
