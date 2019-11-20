@@ -142,11 +142,13 @@
     <Content Include="Scripts\Negocio\CreditoComplementario\NuevoCreditoComplementario.js" />
     <Content Include="Scripts\Negocio\CreditoInicial\Index.js" />
     <Content Include="Scripts\Negocio\CreditoInicial\Nuevo.js" />
+    <Content Include="Scripts\Negocio\CreditoSustentabilidad\NuevoCreditoSustentabilidad.js" />
     <Content Include="Scripts\Negocio\Dictamenes\NuevoDictamenJuridico.js" />
     <Content Include="Scripts\Negocio\Dictamenes\NuevoDictamenFinanciero.js" />
     <Content Include="Scripts\Negocio\Dictamenes\NuevoDictamenTecnico.js" />
     <Content Include="Scripts\Negocio\Dictamenes\NuevoDictamenSocial.js" />
     <Content Include="Scripts\Negocio\HomeIndexJS.js" />
+    <Content Include="Scripts\Negocio\ModificacionesCredito\NuevoModificacionesCredito.js" />
     <Content Include="Scripts\UI\admin\adminlte.min.js" />
     <Content Include="Scripts\UI\admin\validaciones_general.js" />
     <Content Include="Scripts\UI\autoNumeric\autoNumeric-2.0.13.js" />
@@ -262,6 +264,10 @@
     <Content Include="Views\Dictamenes\InsertarDictamenFinanciero.cshtml" />
     <Content Include="Views\Ciudadano\Informacion.cshtml" />
     <Content Include="Views\CreditoComplementario\Index.cshtml" />
+    <Content Include="Views\CreditoSustentabilidad\Insertar.cshtml" />
+    <Content Include="Views\CreditoSustentabilidad\Index.cshtml" />
+    <Content Include="Views\ModificacionesCredito\Index.cshtml" />
+    <Content Include="Views\ModificacionesCredito\Insertar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -272,8 +278,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\" />
-    <Folder Include="Views\CreditoSustentabilidad\" />
-    <Folder Include="Views\ModificacionesCredito\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entidades\Entidades.csproj">

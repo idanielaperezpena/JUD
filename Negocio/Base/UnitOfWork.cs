@@ -39,6 +39,8 @@ namespace Negocio
         private MCDictamenFinancieroRepository _mcDictamenFinanciero;
         private PrincipalRepository _principal;
         private CreditoComplementarioRepository _creditocomplementario;
+        private CreditoSustentabilidadRepositoy _creditoSustentabilidad;
+        private ModificacionesCreditoRepository _modificacionesCredito;
 
         private EmailUtility _emailSender;
         private EncriptarUtility _encriptador;
@@ -380,6 +382,28 @@ namespace Negocio
 
             }
 
+        }
+
+        public CreditoSustentabilidadRepositoy CreditoSustentabilidad
+        {
+            get
+            {
+                if (_creditoSustentabilidad==null)
+                     _creditoSustentabilidad = new CreditoSustentabilidadRepositoy(_context);
+                return _creditoSustentabilidad;
+
+
+            }
+        }
+
+        public ModificacionesCreditoRepository ModificacionesCredito
+        {
+            get
+            {
+                if (_modificacionesCredito == null)
+                    _modificacionesCredito = new ModificacionesCreditoRepository(_context);
+                return _modificacionesCredito;
+            }
         }
     }
 }

@@ -1,0 +1,145 @@
+﻿@{
+    ViewBag.Title = "Insertar";
+    Layout = "~/Views/Shared/_Layout-Principal.cshtml";
+}
+@model Negocio.ViewModels.ModificacionesCredito.ModificacionesCreditoInsertarViewModel
+
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Modificaciones al Crédito
+
+            <small>Solicitud</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+            <li><a href="#"> Modificaciones al Crédito</a></li>
+            <li class="active">X</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h1 class="box-title">Modificaciones al Crédito</h1>
+                    </div>
+
+                    @using (Html.BeginForm("Insertar"))
+                    {
+                        @Html.AntiForgeryToken()
+
+                    <div class="box box-body">
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.MC_IDModificacionesCredito)
+                        @Html.HiddenFor(model => model.MC_IDCreditoInicial)
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MC_FolioSolicitud)
+
+                                    @Html.EditorFor(model => model.MC_FolioSolicitud, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                    @Html.ValidationMessageFor(model => model.MC_FolioSolicitud, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MC_FechaSolicitud)
+
+                                    @Html.TextBox("MC_FechaSolicitud", Model.MC_FechaSolicitud, "{0:yyyy-MM-dd}", new { @style = "width:100%", type = "date", @class = "form-control form-control-sm datepicker" })
+                                    @Html.ValidationMessageFor(model => model.MC_FechaSolicitud, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MC_IDProblema)
+
+                                    @Html.CustomDropDownListFor(m => m.MC_IDProblema, Model.Problematica, new { @class = "form-control form-control-sm " })
+                                    @Html.ValidationMessageFor(model => model.MC_IDProblema, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MC_Procedencia)
+
+                                    @Html.CustomDropDownListFor(m => m.MC_Procedencia, Model.Dictaminacion, new { @class = "form-control form-control-sm " })
+                                    @Html.ValidationMessageFor(model => model.MC_Procedencia, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MC_IDCiudadano)
+
+                                    @Html.EditorFor(model => model.MC_IDCiudadano, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                    @Html.ValidationMessageFor(model => model.MC_IDCiudadano, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MC_IDTipoTramite)
+
+                                    @Html.CustomDropDownListFor(m => m.MC_IDTipoTramite, Model.TipoTramite, new { @class = "form-control form-control-sm " })
+                                    @Html.ValidationMessageFor(model => model.MC_IDTipoTramite, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MC_Ingreso)
+
+                                    @Html.EditorFor(model => model.MC_Ingreso, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                    @Html.ValidationMessageFor(model => model.MC_Ingreso, "", new { @class = "text-danger" })
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                   
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-lg-6 ">
+                            </div>
+                            <div class="col-lg-6 ">
+                                <input type="submit" id="guardar" value="Guardar" class="btn btn-block btn-success btn-lg" />
+                            </div>
+                        </div>
+                    </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>
+@section scripts
+    {
+    <script src="~/Scripts/Negocio/ModificacionesCredito/NuevoModificacionesCredito.js"></script>
+    }
+

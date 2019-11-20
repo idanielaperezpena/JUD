@@ -17,6 +17,6 @@ namespace Entidades
         public int MC_IDCiudadano { get; set; }
         public int MC_Procedencia { get; set; }
         public int MC_IDTipoTramite { get; set; }
-        public float MC_Ingreso { get; set; }
+        public double MC_Ingreso { get; set; }
     }
 }
