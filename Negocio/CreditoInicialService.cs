@@ -30,6 +30,11 @@ namespace Negocio
             _serviceDomicilio = new DomicilioService(modelState);
         }
 
+        public CreditoInicialService(ModelStateDictionary modelState,int XD) : base(modelState)
+        {
+
+        }
+
 
         //Vistas
 
@@ -422,6 +427,20 @@ namespace Negocio
             try
             {
                 return UoW.CreditoInicial.ObtenerListado(new CreditoInicial());
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message + "Service : Listado");
+            }
+
+            return new List<CreditoInicial>();
+        }
+
+        public List<CreditoInicial> Listado_Ciudadano(int? ID)
+        {
+            try
+            {
+                return UoW.CreditoInicial.ObtenerListadoCiudadano(new CreditoInicial { CI_IDCiudadano = ID });
             }
             catch (Exception ex)
             {

@@ -4,6 +4,29 @@
 }
 @model Negocio.ViewModels.Ciudadanos.CiudadanoInsertarViewModel
 
+@section estilos{
+    @Styles.Render("~/bundles/select2_css")
+}
+
+@{
+    var foo = new List<SelectListItem>();
+    foreach (var item in Model.GruposPrioritarios)
+    {
+        var select = false;
+        if (Model.CIU_IDGruposPrioritarios != null)
+        {
+            if (Array.Find(Model.CIU_IDGruposPrioritarios, s => s.Equals(item.ID)) > 0)
+            {
+                select = true;
+            }
+        }
+
+        var list = new SelectListItem { Text = item.Descripcion, Value = item.ID.ToString(), Selected = select };
+        foo.Add(list);
+    }
+
+
+}
 
 @using (Html.BeginForm("Insertar"))
 {
@@ -223,7 +246,7 @@
                                     @*3. Domicilio del del solicitante *@
                                     <div class="box box-success">
                                         <div class="box-header with-border">
-                                            <h3 class="box-title">3. Domicilio del Ciudadano.</h3>
+                                            <h3 class="box-title">Domicilio del Ciudadano.</h3>
                                         </div>
                                         <div class="box-body">
                                             <div class="row">
@@ -275,6 +298,7 @@
                                                 <div class="form-group col-lg-6">
                                                     @Html.LabelFor(m => m.DOMC_CodigoPostal)
                                                     @Html.EditorFor(m => m.DOMC_CodigoPostal, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                                    @Html.ValidationMessageFor(m => m.DOMC_CodigoPostal, "")
                                                 </div>
                                                 <div class="form-group  col-lg-6">
                                                     @Html.LabelFor(m => m.DOMC_IDEstado)
@@ -301,33 +325,41 @@
                                                     @Html.ValidationMessageFor(m => m.DOMC_IDTipoVivienda, "")
                                                 </div>
 
-                                                <div class="form-group col-lg-6">
+                                                <div id="MontoRentaDomicilio" class="form-group col-lg-6">
                                                     @Html.LabelFor(m => m.DOMC_MontoRenta)
                                                     @Html.EditorFor(m => m.DOMC_MontoRenta, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                                    @Html.ValidationMessageFor(m => m.DOMC_MontoRenta, "")
                                                 </div>
 
-                                                <div  class="form-group col-lg-6">
+                                                <div id="OtroTipoVivienda" class="form-group col-lg-6">
                                                     @Html.LabelFor(m => m.DOMC_Otro)
                                                     @Html.TextAreaFor(m => m.DOMC_Otro, new { @class = "form-control" })
                                                 </div>
 
                                             </div>
 
+                                            @if (Model.CreditoInicial == true)
+                                            {
+                                                <div class="col-lg-12">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input id="DiferenteDomicilio" type="checkbox"> ¿El domicilio donde se pretende aplicar el credito es diferente a donde vive el ciudadano?
+                                                        </label>
+                                                    </div>
+                                                </div>
 
+                                            }
 
                                             @Html.HiddenFor(m => m.DOMC_IDDomicilio)
 
                                             @Html.HiddenFor(m => m.CIU_IDDomicilioTrabajo)
 
                                         </div>
-
-
-
                                     </div>
                                 </div>
                             </div>
 
-                            
+
 
                         </div>
                     </div>
@@ -432,9 +464,9 @@
 
                                             </div>
                                             <div class="row">
-                                                <div class="form-group col-lg-6">
+                                                <div class="form-group col-lg-12">
                                                     @Html.LabelFor(m => m.CIU_IDGruposPrioritarios)
-                                                    @Html.CustomDropDownListFor(m => m.CIU_IDGruposPrioritarios, Model.GruposPrioritarios, new { @class = "form-control form-control-sm " })
+                                                    @Html.ListBox("CIU_IDGruposPrioritarios", foo, new { @style = "width:100%", @class = "form-control select2" })
                                                     @Html.ValidationMessageFor(m => m.CIU_IDGruposPrioritarios, "")
                                                 </div>
                                                 <div class="form-group col-lg-6">
@@ -465,20 +497,20 @@
                                                     @Html.EditorFor(m => m.CIU_NombreTrabajo, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
                                                     @Html.ValidationMessageFor(m => m.CIU_NombreTrabajo, "")
                                                 </div>
-                                               
-                                                    
+
+
                                             </div>
-                                            
-                                               
-                                                    <div id="DomicilioTrabajoViewModel">
-                                                        @if (Model.Domicilio_Trabajo != null)
-                                                        {
-                                                            @Html.Partial("../Domicilio/_Insertar", Model.Domicilio_Trabajo)
-                                                        }
-                                                    </div>
-                                                
-                                                
-                                            
+
+
+                                            <div id="DomicilioTrabajoViewModel">
+                                                @if (Model.Domicilio_Trabajo != null)
+                                                {
+                                                    @Html.Partial("../Domicilio/_Insertar", Model.Domicilio_Trabajo)
+                                                }
+                                            </div>
+
+
+
 
                                         </div>
                                     </div>
@@ -577,7 +609,7 @@
         </section>
     </div>
 }
-    @section scripts{
-        @Scripts.Render("~/bundles/datatables_js")
-        <script src="~/Scripts/Negocio/Ciudadano/Nuevo.js"></script>
-    }
+@section scripts{
+    @Scripts.Render("~/bundles/select2_js")
+    <script src="~/Scripts/Negocio/Ciudadano/Nuevo.js"></script>
+}

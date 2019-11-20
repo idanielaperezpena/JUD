@@ -32,7 +32,7 @@ namespace Negocio.ViewModels.Ciudadanos
         public string TipoSolicitud { get; set; }
 
         [Display(Name = "Fecha de solicitud")]
-        public String FechaSolicitud { get; set; }
+        public DateTime FechaSolicitud { get; set; }
 
         [Display(Name = "Estatus")]
         public string Estatus { get; set; }

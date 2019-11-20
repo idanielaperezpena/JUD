@@ -6,6 +6,7 @@ using Negocio.ViewModels.Domicilio;
 using Negocio.ViewModels.DomicilioCiudadano;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,11 +19,13 @@ namespace Negocio
     {
         public DeudorSolidarioService _serviceDSolidario;
         public DomicilioService _serviceDomicilio ;
+        public CreditoInicialService _serviceCInicial;
 
 
         public CiudadanoService(ModelStateDictionary modelState) : base(modelState) {
             _serviceDSolidario = new DeudorSolidarioService(modelState);
             _serviceDomicilio = new DomicilioService(modelState);
+            _serviceCInicial = new CreditoInicialService(modelState,1);
         }
 
 
@@ -201,6 +204,19 @@ namespace Negocio
                     _viewModel.ciudadano.CIU_NumeroIdentificacion = _entidad.CIU_NumeroIdentificacion;
                     _viewModel.ciudadano.CIU_FechaNacimiento = _entidad.CIU_FechaNacimiento;
                     _viewModel.ciudadano.ID = _entidad.CIU_IDCiudadano;
+
+                    var CI = _serviceCInicial.Listado_Ciudadano(_entidad.CIU_IDCiudadano);
+                    foreach (var item in CI)
+                    {
+                        var _list = new CiudadanoInformacionListadoViewModel();
+                        _list.FolioSolicitud = item.CI_FolioSolicitud;
+                        _list.TipoSolicitud = "Credito Inicial";
+                        _list.FechaSolicitud = item.CI_FechaSolicitud;
+                        _list.Estatus = "CD";
+
+                        _viewModel.Listado.Add(_list);
+                    }
+
                 }
 
             }
@@ -425,73 +441,41 @@ namespace Negocio
 
         public void Edit(CiudadanoInsertarViewModel viewModel)
         {
-           
+
             try
             {
                 if (ModelState.IsValid)
                 {
-                    EditarDomicilioCiudadano(viewModel);
-                    if (viewModel.DeudorSolidario != null)
-                        _serviceDSolidario.EditarDeudorSolidario(viewModel.DeudorSolidario);
                     if (viewModel.Domicilio_Trabajo != null)
-                       EditarDomicilioTrabajo(viewModel.Domicilio_Trabajo);
-                    if (viewModel.Pareja != null)
-                        EditarPareja(viewModel.Pareja);
-
-                    using (UoW.Ciudadano.TxScope = new TransactionScope())
                     {
-                        var _entidad = UoW.Ciudadano.Alta(new Ciudadano
-                        {
-                            CIU_ApellidoMaterno = viewModel.CIU_ApellidoMaterno,
-                            CIU_ApellidoPaterno = viewModel.CIU_ApellidoPaterno,
-                            CIU_CorreoElectronico = viewModel.CIU_CorreoElectronico,
-                            CIU_CURP = viewModel.CIU_CURP,
-                            CIU_CapacidadPago = viewModel.CIU_CapacidadPago,
-                            CIU_CreditosOtorgados = viewModel.CIU_CreditosOtorgados,
-                            CIU_DiscapacidadOtro = viewModel.CIU_DiscapacidadOtro,
-                            CIU_EnfermedadCronicaOtro = viewModel.CIU_EnfermedadCronicaOtro,
-                            CIU_FechaNacimiento = viewModel.CIU_FechaNacimiento,
-                            CIU_IDCiudadano = Int32.Parse(this.UoW.Encriptador.Desencriptar(viewModel.ID_Encriptado)),
-                            CIU_IDDiscapacidad = viewModel.CIU_IDDiscapacidad,
-                            CIU_IDDomicilioTrabajo = viewModel.CIU_IDDomicilioTrabajo,
-                            CIU_IDEnfermedadCronica = viewModel.CIU_IDEnfermedadCronica,
-                            CIU_IDEstado = viewModel.CIU_IDEstado,
-                            CIU_IDEstadoCivil = viewModel.CIU_IDEstadoCivil,
-                            CIU_IDEstructuraFamiliar = viewModel.CIU_IDEstructuraFamiliar,
-                            CIU_IDGenero = viewModel.CIU_IDGenero,
-                            CIU_IDGradoEstudios = viewModel.CIU_IDGradoEstudios,
-                            CIU_IDGrupoEtnico = viewModel.CIU_IDgrupoEtnico,
-                            CIU_IDGruposPrioritarios = string.Join(",", viewModel.CIU_IDGruposPrioritarios),
-                            CIU_IDOcupacion = viewModel.CIU_IDOcupacion,
-                            CIU_IDOrganizacionCivilFamilia = viewModel.CIU_IDOrganizacionCivilFamilia,
-                            CIU_IngresoFamiliar = viewModel.CIU_IngresoFamiliar,
-                            CIU_Nombre = viewModel.CIU_Nombre,
-                            CIU_NombreTrabajo = viewModel.CIU_NombreTrabajo,
-                            CIU_NumeroIdentificacion = viewModel.CIU_NumeroIdentificacion,
-                            CIU_Proposito = viewModel.CIU_Proposito,
-                            CIU_TelCelular = viewModel.CIU_TelCelular,
-                            CIU_TelParticular = viewModel.CIU_TelCelular,
-                            CIU_TelRecados = viewModel.CIU_TelRecados,
-                            CIU_TelTrabajo = viewModel.CIU_TelTrabajo,
-                            CIU_TiempoResidencia = viewModel.CIU_TiempoResidencia
-                        });
-                      
-                        UoW.Ciudadano.TxScope.Complete();
+                        var doct = EditarDomicilioTrabajo(viewModel.Domicilio_Trabajo);
+                        viewModel.CIU_IDDomicilioTrabajo = doct.DOM_IDDomicilio;
                     }
-                   
+
+                    var CiudadanoInsertado = EditarCiudadano(viewModel);
+                    viewModel.ID_Encriptado = CiudadanoInsertado.CIU_IDCiudadano.ToString();
+                    EditarDomicilioCiudadano(viewModel);
+                    if (viewModel.Pareja != null)
+                    {
+                        viewModel.Pareja.PAR_IDCiudadano = CiudadanoInsertado.CIU_IDCiudadano;
+                        EditarPareja(viewModel.Pareja);
+                    }
+
+                    if (viewModel.DeudorSolidario != null)
+                    {
+                        viewModel.DeudorSolidario.DEU_IDCiudadano = CiudadanoInsertado.CIU_IDCiudadano;
+                        _serviceDSolidario.EditarDeudorSolidario(viewModel.DeudorSolidario);
+                    }
+                    
                 }
             }
             catch (Exception ex)
             {
-
-                Console.WriteLine(ex.Message);
-                ModelState.AddModelError(string.Empty, ex.Message);
+                var LineNumber = new StackTrace(ex, true).GetFrame(0).GetFileLineNumber();
+                ModelState.AddModelError(string.Empty, ex.Message + " CIU " + LineNumber);
             }
 
-
-
-
-        }
+    }
 
         public void EditarDomicilioCiudadano(CiudadanoInsertarViewModel viewModel)
         {
@@ -501,8 +485,7 @@ namespace Negocio
                 {
                     using (UoW.DomicilioCiudadano.TxScope = new TransactionScope())
                     {
-
-                        var _entidad = UoW.DomicilioCiudadano.Alta(new DomicilioCiudadano
+                        var dc = new DomicilioCiudadano
                         {
                             DOMC_IDCiudadano = Int32.Parse(viewModel.ID_Encriptado),
                             DOMC_IDDomicilioCiudadano = viewModel.DOMC_IDDomicilio,
@@ -521,20 +504,25 @@ namespace Negocio
                             DOMC_MontoRenta = viewModel.DOMC_MontoRenta,
                             DOMC_IDTipoVivienda = viewModel.DOMC_IDTipoVivienda,
                             DOMC_Otro = viewModel.DOMC_Otro
-                        });
+                        };
+                        var _entidad = UoW.DomicilioCiudadano.Alta(dc);
 
                         UoW.DomicilioCiudadano.TxScope.Complete();
                     }
 
                 }
-            }
+             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                ModelState.AddModelError(string.Empty, ex.Message);
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                ModelState.AddModelError(string.Empty, ex.Message + " DCIU " + line);
             }
 
-        }
+}
 
         public Domicilio EditarDomicilioTrabajo(DomicilioFormViewModel viewModel)
         {
@@ -574,8 +562,8 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                ModelState.AddModelError(string.Empty, ex.Message);
+                var LineNumber = new StackTrace(ex, true).GetFrame(0).GetFileLineNumber();
+                ModelState.AddModelError(string.Empty, ex.Message + " DTRA " + LineNumber);
             }
             return new Domicilio();
         }
@@ -610,8 +598,8 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                ModelState.AddModelError(string.Empty, ex.Message);
+                var LineNumber = new StackTrace(ex, true).GetFrame(0).GetFileLineNumber();
+                ModelState.AddModelError(string.Empty, ex.Message + " PAR " + LineNumber);
             }
             return new Pareja();
         }
@@ -672,8 +660,8 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                ModelState.AddModelError(string.Empty, ex.Message);
+                var LineNumber = new StackTrace(ex, true).GetFrame(0).GetFileLineNumber();
+                ModelState.AddModelError(string.Empty, ex.Message + " CIU " + LineNumber);
             }
             return new Ciudadano();
 

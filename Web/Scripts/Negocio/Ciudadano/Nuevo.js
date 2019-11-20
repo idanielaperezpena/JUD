@@ -1,4 +1,9 @@
-﻿//guardar ciudadano
+﻿
+$(document).ready(function (e) {
+    $('#CIU_IDGruposPrioritarios').select2({ multiple: true });
+});
+
+//guardar ciudadano
 $(document).on('click', '#guardar', function (e) {
     e.preventDefault();
     if ($(this).closest('form').valid())
@@ -36,6 +41,24 @@ $(document).on('click', '#guardar', function (e) {
         });
     }
 
+});
+
+$(document).on('change', "input[name=RequiereDS]", function (e) {
+    if ($('input[name=RequiereDS]:checked').val() == 1) {
+        $.ajax({
+            type: "POST",
+            url: "/CreditoInicial/GetDeudorSolidarioViewModel",
+            success: function (e) {
+                $('#DeudorSolidarioViewModel').html(e);
+                $("form").each(function () { $.data($(this)[0], 'validator', false); });
+                $.validator.unobtrusive.parse("form");
+            }
+        });
+    } else {
+        $('#DeudorSolidarioViewModel').html("");
+        $("form").each(function () { $.data($(this)[0], 'validator', false); });
+        $.validator.unobtrusive.parse("form");
+    }
 });
 
 $(document).on('change', "#CIU_IDEstadoCivil", function (e) {

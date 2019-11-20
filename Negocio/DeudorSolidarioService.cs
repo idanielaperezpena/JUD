@@ -4,6 +4,7 @@ using Negocio.ViewModels.Ciudadanos;
 using Negocio.ViewModels.Domicilio;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -140,9 +141,7 @@ namespace Negocio
             {
                 if (ModelState.IsValid)
                 {
-
-
-                    using (UoW.Ciudadano.TxScope = new TransactionScope())
+                    using (UoW.DeudorSolidario.TxScope = new TransactionScope())
                     {
                         var _entidad = UoW.DeudorSolidario.Alta(new DeudorSolidario
                         {
@@ -163,7 +162,7 @@ namespace Negocio
                             DEU_IDDomicilioTrabajo = viewModel.DEU_IDDomicilioTrabajo,
                             DEU_FechaSolicitud = viewModel.DEU_FechaSolicitud,
                         });
-                        UoW.Ciudadano.TxScope.Complete();
+                        UoW.DeudorSolidario.TxScope.Complete();
                         return _entidad;
                     }
 
@@ -171,8 +170,8 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                ModelState.AddModelError(string.Empty, ex.Message);
+                var LineNumber = new StackTrace(ex, true).GetFrame(0).GetFileLineNumber();
+                ModelState.AddModelError(string.Empty, ex.Message + " DS " +LineNumber);
             }
             return new DeudorSolidario();
         }

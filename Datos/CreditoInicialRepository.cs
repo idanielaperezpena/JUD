@@ -46,5 +46,11 @@ namespace Datos
             return ObtenerLista("SP_SIM_CreditoInicial_S"
                 , pGeneric.CI_IDCreditoInicial);
         }
+
+        public List<CreditoInicial> ObtenerListadoCiudadano(CreditoInicial pGeneric)
+        {
+            return ObtenerLista("SP_SIM_CreditoInicial_S_Ciu"
+                , pGeneric.CI_IDCiudadano);
+        }
     }
 }
