@@ -94,10 +94,12 @@
     <Compile Include="CiudadanoService.cs" />
     <Compile Include="CreditoComplementarioService.cs" />
     <Compile Include="CreditoInicialService.cs" />
+    <Compile Include="CreditoSustentabilidadService.cs" />
     <Compile Include="DeudorSolidarioService.cs" />
     <Compile Include="DomicilioService.cs" />
     <Compile Include="DictamenesService.cs" />
     <Compile Include="ExceptionService.cs" />
+    <Compile Include="ModificacionesCreditoService.cs" />
     <Compile Include="ParejaService.cs" />
     <Compile Include="PrincipalService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -127,6 +129,7 @@
     <Compile Include="ViewModels\CreditoComplementario\CreditoComplementarioIndexViewModel.cs" />
     <Compile Include="ViewModels\CreditoInicial\CreditoInicialIndexViewModel.cs" />
     <Compile Include="ViewModels\CreditoInicial\CreditoInicialInsertarViewModel.cs" />
+    <Compile Include="ViewModels\CreditoSustentabilidad\CreditoSustentabilidadIndexViewModel.cs" />
     <Compile Include="ViewModels\CreditoSustentabilidad\CreditoSustentabilidadInsertarViewModel.cs" />
     <Compile Include="ViewModels\DeudorSolidario\DeudorSolidarioInsertarViewModel.cs" />
     <Compile Include="ViewModels\DictamenFinanciero\DictamenFinancieroViewModel.cs" />
@@ -138,6 +141,7 @@
     <Compile Include="ViewModels\ExceptionIndexViewModel.cs" />
     <Compile Include="ViewModels\ExceptionLogViewModel.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
+    <Compile Include="ViewModels\ModificacionesCredito\ModificacionesCreditoIndexViewModel.cs" />
     <Compile Include="ViewModels\ModificacionesCredito\ModificacionesCreditoInsertarViewModel.cs" />
     <Compile Include="ViewModels\Principal\PrincipalIndexViewModel.cs" />
   </ItemGroup>

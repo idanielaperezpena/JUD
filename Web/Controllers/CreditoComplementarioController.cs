@@ -21,15 +21,15 @@ namespace Web.Controllers
         public ActionResult Index()
         {
            var _vm= _service.Index();
+           
             return View(_vm);
         }
 
         
         // GET: CreditoComplementario/Insertar
-        public ActionResult Insertar(/*int IDCreditoInicial, int? IDCreditoComplementario*/)
+        public ActionResult Insertar(int IDCreditoInicial, int? IDCreditoComplementario)
         {
-            int? IDCreditoComplementario = null;
-            int IDCreditoInicial = 21;
+            
            var _vm=_service.Insertar(IDCreditoInicial, IDCreditoComplementario);
             return View(_vm);
         }

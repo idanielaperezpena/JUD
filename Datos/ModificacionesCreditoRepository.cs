@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Datos
 {
-    class ModificacionesCreditoRepository : RepositoryBase<ModificacionesCredito>
+    public class ModificacionesCreditoRepository : RepositoryBase<ModificacionesCredito>
     {
         public ModificacionesCreditoRepository(DatabaseContext context) : base(context)
         {
@@ -16,8 +16,9 @@ namespace Datos
         public override ModificacionesCredito Alta(ModificacionesCredito pGeneric)
         {
             return ObtenerPrimero("SP_SIM_ModificacionesCredito_IU", pGeneric.MC_IDModificacionesCredito
-                , pGeneric.MC_IDCreditoInicial, pGeneric.MC_FechaSolicitud, pGeneric.MC_FechaCaptura, pGeneric.MC_IDProblema
-                , pGeneric.MC_IDCiudadano, pGeneric.MC_Procedencia, pGeneric.MC_IDTipoTramite, pGeneric.MC_Ingreso);
+                , pGeneric.MC_IDCreditoInicial, pGeneric.MC_FolioSolicitud, pGeneric.MC_FechaCaptura, pGeneric.MC_FechaCaptura
+                ,pGeneric.MC_IDProblema, pGeneric.MC_IDCiudadano, pGeneric.MC_Procedencia
+                , pGeneric.MC_IDTipoTramite, pGeneric.MC_Ingreso);
         }
 
         public override void Baja(ModificacionesCredito pGeneric)

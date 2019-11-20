@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Negocio.ViewModels.CreditoSustentabilidad
 {
-    class CreditoSustentabilidadInsertarViewModel
+   public  class CreditoSustentabilidadInsertarViewModel
     {
         public int? CS_IDCreditoSustentabilidad { get; set; }
         public int CS_IDCreditoInicial { get; set; }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Negocio.ViewModels.ModificacionesCredito
 {
-    class ModificacionesCreditoInsertarViewModel
+    public class ModificacionesCreditoInsertarViewModel
     {
         public int? MC_IDModificacionesCredito { get; set; }
         public int MC_IDCreditoInicial { get; set; }
@@ -38,15 +38,16 @@ namespace Negocio.ViewModels.ModificacionesCredito
         public int MC_Procedencia { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Tipo de Solicitante*")]
+        [Display(Name = "Tipo de Trámite*")]
         public int MC_IDTipoTramite { get; set; }
 
         [CustomRequired]
         [Display(Name = "Ingreso*")]
-        public float MC_Ingreso { get; set; }
+        public double MC_Ingreso { get; set; }
 
         public ICustomSelectList<Entidades.Catalogos>Problematica { get; set; }
         public ICustomSelectList<Entidades.Catalogos>TipoTramite { get; set; }
+        public ICustomSelectList<Entidades.Catalogos> Dictaminacion { get; set; }
 
     }
 }

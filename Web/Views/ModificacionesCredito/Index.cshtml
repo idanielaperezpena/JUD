@@ -1,0 +1,152 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout-Principal.cshtml";
+}
+@model Negocio.ViewModels.ModificacionesCredito.ModificacionesCreditoIndexViewModel
+    @Styles.Render("~/bundles/datatables_css")
+}
+
+
+<div class="content-wrapper" style="min-height: 901px;">
+    <section class="content-header">
+        <h1>
+            Modificaciones al Crédito
+            <small>Listado</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="@Url.Action("Index", "Principal")"><i class="fa fa-dashboard"></i>Menú principal</a>
+            </li>
+            <li class="active">
+                Modificaciones al Crédito
+            </li>
+        </ol>
+    </section>
+
+    <section class="content">
+
+        @if (ViewBag.Error == true)
+        {
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-ban"></i> ¡Error!</h4>
+                @ViewBag.MensajeError
+            </div>
+        }
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <h3 class="box-title">Listado de Solicitudes de Modificaciones al Crédito</h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>Leyenda Dictamenes</h3>
+                        <ul style="font-size:16px;">
+                            <li><i style="color:darkgray" class="fas fa-folder-minus"></i> Sin dictaminar</li>
+                            <li><i style="color:orange" class="fas fa-hourglass-half"></i> En proceso</li>
+                            <li><i style="color:forestgreen" class="fas fa-check-square"></i> Aprobado</li>
+                            <li><i style="color:red" class="fas fa-times-circle"></i> No aprobado</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="pull-right col-lg-6">
+                        <a class="btn btn-success" href="">Nuevo</a>
+                    </div>
+                </div>
+                <table id="tabla_ci" class="table table-bordered  table-striped table-responsive">
+                    @if (Model.Listado.Count() == 0)
+                    {
+                        @Html.CustomTableEmptyResult()
+                    }
+                    else
+                    {
+                        <thead>
+                            <tr>
+                                <th>Folio Solicitud</th>
+                                <th>Folio Crédito Inicial</th>
+                                <th>CURP</th>
+                                <th>Nombre del Ciudadano</th>
+                                <th>Fecha de solicitud</th>
+                                <th>Dictamen Social </th>
+                                <th>Dictamen Técnico</th>
+                                <th>Dictamen Jurídico</th>
+                                <th>Dictamen Financiero</th>
+                                <th>Revisar Solicitud Completa</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Listado)
+                            {
+                            <tr>
+                                <td>@item.MC_FolioSolicitud</td>
+                                <td>@item.CI_FolioSolicitud</td>
+                                <td>@item.CI_CURP</td>
+                                <td>@item.NombreCiudadano</td>
+                                <td>@item.MC_FechaSolicitud</td>
+                             
+                                @*<td>
+                                    <div class="text-center icono_tabla">
+                                        <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenSocial","Dictamenes", new { TipoCredito= "CC", ID = @item.CC_IDCreditoComplementario})">
+                                            <i style="color:@item.ImgDS[0]" class="@item.ImgDS[1]"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-center icono_tabla">
+                                        <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenTecnico","Dictamenes", new { TipoCredito= "CC", ID = @item.CC_IDCreditoComplementario})">
+                                            <i style="color:@item.ImgDT[0]" class="@item.ImgDT[1]"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-center icono_tabla">
+                                        <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenJuridico","Dictamenes", new { TipoCredito= "CC", ID = @item.CC_IDCreditoComplementario})">
+                                            <i style="color:@item.ImgDJ[0]" class="@item.ImgDJ[1]"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-center icono_tabla">
+                                        @if (item.ImgDS[0] == "forestgreen" && item.ImgDS[0] == "forestgreen" && item.ImgDJ[0] == "forestgreen")
+                                        {
+                                            <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenFinanciero","Dictamenes", new { TipoCredito= "CC", ID = @item.CC_IDCreditoComplementario})">
+                                                <i style="color:@item.ImgDF[0]" class="@item.ImgDF[1]"></i>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <i style="color:@item.ImgDF[0]" class="@item.ImgDF[1]"></i>
+                                        }
+
+                                    </div>
+                                </td>*@
+                                <td>
+                                    <div class="text-center">
+                                        <a class="btn bg-primary solicitudes" href="@Url.Action("Insertar","ModificacionesCredito", new {IDCreditoInicial = @item.MC_IDCreditoInicial, IDModificacionesCredito=@item.MC_IDModificacionesCredito})">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            }
+
+
+                        </tbody>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/datatables_js")
+    <script src="~/Scripts/Negocio/CreditoInicial/Index.js"></script>
+}

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Negocio;
+using Negocio.ViewModels.ModificacionesCredito;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,15 +10,37 @@ namespace Web.Controllers
 {
     public class ModificacionesCreditoController : Controller
     {
+        private ModificacionesCreditoService _service;
+
+        public ModificacionesCreditoController()
+        {
+            _service = new ModificacionesCreditoService(ModelState);
+        }
+
         // GET: ModificacionesCredito
         public ActionResult Index()
         {
-            return View();
+            var _vm = _service.Index();
+
+            return View(_vm);
         }
         // GET: ModificacionesCredito/insertar
-        public ActionResult Insertar()
+         public ActionResult Insertar(int IDCreditoInicial, int? IDModificacionesCredito)
         {
-            return View();
+            
+           var _vm=_service.Insertar(IDCreditoInicial, IDModificacionesCredito);
+            return View(_vm);
+        }
+
+        [HttpPost]
+        public ActionResult Insertar(ModificacionesCreditoInsertarViewModel _viewModel)
+        {
+            _service.EditModificacionesCredito(_viewModel);
+            var errors = ModelState.Select(x => x.Value.Errors)
+                     .Where(y => y.Count > 0)
+                     .ToList();
+            return Json(errors.ToJSON());
+
         }
     }
 }

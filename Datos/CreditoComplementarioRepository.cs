@@ -33,7 +33,7 @@ namespace Datos
 
         public override List<CreditoComplementario> ObtenerListado(CreditoComplementario pGeneric)
         {
-            return ObtenerLista("SP_SIM_CreditoComplementario_S");
+            return ObtenerLista("SP_SIM_CreditoComplementario_S", pGeneric.CC_IDCreditoComplementario);
         }
     }
 }

@@ -47,10 +47,7 @@ namespace Negocio
 
         }
         #endregion
-
-
-
-
+        
         #region Consultas
         //Index
         public CreditoComplementarioIndexViewModel Listado()
@@ -61,19 +58,23 @@ namespace Negocio
                 var _listaCC=UoW.CreditoComplementario.ObtenerListado(new CreditoComplementario());
                 foreach (CreditoComplementario _cc in _listaCC)
                 {
+
                     var _temp = new CreditoComplementarioIndexListadoViewModel();
-                    var _CI = UoW.CreditoInicial.ObtenerEntidad(new CreditoInicial {
-                        CI_IDCreditoInicial =_cc.CC_IDCreditoInicial
+                    var _CI = UoW.CreditoInicial.ObtenerEntidad(new CreditoInicial
+                    {
+                        CI_IDCreditoInicial = _cc.CC_IDCreditoInicial
                     });
-                    var _ciudadano = UoW.Ciudadano.ObtenerEntidad(new Ciudadano {
+                    var _ciudadano = UoW.Ciudadano.ObtenerEntidad(new Ciudadano
+                    {
                         CIU_IDCiudadano = _CI.CI_IDCiudadano
                     });
                     _temp.CC_IDCreditoComplementario = _cc.CC_IDCreditoComplementario;
                     _temp.CC_IDCreditoInicial = _CI.CI_IDCreditoInicial.Value;
                     _temp.CI_CURP = _ciudadano.CIU_CURP;
-                    _temp.NombreCiudadano=_ciudadano.CIU_Nombre+" "+_ciudadano.CIU_ApellidoPaterno+" "+_ciudadano.CIU_ApellidoMaterno+".";
-                    _temp.CC_FechaSolicitud = _cc.CC_FechaSolicitud.ToShortDateString();
+                    _temp.NombreCiudadano = _ciudadano.CIU_Nombre + " " + _ciudadano.CIU_ApellidoPaterno + " " + _ciudadano.CIU_ApellidoMaterno + ".";
+                    _temp.CC_FechaSolicitud = _cc.CC_FechaSolicitud.ToString();
                     _temp.CC_FolioSolicitud = _cc.CC_FolioSolicitud;
+                    _temp.CI_FolioSolicitud = _CI.CI_FolioSolicitud;
                     _viewModel.Listado.Add(_temp);
 
                 }
@@ -116,6 +117,7 @@ namespace Negocio
             return _viewModel;
         }
         #endregion
+
         #region Insertar Editar
         public void EditCreditoComplementario(CreditoComplementarioInsertarViewModel _viewModel)
         {
