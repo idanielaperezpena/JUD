@@ -35,9 +35,9 @@ namespace Negocio
                     case "CI":
                         ObtenerCIDictamenJuridico(_viewModel,ID);
                         break;
-                        //case "CC":
-                        //    ObtenerCCDictamenJuridico(_viewModel);
-                        //    break;
+                    case "CC":
+                        ObtenerCCDictamenJuridico(_viewModel,ID);
+                        break;
                         //case "CS":
                         //    ObtenerCSDictamenJuridico(_viewModel);
                         //    break;
@@ -73,9 +73,9 @@ namespace Negocio
                     case "CI":
                         ObtenerCIDictamenSocial(_viewModel,ID);
                         break;
-                        //case "CC":
-                        //    ObtenerCCDictamenJuridico(_viewModel);
-                        //    break;
+                    case "CC":
+                       ObtenerCCDictamenSocial(_viewModel,ID);
+                        break;
                         //case "CS":
                         //    ObtenerCSDictamenJuridico(_viewModel);
                         //    break;
@@ -101,9 +101,9 @@ namespace Negocio
                     case "CI":
                         ObtenerCIDictamenTecnico(_viewModel, ID);
                         break;
-                        //case "CC":
-                        //    ObtenerCCDictamenJuridico(_viewModel);
-                        //    break;
+                    case "CC":
+                        ObtenerCCDictamenTecnico(_viewModel,ID);
+                        break;
                         //case "CS":
                         //    ObtenerCSDictamenJuridico(_viewModel);
                         //    break;
@@ -127,9 +127,9 @@ namespace Negocio
                     case "CI":
                         ObtenerCIDictamenFinanciero(_viewModel, ID);
                         break;
-                        //case "CC":
-                        //    ObtenerCCDictamenJuridico(_viewModel);
-                        //    break;
+                    case "CC":
+                        ObtenerCCDictamenFinanciero(_viewModel,ID);
+                        break;
                         //case "CS":
                         //    ObtenerCSDictamenJuridico(_viewModel);
                         //    break;
@@ -291,10 +291,158 @@ namespace Negocio
                 return _viewModel;
 
             }
-        #endregion
+            #endregion
+            #region CC
+            public DictamenSocialViewModel ObtenerCCDictamenSocial(DictamenSocialViewModel _viewModel, int _IDCreditoComplementario)
+            {
+                try
+                {
+                    var _entidad = UoW.CcDictamenSocial.ObtenerEntidad(new CCDictamenSocial
+                    {
+                        CCDS_IDCreditoComplementario = _IDCreditoComplementario
+                    });
+
+                    if (_entidad != null)
+                    {
+                        _viewModel.TipoCredito = "CC";
+                        _viewModel.IDDictamenSocial = _entidad.CCDS_IDDictamenSocial;
+                        _viewModel.IDCredito = _entidad.CCDS_IDCreditoComplementario;
+                        _viewModel.IDTipoPredio = _entidad.CCDS_IDTipoPredio;
+                        _viewModel.IDCaracteristicaPredio = _entidad.CCDS_IDCaracteristicasPredio;
+                        _viewModel.NoFamiliasLote = _entidad.CCDS_NoFamiliasLote;
+                        _viewModel.NoFamiliasVivienda = _entidad.CCDS_NoFamiliasVivienda;
+                        _viewModel.NoViviendasLote = _entidad.CCDS_NoViviendasLote;
+                        _viewModel.NoPersonasVivienda = _entidad.CCDS_NoPersonasVivienda;
+                        _viewModel.IDServicioAgua = _entidad.CCDS_IDServicioAgua;
+                        _viewModel.IDServicioDrenaje = _entidad.CCDS_IDServicioDrenaje;
+                        _viewModel.IDServicioElectrico = _entidad.CCDS_IDServicioElectrico;
+                        _viewModel.Desdoblamiento = _entidad.CCDS_Desdoblamiento;
+                        _viewModel.BanoCompartido = _entidad.CCDS_BanoCompartido;
+                        _viewModel.CocinaCompartida = _entidad.CCDS_CocinaCompartido;
+                        _viewModel.IDHacinamiento = _entidad.CCDS_IDHacinamiento;
+                        _viewModel.IDInsalubridad = _entidad.CCDS_IDInsalubridad;
+                        _viewModel.OtroInsalubridad = _entidad.CCDS_OtroInsalubridad;
+                        _viewModel.FechaVisita = _entidad.CCDS_FechaVisita;
+                        _viewModel.Observaciones = _entidad.CCDS_Observaciones;
+                        _viewModel.NoEmpleadoVisita = _entidad.CCDS_NoEmpleadoVisita;
+                        _viewModel.Procedencia = _entidad.CCDS_Procedencia;
+                        _viewModel.IDVulnerabilidad = _entidad.CCDS_IDVulnerabilidad;
+                        _viewModel.MotivosProcedencia = _entidad.CCDS_MotivosProcedencia;
+                        _viewModel.FechaDictaminacion = _entidad.CCDS_FechaDictaminacion;
+                        _viewModel.UsuarioDominio = _entidad.CCDS_UsuarioDominio;
+                        return _viewModel;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(string.Empty, ex.Message);
+                }
+                return _viewModel;
+
+            }
+            public DictamenTecnicoViewModel ObtenerCCDictamenTecnico(DictamenTecnicoViewModel _viewModel, int _IDCreditoComplementario)
+            {
+                try
+                {
+                    var _entidad = UoW.CcDictamenTecnico.ObtenerEntidad(new CCDictamenTecnico
+                    {
+                        CCDT_IDCreditoComplementario = _IDCreditoComplementario
+                    });
+
+                    if (_entidad != null)
+                    {
+                        _viewModel.TipoCredito = "CC";
+                        _viewModel.IDDictamenTecnico = _entidad.CCDT_IDDictamenTecnico;
+                        _viewModel.IDCredito = _entidad.CCDT_IDCreditoComplementario;
+                        _viewModel.IDProcedencia = _entidad.CCDT_Procedencia;
+                        _viewModel.MotivosProcedencia = _entidad.CCDT_MotivosProcedencia;
+                        _viewModel.MontoSugerido = _entidad.CCDT_MontoSugerido;
+                        _viewModel.FechaDictaminacion = _entidad.CCDT_FechaDictaminacion;
+                        _viewModel.NoAsesorTecnico = _entidad.CCDT_NoAsesorTecnico;
+                        _viewModel.UsuarioDominio = _entidad.CCDT_UsuarioDominio;
+                        return _viewModel;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(string.Empty, ex.Message);
+                }
+                return _viewModel;
+
+            }
+            public DictamenJuridicoViewModel ObtenerCCDictamenJuridico(DictamenJuridicoViewModel _viewModel, int _IDCreditoComplementario)
+            {
+                try
+                {
+                    var _entidad = UoW.CcDictamenJuridico.ObtenerEntidad(new CCDictamenJuridico
+                    {
+                        CCDJ_IDCreditoComplementario = _IDCreditoComplementario
+                    });
+
+                    if (_entidad != null)
+                    {
+                        _viewModel.TipoCredito = "CC";
+                        _viewModel.IDDictamenJuridico = _entidad.CCDJ_IDDictamenJuridico;
+                        _viewModel.IDCredito = _entidad.CCDJ_IDCreditoComplementario;
+                        _viewModel.IDPropiedad = _entidad.CCDJ_IDPropiedad;
+                        _viewModel.IDPosesion = _entidad.CCDJ_IDPosesion;
+                        _viewModel.NoDocumentoPropiedad = _entidad.CCDJ_NoDocumentoPropiedad;
+                        _viewModel.FechaDocumento = _entidad.CCDJ_FechaDocumento;
+                        _viewModel.Anuencia = _entidad.CCDJ_Anuencia;
+                        _viewModel.SuperficieLote = _entidad.CCDJ_SuperficieLote;
+                        _viewModel.DatosLibro = _entidad.CCDJ_DatosLibro;
+                        _viewModel.FolioDocumento = _entidad.CCDJ_FolioDocumento;
+                        _viewModel.Observaciones = _entidad.CCDJ_Observaciones;
+                        _viewModel.Procedencia = _entidad.CCDJ_Procedencia;
+                        _viewModel.MotivosProcedencia = _entidad.CCDJ_MotivosProcedencia;
+                        _viewModel.FechaDictaminacion = _entidad.CCDJ_FechaDictaminacion;
+                        _viewModel.UsuarioDominio = _entidad.CCDJ_UsuarioDominio;
+                        return _viewModel;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(string.Empty, ex.Message);
+                }
+                return _viewModel;
+            }
+            public DictamenFinancieroViewModel ObtenerCCDictamenFinanciero(DictamenFinancieroViewModel _viewModel, int _IDCreditoComplementario)
+            {
+                try
+                {
+                    var _entidad = UoW.CcDictamenFinanciero.ObtenerEntidad(new CCDictamenFinanciero
+                    {
+                        CCDF_IDCreditoComplementario = _IDCreditoComplementario
+                    });
+
+                    if (_entidad != null)
+                    {
+                        _viewModel.TipoCredito = "CC";
+                        _viewModel.IDDictamenFinanciero = _entidad.CCDF_IDDictamenFinanciero;
+                        _viewModel.IDCredito = _entidad.CCDF_IDCreditoComplementario;
+                        _viewModel.Procedencia = _entidad.CCDF_Procedencia;
+                        _viewModel.MotivosProcedencia = _entidad.CCDF_MotivosProcedencia;
+                        _viewModel.IDUMA = _entidad.CCDF_IDUMA;
+                        _viewModel.NoMontoCredito = _entidad.CCDF_NoMontoCreditoUMA;
+                        _viewModel.NoMesesAmortizacion = _entidad.CCDF_NoMesesAmortizacion;
+                        _viewModel.NoPagoUMA = _entidad.CCDF_NoPagoUMA;
+                        _viewModel.FechaDictaminacion = _entidad.CCDF_FechaDictaminacion;
+                        _viewModel.UsuarioDominio = _entidad.CCDF_UsuarioDominio;
+                        return _viewModel;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(string.Empty, ex.Message);
+                }
+                return _viewModel;
+
+            }
+
+            #endregion
         #endregion
         #region Insertar Editar
-        
+
         public void EditDitamenJuridico(DictamenJuridicoViewModel _viewModel)
         {
             string _TipoCredito = _viewModel.TipoCredito;
@@ -303,9 +451,9 @@ namespace Negocio
                 case "CI":
                     EditCIDictamenJuridico(_viewModel);
                     break;
-                    //case "CC":
-                    //    ObtenerCCDictamenJuridico(_viewModel);
-                    //    break;
+                case "CC":
+                    EditCCDictamenJuridico(_viewModel);
+                    break;
                     //case "CS":
                     //    ObtenerCSDictamenJuridico(_viewModel);
                     //    break;
@@ -324,9 +472,9 @@ namespace Negocio
                 case "CI":
                     EditCIDictamenSocial(_viewModel);
                     break;
-                    //case "CC":
-                    //    ObtenerCCDictamenJuridico(_viewModel);
-                    //    break;
+                case "CC":
+                    EditCCDictamenSocial(_viewModel);
+                    break;
                     //case "CS":
                     //    ObtenerCSDictamenJuridico(_viewModel);
                     //    break;
@@ -344,9 +492,9 @@ namespace Negocio
                 case "CI":
                     EditCIDictamenTecnico(_viewModel);
                     break;
-                    //case "CC":
-                    //    ObtenerCCDictamenJuridico(_viewModel);
-                    //    break;
+                case "CC":
+                    EditCCDictamenTecnico(_viewModel);
+                    break;
                     //case "CS":
                     //    ObtenerCSDictamenJuridico(_viewModel);
                     //    break;
@@ -364,9 +512,9 @@ namespace Negocio
                 case "CI":
                     EditCIDictamenFinanciero(_viewModel);
                     break;
-                    //case "CC":
-                    //    ObtenerCCDictamenJuridico(_viewModel);
-                    //    break;
+                case "CC":
+                    EditCCDictamenFinanciero(_viewModel);
+                    break;
                     //case "CS":
                     //    ObtenerCSDictamenJuridico(_viewModel);
                     //    break;
@@ -529,6 +677,161 @@ namespace Negocio
             }
         }
         #endregion
+
+
+        #region Credito Complementario
+        private void EditCCDictamenJuridico(DictamenJuridicoViewModel _viewModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    using (UoW.CcDictamenJuridico.TxScope = new TransactionScope())
+                    {
+                        var _entidad = UoW.CcDictamenJuridico.Alta(new CCDictamenJuridico
+                        {
+
+                            CCDJ_IDDictamenJuridico = _viewModel.IDDictamenJuridico,
+                            CCDJ_IDCreditoComplementario = _viewModel.IDCredito,
+                            CCDJ_IDPropiedad = _viewModel.IDPropiedad,
+                            CCDJ_IDPosesion = _viewModel.IDPosesion,
+                            CCDJ_NoDocumentoPropiedad = _viewModel.NoDocumentoPropiedad,
+                            CCDJ_FechaDocumento = _viewModel.FechaDocumento,
+                            CCDJ_Anuencia = _viewModel.Anuencia,
+                            CCDJ_SuperficieLote = _viewModel.SuperficieLote,
+                            CCDJ_DatosLibro = _viewModel.DatosLibro,
+                            CCDJ_FolioDocumento = _viewModel.FolioDocumento,
+                            CCDJ_Observaciones = _viewModel.Observaciones,
+                            CCDJ_Procedencia = _viewModel.Procedencia,
+                            CCDJ_MotivosProcedencia = _viewModel.MotivosProcedencia,
+                            CCDJ_FechaDictaminacion = _viewModel.FechaDictaminacion,
+                            CCDJ_UsuarioDominio = "Usuario",
+                        });
+                        UoW.CcDictamenJuridico.TxScope.Complete();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+        }
+        private void EditCCDictamenSocial(DictamenSocialViewModel _viewModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    using (UoW.CcDictamenSocial.TxScope = new TransactionScope())
+                    {
+                        var _entidad = UoW.CcDictamenSocial.Alta(new CCDictamenSocial
+                        {
+
+                            CCDS_IDDictamenSocial = _viewModel.IDDictamenSocial,
+                            CCDS_IDCreditoComplementario = _viewModel.IDCredito,
+                            CCDS_IDTipoPredio = _viewModel.IDTipoPredio,
+                            CCDS_IDCaracteristicasPredio = _viewModel.IDCaracteristicaPredio,
+                            CCDS_NoFamiliasLote = _viewModel.NoFamiliasLote,
+                            CCDS_NoFamiliasVivienda = _viewModel.NoFamiliasVivienda,
+                            CCDS_NoViviendasLote = _viewModel.NoViviendasLote,
+                            CCDS_NoPersonasVivienda = _viewModel.NoPersonasVivienda,
+                            CCDS_IDServicioAgua = _viewModel.IDServicioAgua,
+                            CCDS_IDServicioDrenaje = _viewModel.IDServicioDrenaje,
+                            CCDS_IDServicioElectrico = _viewModel.IDServicioElectrico,
+                            CCDS_Desdoblamiento = _viewModel.Desdoblamiento,
+                            CCDS_BanoCompartido = _viewModel.BanoCompartido,
+                            CCDS_CocinaCompartido = _viewModel.CocinaCompartida,
+                            CCDS_IDHacinamiento = _viewModel.IDHacinamiento,
+                            CCDS_IDInsalubridad = _viewModel.IDInsalubridad,
+                            CCDS_OtroInsalubridad = _viewModel.OtroInsalubridad,
+                            CCDS_FechaVisita = _viewModel.FechaVisita,
+                            CCDS_Observaciones = _viewModel.Observaciones,
+                            CCDS_NoEmpleadoVisita = _viewModel.NoEmpleadoVisita,
+                            CCDS_Procedencia = _viewModel.Procedencia,
+                            CCDS_IDVulnerabilidad = _viewModel.IDVulnerabilidad,
+                            CCDS_MotivosProcedencia = _viewModel.MotivosProcedencia,
+                            CCDS_FechaDictaminacion = _viewModel.FechaDictaminacion,
+                            CCDS_UsuarioDominio = "Usuario"
+
+                        });
+                        UoW.CcDictamenSocial.TxScope.Complete();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+        }
+        private void EditCCDictamenTecnico(DictamenTecnicoViewModel _viewModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    using (UoW.CcDictamenTecnico.TxScope = new TransactionScope())
+                    {
+                        var _entidad = UoW.CcDictamenTecnico.Alta(new CCDictamenTecnico
+                        {
+
+                            CCDT_IDDictamenTecnico = _viewModel.IDDictamenTecnico,
+                            CCDT_IDCreditoComplementario = _viewModel.IDCredito,
+                            CCDT_Procedencia = _viewModel.IDProcedencia,
+                            CCDT_MotivosProcedencia = _viewModel.MotivosProcedencia,
+                            CCDT_MontoSugerido = _viewModel.MontoSugerido,
+                            CCDT_FechaDictaminacion = _viewModel.FechaDictaminacion,
+                            CCDT_NoAsesorTecnico = _viewModel.NoAsesorTecnico,
+                            CCDT_UsuarioDominio = "Usuario"
+
+                        });
+                        UoW.CcDictamenTecnico.TxScope.Complete();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+        }
+        private void EditCCDictamenFinanciero(DictamenFinancieroViewModel _viewModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    using (UoW.CcDictamenFinanciero.TxScope = new TransactionScope())
+                    {
+                        var _entidad = UoW.CcDictamenFinanciero.Alta(new CCDictamenFinanciero
+                        {
+
+                            CCDF_IDDictamenFinanciero = _viewModel.IDDictamenFinanciero,
+                            CCDF_IDCreditoComplementario = _viewModel.IDCredito,
+                            CCDF_Procedencia = _viewModel.Procedencia,
+                            CCDF_MotivosProcedencia = _viewModel.MotivosProcedencia,
+                            CCDF_IDUMA = _viewModel.IDUMA,
+                            CCDF_NoMontoCreditoUMA = _viewModel.NoMontoCredito,
+                            CCDF_NoMesesAmortizacion = _viewModel.NoMesesAmortizacion,
+                            CCDF_NoPagoUMA = _viewModel.NoPagoUMA,
+                            CCDF_FechaDictaminacion = _viewModel.FechaDictaminacion,
+                            CCDF_UsuarioDominio = "Usuario"
+
+
+                        });
+                        UoW.CcDictamenFinanciero.TxScope.Complete();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+        }
+        #endregion
+
         #endregion
     }
 }

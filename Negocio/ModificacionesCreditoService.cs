@@ -18,8 +18,147 @@ namespace Negocio
         #region ViewModels
         public ModificacionesCreditoIndexViewModel Index()
         {
+            var _viewModel = new ModificacionesCreditoIndexViewModel();
+            try
+            {
+                var _listaMC =  Listado(); 
+                foreach (ModificacionesCredito _mc in _listaMC)
+                {
 
-            return Listado();
+                    var _temp = new ModificacionesCreditoIndexListadoViewModel();
+                    var _CI = UoW.CreditoInicial.ObtenerEntidad(new CreditoInicial
+                    {
+                        CI_IDCreditoInicial = _mc.MC_IDCreditoInicial
+                    });
+                    var _ciudadano = UoW.Ciudadano.ObtenerEntidad(new Ciudadano
+                    {
+                        CIU_IDCiudadano = _CI.CI_IDCiudadano
+                    });
+                    _temp.MC_IDModificacionesCredito = _mc.MC_IDModificacionesCredito;
+                    _temp.MC_IDCreditoInicial = _CI.CI_IDCreditoInicial.Value;
+                    _temp.CI_CURP = _ciudadano.CIU_CURP;
+                    _temp.NombreCiudadano = _ciudadano.CIU_Nombre + " " + _ciudadano.CIU_ApellidoPaterno + " " + _ciudadano.CIU_ApellidoMaterno + ".";
+                    _temp.MC_FechaSolicitud = _mc.MC_FechaSolicitud.ToString();
+                    _temp.MC_FolioSolicitud = _mc.MC_FolioSolicitud;
+                    _temp.CI_FolioSolicitud = _CI.CI_FolioSolicitud;
+
+                    var estatus = EstatusMC(_mc.MC_IDModificacionesCredito);
+
+                    var cadena = estatus.Resultado.Split('-');
+
+                    _temp.ImgDS = new String[2];
+                    switch (cadena[0])
+                    {
+                        case "0":
+                            _temp.ImgDS[0] = "darkgray";
+                            _temp.ImgDS[1] = "fas fa-folder-minus";
+                            break;
+                        case "1":
+                            _temp.ImgDS[0] = "orange";
+                            _temp.ImgDS[1] = "fas fa-hourglass-half";
+                            break;
+                        case "2":
+                            _temp.ImgDS[0] = "forestgreen";
+                            _temp.ImgDS[1] = "fas fa-check-square";
+                            break;
+                        case "4":
+                            _temp.ImgDS[0] = "red";
+                            _temp.ImgDS[1] = "fas fa-times-circle";
+                            break;
+                        default:
+                            _temp.ImgDS[0] = "red";
+                            _temp.ImgDS[1] = "fas fa-times-circle";
+                            break;
+                    }
+
+                    _temp.ImgDT = new String[2];
+                    switch (cadena[1])
+                    {
+                        case "0":
+                            _temp.ImgDT[0] = "darkgray";
+                            _temp.ImgDT[1] = "fas fa-folder-minus";
+                            break;
+                        case "1":
+                            _temp.ImgDT[0] = "orange";
+                            _temp.ImgDT[1] = "fas fa-hourglass-half";
+                            break;
+                        case "2":
+                            _temp.ImgDT[0] = "forestgreen";
+                            _temp.ImgDT[1] = "fas fa-check-square";
+                            break;
+                        case "4":
+                            _temp.ImgDT[0] = "red";
+                            _temp.ImgDT[1] = "fas fa-times-circle";
+                            break;
+                        default:
+                            _temp.ImgDT[0] = "red";
+                            _temp.ImgDT[1] = "fas fa-times-circle";
+                            break;
+                    }
+
+
+                    _temp.ImgDJ = new String[2];
+                    switch (cadena[2])
+                    {
+                        case "0":
+                            _temp.ImgDJ[0] = "darkgray";
+                            _temp.ImgDJ[1] = "fas fa-folder-minus";
+                            break;
+                        case "1":
+                            _temp.ImgDJ[0] = "orange";
+                            _temp.ImgDJ[1] = "fas fa-hourglass-half";
+                            break;
+                        case "2":
+                            _temp.ImgDJ[0] = "forestgreen";
+                            _temp.ImgDJ[1] = "fas fa-check-square";
+                            break;
+                        case "4":
+                            _temp.ImgDJ[0] = "red";
+                            _temp.ImgDJ[1] = "fas fa-times-circle";
+                            break;
+                        default:
+                            _temp.ImgDJ[0] = "red";
+                            _temp.ImgDJ[1] = "fas fa-times-circle";
+                            break;
+                    }
+
+                    _temp.ImgDF = new String[2];
+                    switch (cadena[3])
+                    {
+                        case "0":
+                            _temp.ImgDF[0] = "darkgray";
+                            _temp.ImgDF[1] = "fas fa-folder-minus";
+                            break;
+                        case "1":
+                            _temp.ImgDF[0] = "orange";
+                            _temp.ImgDF[1] = "fas fa-hourglass-half";
+                            break;
+                        case "2":
+                            _temp.ImgDF[0] = "forestgreen";
+                            _temp.ImgDF[1] = "fas fa-check-square";
+                            break;
+                        case "4":
+                            _temp.ImgDF[0] = "red";
+                            _temp.ImgDF[1] = "fas fa-times-circle";
+                            break;
+                        default:
+                            _temp.ImgDF[0] = "red";
+                            _temp.ImgDF[1] = "fas fa-times-circle";
+                            break;
+                    }
+
+                    _viewModel.Listado.Add(_temp);
+
+                }
+                return _viewModel;
+
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message + "Service : Listado");
+            }
+
+            return _viewModel;            
         }
 
         public ModificacionesCreditoInsertarViewModel Insertar(int IDCreditoInicial, int? IDModificacionesCredito)
@@ -52,43 +191,32 @@ namespace Negocio
 
         #region Consultas
         //Index
-        public ModificacionesCreditoIndexViewModel Listado()
+        public List<ModificacionesCredito> Listado()
         {
-            var _viewModel = new ModificacionesCreditoIndexViewModel();
             try
             {
-                var _listaMC = UoW.ModificacionesCredito.ObtenerListado(new ModificacionesCredito());
-                foreach (ModificacionesCredito _mc in _listaMC)
-                {
-
-                    var _temp = new ModificacionesCreditoIndexListadoViewModel();
-                    var _CI = UoW.CreditoInicial.ObtenerEntidad(new CreditoInicial
-                    {
-                        CI_IDCreditoInicial = _mc.MC_IDCreditoInicial
-                    });
-                    var _ciudadano = UoW.Ciudadano.ObtenerEntidad(new Ciudadano
-                    {
-                        CIU_IDCiudadano = _CI.CI_IDCiudadano
-                    });
-                    _temp.MC_IDModificacionesCredito = _mc.MC_IDModificacionesCredito;
-                    _temp.MC_IDCreditoInicial = _CI.CI_IDCreditoInicial.Value;
-                    _temp.CI_CURP = _ciudadano.CIU_CURP;
-                    _temp.NombreCiudadano = _ciudadano.CIU_Nombre + " " + _ciudadano.CIU_ApellidoPaterno + " " + _ciudadano.CIU_ApellidoMaterno + ".";
-                    _temp.MC_FechaSolicitud = _mc.MC_FechaSolicitud.ToString();
-                    _temp.MC_FolioSolicitud = _mc.MC_FolioSolicitud;
-                    _temp.CI_FolioSolicitud = _CI.CI_FolioSolicitud;
-                    _viewModel.Listado.Add(_temp);
-
-                }
-                return _viewModel;
-
+                return UoW.ModificacionesCredito.ObtenerListado(new ModificacionesCredito());
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, ex.Message + "Service : Listado");
             }
 
-            return _viewModel;
+            return new List<ModificacionesCredito>();
+        }
+
+        public Principal EstatusMC(int? ID)
+        {
+            try
+            {
+                return UoW.Principal.ObetenerEstatusMC(new ModificacionesCredito { MC_IDModificacionesCredito = ID });
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message + "Service : Listado");
+            }
+
+            return new Principal();
         }
 
         public ModificacionesCreditoInsertarViewModel ObtenerModificacionesCredito(ModificacionesCreditoInsertarViewModel _viewModel, int IDModificacionesCredito)

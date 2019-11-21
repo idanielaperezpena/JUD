@@ -12,7 +12,7 @@ namespace Entidades
         public int CCDT_IDCreditoComplementario { get; set; }
         public int CCDT_Procedencia { get; set; }
         public string CCDT_MotivosProcedencia { get; set; }
-        public float CCDT_MontoSugerido { get; set; }
+        public double CCDT_MontoSugerido { get; set; }
         public DateTime CCDT_FechaDictaminacion { get; set; }
         public string CCDT_NoAsesorTecnico { get; set; }
         public string CCDT_UsuarioDominio { get; set; }

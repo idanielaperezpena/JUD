@@ -15,8 +15,10 @@ namespace Datos
 
         public override CCDictamenTecnico Alta(CCDictamenTecnico pGeneric)
         {
-            return ObtenerPrimero("SP_SIM_CC_DictamenTecnico_IU", pGeneric.CCDT_FechaDictaminacion, pGeneric.CCDT_IDCreditoComplementario, pGeneric.CCDT_IDDictamenTecnico
-                , pGeneric.CCDT_MontoSugerido, pGeneric.CCDT_MotivosProcedencia, pGeneric.CCDT_NoAsesorTecnico, pGeneric.CCDT_Procedencia, pGeneric.CCDT_UsuarioDominio);
+            return ObtenerPrimero("SP_SIM_CC_DictamenTecnico_IU"
+                , pGeneric.CCDT_IDDictamenTecnico, pGeneric.CCDT_IDCreditoComplementario, pGeneric.CCDT_Procedencia
+                , pGeneric.CCDT_MotivosProcedencia, pGeneric.CCDT_MontoSugerido, pGeneric.CCDT_FechaDictaminacion
+                , pGeneric.CCDT_NoAsesorTecnico, pGeneric.CCDT_UsuarioDominio);
         }
 
         public override void Baja(CCDictamenTecnico pGeneric)
@@ -26,13 +28,12 @@ namespace Datos
 
         public override CCDictamenTecnico ObtenerEntidad(CCDictamenTecnico pGeneric)
         {
-            return ObtenerPrimero("SP_SIM_CC_DictamenTecnico_S", pGeneric.CCDT_IDDictamenTecnico);
+            return ObtenerPrimero("SP_SIM_CC_DictamenTecnico_S", pGeneric.CCDT_IDCreditoComplementario);
         }
 
         public override List<CCDictamenTecnico> ObtenerListado(CCDictamenTecnico pGeneric)
         {
-            return ObtenerLista("SP_SIM_CC_DictamenTecnico_S", pGeneric.CCDT_FechaDictaminacion, pGeneric.CCDT_IDCreditoComplementario, pGeneric.CCDT_IDDictamenTecnico
-                , pGeneric.CCDT_MontoSugerido, pGeneric.CCDT_MotivosProcedencia, pGeneric.CCDT_NoAsesorTecnico, pGeneric.CCDT_Procedencia, pGeneric.CCDT_UsuarioDominio);
+            return ObtenerLista("SP_SIM_CC_DictamenTecnico_S", pGeneric.CCDT_FechaDictaminacion);
         }
     }
 }

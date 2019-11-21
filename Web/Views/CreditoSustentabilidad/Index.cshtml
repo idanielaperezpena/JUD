@@ -54,9 +54,9 @@
                         </ul>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="pull-right col-lg-6">
-                        <a class="btn btn-success" href="">Nuevo</a>
+                <div class="row" style="margin-bottom:10px;">
+                    <div class="col-lg-offset-6 col-lg-6">
+                        <a class="btn btn-success pull-right " href="">Nuevo</a>
                     </div>
                 </div>
                 <table id="tabla_ci" class="table table-bordered  table-striped table-responsive">
@@ -91,23 +91,23 @@
                                 <td>@item.NombreCiudadano</td>
                                 <td>@item.CS_FechaSolicitud</td>
                              
-                                @*<td>
+                                <td>
                                     <div class="text-center icono_tabla">
-                                        <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenSocial","Dictamenes", new { TipoCredito= "CC", ID = @item.CC_IDCreditoComplementario})">
+                                        <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenSocial","Dictamenes", new { TipoCredito= "CS", ID = @item.CS_IDCreditoSustentabilidad})">
                                             <i style="color:@item.ImgDS[0]" class="@item.ImgDS[1]"></i>
                                         </a>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="text-center icono_tabla">
-                                        <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenTecnico","Dictamenes", new { TipoCredito= "CC", ID = @item.CC_IDCreditoComplementario})">
+                                        <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenTecnico","Dictamenes", new { TipoCredito= "CS", ID = @item.CS_IDCreditoSustentabilidad})">
                                             <i style="color:@item.ImgDT[0]" class="@item.ImgDT[1]"></i>
                                         </a>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="text-center icono_tabla">
-                                        <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenJuridico","Dictamenes", new { TipoCredito= "CC", ID = @item.CC_IDCreditoComplementario})">
+                                        <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenJuridico","Dictamenes", new { TipoCredito= "CS", ID = @item.CS_IDCreditoSustentabilidad})">
                                             <i style="color:@item.ImgDJ[0]" class="@item.ImgDJ[1]"></i>
                                         </a>
                                     </div>
@@ -116,7 +116,7 @@
                                     <div class="text-center icono_tabla">
                                         @if (item.ImgDS[0] == "forestgreen" && item.ImgDS[0] == "forestgreen" && item.ImgDJ[0] == "forestgreen")
                                         {
-                                            <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenFinanciero","Dictamenes", new { TipoCredito= "CC", ID = @item.CC_IDCreditoComplementario})">
+                                            <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenFinanciero","Dictamenes", new { TipoCredito= "CS", ID = @item.CS_IDCreditoSustentabilidad})">
                                                 <i style="color:@item.ImgDF[0]" class="@item.ImgDF[1]"></i>
                                             </a>
                                         }
@@ -126,7 +126,7 @@
                                         }
 
                                     </div>
-                                </td>*@
+                                </td>
                                 <td>
                                     <div class="text-center">
                                         <a class="btn bg-primary solicitudes" href="@Url.Action("Insertar","CreditoSustentabilidad", new {IDCreditoInicial = @item.CS_IDCreditoInicial, IDCreditoSustentabilidad=@item.CS_IDCreditoSustentabilidad})">

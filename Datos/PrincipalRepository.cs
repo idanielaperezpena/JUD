@@ -59,5 +59,44 @@ namespace Datos
 
             return _entidad;
         }
+
+        public Principal ObetenerEstatusCC(CreditoComplementario pGeneric)
+        {
+            Principal _entidad;
+
+            using (var reader = ObtenerDataReader("SP_VerificarDictamen_CC", pGeneric.CC_IDCreditoComplementario))
+            {
+                _entidad = ObtenerPrimero(reader);
+
+            }
+
+            return _entidad;
+        }
+
+        public Principal ObetenerEstatusCS(CreditoSustentabilidad pGeneric)
+        {
+            Principal _entidad;
+
+            using (var reader = ObtenerDataReader("SP_VerificarDictamen_CS", pGeneric.CS_IDCreditoSustentabilidad))
+            {
+                _entidad = ObtenerPrimero(reader);
+
+            }
+
+            return _entidad;
+        }
+
+        public Principal ObetenerEstatusMC(ModificacionesCredito pGeneric)
+        {
+            Principal _entidad;
+
+            using (var reader = ObtenerDataReader("SP_VerificarDictamen_MC", pGeneric.MC_IDModificacionesCredito))
+            {
+                _entidad = ObtenerPrimero(reader);
+
+            }
+
+            return _entidad;
+        }
     }
 }

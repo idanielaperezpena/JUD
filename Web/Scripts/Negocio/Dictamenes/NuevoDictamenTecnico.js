@@ -1,4 +1,26 @@
 ﻿
+
+//Guardar Dictamen 
+var tipo_credito;
+var redireccion;
+$(document).ready(function () {
+    tipo_credito = $("#TipoCredito").val();
+    switch (tipo_credito) {
+        case "CI":
+            redireccion = "/CreditoInicial";
+            break;
+        case "CC":
+            redireccion = "/CreditoComplementario";
+            break;
+        case "CS":
+            redireccion = "/CreditoSustentabilidado";
+            break;
+        case "MC":
+            redireccion = "/ModificacionesCredito";
+            break;
+    }
+});
+
 //Guardar Dictamen 
 $(document).on('click', '#guardar', function (e) {
     e.preventDefault();
@@ -34,7 +56,7 @@ $(document).on('click', '#guardar', function (e) {
                     title: 'Dictamen ' + titulo2 + ' con exito',
                     allowOutsideClick: false,
                     onClose: () => {
-                        window.location = "/CreditoInicial";
+                        window.location = redireccion;
                     }
                 })
             }
