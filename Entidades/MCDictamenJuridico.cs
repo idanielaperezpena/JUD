@@ -11,10 +11,11 @@ namespace Entidades
         public int? MCDJ_IDDictamenJuridico { get; set; }
         public int MCDJ_IDModificacionesCredito { get; set; }
         public int MCDJ_IDPropiedad { get; set; }
-        public int MCDJ_Posesion { get; set; }
+        public int MCDJ_IDPosesion { get; set; }
         public string MCDJ_NoDocumentoPropiedad { get; set; }
-        public DateTime MCDJ_Anuencia { get; set; }
-        public float MCDJ_SuperficieLote { get; set; }
+        public DateTime MCDJ_FechaDocumento { get; set; }
+        public bool MCDJ_Anuencia { get; set; }
+        public double MCDJ_SuperficieLote { get; set; }
         public string MCDJ_DatosLibro { get; set; }
         public string MCDJ_FolioDocumento { get; set; }
         public string MCDJ_Observaciones { get; set; }

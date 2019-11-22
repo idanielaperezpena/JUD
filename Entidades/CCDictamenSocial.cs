@@ -23,7 +23,7 @@ namespace Entidades
         public bool CCDS_BanoCompartido { get; set; }
         public bool CCDS_CocinaCompartido { get; set; }
         public int CCDS_IDHacinamiento { get; set; }
-        public int CCDS_IDInsalubridad { get; set; }
+        public int? CCDS_IDInsalubridad { get; set; }
         public string CCDS_OtroInsalubridad { get; set; }
         public DateTime CCDS_FechaVisita { get; set; }
         public string CCDS_Observaciones { get; set; }

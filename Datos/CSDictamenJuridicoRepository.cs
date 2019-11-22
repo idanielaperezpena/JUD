@@ -15,9 +15,11 @@ namespace Datos
 
         public override CSDictamenJuridico Alta(CSDictamenJuridico pGeneric)
         {
-            return ObtenerPrimero("SP_SIM_CS_DictamenJuridico_IU", pGeneric.CSDJ_Anuencia, pGeneric.CSDJ_DatosLibro, pGeneric.CSDJ_FechaDictaminacion, pGeneric.CSDJ_FolioDocumento
-                , pGeneric.CSDJ_IDCreditoSustentabilidad, pGeneric.CSDJ_IDDictamenJuridico, pGeneric.CSDJ_IDPropiedad, pGeneric.CSDJ_MotivosProcedencia, pGeneric.CSDJ_NoDocumentoPropiedad
-                , pGeneric.CSDJ_Observaciones, pGeneric.CSDJ_Posesion, pGeneric.CSDJ_Procedencia, pGeneric.CSDJ_SuperficieLote, pGeneric.CSDJ_UsuarioDominio);
+            return ObtenerPrimero("SP_SIM_CS_DictamenJuridico_IU"
+                , pGeneric.CSDJ_IDDictamenJuridico, pGeneric.CSDJ_IDCreditoSustentabilidad, pGeneric.CSDJ_IDPropiedad
+                , pGeneric.CSDJ_IDPosesion, pGeneric.CSDJ_NoDocumentoPropiedad, pGeneric.CSDJ_FechaDocumento, pGeneric.CSDJ_Anuencia
+                , pGeneric.CSDJ_SuperficieLote, pGeneric.CSDJ_DatosLibro, pGeneric.CSDJ_FolioDocumento, pGeneric.CSDJ_Observaciones
+                , pGeneric.CSDJ_Procedencia, pGeneric.CSDJ_MotivosProcedencia, pGeneric.CSDJ_FechaDictaminacion, pGeneric.CSDJ_UsuarioDominio);
         }
 
         public override void Baja(CSDictamenJuridico pGeneric)
@@ -27,14 +29,12 @@ namespace Datos
 
         public override CSDictamenJuridico ObtenerEntidad(CSDictamenJuridico pGeneric)
         {
-            return ObtenerPrimero("SP_SIM_CS_DictamenJuridico_S", pGeneric.CSDJ_IDDictamenJuridico);
+            return ObtenerPrimero("SP_SIM_CS_DictamenJuridico_S", pGeneric.CSDJ_IDCreditoSustentabilidad);
         }
 
         public override List<CSDictamenJuridico> ObtenerListado(CSDictamenJuridico pGeneric)
         {
-            return ObtenerLista("SP_SIM_CS_DictamenJuridico_S", pGeneric.CSDJ_Anuencia, pGeneric.CSDJ_DatosLibro, pGeneric.CSDJ_FechaDictaminacion, pGeneric.CSDJ_FolioDocumento
-                , pGeneric.CSDJ_IDCreditoSustentabilidad, pGeneric.CSDJ_IDDictamenJuridico, pGeneric.CSDJ_IDPropiedad, pGeneric.CSDJ_MotivosProcedencia, pGeneric.CSDJ_NoDocumentoPropiedad
-                , pGeneric.CSDJ_Observaciones, pGeneric.CSDJ_Posesion, pGeneric.CSDJ_Procedencia, pGeneric.CSDJ_SuperficieLote, pGeneric.CSDJ_UsuarioDominio);
+            return ObtenerLista("SP_SIM_CS_DictamenJuridico_S", pGeneric.CSDJ_IDCreditoSustentabilidad);
         }
     }
 }

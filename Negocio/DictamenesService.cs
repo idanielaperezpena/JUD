@@ -28,8 +28,6 @@ namespace Negocio
             _viewModel.TipoPosesion = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_SN_Posesion", ID = 0 }).SelectListado();
             _viewModel.Dictaminacion = UoW.Catalogos.ObtenerListado(new Catalogos { NombreCatalogo = "SIM_Cat_54_Dictaminacion", ID = 0 }).SelectListado();
            
-           
-              
                 switch (TipoCredito)
                 {
                     case "CI":
@@ -38,15 +36,15 @@ namespace Negocio
                     case "CC":
                         ObtenerCCDictamenJuridico(_viewModel,ID);
                         break;
-                        //case "CS":
-                        //    ObtenerCSDictamenJuridico(_viewModel);
-                        //    break;
-                        //case "MC":
-                        //    ObtenerMCDictamenJuridico(_viewModel);
-                        //    break;
-                }
-            
-           
+                    case "CS":
+                        ObtenerCSDictamenJuridico(_viewModel,ID);
+                        break;
+                    case "MC":
+                        ObtenerMCDictamenJuridico(_viewModel, ID);
+                        break;
+            }
+
+
             return _viewModel;
         }
 
@@ -76,13 +74,13 @@ namespace Negocio
                     case "CC":
                        ObtenerCCDictamenSocial(_viewModel,ID);
                         break;
-                        //case "CS":
-                        //    ObtenerCSDictamenJuridico(_viewModel);
-                        //    break;
-                        //case "MC":
-                        //    ObtenerMCDictamenJuridico(_viewModel);
-                        //    break;
-                }
+                    case "CS":
+                        ObtenerCSDictamenSocial(_viewModel,ID);
+                        break;
+                    case "MC":
+                        ObtenerMCDictamenSocial(_viewModel,ID);
+                        break;
+            }
             
             return _viewModel;
          
@@ -104,13 +102,13 @@ namespace Negocio
                     case "CC":
                         ObtenerCCDictamenTecnico(_viewModel,ID);
                         break;
-                        //case "CS":
-                        //    ObtenerCSDictamenJuridico(_viewModel);
-                        //    break;
-                        //case "MC":
-                        //    ObtenerMCDictamenJuridico(_viewModel);
-                        //    break;
-                }
+                    case "CS":
+                        ObtenerCSDictamenTecnico(_viewModel,ID);
+                        break;
+                    case "MC":
+                        ObtenerMCDictamenTecnico(_viewModel, ID);
+                        break;
+            }
             
             return _viewModel;
         }
@@ -130,13 +128,13 @@ namespace Negocio
                     case "CC":
                         ObtenerCCDictamenFinanciero(_viewModel,ID);
                         break;
-                        //case "CS":
-                        //    ObtenerCSDictamenJuridico(_viewModel);
-                        //    break;
-                        //case "MC":
-                        //    ObtenerMCDictamenJuridico(_viewModel);
-                        //    break;
-                }
+                    case "CS":
+                        ObtenerCSDictamenFinanciero(_viewModel, ID);
+                        break;
+                    case "MC":
+                        ObtenerMCDictamenFinanciero(_viewModel, ID);
+                        break;
+            }
             
             return _viewModel;
         }
@@ -207,7 +205,7 @@ namespace Negocio
                         _viewModel.BanoCompartido = _entidad.CIDS_BanoCompartido;
                         _viewModel.CocinaCompartida = _entidad.CIDS_CocinaCompartido;
                         _viewModel.IDHacinamiento = _entidad.CIDS_IDHacinamiento;
-                        _viewModel.IDInsalubridad = _entidad.CIDS_IDInsalubridad;
+                        _viewModel.IDInsalubridad = _entidad.CIDS_IDInsalubridad ?? 0;
                         _viewModel.OtroInsalubridad = _entidad.CIDS_OtroInsalubridad;
                         _viewModel.FechaVisita = _entidad.CIDS_FechaVisita;
                         _viewModel.Observaciones = _entidad.CIDS_Observaciones;
@@ -320,7 +318,7 @@ namespace Negocio
                         _viewModel.BanoCompartido = _entidad.CCDS_BanoCompartido;
                         _viewModel.CocinaCompartida = _entidad.CCDS_CocinaCompartido;
                         _viewModel.IDHacinamiento = _entidad.CCDS_IDHacinamiento;
-                        _viewModel.IDInsalubridad = _entidad.CCDS_IDInsalubridad;
+                        _viewModel.IDInsalubridad = _entidad.CCDS_IDInsalubridad ?? 0;
                         _viewModel.OtroInsalubridad = _entidad.CCDS_OtroInsalubridad;
                         _viewModel.FechaVisita = _entidad.CCDS_FechaVisita;
                         _viewModel.Observaciones = _entidad.CCDS_Observaciones;
@@ -439,7 +437,304 @@ namespace Negocio
 
             }
 
-            #endregion
+        #endregion
+
+        #region Crédito sustentabilidad
+        public DictamenSocialViewModel ObtenerCSDictamenSocial(DictamenSocialViewModel _viewModel, int _IDCreditoSustentabilidad)
+        {
+            try
+            {
+                var _entidad = UoW.CsDictamenSocial.ObtenerEntidad(new CSDictamenSocial
+                {
+                    CSDS_IDCreditoSustentabilidad = _IDCreditoSustentabilidad
+                });
+
+                if (_entidad != null)
+                {
+                    _viewModel.TipoCredito = "CS";
+                    _viewModel.IDDictamenSocial = _entidad.CSDS_IDDictamenSocial;
+                    _viewModel.IDCredito = _entidad.CSDS_IDCreditoSustentabilidad;
+                    _viewModel.IDTipoPredio = _entidad.CSDS_IDTipoPredio;
+                    _viewModel.IDCaracteristicaPredio = _entidad.CSDS_IDCaracteristicasPredio;
+                    _viewModel.NoFamiliasLote = _entidad.CSDS_NoFamiliasLote;
+                    _viewModel.NoFamiliasVivienda = _entidad.CSDS_NoFamiliasVivienda;
+                    _viewModel.NoViviendasLote = _entidad.CSDS_NoViviendasLote;
+                    _viewModel.NoPersonasVivienda = _entidad.CSDS_NoPersonasVivienda;
+                    _viewModel.IDServicioAgua = _entidad.CSDS_IDServicioAgua;
+                    _viewModel.IDServicioDrenaje = _entidad.CSDS_IDServicioDrenaje;
+                    _viewModel.IDServicioElectrico = _entidad.CSDS_IDServicioElectrico;
+                    _viewModel.Desdoblamiento = _entidad.CSDS_Desdoblamiento;
+                    _viewModel.BanoCompartido = _entidad.CSDS_BanoCompartido;
+                    _viewModel.CocinaCompartida = _entidad.CSDS_CocinaCompartido;
+                    _viewModel.IDHacinamiento = _entidad.CSDS_IDHacinamiento;
+                    _viewModel.IDInsalubridad = _entidad.CSDS_IDInsalubridad ?? 0;
+                    _viewModel.OtroInsalubridad = _entidad.CSDS_OtroInsalubridad;
+                    _viewModel.FechaVisita = _entidad.CSDS_FechaVisita;
+                    _viewModel.Observaciones = _entidad.CSDS_Observaciones;
+                    _viewModel.NoEmpleadoVisita = _entidad.CSDS_NoEmpleadoVisita;
+                    _viewModel.Procedencia = _entidad.CSDS_Procedencia;
+                    _viewModel.IDVulnerabilidad = _entidad.CSDS_IDVulnerabilidad;
+                    _viewModel.MotivosProcedencia = _entidad.CSDS_MotivosProcedencia;
+                    _viewModel.FechaDictaminacion = _entidad.CSDS_FechaDictaminacion;
+                    _viewModel.UsuarioDominio = _entidad.CSDS_UsuarioDominio;
+                    return _viewModel;
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+            return _viewModel;
+
+        }
+        public DictamenTecnicoViewModel ObtenerCSDictamenTecnico(DictamenTecnicoViewModel _viewModel, int _IDCreditoSustentabilidad)
+        {
+            try
+            {
+                var _entidad = UoW.CsDictamenTecnico.ObtenerEntidad(new CSDictamenTecnico
+                {
+                    CSDT_IDCreditoSustentabilidad = _IDCreditoSustentabilidad
+                });
+
+                if (_entidad != null)
+                {
+                    _viewModel.TipoCredito = "CS";
+                    _viewModel.IDDictamenTecnico = _entidad.CSDT_IDDictamenTecnico;
+                    _viewModel.IDCredito = _entidad.CSDT_IDCreditoSustentabilidad;
+                    _viewModel.IDProcedencia = _entidad.CSDT_Procedencia;
+                    _viewModel.MotivosProcedencia = _entidad.CSDT_MotivosProcedencia;
+                    _viewModel.MontoSugerido = _entidad.CSDT_MontoSugerido;
+                    _viewModel.FechaDictaminacion = _entidad.CSDT_FechaDictaminacion;
+                    _viewModel.NoAsesorTecnico = _entidad.CSDT_NoAsesorTecnico;
+                    _viewModel.UsuarioDominio = _entidad.CSDT_UsuarioDominio;
+                    return _viewModel;
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+            return _viewModel;
+
+        }
+        public DictamenJuridicoViewModel ObtenerCSDictamenJuridico(DictamenJuridicoViewModel _viewModel, int _IDCreditoSustentabilidad)
+        {
+            try
+            {
+                var _entidad = UoW.CsDictamenJuridico.ObtenerEntidad(new CSDictamenJuridico
+                {
+                    CSDJ_IDCreditoSustentabilidad = _IDCreditoSustentabilidad
+                });
+
+                if (_entidad != null)
+                {
+                    _viewModel.TipoCredito = "CS";
+                    _viewModel.IDDictamenJuridico = _entidad.CSDJ_IDDictamenJuridico;
+                    _viewModel.IDCredito = _entidad.CSDJ_IDCreditoSustentabilidad;
+                    _viewModel.IDPropiedad = _entidad.CSDJ_IDPropiedad;
+                    _viewModel.IDPosesion = _entidad.CSDJ_IDPosesion;
+                    _viewModel.NoDocumentoPropiedad = _entidad.CSDJ_NoDocumentoPropiedad;
+                    _viewModel.FechaDocumento = _entidad.CSDJ_FechaDocumento;
+                    _viewModel.Anuencia = _entidad.CSDJ_Anuencia;
+                    _viewModel.SuperficieLote = _entidad.CSDJ_SuperficieLote;
+                    _viewModel.DatosLibro = _entidad.CSDJ_DatosLibro;
+                    _viewModel.FolioDocumento = _entidad.CSDJ_FolioDocumento;
+                    _viewModel.Observaciones = _entidad.CSDJ_Observaciones;
+                    _viewModel.Procedencia = _entidad.CSDJ_Procedencia;
+                    _viewModel.MotivosProcedencia = _entidad.CSDJ_MotivosProcedencia;
+                    _viewModel.FechaDictaminacion = _entidad.CSDJ_FechaDictaminacion;
+                    _viewModel.UsuarioDominio = _entidad.CSDJ_UsuarioDominio;
+                    return _viewModel;
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+            return _viewModel;
+        }
+        public DictamenFinancieroViewModel ObtenerCSDictamenFinanciero(DictamenFinancieroViewModel _viewModel, int _IDCreditoSustentabilidad)
+        {
+            try
+            {
+                var _entidad = UoW.CsDictamenFinanciero.ObtenerEntidad(new CSDictamenFinanciero
+                {
+                    CSDF_IDCreditoSustentabilidad = _IDCreditoSustentabilidad
+                });
+
+                if (_entidad != null)
+                {
+                    _viewModel.TipoCredito = "CS";
+                    _viewModel.IDDictamenFinanciero = _entidad.CSDF_IDDictamenFinanciero;
+                    _viewModel.IDCredito = _entidad.CSDF_IDCreditoSustentabilidad;
+                    _viewModel.Procedencia = _entidad.CSDF_Procedencia;
+                    _viewModel.MotivosProcedencia = _entidad.CSDF_MotivosProcedencia;
+                    _viewModel.IDUMA = _entidad.CSDF_IDUMA;
+                    _viewModel.NoMontoCredito = _entidad.CSDF_NoMontoCreditoUMA;
+                    _viewModel.NoMesesAmortizacion = _entidad.CSDF_NoMesesAmortizacion;
+                    _viewModel.NoPagoUMA = _entidad.CSDF_NoPagoUMA;
+                    _viewModel.FechaDictaminacion = _entidad.CSDF_FechaDictaminacion;
+                    _viewModel.UsuarioDominio = _entidad.CSDF_UsuarioDominio;
+                    return _viewModel;
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+            return _viewModel;
+
+        }
+
+        #endregion
+
+        #region Modificaciones Crédito
+        public DictamenSocialViewModel ObtenerMCDictamenSocial(DictamenSocialViewModel _viewModel, int _IDModificacionesCredito)
+        {
+            try
+            {
+                var _entidad = UoW.McDictamenSocial.ObtenerEntidad(new MCDictamenSocial
+                {
+                    MCDS_IDModificacionesCredito = _IDModificacionesCredito
+                });
+
+                if (_entidad != null)
+                {
+                    _viewModel.TipoCredito = "MC";
+                    _viewModel.IDDictamenSocial = _entidad.MCDS_IDDictamenSocial;
+                    _viewModel.IDCredito = _entidad.MCDS_IDModificacionesCredito;
+                    _viewModel.IDTipoPredio = _entidad.MCDS_IDTipoPredio;
+                    _viewModel.IDCaracteristicaPredio = _entidad.MCDS_IDCaracteristicasPredio;
+                    _viewModel.NoFamiliasLote = _entidad.MCDS_NoFamiliasLote;
+                    _viewModel.NoFamiliasVivienda = _entidad.MCDS_NoFamiliasVivienda;
+                    _viewModel.NoViviendasLote = _entidad.MCDS_NoViviendasLote;
+                    _viewModel.NoPersonasVivienda = _entidad.MCDS_NoPersonasVivienda;
+                    _viewModel.IDServicioAgua = _entidad.MCDS_IDServicioAgua;
+                    _viewModel.IDServicioDrenaje = _entidad.MCDS_IDServicioDrenaje;
+                    _viewModel.IDServicioElectrico = _entidad.MCDS_IDServicioElectrico;
+                    _viewModel.Desdoblamiento = _entidad.MCDS_Desdoblamiento;
+                    _viewModel.BanoCompartido = _entidad.MCDS_BanoCompartido;
+                    _viewModel.CocinaCompartida = _entidad.MCDS_CocinaCompartido;
+                    _viewModel.IDHacinamiento = _entidad.MCDS_IDHacinamiento;
+                    _viewModel.IDInsalubridad = _entidad.MCDS_IDInsalubridad ?? 0;
+                    _viewModel.OtroInsalubridad = _entidad.MCDS_OtroInsalubridad;
+                    _viewModel.FechaVisita = _entidad.MCDS_FechaVisita;
+                    _viewModel.Observaciones = _entidad.MCDS_Observaciones;
+                    _viewModel.NoEmpleadoVisita = _entidad.MCDS_NoEmpleadoVisita;
+                    _viewModel.Procedencia = _entidad.MCDS_Procedencia;
+                    _viewModel.IDVulnerabilidad = _entidad.MCDS_IDVulnerabilidad;
+                    _viewModel.MotivosProcedencia = _entidad.MCDS_MotivosProcedencia;
+                    _viewModel.FechaDictaminacion = _entidad.MCDS_FechaDictaminacion;
+                    _viewModel.UsuarioDominio = _entidad.MCDS_UsuarioDominio;
+                    return _viewModel;
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+            return _viewModel;
+
+        }
+        public DictamenTecnicoViewModel ObtenerMCDictamenTecnico(DictamenTecnicoViewModel _viewModel, int _IDModificacionesCredito)
+        {
+            try
+            {
+                var _entidad = UoW.McDictamenTecnico.ObtenerEntidad(new MCDictamenTecnico
+                {
+                    MCDT_IDModificacionesCredito = _IDModificacionesCredito
+                });
+
+                if (_entidad != null)
+                {
+                    _viewModel.TipoCredito = "MC";
+                    _viewModel.IDDictamenTecnico = _entidad.MCDT_IDDictamenTecnico;
+                    _viewModel.IDCredito = _entidad.MCDT_IDModificacionesCredito;
+                    _viewModel.IDProcedencia = _entidad.MCDT_Procedencia;
+                    _viewModel.MotivosProcedencia = _entidad.MCDT_MotivosProcedencia;
+                    _viewModel.MontoSugerido = _entidad.MCDT_MontoSugerido;
+                    _viewModel.FechaDictaminacion = _entidad.MCDT_FechaDictaminacion;
+                    _viewModel.NoAsesorTecnico = _entidad.MCDT_NoAsesorTecnico;
+                    _viewModel.UsuarioDominio = _entidad.MCDT_UsuarioDominio;
+                    return _viewModel;
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+            return _viewModel;
+
+        }
+        public DictamenJuridicoViewModel ObtenerMCDictamenJuridico(DictamenJuridicoViewModel _viewModel, int _IDModificacionesCredito)
+        {
+            try
+            {
+                var _entidad = UoW.McDictamenJuridico.ObtenerEntidad(new MCDictamenJuridico
+                {
+                    MCDJ_IDModificacionesCredito = _IDModificacionesCredito
+                });
+
+                if (_entidad != null)
+                {
+                    _viewModel.TipoCredito = "MC";
+                    _viewModel.IDDictamenJuridico = _entidad.MCDJ_IDDictamenJuridico;
+                    _viewModel.IDCredito = _entidad.MCDJ_IDModificacionesCredito;
+                    _viewModel.IDPropiedad = _entidad.MCDJ_IDPropiedad;
+                    _viewModel.IDPosesion = _entidad.MCDJ_IDPosesion;
+                    _viewModel.NoDocumentoPropiedad = _entidad.MCDJ_NoDocumentoPropiedad;
+                    _viewModel.FechaDocumento = _entidad.MCDJ_FechaDocumento;
+                    _viewModel.Anuencia = _entidad.MCDJ_Anuencia;
+                    _viewModel.SuperficieLote = _entidad.MCDJ_SuperficieLote;
+                    _viewModel.DatosLibro = _entidad.MCDJ_DatosLibro;
+                    _viewModel.FolioDocumento = _entidad.MCDJ_FolioDocumento;
+                    _viewModel.Observaciones = _entidad.MCDJ_Observaciones;
+                    _viewModel.Procedencia = _entidad.MCDJ_Procedencia;
+                    _viewModel.MotivosProcedencia = _entidad.MCDJ_MotivosProcedencia;
+                    _viewModel.FechaDictaminacion = _entidad.MCDJ_FechaDictaminacion;
+                    _viewModel.UsuarioDominio = _entidad.MCDJ_UsuarioDominio;
+                    return _viewModel;
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+            return _viewModel;
+        }
+        public DictamenFinancieroViewModel ObtenerMCDictamenFinanciero(DictamenFinancieroViewModel _viewModel, int _IDModificacionesCredito)
+        {
+            try
+            {
+                var _entidad = UoW.McDictamenFinanciero.ObtenerEntidad(new MCDictamenFinanciero
+                {
+                    MCDF_IDModificacionesCredito = _IDModificacionesCredito
+                });
+
+                if (_entidad != null)
+                {
+                    _viewModel.TipoCredito = "MC";
+                    _viewModel.IDDictamenFinanciero = _entidad.MCDF_IDDictamenFinanciero;
+                    _viewModel.IDCredito = _entidad.MCDF_IDModificacionesCredito;
+                    _viewModel.Procedencia = _entidad.MCDF_Procedencia;
+                    _viewModel.MotivosProcedencia = _entidad.MCDF_MotivosProcedencia;
+                    _viewModel.IDUMA = _entidad.MCDF_IDUMA;
+                    _viewModel.NoMontoCredito = _entidad.MCDF_NoMontoCreditoUMA;
+                    _viewModel.NoMesesAmortizacion = _entidad.MCDF_NoMesesAmortizacion;
+                    _viewModel.NoPagoUMA = _entidad.MCDF_NoPagoUMA;
+                    _viewModel.FechaDictaminacion = _entidad.MCDF_FechaDictaminacion;
+                    _viewModel.UsuarioDominio = _entidad.MCDF_UsuarioDominio;
+                    return _viewModel;
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+            return _viewModel;
+
+        }
+        #endregion
         #endregion
         #region Insertar Editar
 
@@ -454,12 +749,12 @@ namespace Negocio
                 case "CC":
                     EditCCDictamenJuridico(_viewModel);
                     break;
-                    //case "CS":
-                    //    ObtenerCSDictamenJuridico(_viewModel);
-                    //    break;
-                    //case "MC":
-                    //    ObtenerMCDictamenJuridico(_viewModel);
-                    //    break;
+                case "CS":
+                    EditCSDictamenJuridico(_viewModel);
+                    break;
+                case "MC":
+                    EditMCDictamenJuridico(_viewModel);
+                    break;
             }
 
         }
@@ -475,12 +770,12 @@ namespace Negocio
                 case "CC":
                     EditCCDictamenSocial(_viewModel);
                     break;
-                    //case "CS":
-                    //    ObtenerCSDictamenJuridico(_viewModel);
-                    //    break;
-                    //case "MC":
-                    //    ObtenerMCDictamenJuridico(_viewModel);
-                    //    break;
+                case "CS":
+                    EditCSDictamenSocial(_viewModel);
+                    break;
+                case "MC":
+                    EditMCDictamenSocial(_viewModel);
+                    break;
             }
         }
 
@@ -495,12 +790,12 @@ namespace Negocio
                 case "CC":
                     EditCCDictamenTecnico(_viewModel);
                     break;
-                    //case "CS":
-                    //    ObtenerCSDictamenJuridico(_viewModel);
-                    //    break;
-                    //case "MC":
-                    //    ObtenerMCDictamenJuridico(_viewModel);
-                    //    break;
+                case "CS":
+                   EditCSDictamenTecnico(_viewModel);
+                    break;
+                case "MC":
+                    EditMCDictamenTecnico(_viewModel);
+                    break;
             }
         }
         
@@ -515,12 +810,12 @@ namespace Negocio
                 case "CC":
                     EditCCDictamenFinanciero(_viewModel);
                     break;
-                    //case "CS":
-                    //    ObtenerCSDictamenJuridico(_viewModel);
-                    //    break;
-                    //case "MC":
-                    //    ObtenerMCDictamenJuridico(_viewModel);
-                    //    break;
+                case "CS":
+                    EditCSDictamenFinanciero(_viewModel);
+                    break;
+                case "MC":
+                    EditMCDictamenFinanciero(_viewModel);
+                    break;
             }
         }
 
@@ -832,6 +1127,309 @@ namespace Negocio
         }
         #endregion
 
+        #region Credito Sustentailidad
+        private void EditCSDictamenJuridico(DictamenJuridicoViewModel _viewModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    using (UoW.CsDictamenJuridico.TxScope = new TransactionScope())
+                    {
+                        var _entidad = UoW.CsDictamenJuridico.Alta(new CSDictamenJuridico
+                        {
+
+                            CSDJ_IDDictamenJuridico = _viewModel.IDDictamenJuridico,
+                            CSDJ_IDCreditoSustentabilidad = _viewModel.IDCredito,
+                            CSDJ_IDPropiedad = _viewModel.IDPropiedad,
+                            CSDJ_IDPosesion = _viewModel.IDPosesion,
+                            CSDJ_NoDocumentoPropiedad = _viewModel.NoDocumentoPropiedad,
+                            CSDJ_FechaDocumento = _viewModel.FechaDocumento,
+                            CSDJ_Anuencia = _viewModel.Anuencia,
+                            CSDJ_SuperficieLote = _viewModel.SuperficieLote,
+                            CSDJ_DatosLibro = _viewModel.DatosLibro,
+                            CSDJ_FolioDocumento = _viewModel.FolioDocumento,
+                            CSDJ_Observaciones = _viewModel.Observaciones,
+                            CSDJ_Procedencia = _viewModel.Procedencia,
+                            CSDJ_MotivosProcedencia = _viewModel.MotivosProcedencia,
+                            CSDJ_FechaDictaminacion = _viewModel.FechaDictaminacion,
+                            CSDJ_UsuarioDominio = "Usuario",
+                        });
+                        UoW.CsDictamenJuridico.TxScope.Complete();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+        }
+        private void EditCSDictamenSocial(DictamenSocialViewModel _viewModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    using (UoW.CsDictamenSocial.TxScope = new TransactionScope())
+                    {
+                        var _entidad = UoW.CsDictamenSocial.Alta(new CSDictamenSocial
+                        {
+
+                            CSDS_IDDictamenSocial = _viewModel.IDDictamenSocial,
+                            CSDS_IDCreditoSustentabilidad = _viewModel.IDCredito,
+                            CSDS_IDTipoPredio = _viewModel.IDTipoPredio,
+                            CSDS_IDCaracteristicasPredio = _viewModel.IDCaracteristicaPredio,
+                            CSDS_NoFamiliasLote = _viewModel.NoFamiliasLote,
+                            CSDS_NoFamiliasVivienda = _viewModel.NoFamiliasVivienda,
+                            CSDS_NoViviendasLote = _viewModel.NoViviendasLote,
+                            CSDS_NoPersonasVivienda = _viewModel.NoPersonasVivienda,
+                            CSDS_IDServicioAgua = _viewModel.IDServicioAgua,
+                            CSDS_IDServicioDrenaje = _viewModel.IDServicioDrenaje,
+                            CSDS_IDServicioElectrico = _viewModel.IDServicioElectrico,
+                            CSDS_Desdoblamiento = _viewModel.Desdoblamiento,
+                            CSDS_BanoCompartido = _viewModel.BanoCompartido,
+                            CSDS_CocinaCompartido = _viewModel.CocinaCompartida,
+                            CSDS_IDHacinamiento = _viewModel.IDHacinamiento,
+                            CSDS_IDInsalubridad = _viewModel.IDInsalubridad,
+                            CSDS_OtroInsalubridad = _viewModel.OtroInsalubridad,
+                            CSDS_FechaVisita = _viewModel.FechaVisita,
+                            CSDS_Observaciones = _viewModel.Observaciones,
+                            CSDS_NoEmpleadoVisita = _viewModel.NoEmpleadoVisita,
+                            CSDS_Procedencia = _viewModel.Procedencia,
+                            CSDS_IDVulnerabilidad = _viewModel.IDVulnerabilidad,
+                            CSDS_MotivosProcedencia = _viewModel.MotivosProcedencia,
+                            CSDS_FechaDictaminacion = _viewModel.FechaDictaminacion,
+                            CSDS_UsuarioDominio = "Usuario"
+
+                        });
+                        UoW.CsDictamenSocial.TxScope.Complete();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+        }
+        private void EditCSDictamenTecnico(DictamenTecnicoViewModel _viewModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    using (UoW.CsDictamenTecnico.TxScope = new TransactionScope())
+                    {
+                        var _entidad = UoW.CsDictamenTecnico.Alta(new CSDictamenTecnico
+                        {
+
+                            CSDT_IDDictamenTecnico = _viewModel.IDDictamenTecnico,
+                            CSDT_IDCreditoSustentabilidad = _viewModel.IDCredito,
+                            CSDT_Procedencia = _viewModel.IDProcedencia,
+                            CSDT_MotivosProcedencia = _viewModel.MotivosProcedencia,
+                            CSDT_MontoSugerido = _viewModel.MontoSugerido,
+                            CSDT_FechaDictaminacion = _viewModel.FechaDictaminacion,
+                            CSDT_NoAsesorTecnico = _viewModel.NoAsesorTecnico,
+                            CSDT_UsuarioDominio = "Usuario"
+
+                        });
+                        UoW.CsDictamenTecnico.TxScope.Complete();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+        }
+        private void EditCSDictamenFinanciero(DictamenFinancieroViewModel _viewModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    using (UoW.CsDictamenFinanciero.TxScope = new TransactionScope())
+                    {
+                        var _entidad = UoW.CsDictamenFinanciero.Alta(new CSDictamenFinanciero
+                        {
+
+                            CSDF_IDDictamenFinanciero = _viewModel.IDDictamenFinanciero,
+                            CSDF_IDCreditoSustentabilidad = _viewModel.IDCredito,
+                            CSDF_Procedencia = _viewModel.Procedencia,
+                            CSDF_MotivosProcedencia = _viewModel.MotivosProcedencia,
+                            CSDF_IDUMA = _viewModel.IDUMA,
+                            CSDF_NoMontoCreditoUMA = _viewModel.NoMontoCredito,
+                            CSDF_NoMesesAmortizacion = _viewModel.NoMesesAmortizacion,
+                            CSDF_NoPagoUMA = _viewModel.NoPagoUMA,
+                            CSDF_FechaDictaminacion = _viewModel.FechaDictaminacion,
+                            CSDF_UsuarioDominio = "Usuario"
+
+                        });
+                        UoW.CsDictamenFinanciero.TxScope.Complete();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+        }
+        #endregion
+
+        #region Modificaciones Credito
+        private void EditMCDictamenJuridico(DictamenJuridicoViewModel _viewModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    using (UoW.McDictamenJuridico.TxScope = new TransactionScope())
+                    {
+                        var _entidad = UoW.McDictamenJuridico.Alta(new MCDictamenJuridico
+                        {
+
+                            MCDJ_IDDictamenJuridico = _viewModel.IDDictamenJuridico,
+                            MCDJ_IDModificacionesCredito = _viewModel.IDCredito,
+                            MCDJ_IDPropiedad = _viewModel.IDPropiedad,
+                            MCDJ_IDPosesion = _viewModel.IDPosesion,
+                            MCDJ_NoDocumentoPropiedad = _viewModel.NoDocumentoPropiedad,
+                            MCDJ_FechaDocumento = _viewModel.FechaDocumento,
+                            MCDJ_Anuencia = _viewModel.Anuencia,
+                            MCDJ_SuperficieLote = _viewModel.SuperficieLote,
+                            MCDJ_DatosLibro = _viewModel.DatosLibro,
+                            MCDJ_FolioDocumento = _viewModel.FolioDocumento,
+                            MCDJ_Observaciones = _viewModel.Observaciones,
+                            MCDJ_Procedencia = _viewModel.Procedencia,
+                            MCDJ_MotivosProcedencia = _viewModel.MotivosProcedencia,
+                            MCDJ_FechaDictaminacion = _viewModel.FechaDictaminacion,
+                            MCDJ_UsuarioDominio = "Usuario",
+                        });
+                        UoW.McDictamenJuridico.TxScope.Complete();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+        }
+        private void EditMCDictamenSocial(DictamenSocialViewModel _viewModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    using (UoW.McDictamenSocial.TxScope = new TransactionScope())
+                    {
+                        var _entidad = UoW.McDictamenSocial.Alta(new MCDictamenSocial
+                        {
+
+                            MCDS_IDDictamenSocial = _viewModel.IDDictamenSocial,
+                            MCDS_IDModificacionesCredito = _viewModel.IDCredito,
+                            MCDS_IDTipoPredio = _viewModel.IDTipoPredio,
+                            MCDS_IDCaracteristicasPredio = _viewModel.IDCaracteristicaPredio,
+                            MCDS_NoFamiliasLote = _viewModel.NoFamiliasLote,
+                            MCDS_NoFamiliasVivienda = _viewModel.NoFamiliasVivienda,
+                            MCDS_NoViviendasLote = _viewModel.NoViviendasLote,
+                            MCDS_NoPersonasVivienda = _viewModel.NoPersonasVivienda,
+                            MCDS_IDServicioAgua = _viewModel.IDServicioAgua,
+                            MCDS_IDServicioDrenaje = _viewModel.IDServicioDrenaje,
+                            MCDS_IDServicioElectrico = _viewModel.IDServicioElectrico,
+                            MCDS_Desdoblamiento = _viewModel.Desdoblamiento,
+                            MCDS_BanoCompartido = _viewModel.BanoCompartido,
+                            MCDS_CocinaCompartido = _viewModel.CocinaCompartida,
+                            MCDS_IDHacinamiento = _viewModel.IDHacinamiento,
+                            MCDS_IDInsalubridad = _viewModel.IDInsalubridad,
+                            MCDS_OtroInsalubridad = _viewModel.OtroInsalubridad,
+                            MCDS_FechaVisita = _viewModel.FechaVisita,
+                            MCDS_Observaciones = _viewModel.Observaciones,
+                            MCDS_NoEmpleadoVisita = _viewModel.NoEmpleadoVisita,
+                            MCDS_Procedencia = _viewModel.Procedencia,
+                            MCDS_IDVulnerabilidad = _viewModel.IDVulnerabilidad,
+                            MCDS_MotivosProcedencia = _viewModel.MotivosProcedencia,
+                            MCDS_FechaDictaminacion = _viewModel.FechaDictaminacion,
+                            MCDS_UsuarioDominio = "Usuario"
+
+                        });
+                        UoW.McDictamenSocial.TxScope.Complete();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+        }
+        private void EditMCDictamenTecnico(DictamenTecnicoViewModel _viewModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    using (UoW.McDictamenTecnico.TxScope = new TransactionScope())
+                    {
+                        var _entidad = UoW.McDictamenTecnico.Alta(new MCDictamenTecnico
+                        {
+
+                            MCDT_IDDictamenTecnico = _viewModel.IDDictamenTecnico,
+                            MCDT_IDModificacionesCredito = _viewModel.IDCredito,
+                            MCDT_Procedencia = _viewModel.IDProcedencia,
+                            MCDT_MotivosProcedencia = _viewModel.MotivosProcedencia,
+                            MCDT_MontoSugerido = _viewModel.MontoSugerido,
+                            MCDT_FechaDictaminacion = _viewModel.FechaDictaminacion,
+                            MCDT_NoAsesorTecnico = _viewModel.NoAsesorTecnico,
+                            MCDT_UsuarioDominio = "Usuario"
+
+                        });
+                        UoW.McDictamenTecnico.TxScope.Complete();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+        }
+        private void EditMCDictamenFinanciero(DictamenFinancieroViewModel _viewModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    using (UoW.McDictamenFinanciero.TxScope = new TransactionScope())
+                    {
+                        var _entidad = UoW.McDictamenFinanciero.Alta(new MCDictamenFinanciero
+                        {
+
+                            MCDF_IDDictamenFinanciero = _viewModel.IDDictamenFinanciero,
+                            MCDF_IDModificacionesCredito = _viewModel.IDCredito,
+                            MCDF_Procedencia = _viewModel.Procedencia,
+                            MCDF_MotivosProcedencia = _viewModel.MotivosProcedencia,
+                            MCDF_IDUMA = _viewModel.IDUMA,
+                            MCDF_NoMontoCreditoUMA = _viewModel.NoMontoCredito,
+                            MCDF_NoMesesAmortizacion = _viewModel.NoMesesAmortizacion,
+                            MCDF_NoPagoUMA = _viewModel.NoPagoUMA,
+                            MCDF_FechaDictaminacion = _viewModel.FechaDictaminacion,
+                            MCDF_UsuarioDominio = "Usuario"
+
+                        });
+                        UoW.McDictamenFinanciero.TxScope.Complete();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+        }
+        #endregion
         #endregion
     }
 }

@@ -13,7 +13,7 @@ $(document).ready(function () {
             redireccion = "/CreditoComplementario";
             break;
         case "CS":
-            redireccion = "/CreditoSustentabilidado";
+            redireccion = "/CreditoSustentabilidad";
             break;
         case "MC":
             redireccion = "/ModificacionesCredito";

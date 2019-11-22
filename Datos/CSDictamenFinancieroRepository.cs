@@ -15,9 +15,10 @@ namespace Datos
 
         public override CSDictamenFinanciero Alta(CSDictamenFinanciero pGeneric)
         {
-            return ObtenerPrimero("SP_SIM_CS_DictamenFinanciero_IU", pGeneric.CSDF_FechaDictaminacion, pGeneric.CSDF_IDCreditoSustentabilidad, pGeneric.CSDF_IDDictamenFinanciero
-                , pGeneric.CSDF_IDUMA, pGeneric.CSDF_MotivosProcedencia, pGeneric.CSDF_NoMesesAmortizacion, pGeneric.CSDF_NoMontoCreditoUMA, pGeneric.CSDF_NoPagoUMA
-                , pGeneric.CSDF_Procedencia, pGeneric.CSDF_UsuarioDominio);
+            return ObtenerPrimero("SP_SIM_CS_DictamenFinanciero_IU"
+                , pGeneric.CSDF_IDDictamenFinanciero, pGeneric.CSDF_IDCreditoSustentabilidad
+                , pGeneric.CSDF_Procedencia, pGeneric.CSDF_MotivosProcedencia, pGeneric.CSDF_IDUMA, pGeneric.CSDF_NoMontoCreditoUMA
+                , pGeneric.CSDF_NoMesesAmortizacion, pGeneric.CSDF_NoPagoUMA, pGeneric.CSDF_FechaDictaminacion, pGeneric.CSDF_UsuarioDominio);
         }
 
         public override void Baja(CSDictamenFinanciero pGeneric)
@@ -27,14 +28,12 @@ namespace Datos
 
         public override CSDictamenFinanciero ObtenerEntidad(CSDictamenFinanciero pGeneric)
         {
-          return  ObtenerPrimero("SP_SIM_CS_DictamenFinanciero_S", pGeneric.CSDF_IDDictamenFinanciero);
+          return  ObtenerPrimero("SP_SIM_CS_DictamenFinanciero_S", pGeneric.CSDF_IDCreditoSustentabilidad);
         }
 
         public override List<CSDictamenFinanciero> ObtenerListado(CSDictamenFinanciero pGeneric)
         {
-            return ObtenerLista("SP_SIM_CS_DictamenFinanciero_S", pGeneric.CSDF_FechaDictaminacion, pGeneric.CSDF_IDCreditoSustentabilidad, pGeneric.CSDF_IDDictamenFinanciero
-                , pGeneric.CSDF_IDUMA, pGeneric.CSDF_MotivosProcedencia, pGeneric.CSDF_NoMesesAmortizacion, pGeneric.CSDF_NoMontoCreditoUMA, pGeneric.CSDF_NoPagoUMA
-                , pGeneric.CSDF_Procedencia, pGeneric.CSDF_UsuarioDominio);
+            return ObtenerLista("SP_SIM_CS_DictamenFinanciero_S", pGeneric.CSDF_IDCreditoSustentabilidad);
         }
     }
 }
