@@ -30,7 +30,7 @@ namespace Negocio
             _serviceDomicilio = new DomicilioService(modelState);
         }
 
-        public CreditoInicialService(ModelStateDictionary modelState,int XD) : base(modelState)
+        public CreditoInicialService(ModelStateDictionary modelState,int OPC) : base(modelState)
         {
 
         }
@@ -67,106 +67,10 @@ namespace Negocio
 
                     var cadena = estatus.Resultado.Split('-');
 
-                    _temp.ImgDS = new String[2];
-                    switch (cadena[0])
-                    {
-                        case "0" :
-                            _temp.ImgDS[0] = "darkgray";
-                            _temp.ImgDS[1] = "fas fa-folder-minus";
-                            break;
-                        case "1":
-                            _temp.ImgDS[0] = "orange";
-                            _temp.ImgDS[1] = "fas fa-hourglass-half";
-                            break;
-                        case "2":
-                            _temp.ImgDS[0] = "forestgreen";
-                            _temp.ImgDS[1] = "fas fa-check-square";
-                            break;
-                        case "4":
-                            _temp.ImgDS[0] = "red";
-                            _temp.ImgDS[1] = "fas fa-times-circle";
-                            break;
-                        default:
-                            _temp.ImgDS[0] = "red";
-                            _temp.ImgDS[1] = "fas fa-times-circle";
-                            break;
-                    }
-
-                    _temp.ImgDT = new String[2];
-                    switch (cadena[1])
-                    {
-                        case "0":
-                            _temp.ImgDT[0] = "darkgray";
-                            _temp.ImgDT[1] = "fas fa-folder-minus";
-                            break;
-                        case "1":
-                            _temp.ImgDT[0] = "orange";
-                            _temp.ImgDT[1] = "fas fa-hourglass-half";
-                            break;
-                        case "2":
-                            _temp.ImgDT[0] = "forestgreen";
-                            _temp.ImgDT[1] = "fas fa-check-square";
-                            break;
-                        case "4":
-                            _temp.ImgDT[0] = "red";
-                            _temp.ImgDT[1] = "fas fa-times-circle";
-                            break;
-                        default:
-                            _temp.ImgDT[0] = "red";
-                            _temp.ImgDT[1] = "fas fa-times-circle";
-                            break;
-                    }
-
-
-                    _temp.ImgDJ = new String[2];
-                    switch (cadena[2])
-                    {
-                        case "0":
-                            _temp.ImgDJ[0] = "darkgray";
-                            _temp.ImgDJ[1] = "fas fa-folder-minus";
-                            break;
-                        case "1":
-                            _temp.ImgDJ[0] = "orange";
-                            _temp.ImgDJ[1] = "fas fa-hourglass-half";
-                            break;
-                        case "2":
-                            _temp.ImgDJ[0] = "forestgreen";
-                            _temp.ImgDJ[1] = "fas fa-check-square";
-                            break;
-                        case "4":
-                            _temp.ImgDJ[0] = "red";
-                            _temp.ImgDJ[1] = "fas fa-times-circle";
-                            break;
-                        default:
-                            _temp.ImgDJ[0] = "red";
-                            _temp.ImgDJ[1] = "fas fa-times-circle";
-                            break;
-                    }
-
-                    _temp.ImgDF = new String[2];
-                    switch (cadena[3])
-                    {
-                        case "0":
-                            _temp.ImgDF[0] = "darkgray";
-                            _temp.ImgDF[1] = "fas fa-folder-minus";
-                            break;
-                        case "1":
-                            _temp.ImgDF[0] = "orange";
-                            _temp.ImgDF[1] = "fas fa-hourglass-half";
-                            break;
-                        case "2":
-                            _temp.ImgDF[0] = "forestgreen";
-                            _temp.ImgDF[1] = "fas fa-check-square";
-                            break;
-                        case "4":
-                            _temp.ImgDF[0] = "red";
-                            _temp.ImgDF[1] = "fas fa-times-circle";
-                            break;
-                        default:
-                            _temp.ImgDF[0] = "red";
-                            _temp.ImgDF[1] = "fas fa-times-circle";
-                            break;
-                    }
+                    _temp.ImgDS = ImagenIndex(cadena[0]);
+                    _temp.ImgDT = ImagenIndex(cadena[1]);
+                    _temp.ImgDJ = ImagenIndex(cadena[2]);
+                    _temp.ImgDF = ImagenIndex(cadena[3]);
 
                     viewModel.Listado.Add(_temp);
                 }
@@ -200,6 +104,37 @@ namespace Negocio
 
             return _viewModel;
         }
+
+        public String[] ImagenIndex(string cadena)
+        {
+            String[] Imagen = new String[2];
+            switch (cadena)
+            {
+                case "0":
+                    Imagen[0] = "darkgray";
+                    Imagen[1] = "fas fa-folder-minus";
+                    break;
+                case "1":
+                    Imagen[0] = "orange";
+                    Imagen[1] = "fas fa-hourglass-half";
+                    break;
+                case "2":
+                    Imagen[0] = "forestgreen";
+                    Imagen[1] = "fas fa-check-square";
+                    break;
+                case "4":
+                    Imagen[0] = "red";
+                    Imagen[1] = "fas fa-times-circle";
+                    break;
+                default:
+                    Imagen[0] = "red";
+                    Imagen[1] = "fas fa-times-circle";
+                    break;
+            }
+
+            return Imagen;
+        }
+
 
         //Funciones de View Model vacias
         public CiudadanoParejaViewModel GetParejaViewModel() {
@@ -270,8 +205,6 @@ namespace Negocio
 
             return viewModel;
         }
-
-
 
         //Funciones DB
 
@@ -435,6 +368,7 @@ namespace Negocio
 
             return new List<CreditoInicial>();
         }
+
 
         public List<CreditoInicial> Listado_Ciudadano(int? ID)
         {

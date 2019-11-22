@@ -139,6 +139,7 @@
     <Content Include="Scripts\Negocio\Catalogos\CatalogosMostrarJS.js" />
     <Content Include="Scripts\Negocio\Ciudadano\CiudadanoMostrar.js" />
     <Content Include="Scripts\Negocio\Ciudadano\Nuevo.js" />
+    <Content Include="Scripts\Negocio\CreditoComplementario\Index.js" />
     <Content Include="Scripts\Negocio\CreditoComplementario\NuevoCreditoComplementario.js" />
     <Content Include="Scripts\Negocio\CreditoInicial\Index.js" />
     <Content Include="Scripts\Negocio\CreditoInicial\Nuevo.js" />

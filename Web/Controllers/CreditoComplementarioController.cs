@@ -27,10 +27,14 @@ namespace Web.Controllers
 
         
         // GET: CreditoComplementario/Insertar
-        public ActionResult Insertar(int IDCreditoInicial, int? IDCreditoComplementario)
+        public ActionResult Insertar(int IDCreditoInicial, string IDCreditoComplementario)
         {
-            
-           var _vm=_service.Insertar(IDCreditoInicial, IDCreditoComplementario);
+            int? IDCreditoComplementario2=null;
+            if (!String.IsNullOrEmpty(IDCreditoComplementario))
+            {
+                IDCreditoComplementario2 = Int32.Parse(IDCreditoComplementario);
+            }
+           var _vm=_service.Insertar(IDCreditoInicial, IDCreditoComplementario2);
             return View(_vm);
         }
 

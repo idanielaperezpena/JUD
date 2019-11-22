@@ -26,10 +26,14 @@ namespace Web.Controllers
         }
 
         // GET: CreditoSustentabilidad/Insertar
-        public ActionResult Insertar(int IDCreditoInicial, int? IDCreditoSustentabilidad)
+        public ActionResult Insertar(int IDCreditoInicial, string IDCreditoSustentabilidad)
         {
-
-            var _vm = _service.Insertar(IDCreditoInicial, IDCreditoSustentabilidad);
+            int? IDCreditoSustentabilidad2 = null;
+            if (!String.IsNullOrEmpty(IDCreditoSustentabilidad))
+            {
+                IDCreditoSustentabilidad2 = Int32.Parse(IDCreditoSustentabilidad);
+            }
+            var _vm = _service.Insertar(IDCreditoInicial, IDCreditoSustentabilidad2);
             return View(_vm);
         }
 

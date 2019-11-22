@@ -12,9 +12,12 @@ namespace Negocio.ViewModels.CreditoSustentabilidad
 
         public List<CreditoSustentabilidadIndexListadoViewModel> Listado { get; set; }
 
+        public List<CreditoSustentabilidadIndexCIListadoViewModel> ListadoCI { get; set; }
+
         public CreditoSustentabilidadIndexViewModel()
         {
             Listado = new List<CreditoSustentabilidadIndexListadoViewModel>();
+            ListadoCI = new List<CreditoSustentabilidadIndexCIListadoViewModel>();
         }
 
     }
@@ -54,4 +57,28 @@ namespace Negocio.ViewModels.CreditoSustentabilidad
         [Display(Name = "Dictamen Financiero")]
         public string[] ImgDF { get; set; }
     }
+
+    public class CreditoSustentabilidadIndexCIListadoViewModel
+    {
+
+        public int? CI_ID { get; set; }
+
+        [Display(Name = "Folio Solicitud")]
+        public string CI_FolioSolicitud { get; set; }
+
+        [Display(Name = "CURP")]
+        public string CURPCiudadano { get; set; }
+
+        [Display(Name = "Nombre del Ciudadano")]
+        public string NombreCiudadano { get; set; }
+
+        [Display(Name = "Fecha de solicitud")]
+        public String CI_FechaSolicitud { get; set; }
+
+        [Display(Name = "Seccion Electoral")]
+        public int? CI_IDSeccionElectoral { get; set; }
+        public string IDEncriptado { get; internal set; }
+    }
+
+
 }

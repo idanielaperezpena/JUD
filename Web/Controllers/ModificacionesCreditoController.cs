@@ -25,10 +25,14 @@ namespace Web.Controllers
             return View(_vm);
         }
         // GET: ModificacionesCredito/insertar
-         public ActionResult Insertar(int IDCreditoInicial, int? IDModificacionesCredito)
+         public ActionResult Insertar(int IDCreditoInicial, string IDModificacionesCredito)
         {
-            
-           var _vm=_service.Insertar(IDCreditoInicial, IDModificacionesCredito);
+            int? IDModificacionesCredito2 = null;
+            if (!String.IsNullOrEmpty(IDModificacionesCredito))
+            {
+                IDModificacionesCredito2 = Int32.Parse(IDModificacionesCredito);
+            }
+            var _vm=_service.Insertar(IDCreditoInicial, IDModificacionesCredito2);
             return View(_vm);
         }
 

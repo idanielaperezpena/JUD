@@ -11,10 +11,14 @@ namespace Negocio.ViewModels.ModificacionesCredito
     {
 
         public List<ModificacionesCreditoIndexListadoViewModel> Listado { get; set; }
+        public List<ModificacionesCreditoIndexCIListadoViewModel> ListadoCI { get; set; }
 
+        
         public ModificacionesCreditoIndexViewModel()
         {
             Listado = new List<ModificacionesCreditoIndexListadoViewModel>();
+            ListadoCI = new List<ModificacionesCreditoIndexCIListadoViewModel>();
+
         }
 
     }
@@ -51,5 +55,27 @@ namespace Negocio.ViewModels.ModificacionesCredito
 
         [Display(Name = "Dictamen Financiero")]
         public string[] ImgDF { get; set; }
+    }
+
+    public class ModificacionesCreditoIndexCIListadoViewModel
+    {
+
+        public int? CI_ID { get; set; }
+
+        [Display(Name = "Folio Solicitud")]
+        public string CI_FolioSolicitud { get; set; }
+
+        [Display(Name = "CURP")]
+        public string CURPCiudadano { get; set; }
+
+        [Display(Name = "Nombre del Ciudadano")]
+        public string NombreCiudadano { get; set; }
+
+        [Display(Name = "Fecha de solicitud")]
+        public String CI_FechaSolicitud { get; set; }
+
+        [Display(Name = "Seccion Electoral")]
+        public int? CI_IDSeccionElectoral { get; set; }
+        public string IDEncriptado { get; internal set; }
     }
 }

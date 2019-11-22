@@ -20,6 +20,17 @@ namespace Web
            );
 
             routes.MapRoute(
+               name: "CreditoComplementario",
+               url: "CreditoComplementario/Insertar/{IDCreditoInicial}/{IDCreditoComplementario}",
+               defaults: new {
+                   controller = "CreditoComplementario",
+                   action = "Insertar",
+                   IDCreditoInicial = 0,
+                   IDCreditoComplementario = UrlParameter.Optional
+               }
+           );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/",
                 defaults: new { controller = "Home", action = "Index" }
