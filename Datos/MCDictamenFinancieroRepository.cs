@@ -15,9 +15,11 @@ namespace Datos
 
         public override MCDictamenFinanciero Alta(MCDictamenFinanciero pGeneric)
         {
-            return ObtenerPrimero("SP_SIM_MC_DictamenFinanciero_IU", pGeneric.MCDF_FechaDictaminacion, pGeneric.MCDF_IDModificacionesCredito, pGeneric.MCDF_IDDictamenFinanciero
-                , pGeneric.MCDF_IDUMA, pGeneric.MCDF_MotivosProcedencia, pGeneric.MCDF_NoMesesAmortizacion, pGeneric.MCDF_NoMontoCreditoUMA, pGeneric.MCDF_NoPagoUMA
-                , pGeneric.MCDF_Procedencia, pGeneric.MCDF_UsuarioDominio);
+            return ObtenerPrimero("SP_SIM_MC_DictamenFinanciero_IU"
+                , pGeneric.MCDF_IDDictamenFinanciero, pGeneric.MCDF_IDModificacionesCredito
+                , pGeneric.MCDF_Procedencia, pGeneric.MCDF_MotivosProcedencia, pGeneric.MCDF_IDUMA, pGeneric.MCDF_NoMontoCreditoUMA
+                , pGeneric.MCDF_NoMesesAmortizacion, pGeneric.MCDF_NoPagoUMA, pGeneric.MCDF_FechaDictaminacion
+                , pGeneric.MCDF_UsuarioDominio);
         }
 
         public override void Baja(MCDictamenFinanciero pGeneric)
@@ -27,14 +29,12 @@ namespace Datos
 
         public override MCDictamenFinanciero ObtenerEntidad(MCDictamenFinanciero pGeneric)
         {
-          return  ObtenerPrimero("SP_SIM_MC_DictamenFinanciero_S", pGeneric.MCDF_IDDictamenFinanciero);
+          return  ObtenerPrimero("SP_SIM_MC_DictamenFinanciero_S", pGeneric.MCDF_IDModificacionesCredito);
         }
 
         public override List<MCDictamenFinanciero> ObtenerListado(MCDictamenFinanciero pGeneric)
         {
-            return ObtenerLista("SP_SIM_MC_DictamenFinanciero_S", pGeneric.MCDF_FechaDictaminacion, pGeneric.MCDF_IDModificacionesCredito, pGeneric.MCDF_IDDictamenFinanciero
-                , pGeneric.MCDF_IDUMA, pGeneric.MCDF_MotivosProcedencia, pGeneric.MCDF_NoMesesAmortizacion, pGeneric.MCDF_NoMontoCreditoUMA, pGeneric.MCDF_NoPagoUMA
-                , pGeneric.MCDF_Procedencia, pGeneric.MCDF_UsuarioDominio);
+            return ObtenerLista("SP_SIM_MC_DictamenFinanciero_S", pGeneric.MCDF_IDModificacionesCredito);
         }
     }
 }
