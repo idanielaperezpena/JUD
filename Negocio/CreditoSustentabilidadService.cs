@@ -18,6 +18,10 @@ namespace Negocio
             _serviceCI = new CreditoInicialService(modelState, 0);
         }
 
+        public CreditoSustentabilidadService(ModelStateDictionary modelState,int OPC) : base(modelState)
+        {
+        }
+
         #region ViewModels
         public CreditoSustentabilidadIndexViewModel Index()
         {
@@ -161,6 +165,20 @@ namespace Negocio
             try
             {
                 return UoW.CreditoSustentabilidad.ObtenerListado(new CreditoSustentabilidad());
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message + "Service : Listado");
+            }
+
+            return new List<CreditoSustentabilidad>();
+        }
+
+        public List<CreditoSustentabilidad> Listado_CI(int ID)
+        {
+            try
+            {
+                return UoW.CreditoSustentabilidad.ObtenerListadoCI(new CreditoSustentabilidad { CS_IDCreditoInicial = ID });
             }
             catch (Exception ex)
             {

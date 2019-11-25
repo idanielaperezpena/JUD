@@ -37,5 +37,10 @@ namespace Datos
         {
             return ObtenerLista("SP_SIM_ModificacionesCredito_S", pGeneric.MC_IDModificacionesCredito);
         }
+
+        public List<ModificacionesCredito> ObtenerListadoCI(ModificacionesCredito pGeneric)
+        {
+            return ObtenerLista("SP_SIM_ModificacionesCredito_S_CI", pGeneric.MC_IDCreditoInicial);
+        }
     }
 }

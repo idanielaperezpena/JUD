@@ -19,6 +19,10 @@ namespace Negocio
             _serviceCI = new CreditoInicialService(modelState, 0);
         }
 
+        public CreditoComplementarioService(ModelStateDictionary modelState, int opc) : base(modelState)
+        {
+        }
+
         #region ViewModels
         public CreditoComplementarioIndexViewModel Index()
         {
@@ -160,6 +164,20 @@ namespace Negocio
             try
             {
                 return UoW.CreditoComplementario.ObtenerListado(new CreditoComplementario ());
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message + "Service : Listado");
+            }
+
+            return new List<CreditoComplementario>();
+        }
+
+        public List<CreditoComplementario> Listado_CI(int ID)
+        {
+            try
+            {
+                return UoW.CreditoComplementario.ObtenerListadoCI(new CreditoComplementario { CC_IDCreditoInicial = ID });
             }
             catch (Exception ex)
             {

@@ -36,6 +36,8 @@ namespace Negocio.ViewModels.Ciudadanos
 
         [CustomRequired]
         [Display(Name = "Fecha de Nacimiento *")]
+        [DataType(DataType.Date, ErrorMessage = "Favor de ingresar un formato correcto para el campo de fecha (dd/mm/yyyy)")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime CIU_FechaNacimiento { get; set; }
 
     }

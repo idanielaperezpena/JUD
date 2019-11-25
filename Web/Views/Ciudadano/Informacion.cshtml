@@ -36,23 +36,23 @@
             <div class="box-body">
                 <div class="form-group">
                     @Html.LabelFor(m => m.ciudadano.CIU_CURP)
-                    @Html.EditorFor(m => m.ciudadano.CIU_CURP, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                    @Html.EditorFor(m => m.ciudadano.CIU_CURP, new { htmlAttributes = new { @class = "form-control form-control-sm" , @readonly = "true"} })
                     @Html.ValidationMessageFor(m => m.ciudadano.CIU_CURP, "")
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.ciudadano.CIU_Nombre)
-                    @Html.EditorFor(m => m.ciudadano.CIU_Nombre, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                    @Html.EditorFor(m => m.ciudadano.CIU_Nombre, new { htmlAttributes = new { @class = "form-control form-control-sm", @readonly = "true" } })
                     @Html.ValidationMessageFor(m => m.ciudadano.CIU_Nombre, "")
                 </div>
                 <div class="row">
                     <div class="form-group col-lg-6">
                         @Html.LabelFor(m => m.ciudadano.CIU_ApellidoPaterno)
-                        @Html.EditorFor(m => m.ciudadano.CIU_ApellidoPaterno, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                        @Html.EditorFor(m => m.ciudadano.CIU_ApellidoPaterno, new { htmlAttributes = new { @class = "form-control form-control-sm", @readonly = "true" } })
                         @Html.ValidationMessageFor(m => m.ciudadano.CIU_ApellidoPaterno, "")
                     </div>
                     <div class="form-group col-lg-6">
                         @Html.LabelFor(m => m.ciudadano.CIU_ApellidoMaterno)
-                        @Html.EditorFor(m => m.ciudadano.CIU_ApellidoMaterno, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                        @Html.EditorFor(m => m.ciudadano.CIU_ApellidoMaterno, new { htmlAttributes = new { @class = "form-control form-control-sm", @readonly = "true" } })
                         @Html.ValidationMessageFor(m => m.ciudadano.CIU_ApellidoMaterno, "")
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                 <div class="row">
                     <div class="form-group col-lg-6">
                         @Html.LabelFor(m => m.ciudadano.CIU_NumeroIdentificacion)
-                        @Html.EditorFor(m => m.ciudadano.CIU_NumeroIdentificacion, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                        @Html.EditorFor(m => m.ciudadano.CIU_NumeroIdentificacion, new { htmlAttributes = new { @class = "form-control form-control-sm", @readonly = "true" } })
                         @Html.ValidationMessageFor(m => m.ciudadano.CIU_NumeroIdentificacion, "")
                     </div>
 
@@ -71,7 +71,7 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            @Html.EditorFor(m => m.ciudadano.CIU_FechaNacimiento, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                            @Html.TextBox("CIU_FechaNacimiento", Model.ciudadano.CIU_FechaNacimiento, "{0:yyyy-MM-dd}", new { @style = "width:100%", type = "date", @class = "form-control form-control-sm datepicker", @readonly = "true" })
                         </div>
                         @Html.ValidationMessageFor(m => m.ciudadano.CIU_FechaNacimiento, "")
                     </div>
@@ -81,7 +81,7 @@
             </div>
             <div class="box-footer">
                 <a class="btn bg-primary" href="@Url.Action("Insertar","Ciudadano", new { ID = Model.ciudadano.ID_Encriptado})">
-                    Editar Informacion 
+                    Editar Informacion / Ver toda la Informacion
                 </a>
             </div>
         </div>
@@ -116,7 +116,7 @@
                                 <tr>
                                     <td>@item.FolioSolicitud</td>
                                     <td>@item.TipoSolicitud</td>
-                                    <td>@item.FechaSolicitud</td>
+                                    <td>@item.FechaSolicitud.ToShortDateString()</td>
                                     <td>@item.Estatus</td>
                                     <td>
                                         <div class="text-center">

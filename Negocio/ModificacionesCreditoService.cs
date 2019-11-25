@@ -19,6 +19,10 @@ namespace Negocio
             _serviceCI = new CreditoInicialService(modelState, 0);
 
         }
+
+        public ModificacionesCreditoService(ModelStateDictionary modelState, int opc) : base(modelState)
+        {
+        }
         #region ViewModels
         public ModificacionesCreditoIndexViewModel Index()
         {
@@ -164,6 +168,20 @@ namespace Negocio
             try
             {
                 return UoW.ModificacionesCredito.ObtenerListado(new ModificacionesCredito());
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message + "Service : Listado");
+            }
+
+            return new List<ModificacionesCredito>();
+        }
+
+        public List<ModificacionesCredito> Listado_CI(int ID)
+        {
+            try
+            {
+                return UoW.ModificacionesCredito.ObtenerListadoCI(new ModificacionesCredito { MC_IDCreditoInicial = ID });
             }
             catch (Exception ex)
             {

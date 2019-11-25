@@ -21,11 +21,18 @@ namespace Negocio
         public DomicilioService _serviceDomicilio ;
         public CreditoInicialService _serviceCInicial;
 
+        public CreditoComplementarioService _serviceCComplementario;
+        public CreditoSustentabilidadService _serviceCSustentabilidad;
+        public ModificacionesCreditoService _serviceModificaciones;
+
 
         public CiudadanoService(ModelStateDictionary modelState) : base(modelState) {
             _serviceDSolidario = new DeudorSolidarioService(modelState);
             _serviceDomicilio = new DomicilioService(modelState);
             _serviceCInicial = new CreditoInicialService(modelState,1);
+            _serviceCComplementario = new CreditoComplementarioService(modelState, 1);
+            _serviceCSustentabilidad = new CreditoSustentabilidadService(modelState, 1);
+            _serviceModificaciones = new ModificacionesCreditoService(modelState, 1);
         }
 
 
@@ -215,6 +222,41 @@ namespace Negocio
                         _list.Estatus = "CD";
 
                         _viewModel.Listado.Add(_list);
+
+                        var CC = _serviceCComplementario.Listado_CI((int)item.CI_IDCreditoInicial);
+                        foreach (var itemCC in CC)
+                        {
+                            var _listCC = new CiudadanoInformacionListadoViewModel();
+                            _listCC.FolioSolicitud = itemCC.CC_FolioSolicitud;
+                            _listCC.TipoSolicitud = "Credito Complementario";
+                            _listCC.FechaSolicitud = itemCC.CC_FechaSolicitud;
+                            _listCC.Estatus = "CD";
+                            _viewModel.Listado.Add(_listCC);
+                        }
+
+                        var CS = _serviceCSustentabilidad.Listado_CI((int)item.CI_IDCreditoInicial);
+                        foreach (var itemCS in CS)
+                        {
+                            var _listCS = new CiudadanoInformacionListadoViewModel();
+                            _listCS.FolioSolicitud = itemCS.CS_FolioSolicitud;
+                            _listCS.TipoSolicitud = "Credito Sustentabilidad";
+                            _listCS.FechaSolicitud = itemCS.CS_FechaSolicitud;
+                            _listCS.Estatus = "CD";
+                            _viewModel.Listado.Add(_listCS);
+                        }
+
+                        var MC = _serviceModificaciones.Listado_CI((int)item.CI_IDCreditoInicial);
+                        foreach (var itemMC in MC)
+                        {
+                            var _listCS = new CiudadanoInformacionListadoViewModel();
+                            _listCS.FolioSolicitud = itemMC.MC_FolioSolicitud;
+                            _listCS.TipoSolicitud = "Modificacion de credito";
+                            _listCS.FechaSolicitud = itemMC.MC_FechaSolicitud;
+                            _listCS.Estatus = "CD";
+                            _viewModel.Listado.Add(_listCS);
+                        }
+
+
                     }
 
                 }

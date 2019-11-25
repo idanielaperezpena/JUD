@@ -34,5 +34,10 @@ namespace Datos
         {
             return ObtenerLista("SP_SIM_CreditoSustentabilidad_S", pGeneric.CS_IDCreditoSustentabilidad);
         }
+
+        public List<CreditoSustentabilidad> ObtenerListadoCI(CreditoSustentabilidad pGeneric)
+        {
+            return ObtenerLista("SP_SIM_CreditoSustentabilidad_S_CI", pGeneric.CS_IDCreditoInicial);
+        }
     }
 }

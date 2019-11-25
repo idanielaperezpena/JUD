@@ -35,5 +35,10 @@ namespace Datos
         {
             return ObtenerLista("SP_SIM_CreditoComplementario_S", pGeneric.CC_IDCreditoComplementario);
         }
+
+        public  List<CreditoComplementario> ObtenerListadoCI(CreditoComplementario pGeneric)
+        {
+            return ObtenerLista("SP_SIM_CreditoComplementario_S_CI", pGeneric.CC_IDCreditoInicial);
+        }
     }
 }
