@@ -45,7 +45,7 @@ namespace Negocio
                     _temp.CS_IDCreditoInicial = _CI.CI_IDCreditoInicial.Value;
                     _temp.CI_CURP = _ciudadano.CIU_CURP;
                     _temp.NombreCiudadano = _ciudadano.CIU_Nombre + " " + _ciudadano.CIU_ApellidoPaterno + " " + _ciudadano.CIU_ApellidoMaterno + ".";
-                    _temp.CS_FechaSolicitud = _cs.CS_FechaSolicitud.ToString();
+                    _temp.CS_FechaSolicitud = _cs.CS_FechaSolicitud.ToShortDateString();
                     _temp.CS_FolioSolicitud = _cs.CS_FolioSolicitud;
                     _temp.CI_FolioSolicitud = _CI.CI_FolioSolicitud;
 
