@@ -181,7 +181,7 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, ex.Message + "Service : Listado");
+                ModelState.AddModelError(string.Empty, ex.Message + "Service : Listado CI");
             }
 
             return new List<CreditoComplementario>();
