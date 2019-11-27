@@ -31,7 +31,6 @@ namespace Datos
 
         public override Ciudadano ObtenerEntidad(Ciudadano pGeneric)
         {
-            /*
             Ciudadano _entidad;
             using (var reader = ObtenerDataReader("SP_SIM_CIUDADANO_S", pGeneric.CIU_IDCiudadano))
             {
@@ -39,10 +38,7 @@ namespace Datos
                
             }
 
-            return _entidad;*/
-
-            return ObtenerPrimero("SP_SIM_CIUDADANO_S", pGeneric.CIU_IDCiudadano);
-
+            return _entidad;
         }
 
         public override List<Ciudadano> ObtenerListado(Ciudadano pGeneric)
@@ -53,6 +49,12 @@ namespace Datos
         public List<Ciudadano> ObtenerListadoCURPNOMBRE(Ciudadano pGeneric)
         {
             return ObtenerLista("SP_SIM_Ciudadano_S_B", pGeneric.CIU_CURP);
+        }
+
+        public List<Ciudadano> ValidarCurp(Ciudadano pGeneric)
+        {
+            return ObtenerLista("SP_SIM_Ciudadano_S_B", pGeneric.CIU_IDCiudadano, pGeneric.CIU_CURP);
+
         }
 
     }

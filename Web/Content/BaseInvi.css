@@ -45,3 +45,7 @@
 .icono_tabla{
     font-size : 20px ;
 }
+
+.swal2-content{
+    text-align:justify;
+}

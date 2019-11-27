@@ -35,8 +35,7 @@ namespace Negocio
             _serviceModificaciones = new ModificacionesCreditoService(modelState, 1);
         }
 
-
-        /* Vista */
+        #region Vistas
 
         public CiudadanosIndexViewModel Index()
         {
@@ -269,8 +268,9 @@ namespace Negocio
             return _viewModel;
         }
 
-        //Funciones de View Model vacias
+        #endregion
 
+        #region ViewModel Vacios
         public DomicilioFormViewModel GetDomicilio()
         {
             return _serviceDomicilio.GetDomicilio();
@@ -378,7 +378,9 @@ namespace Negocio
 
             return viewModel;
         }
+        #endregion
 
+        #region ViewModel Llenas
         //Funciones de View Model Llenas
         public CiudadanoInsertarViewModel ObtenerCatalogos(CiudadanoInsertarViewModel viewModel)
         {
@@ -479,8 +481,9 @@ namespace Negocio
             return _viewModel;
         }
 
-        /* Funciones DB */
+        #endregion
 
+        #region DB
         public void Edit(CiudadanoInsertarViewModel viewModel)
         {
 
@@ -495,26 +498,27 @@ namespace Negocio
                     }
 
                     var CiudadanoInsertado = EditarCiudadano(viewModel);
-                    viewModel.ID_Encriptado = CiudadanoInsertado.CIU_IDCiudadano.ToString();
-                    EditarDomicilioCiudadano(viewModel);
-                    if (viewModel.Pareja != null)
+                    if (CiudadanoInsertado.CIU_IDCiudadano != null)
                     {
-                        viewModel.Pareja.PAR_IDCiudadano = CiudadanoInsertado.CIU_IDCiudadano;
-                        EditarPareja(viewModel.Pareja);
-                    }
+                        viewModel.ID_Encriptado = CiudadanoInsertado.CIU_IDCiudadano.ToString();
+                        EditarDomicilioCiudadano(viewModel);
+                        if (viewModel.Pareja != null)
+                        {
+                            viewModel.Pareja.PAR_IDCiudadano = CiudadanoInsertado.CIU_IDCiudadano;
+                            EditarPareja(viewModel.Pareja);
+                        }
 
-                    if (viewModel.DeudorSolidario != null)
-                    {
-                        viewModel.DeudorSolidario.DEU_IDCiudadano = CiudadanoInsertado.CIU_IDCiudadano;
-                        _serviceDSolidario.EditarDeudorSolidario(viewModel.DeudorSolidario);
+                        if (viewModel.DeudorSolidario != null)
+                        {
+                            viewModel.DeudorSolidario.DEU_IDCiudadano = CiudadanoInsertado.CIU_IDCiudadano;
+                            _serviceDSolidario.EditarDeudorSolidario(viewModel.DeudorSolidario);
+                        }
                     }
-                    
                 }
             }
             catch (Exception ex)
             {
-                var LineNumber = new StackTrace(ex, true).GetFrame(0).GetFileLineNumber();
-                ModelState.AddModelError(string.Empty, ex.Message + " CIU " + LineNumber);
+                ModelState.AddModelError(string.Empty, ex.Message );
             }
 
     }
@@ -696,21 +700,18 @@ namespace Negocio
                         UoW.Ciudadano.TxScope.Complete();
                         return _entidad;
                     }
-
-
                 }
             }
             catch (Exception ex)
             {
-                var LineNumber = new StackTrace(ex, true).GetFrame(0).GetFileLineNumber();
-                ModelState.AddModelError(string.Empty, ex.Message + " CIU " + LineNumber);
+                ModelState.AddModelError(string.Empty, ex.Message);
             }
             return new Ciudadano();
-
         }
 
-        //Listados
+        #endregion
 
+        #region Listados
         public List<Ciudadano> ListadoCURPNOMBRE(string Cadena)
         {
             try
@@ -719,7 +720,7 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, ex.Message + "Service : Listado");
+                ModelState.AddModelError(string.Empty, ex.Message);
             }
 
             return new List<Ciudadano>();
@@ -753,5 +754,20 @@ namespace Negocio
             return new List<DomicilioCiudadano>();
         }
 
+        public List<Ciudadano> ListadoValidarCurp(int? ID, string CURP)
+        {
+            try
+            {
+                return UoW.Ciudadano.ValidarCurp(new Ciudadano { CIU_IDCiudadano = ID , CIU_CURP = CURP });
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message );
+            }
+
+            return new List<Ciudadano>();
+        }
+
+        #endregion
     }
- }
+}

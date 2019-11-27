@@ -58,10 +58,25 @@ namespace Web.Controllers
         public ActionResult Insertar(CreditoInicialInsertarViewModel viewModel)
         {
             _service.EditarCreditoInicial(viewModel);
+
             var errors = ModelState.Select(x => x.Value.Errors)
                            .Where(y => y.Count > 0)
                            .ToList();
-            return Json(errors.ToJSON());
+            var notificacion = new Notificacion{ Error = false, Mensaje = "" };
+            if (errors.Count > 0)
+            {
+                notificacion.Error = true;
+                foreach (var item in errors)
+                {
+                    foreach (var item2 in item)
+                    {
+                        notificacion.Mensaje+= item2.ErrorMessage + "<br>";
+                    }
+                }
+                
+            }
+            
+            return Json(notificacion);
         }
 
         //Get partial Views

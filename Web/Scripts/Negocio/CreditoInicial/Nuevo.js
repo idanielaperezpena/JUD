@@ -265,7 +265,7 @@ $(document).on('click', '#guardar', function (e) {
             success: function (e) {
                 Swal.close();
                 console.log(e);
-                if (!e.error) {
+                if (!e.Error) {
                     Swal.fire({
                         type: 'success',
                         title: 'Solicitud ' + titulo2 + ' con éxito',
@@ -278,7 +278,7 @@ $(document).on('click', '#guardar', function (e) {
                     Swal.fire({
                         type: 'error',
                         title: 'Error',
-                        text: e.mensaje,
+                        html: e.Mensaje,
                         allowOutsideClick: false,
                         /*onClose: () => {
                             window.location = "/CreditoInicial";

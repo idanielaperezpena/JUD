@@ -215,58 +215,56 @@ namespace Negocio
                 if (ModelState.IsValid)
                 {
                     var CiudadanoInsertado = _serviceCiudadano.EditarCiudadano(viewModel.CiudadanoInsertar);
-                    viewModel.CI_IDCiudadano = CiudadanoInsertado.CIU_IDCiudadano;
-                    viewModel.CiudadanoInsertar.ID_Encriptado = CiudadanoInsertado.CIU_IDCiudadano.ToString();
-                    _serviceCiudadano.EditarDomicilioCiudadano(viewModel.CiudadanoInsertar);
-
-
-                    if (viewModel.CiudadanoInsertar.Pareja != null)
+                    if (CiudadanoInsertado.CIU_IDCiudadano != null)
                     {
-                        viewModel.CiudadanoInsertar.Pareja.PAR_IDCiudadano = CiudadanoInsertado.CIU_IDCiudadano;
-                        _serviceCiudadano.EditarPareja(viewModel.CiudadanoInsertar.Pareja);
-                    }
+                        viewModel.CI_IDCiudadano = CiudadanoInsertado.CIU_IDCiudadano;
+                        viewModel.CiudadanoInsertar.ID_Encriptado = CiudadanoInsertado.CIU_IDCiudadano.ToString();
+                        _serviceCiudadano.EditarDomicilioCiudadano(viewModel.CiudadanoInsertar);
 
-                    if (viewModel.CiudadanoInsertar.DeudorSolidario != null)
-                    {
-                        viewModel.CiudadanoInsertar.DeudorSolidario.DEU_IDCiudadano = CiudadanoInsertado.CIU_IDCiudadano;
-                        viewModel.CiudadanoInsertar.DeudorSolidario.DEU_FechaSolicitud = viewModel.CI_FechaSolicitud;
-                        _serviceDSolidario.EditarDeudorSolidario(viewModel.CiudadanoInsertar.DeudorSolidario);
-                    }
 
-                    var Domicilio = EditarDomicilio(viewModel.CiudadanoInsertar);
-                    viewModel.CI_IDDomicilio = Domicilio.DOM_IDDomicilio;
-                    viewModel.CI_Ingreso = viewModel.CiudadanoInsertar.CIU_IngresoFamiliar;
-
-                    using (UoW.CreditoInicial.TxScope = new TransactionScope())
-                    {
-
-                        var _entidad = UoW.CreditoInicial.Alta(new CreditoInicial
+                        if (viewModel.CiudadanoInsertar.Pareja != null)
                         {
-                            CI_IDCreditoInicial = viewModel.CI_IDCreditoInicial,
-                            CI_FolioSolicitud = viewModel.CI_FolioSolicitud,
-                            CI_IDCiudadano = viewModel.CI_IDCiudadano,
-                            CI_FechaCaptura = viewModel.CI_FechaCaptura,
-                            CI_FechaSolicitud = viewModel.CI_FechaSolicitud,
-                            CI_IDSeccionElectoral = viewModel.CI_IDSeccionElectoral,
-                            CI_IDDomicilio = viewModel.CI_IDDomicilio,
-                            CI_Ingreso = viewModel.CI_Ingreso,
-                            CI_ComprobanteIngresos = viewModel.CI_ComprobanteIngresos,
-                            CI_CartaResponsiva = viewModel.CI_CartaResponsiva
-                        });
+                            viewModel.CiudadanoInsertar.Pareja.PAR_IDCiudadano = CiudadanoInsertado.CIU_IDCiudadano;
+                            _serviceCiudadano.EditarPareja(viewModel.CiudadanoInsertar.Pareja);
+                        }
 
-                        UoW.DomicilioCiudadano.TxScope.Complete();
+                        if (viewModel.CiudadanoInsertar.DeudorSolidario != null)
+                        {
+                            viewModel.CiudadanoInsertar.DeudorSolidario.DEU_IDCiudadano = CiudadanoInsertado.CIU_IDCiudadano;
+                            viewModel.CiudadanoInsertar.DeudorSolidario.DEU_FechaSolicitud = viewModel.CI_FechaSolicitud;
+                            _serviceDSolidario.EditarDeudorSolidario(viewModel.CiudadanoInsertar.DeudorSolidario);
+                        }
+
+                        var Domicilio = EditarDomicilio(viewModel.CiudadanoInsertar);
+                        viewModel.CI_IDDomicilio = Domicilio.DOM_IDDomicilio;
+                        viewModel.CI_Ingreso = viewModel.CiudadanoInsertar.CIU_IngresoFamiliar;
+
+                        using (UoW.CreditoInicial.TxScope = new TransactionScope())
+                        {
+
+                            var _entidad = UoW.CreditoInicial.Alta(new CreditoInicial
+                            {
+                                CI_IDCreditoInicial = viewModel.CI_IDCreditoInicial,
+                                CI_FolioSolicitud = viewModel.CI_FolioSolicitud,
+                                CI_IDCiudadano = viewModel.CI_IDCiudadano,
+                                CI_FechaCaptura = viewModel.CI_FechaCaptura,
+                                CI_FechaSolicitud = viewModel.CI_FechaSolicitud,
+                                CI_IDSeccionElectoral = viewModel.CI_IDSeccionElectoral,
+                                CI_IDDomicilio = viewModel.CI_IDDomicilio,
+                                CI_Ingreso = viewModel.CI_Ingreso,
+                                CI_ComprobanteIngresos = viewModel.CI_ComprobanteIngresos,
+                                CI_CartaResponsiva = viewModel.CI_CartaResponsiva
+                            });
+
+                            UoW.DomicilioCiudadano.TxScope.Complete();
+                        }
                     }
+                    
                 }
             }
             catch (Exception ex)
             {
-                // Get stack trace for the exception with source file information
-                var st = new StackTrace(ex, true);
-                // Get the top stack frame
-                var frame = st.GetFrame(0);
-                // Get the line number from the stack frame
-                var line = frame.GetFileLineNumber();
-                ModelState.AddModelError(string.Empty, ex.Message + " Linea : " + line);
+                ModelState.AddModelError(string.Empty, ex.Message );
             }
         }
 
