@@ -20,10 +20,10 @@ namespace Negocio.ViewModels.DomicilioCiudadano
         [Display(Name = "Nombre de la Vialidad *")]
         public string DOMC_NombreVialidad { get; set; }
 
-        [Display(Name = "Numero Exterior")]
+        [Display(Name = "Número Exterior")]
         public string DOMC_NumeroExterior { get; set; }
 
-        [Display(Name = "Nombre Interior")]
+        [Display(Name = "Número Interior")]
         public string DOMC_NumeroInterior { get; set; }
 
         [Display(Name = "Manzana")]
@@ -37,10 +37,10 @@ namespace Negocio.ViewModels.DomicilioCiudadano
         public string DOMC_Colonia { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Alcaldia *")]
+        [Display(Name = "Alcaldía *")]
         public int DOMC_IDAlcaldia { get; set; }
 
-        [Display(Name = "Codigo Postal")]
+        [Display(Name = "Código Postal")]
         public string DOMC_CodigoPostal { get; set; }
 
         [CustomRequired]

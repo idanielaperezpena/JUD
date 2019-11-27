@@ -52,7 +52,7 @@ $(document).on('click', '#guardar', function (e) {
                 Swal.close();
                 console.log(e)
                 Swal.fire({
-                    title: 'Dictamen ' + titulo2+' con exito',
+                    title: 'Dictamen ' + titulo2+' con éxito',
                     allowOutsideClick: false,
                     onClose: () => {
                         window.location = redireccion;

@@ -12,9 +12,9 @@ namespace Negocio.ViewModels.Catalogos
     public class CatalogosMostrarViewModel
     {
 
-        [Display(Name = "Nombre Catalogo")]
+        [Display(Name = "Nombre Catálogo")]
         public string NombreCatalogo { get; set; }
-        [Display(Name = "No. Catalogo")]
+        [Display(Name = "No. Catálogo")]
         public string NoCatalogo { get; set; }
 
         public string Tabla { get; set; }

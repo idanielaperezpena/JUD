@@ -22,14 +22,14 @@ namespace Negocio.ViewModels.CreditoComplementario
         [Display(Name = "Fecha de Solicitud *")]
         public DateTime CC_FechaSolicitud { get; set; }
 
-        [Display(Name = "No. de Sesión del Comité*")]
+        [Display(Name = "No. de Sesión del Comité *")]
         public int? CC_NoSesionComite { get; set; }
 
-        [Display(Name = "ID de Mejoramiento*")]
+        [Display(Name = "ID de Mejoramiento *")]
         public int? CC_IDMejoramiento { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Ingreso*")]
+        [Display(Name = "Ingreso *")]
         public double CC_Ingreso { get; set; }
     }
 }

@@ -28,7 +28,7 @@ namespace Negocio.ViewModels.ModificacionesCredito
         public DateTime MC_FechaSolicitud { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Problemática*")]
+        [Display(Name = "Problemática *")]
         public int MC_IDProblema { get; set; }
 
         public int MC_IDCiudadano { get; set; }
@@ -38,11 +38,11 @@ namespace Negocio.ViewModels.ModificacionesCredito
         public int MC_Procedencia { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Tipo de Trámite*")]
+        [Display(Name = "Tipo de Trámite *")]
         public int MC_IDTipoTramite { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Ingreso*")]
+        [Display(Name = "Ingreso *")]
         public double MC_Ingreso { get; set; }
 
         public ICustomSelectList<Entidades.Catalogos>Problematica { get; set; }

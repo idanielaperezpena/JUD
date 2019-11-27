@@ -246,7 +246,7 @@ $(document).on('click', '#guardar', function (e) {
             titulo2 = 'modificada';
         } else {
             titulo = 'Ingresando la Solicitud';
-            titulo2 = 'Ingresada';
+            titulo2 = 'ingresada';
         }
 
         Swal.fire({
@@ -268,7 +268,7 @@ $(document).on('click', '#guardar', function (e) {
                 if (!e.error) {
                     Swal.fire({
                         type: 'success',
-                        title: 'Solicitud ' + titulo2 + ' con exito',
+                        title: 'Solicitud ' + titulo2 + ' con éxito',
                         allowOutsideClick: false,
                         /*onClose: () => {
                             window.location = "/CreditoInicial";

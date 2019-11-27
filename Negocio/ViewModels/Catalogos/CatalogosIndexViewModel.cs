@@ -22,10 +22,10 @@ namespace Negocio.ViewModels
 
     public class CatalogosIndexListadoViewModel : Entidades.Catalogos
     {
-        [Display(Name = "Nombre del Catalogo")]
+        [Display(Name = "Nombre del Catálogo")]
         public string NombreCatalogo_Mostrar { get; set; }
 
-        [Display(Name = "No. del Catalogo")]
+        [Display(Name = "No. del Catálogo")]
         public string NoCatalogo { get; set; }
 
         public string Color_Caja { get; set; }

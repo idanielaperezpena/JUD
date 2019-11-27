@@ -36,7 +36,7 @@ namespace Web.Controllers
                 ViewBag.Error = false;
             }
             var _vm = _service.Index();
-            ViewBag.Titulo = "Lista de Creditos Iniciales";
+            ViewBag.Titulo = "Lista de Creéditos Iniciales";
             return View(_vm);
         }
 
@@ -48,7 +48,7 @@ namespace Web.Controllers
                 _vm = _service.Insertar();
             else
                 _vm = _service.Insertar(ID);
-            ViewBag.Titulo = "Credito Inicial";
+            ViewBag.Titulo = "Crédito Inicial";
             return View(_vm);
         }
 
@@ -74,7 +74,7 @@ namespace Web.Controllers
         [HttpPost]
         public ActionResult GetDomicilioViewModel(int? ID =null)
         {
-            ViewBag.Adicional = " En donde se pretende aplicar el credito";
+            ViewBag.Adicional = "En donde se pretende aplicar el crédito";
             var vm = new DomicilioFormViewModel();
             if (ID == null)
                 vm = _service.GetDomicilioViewModel();

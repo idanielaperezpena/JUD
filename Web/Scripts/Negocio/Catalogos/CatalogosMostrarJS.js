@@ -83,8 +83,8 @@ $(document).on('click', '.eliminate', function (event) {
     var id = $(this).attr('data-id');
     Swal.fire({
         type: 'question',
-        title: '¿Estas seguro de eliminarlo ?',
-        text: 'Se Desactivara esta opcion para el sistema',
+        title: '¿Estás seguro de eliminarlo?',
+        text: 'Se desactivará esta opción para el sistema.',
         showCloseButton: true,
         showCancelButton: true,
         confirmButtonText:

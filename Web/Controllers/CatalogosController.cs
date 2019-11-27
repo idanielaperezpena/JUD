@@ -34,7 +34,7 @@ namespace Web.Controllers
                 ViewBag.Error = false;
             }
             var _vm = _service.Index();
-            ViewBag.Titulo = "Catalogos";
+            ViewBag.Titulo = "Catálogos";
             return View(_vm);
         }
 
@@ -44,10 +44,10 @@ namespace Web.Controllers
             if (String.IsNullOrEmpty(nombre))
             {
                 ViewBag.Titulo = "Detalle Nulo ";
-                return RedirectToAction("Index",new Notificacion { Error = true , Mensaje = "Debe elegir un catalogo para mostrar su información"});
+                return RedirectToAction("Index",new Notificacion { Error = true , Mensaje = "Debe elegir un catálogo para mostrar su información"});
             }
             var _vm = _service.Mostrar(nombre);
-            ViewBag.Titulo = "Detalle Catalogo ";
+            ViewBag.Titulo = "Detalle Catálogo ";
             _vm.Tabla = nombre;
             return View(_vm);
 

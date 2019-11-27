@@ -35,7 +35,7 @@ namespace Web.Controllers
                 ViewBag.Error = false;
             }
             var _vm = _service.Index();
-            ViewBag.Titulo = "Lista de ciudadanos";
+            ViewBag.Titulo = "Lista de Ciudadanos";
             return View(_vm);
         }
 
@@ -48,7 +48,7 @@ namespace Web.Controllers
         {
             if (String.IsNullOrEmpty(ID))
             {
-                return RedirectToAction("Index", new Notificacion { Error = true, Mensaje = "Debe elegir un ciudadano para mostrar su informacion" });
+                return RedirectToAction("Index", new Notificacion { Error = true, Mensaje = "Debe elegir un ciudadano para mostrar su información." });
             }
             var _vm = _service.Insertar(ID);
             ViewBag.Titulo = "Solicitudes del Ciudadano";
@@ -70,7 +70,7 @@ namespace Web.Controllers
             }
             else
             {
-                return RedirectToAction("Index", new Notificacion { Error = true, Mensaje = "Debe elegir un ciudadano para mostrar su informacion" });
+                return RedirectToAction("Index", new Notificacion { Error = true, Mensaje = "Debe elegir un ciudadano para mostrar su información." });
             }
             
         }

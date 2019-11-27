@@ -37,7 +37,7 @@ namespace Negocio.ViewModels.Domicilio
         public string DOM_Colonia { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Alcaldia *")]
+        [Display(Name = "Alcaldía *")]
         public int DOM_IDAlcaldia { get; set; }
 
         [CustomRequired]

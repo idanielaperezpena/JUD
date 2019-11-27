@@ -14,45 +14,45 @@ namespace Negocio.ViewModels.DictamenJuridico
         public int? IDDictamenJuridico { get; set; }
         public int IDCredito { get; set; }
         [CustomRequired]
-        [Display(Name = "Propiedad (Inscritos en el R.P.P)*")]
+        [Display(Name = "Propiedad (Inscritos en el R.P.P) *")]
         public int IDPropiedad { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Posesión*")]
+        [Display(Name = "Posesión *")]
         public int IDPosesion { get; set; }
 
         [CustomRequired]
-        [Display(Name = "No de Documento de Propiedad o Posesión*")]
+        [Display(Name = "No de Documento de Propiedad o Posesión *")]
         public string NoDocumentoPropiedad { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Fecha del Documento*")]
+        [Display(Name = "Fecha del Documento *")]
         [DataType(DataType.Date, ErrorMessage = "Favor de ingresar un formato correcto para el campo de fecha (dd/mm/yyyy)")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime FechaDocumento { get; set; }
 
         [CustomRequired]
-        [Display(Name = "¿Se requiere anuencia?*")]
+        [Display(Name = "¿Se requiere anuencia? *")]
         public bool Anuencia { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Superficie del Lote*")]
+        [Display(Name = "Superficie del Lote *")]
         public double SuperficieLote { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Datos del Libro*")]
+        [Display(Name = "Datos del Libro *")]
         public string DatosLibro { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Folio del Real*")]
+        [Display(Name = "Folio del Real *")]
         public string FolioDocumento { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Observaciones*")]
+        [Display(Name = "Observaciones *")]
         public string Observaciones { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Procedencia*")]
+        [Display(Name = "Procedencia *")]
         public int Procedencia { get; set; }
 
         [CustomRequired]
@@ -62,7 +62,7 @@ namespace Negocio.ViewModels.DictamenJuridico
         [CustomRequired]
         [DataType(DataType.Date, ErrorMessage = "Favor de ingresar un formato correcto para el campo de fecha (dd/mm/yyyy)")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Fecha de la Dictaminación*")]
+        [Display(Name = "Fecha de la Dictaminación *")]
         public DateTime FechaDictaminacion { get; set; }
 
         

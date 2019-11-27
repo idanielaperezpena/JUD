@@ -47,23 +47,7 @@ namespace Web.Controllers
             ViewBag.Titulo = "Login";
             return View();
         }
-
         
-        /*
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [AllowAnonymous]
-        public ActionResult Index(HomeIndexViewModel viewModel)
-        {
-            var _usuario = _service2.Login(viewModel);
-
-            if (ModelState.IsValid)
-                return this.SetAuthCookieAndRedirect(_usuario);
-
-            return View(viewModel);
-        }*/
-
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
@@ -82,7 +66,7 @@ namespace Web.Controllers
             }
 
             noti.Error = true;
-            noti.Mensaje = "Error en las credenciales, intente otra vez";
+            noti.Mensaje = "Error en las credenciales, intente otra vez.";
             return Json(noti);
         }
 

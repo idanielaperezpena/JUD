@@ -10,11 +10,11 @@ namespace Negocio.ViewModels
     public class HomeIndexViewModel
     {
         [CustomRequired]
-        [Display(Name = "Usuario Dominio")]
+        [Display(Name = "Usuario Dominio *")]
         public string USU_Usuario { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Contraseña")]
+        [Display(Name = "Contraseña *")]
         [DataType(DataType.Password)]
         public string USU_Password { get; set; }
     }

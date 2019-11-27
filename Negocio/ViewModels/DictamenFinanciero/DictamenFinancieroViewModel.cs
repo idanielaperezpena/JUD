@@ -15,15 +15,15 @@ namespace Negocio.ViewModels.DictamenFinanciero
         public int IDCredito{ get; set; }
 
         [CustomRequired]
-        [Display(Name = "Con base en la solicitud y documentación, se determina que el crédito es*")]
+        [Display(Name = "Con base en la solicitud y documentación, se determina que el crédito es *")]
         public int Procedencia { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Motivos*")]
+        [Display(Name = "Motivos *")]
         public string MotivosProcedencia { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Se considera un monto en el número de veces de la Unidad de Medida y Actualización (UMA)*")]
+        [Display(Name = "Se considera un monto en el número de veces de la Unidad de Medida y Actualización (UMA) *")]
         public int NoMontoCredito { get; set; }
 
         [CustomRequired]
@@ -33,13 +33,13 @@ namespace Negocio.ViewModels.DictamenFinanciero
         public int IDUMA { get; set; }
         
         [CustomRequired]
-        [Display(Name = "Pago mensual en UMA*")]
+        [Display(Name = "Pago mensual en UMA *")]
         public int NoPagoUMA { get; set; }
 
         [CustomRequired]
         [DataType(DataType.Date, ErrorMessage = "Favor de ingresar un formato correcto para el campo de fecha (dd/mm/yyyy)")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Fecha Dictaminacion*")]
+        [Display(Name = "Fecha Dictaminación *")]
         public DateTime FechaDictaminacion { get; set; }
 
         public string UsuarioDominio { get; set; }

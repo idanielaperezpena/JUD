@@ -40,12 +40,12 @@ namespace Negocio.ViewModels.Ciudadanos
         public string CIU_ApellidoMaterno { get; set; }
 
         [CustomRequired]
-        [RegularExpression("^[0-9]{9}$", ErrorMessage = "El Numero de Identificacion no es valido")]
-        [Display(Name = "Numero de Identificacion *")]
+        [RegularExpression("^[0-9]{9}$", ErrorMessage = "El Número de Identificación no es válido")]
+        [Display(Name = "Número de Identificación *")]
         public string CIU_NumeroIdentificacion { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Genero *")]
+        [Display(Name = "Género *")]
         public int CIU_IDGenero { get; set; }
 
         [CustomRequired]
@@ -77,20 +77,20 @@ namespace Negocio.ViewModels.Ciudadanos
 
         [CustomRequired]
         [MinLength(8)]
-        [Display(Name = "Telefono Particular *")]
+        [Display(Name = "Teléfono Particular *")]
         public string CIU_TelParticular { get; set; }
 
-        [Display(Name = "Telefono del Trabajo")]
+        [Display(Name = "Teléfono del Trabajo")]
         public string CIU_TelTrabajo { get; set; }
 
-        [Display(Name = "Telefono Celular")]
+        [Display(Name = "Teléfono Celular")]
         public string CIU_TelCelular { get; set; }
 
-        [Display(Name = "Telefono para Recados")]
+        [Display(Name = "Teléfono para Recados")]
         public string CIU_TelRecados { get; set; }
 
         [CustomEmailAddress]
-        [Display(Name = "Correo Electronico")]
+        [Display(Name = "Correo Electrónico")]
         public string CIU_CorreoElectronico { get; set; }
 
         public int? CIU_IDDomicilioTrabajo { get; set; }
@@ -163,11 +163,11 @@ namespace Negocio.ViewModels.Ciudadanos
 
         //Creditos Otorgados
         [CustomRequired]
-        [Display(Name = "Proposito *")]
+        [Display(Name = "Propósito *")]
         public string CIU_Proposito { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Creditos Otorgados *")]
+        [Display(Name = "Créditos Otorgados *")]
         public bool CIU_CreditosOtorgados { get; set; }
 
         //Composicion Familiar
@@ -180,7 +180,7 @@ namespace Negocio.ViewModels.Ciudadanos
         public int CIU_IDEstructuraFamiliar { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Enfermedad Cronica *")]
+        [Display(Name = "Enfermedad Crónica *")]
         public int CIU_IDEnfermedadCronica { get; set; }
 
         [Display(Name = "Otra")]
@@ -203,7 +203,7 @@ namespace Negocio.ViewModels.Ciudadanos
 
         //Trabajo
         [CustomRequired]
-        [Display(Name = "Ocupacion *")]
+        [Display(Name = "Ocupación *")]
         public int CIU_IDOcupacion { get; set; }
 
         [Display(Name = "Dependencia, empresa o negocio")]
@@ -211,7 +211,7 @@ namespace Negocio.ViewModels.Ciudadanos
 
         //Capacidad de Pago
         [CustomRequired]
-        [Display(Name = " De su ingreso familiar mensual,\n¿Cuánto podrá destinar para el pago del crédito ? *")]
+        [Display(Name = " De su ingreso familiar mensual,\n¿Cuánto podrá destinar para el pago del crédito? *")]
         [Range(0,Double.MaxValue)]
         public double CIU_CapacidadPago { get; set; }
 

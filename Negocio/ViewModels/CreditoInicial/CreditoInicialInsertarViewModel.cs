@@ -14,7 +14,7 @@ namespace Negocio.ViewModels.CreditoInicial
         public int? CI_IDCreditoInicial { get; set; }
 
         [CustomRequired]
-        [RegularExpression("^CI-[0-9]{4}$", ErrorMessage = "El formato del folio no es valido")]
+        [RegularExpression("^CI-[0-9]{4}$", ErrorMessage = "El formato del folio no es válido")]
         [Display(Name = "Folio Solicitud *")]
         public string CI_FolioSolicitud { get; set; }
 

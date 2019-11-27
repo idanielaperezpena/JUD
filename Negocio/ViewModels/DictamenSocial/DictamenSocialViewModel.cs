@@ -15,59 +15,59 @@ namespace Negocio.ViewModels.DictamenSocial
         public int IDCredito { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Vivienda en*")]
+        [Display(Name = "Vivienda en *")]
         public int IDTipoPredio { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Caracteristica del Predio*")]
+        [Display(Name = "Característica del Predio *")]
         public int IDCaracteristicaPredio { get; set; }
 
         [CustomRequired]
-        [Display(Name = "No. de Viviendas en el lote*")]
+        [Display(Name = "No. de Viviendas en el lote *")]
         public int NoViviendasLote { get; set; }
 
         [CustomRequired]
-        [Display(Name = "No. de Familias que habitan en el lote*")]
+        [Display(Name = "No. de Familias que habitan en el lote *")]
         public int NoFamiliasLote { get; set; }
 
         [CustomRequired]
-        [Display(Name = "No. de Familias que habitan la vivienda que ocupa el (la) solicitante*")]
+        [Display(Name = "No. de Familias que habitan la vivienda que ocupa el (la) solicitante *")]
         public int NoFamiliasVivienda { get; set; }
         
         [CustomRequired]
-        [Display(Name = "No. de Personas que habitan la vivienda que ocupa el (la) solicitante incluyéndola(o)*")]
+        [Display(Name = "No. de Personas que habitan la vivienda que ocupa el (la) solicitante incluyéndola(o) *")]
         public int NoPersonasVivienda { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Servicio de Agua*")]
+        [Display(Name = "Servicio de Agua *")]
         public int IDServicioAgua { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Servicio de Drenaje*")]
+        [Display(Name = "Servicio de Drenaje *")]
         public int IDServicioDrenaje { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Servicio de Energía eléctrica*")]
+        [Display(Name = "Servicio de Energía eléctrica *")]
         public int IDServicioElectrico { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Desdoblamiento Familiar*")]
+        [Display(Name = "Desdoblamiento Familiar *")]
         public bool Desdoblamiento { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Baño Compartido*")]
+        [Display(Name = "Baño Compartido *")]
         public bool BanoCompartido { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Cocina Compartida*")]
+        [Display(Name = "Cocina Compartida *")]
         public bool CocinaCompartida { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Hacinamiento*")]
+        [Display(Name = "Hacinamiento *")]
         public int IDHacinamiento { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Insalubridad*")]
+        [Display(Name = "Insalubridad *")]
         public int IDInsalubridad { get; set; }
 
         [Display(Name = "Otro (especifique)")]
@@ -76,10 +76,10 @@ namespace Negocio.ViewModels.DictamenSocial
         [CustomRequired]
         [DataType(DataType.Date, ErrorMessage = "Favor de ingresar un formato correcto para el campo de fecha (dd/mm/yyyy)")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Visita domiciliaria realizada el:*")]
+        [Display(Name = "Visita domiciliaria realizada el: *")]
         public DateTime FechaVisita { get; set; }
 
-        [Display(Name = "Se verificó que la (el) solicitante*")]
+        [Display(Name = "Se verificó que la (el) solicitante *")]
         public string Observaciones { get; set; }
 
         [CustomRequired]

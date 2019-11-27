@@ -31,7 +31,7 @@ namespace Negocio.ViewModels.Ciudadanos
         public string CIU_ApellidoMaterno { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Numero de Identificacion *")]
+        [Display(Name = "Numero de Identificación *")]
         public string CIU_NumeroIdentificacion { get; set; }
 
         [CustomRequired]

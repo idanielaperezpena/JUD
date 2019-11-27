@@ -47,10 +47,10 @@ namespace Negocio.ViewModels.ModificacionesCredito
         [Display(Name = "Dictamen Social")]
         public string[] ImgDS { get; set; }
 
-        [Display(Name = "Dictamen Tecnico")]
+        [Display(Name = "Dictamen Técnico")]
         public string[] ImgDT { get; set; }
 
-        [Display(Name = "Dictamen Juridico")]
+        [Display(Name = "Dictamen Jurídico")]
         public string[] ImgDJ { get; set; }
 
         [Display(Name = "Dictamen Financiero")]
@@ -74,7 +74,7 @@ namespace Negocio.ViewModels.ModificacionesCredito
         [Display(Name = "Fecha de solicitud")]
         public String CI_FechaSolicitud { get; set; }
 
-        [Display(Name = "Seccion Electoral")]
+        [Display(Name = "Sección Electoral")]
         public int? CI_IDSeccionElectoral { get; set; }
         public string IDEncriptado { get; internal set; }
     }

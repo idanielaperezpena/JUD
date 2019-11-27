@@ -15,25 +15,25 @@ namespace Negocio.ViewModels.DictamenTecnico
         public int IDCredito{ get; set; }
 
         [CustomRequired]
-        [Display(Name = "Con base en el reporte de la visita técnica se determina que la solicitud es*")]
+        [Display(Name = "Con base en el reporte de la visita técnica se determina que la solicitud es *")]
         public int IDProcedencia { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Describa los motivos de procedencia o improcedencia*")]
+        [Display(Name = "Describa los motivos de procedencia o improcedencia *")]
         public string MotivosProcedencia { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Monto Sugerido*")]
+        [Display(Name = "Monto Sugerido *")]
         public double MontoSugerido { get; set; }
 
         [CustomRequired]
         [DataType(DataType.Date, ErrorMessage = "Favor de ingresar un formato correcto para el campo de fecha (dd/mm/yyyy)")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Fecha de la Dictaminación*")]
+        [Display(Name = "Fecha de la Dictaminación *")]
         public DateTime FechaDictaminacion { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Asesor Técnico*")]
+        [Display(Name = "Asesor Técnico *")]
         public string NoAsesorTecnico { get; set; }
 
        

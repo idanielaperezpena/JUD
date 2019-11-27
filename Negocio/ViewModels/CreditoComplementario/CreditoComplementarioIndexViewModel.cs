@@ -34,7 +34,7 @@ namespace Negocio.ViewModels.CreditoComplementario
         [Display(Name = "Folio Solicitud")]
         public string CC_FolioSolicitud { get; set; }
 
-        [Display(Name = "Folio Credito Inicial")]
+        [Display(Name = "Folio Crédito Inicial")]
         public string CI_FolioSolicitud { get; set; }
 
         [Display(Name = "CURP")]
@@ -49,10 +49,10 @@ namespace Negocio.ViewModels.CreditoComplementario
         [Display(Name = "Dictamen Social")]
         public string[] ImgDS { get; set; }
 
-        [Display(Name = "Dictamen Tecnico")]
+        [Display(Name = "Dictamen Técnico")]
         public string[] ImgDT { get; set; }
 
-        [Display(Name = "Dictamen Juridico")]
+        [Display(Name = "Dictamen Jurídico")]
         public string[] ImgDJ { get; set; }
 
         [Display(Name = "Dictamen Financiero")]
@@ -76,7 +76,7 @@ namespace Negocio.ViewModels.CreditoComplementario
         [Display(Name = "Fecha de solicitud")]
         public String CI_FechaSolicitud { get; set; }
 
-        [Display(Name = "Seccion Electoral")]
+        [Display(Name = "Sección Electoral")]
         public int? CI_IDSeccionElectoral { get; set; }
         public string IDEncriptado { get; internal set; }
     }

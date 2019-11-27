@@ -32,7 +32,7 @@ namespace Negocio.ViewModels.Ciudadanos
         public string DEU_ApellidoMaterno { get; set; }
 
         [CustomRequired]
-        [Display(Name = "Genero *")]
+        [Display(Name = "Género *")]
         public int DEU_IDGenero { get; set; }
 
         [CustomRequired]
@@ -60,7 +60,7 @@ namespace Negocio.ViewModels.Ciudadanos
         public double DEU_Ingreso { get; set; }
 
         [CustomRequired]
-        [Display(Name = "De su ingreso familiar mensual,\n¿Cuánto podrá destinar para el pago del crédito ? *")]
+        [Display(Name = "De su ingreso familiar mensual,\n¿Cuánto podrá destinar para el pago del crédito? *")]
         public double DEU_CapacidadPago { get; set; }
 
         [Display(Name = "Fecha de Solicitud")]

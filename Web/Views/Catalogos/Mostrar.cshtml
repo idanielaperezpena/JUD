@@ -12,14 +12,14 @@
     <section class="content-header">
         <h1>
             @Model.NombreCatalogo
-            <small>Catalogo No. : @Model.NoCatalogo</small>
+            <small>Catálogo No. : @Model.NoCatalogo</small>
         </h1>
         <ol class="breadcrumb">
             <li >
                 <a href="@Url.Action("Index", "Principal")"><i class="fa fa-dashboard"></i>Menu principal</a>
             </li>
             <li>
-                <a href="@Url.Action("Index", "Catalogos")">Catalogos</a>
+                <a href="@Url.Action("Index", "Catalogos")">Catálogos</a>
             </li>
             <li class="active">
                 Mostrar
@@ -34,7 +34,7 @@
         @Html.HiddenFor(m => m.Tabla)
         <div class="box box-success">
             <div class="box-header with-border">
-                <h3 class="box-title">Datos del Catalogo</h3>
+                <h3 class="box-title">Datos del Catálogo</h3>
             </div>
             <div class="box-body">
                 <div class="row">
