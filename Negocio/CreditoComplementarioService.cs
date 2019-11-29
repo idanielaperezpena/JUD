@@ -19,9 +19,7 @@ namespace Negocio
             _serviceCI = new CreditoInicialService(modelState, 0);
         }
 
-        public CreditoComplementarioService(ModelStateDictionary modelState, int opc) : base(modelState)
-        {
-        }
+        public CreditoComplementarioService(ModelStateDictionary modelState, int opc) : base(modelState){}
 
         #region ViewModels
         public CreditoComplementarioIndexViewModel Index()

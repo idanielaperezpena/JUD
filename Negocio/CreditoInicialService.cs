@@ -217,46 +217,49 @@ namespace Negocio
                     var CiudadanoInsertado = _serviceCiudadano.EditarCiudadano(viewModel.CiudadanoInsertar);
                     if (CiudadanoInsertado.CIU_IDCiudadano != null)
                     {
-                        viewModel.CI_IDCiudadano = CiudadanoInsertado.CIU_IDCiudadano;
-                        viewModel.CiudadanoInsertar.ID_Encriptado = CiudadanoInsertado.CIU_IDCiudadano.ToString();
-                        _serviceCiudadano.EditarDomicilioCiudadano(viewModel.CiudadanoInsertar);
-
-
-                        if (viewModel.CiudadanoInsertar.Pareja != null)
+                        if (ValidarCI((int)CiudadanoInsertado.CIU_IDCiudadano))
                         {
-                            viewModel.CiudadanoInsertar.Pareja.PAR_IDCiudadano = CiudadanoInsertado.CIU_IDCiudadano;
-                            _serviceCiudadano.EditarPareja(viewModel.CiudadanoInsertar.Pareja);
-                        }
+                            viewModel.CI_IDCiudadano = CiudadanoInsertado.CIU_IDCiudadano;
+                            viewModel.CiudadanoInsertar.ID_Encriptado = CiudadanoInsertado.CIU_IDCiudadano.ToString();
+                            _serviceCiudadano.EditarDomicilioCiudadano(viewModel.CiudadanoInsertar);
 
-                        if (viewModel.CiudadanoInsertar.DeudorSolidario != null)
-                        {
-                            viewModel.CiudadanoInsertar.DeudorSolidario.DEU_IDCiudadano = CiudadanoInsertado.CIU_IDCiudadano;
-                            viewModel.CiudadanoInsertar.DeudorSolidario.DEU_FechaSolicitud = viewModel.CI_FechaSolicitud;
-                            _serviceDSolidario.EditarDeudorSolidario(viewModel.CiudadanoInsertar.DeudorSolidario);
-                        }
 
-                        var Domicilio = EditarDomicilio(viewModel.CiudadanoInsertar);
-                        viewModel.CI_IDDomicilio = Domicilio.DOM_IDDomicilio;
-                        viewModel.CI_Ingreso = viewModel.CiudadanoInsertar.CIU_IngresoFamiliar;
-
-                        using (UoW.CreditoInicial.TxScope = new TransactionScope())
-                        {
-
-                            var _entidad = UoW.CreditoInicial.Alta(new CreditoInicial
+                            if (viewModel.CiudadanoInsertar.Pareja != null)
                             {
-                                CI_IDCreditoInicial = viewModel.CI_IDCreditoInicial,
-                                CI_FolioSolicitud = viewModel.CI_FolioSolicitud,
-                                CI_IDCiudadano = viewModel.CI_IDCiudadano,
-                                CI_FechaCaptura = viewModel.CI_FechaCaptura,
-                                CI_FechaSolicitud = viewModel.CI_FechaSolicitud,
-                                CI_IDSeccionElectoral = viewModel.CI_IDSeccionElectoral,
-                                CI_IDDomicilio = viewModel.CI_IDDomicilio,
-                                CI_Ingreso = viewModel.CI_Ingreso,
-                                CI_ComprobanteIngresos = viewModel.CI_ComprobanteIngresos,
-                                CI_CartaResponsiva = viewModel.CI_CartaResponsiva
-                            });
+                                viewModel.CiudadanoInsertar.Pareja.PAR_IDCiudadano = CiudadanoInsertado.CIU_IDCiudadano;
+                                _serviceCiudadano.EditarPareja(viewModel.CiudadanoInsertar.Pareja);
+                            }
 
-                            UoW.DomicilioCiudadano.TxScope.Complete();
+                            if (viewModel.CiudadanoInsertar.DeudorSolidario != null)
+                            {
+                                viewModel.CiudadanoInsertar.DeudorSolidario.DEU_IDCiudadano = CiudadanoInsertado.CIU_IDCiudadano;
+                                viewModel.CiudadanoInsertar.DeudorSolidario.DEU_FechaSolicitud = viewModel.CI_FechaSolicitud;
+                                _serviceDSolidario.EditarDeudorSolidario(viewModel.CiudadanoInsertar.DeudorSolidario);
+                            }
+
+                            var Domicilio = EditarDomicilio(viewModel.CiudadanoInsertar);
+                            viewModel.CI_IDDomicilio = Domicilio.DOM_IDDomicilio;
+                            viewModel.CI_Ingreso = viewModel.CiudadanoInsertar.CIU_IngresoFamiliar;
+
+                            using (UoW.CreditoInicial.TxScope = new TransactionScope())
+                            {
+
+                                var _entidad = UoW.CreditoInicial.Alta(new CreditoInicial
+                                {
+                                    CI_IDCreditoInicial = viewModel.CI_IDCreditoInicial,
+                                    CI_FolioSolicitud = viewModel.CI_FolioSolicitud,
+                                    CI_IDCiudadano = viewModel.CI_IDCiudadano,
+                                    CI_FechaCaptura = viewModel.CI_FechaCaptura,
+                                    CI_FechaSolicitud = viewModel.CI_FechaSolicitud,
+                                    CI_IDSeccionElectoral = viewModel.CI_IDSeccionElectoral,
+                                    CI_IDDomicilio = viewModel.CI_IDDomicilio,
+                                    CI_Ingreso = viewModel.CI_Ingreso,
+                                    CI_ComprobanteIngresos = viewModel.CI_ComprobanteIngresos,
+                                    CI_CartaResponsiva = viewModel.CI_CartaResponsiva
+                                });
+
+                                UoW.DomicilioCiudadano.TxScope.Complete();
+                            }
                         }
                     }
                     
@@ -350,6 +353,32 @@ namespace Negocio
 
             return new Principal();
         }
+
+        public bool ValidarCI(int id)
+        {
+            try
+            {
+                bool validacion = true;
+                var listadoCI = Listado_Ciudadano(id);
+                foreach (var _ci in listadoCI)
+                {
+                    var estatus = EstatusCI(_ci.CI_IDCreditoInicial);
+                    var cadena = estatus.Resultado.Split('-');
+                    if (cadena[3] == "2" || !cadena.Contains("4"))
+                    {
+                        validacion = false;
+                    }
+                }
+                return validacion;
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message + "Service : EditCreditoSustentabilidad");
+            }
+
+            return false;
+        }
+
 
         //Listados
 

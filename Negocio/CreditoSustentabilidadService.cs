@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace Negocio
 {
-    public class CreditoSustentabilidadService:ServiceBase
+    public class CreditoSustentabilidadService : ServiceBase
     {
         public CreditoInicialService _serviceCI;
         public CreditoSustentabilidadService(ModelStateDictionary modelState) : base(modelState)
@@ -18,7 +18,7 @@ namespace Negocio
             _serviceCI = new CreditoInicialService(modelState, 0);
         }
 
-        public CreditoSustentabilidadService(ModelStateDictionary modelState,int OPC) : base(modelState)
+        public CreditoSustentabilidadService(ModelStateDictionary modelState, int OPC) : base(modelState)
         {
         }
 
@@ -28,7 +28,7 @@ namespace Negocio
             var _viewModel = new CreditoSustentabilidadIndexViewModel();
             try
             {
-                var _listaCS = Listado(); 
+                var _listaCS = Listado();
                 foreach (CreditoSustentabilidad _cs in _listaCS)
                 {
 
@@ -86,7 +86,10 @@ namespace Negocio
                     var cadena = estatus.Resultado.Split('-');
                     if (cadena[3] == "2")
                     {
-                        _viewModel.ListadoCI.Add(_temp);
+                        if (ValidarCS( (int) _temp.CI_ID))
+                        {
+                            _viewModel.ListadoCI.Add(_temp);
+                        }
                     }
 
                 }
@@ -161,7 +164,7 @@ namespace Negocio
         //Index
         public List<CreditoSustentabilidad> Listado()
         {
-            
+
             try
             {
                 return UoW.CreditoSustentabilidad.ObtenerListado(new CreditoSustentabilidad());
@@ -217,7 +220,7 @@ namespace Negocio
                     _viewModel.CS_FolioSolicitud = _entidad.CS_FolioSolicitud;
                     _viewModel.CS_FechaCaptura = _entidad.CS_FechaCaptura;
                     _viewModel.CS_FechaSolicitud = _entidad.CS_FechaSolicitud;
-                 
+
                 }
                 return _viewModel;
             }
@@ -236,20 +239,26 @@ namespace Negocio
             {
                 if (ModelState.IsValid)
                 {
-                    using (UoW.CreditoSustentabilidad.TxScope = new TransactionScope())
+                    if (ValidarCS(_viewModel.CS_IDCreditoInicial))
                     {
-                        var _entidad = UoW.CreditoSustentabilidad.Alta(new CreditoSustentabilidad
+                        using (UoW.CreditoSustentabilidad.TxScope = new TransactionScope())
                         {
-                            CS_IDCreditoSustentabilidad = _viewModel.CS_IDCreditoSustentabilidad,
-                            CS_IDCreditoInicial = _viewModel.CS_IDCreditoInicial,
-                            CS_FolioSolicitud = _viewModel.CS_FolioSolicitud,
-                            CS_FechaCaptura = _viewModel.CS_FechaCaptura,
-                            CS_FechaSolicitud = _viewModel.CS_FechaSolicitud
-                            
-
-                        });
-                        UoW.CreditoSustentabilidad.TxScope.Complete();
+                            var _entidad = UoW.CreditoSustentabilidad.Alta(new CreditoSustentabilidad
+                            {
+                                CS_IDCreditoSustentabilidad = _viewModel.CS_IDCreditoSustentabilidad,
+                                CS_IDCreditoInicial = _viewModel.CS_IDCreditoInicial,
+                                CS_FolioSolicitud = _viewModel.CS_FolioSolicitud,
+                                CS_FechaCaptura = _viewModel.CS_FechaCaptura,
+                                CS_FechaSolicitud = _viewModel.CS_FechaSolicitud
+                            });
+                            UoW.CreditoSustentabilidad.TxScope.Complete();
+                        }
                     }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "El credito inicial ya tiene un credito de sustentabilidad vigente");
+                    }
+
 
                 }
             }
@@ -258,6 +267,32 @@ namespace Negocio
                 ModelState.AddModelError(string.Empty, ex.Message + "Service : EditCreditoSustentabilidad");
             }
         }
+
+        public bool ValidarCS(int id)
+        {
+            try
+            {
+                bool validacion = true;
+                var listadoCI = Listado_CI(id);
+                foreach (var _cs in listadoCI)
+                {
+                    var estatus = EstatusCS(_cs.CS_IDCreditoSustentabilidad);
+                    var cadena = estatus.Resultado.Split('-');
+                    if (cadena[3] == "2" || !cadena.Contains("4"))
+                    {
+                        validacion = false;
+                    }
+                }
+                return validacion;
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message + "Service : EditCreditoSustentabilidad");
+            }
+
+            return false;
+        }
+
         #endregion
     }
 }

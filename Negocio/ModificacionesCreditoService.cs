@@ -87,7 +87,10 @@ namespace Negocio
                     var cadena = estatus.Resultado.Split('-');
                     if (cadena[3] == "2")
                     {
-                        _viewModel.ListadoCI.Add(_temp);
+                        if (ValidarMC((int) _temp.CI_ID))
+                        {
+                            _viewModel.ListadoCI.Add(_temp);
+                        }
                     }
 
                 }
@@ -244,23 +247,26 @@ namespace Negocio
             {
                 if (ModelState.IsValid)
                 {
-                    using (UoW.ModificacionesCredito.TxScope = new TransactionScope())
+                    if (ValidarMC(_viewModel.MC_IDCreditoInicial))
                     {
-                        var _entidad = UoW.ModificacionesCredito.Alta(new ModificacionesCredito
+                        using (UoW.ModificacionesCredito.TxScope = new TransactionScope())
                         {
-                            MC_IDModificacionesCredito = _viewModel.MC_IDModificacionesCredito,
-                            MC_IDCreditoInicial = _viewModel.MC_IDCreditoInicial,
-                            MC_FolioSolicitud = _viewModel.MC_FolioSolicitud,
-                            MC_FechaCaptura = _viewModel.MC_FechaCaptura,
-                            MC_FechaSolicitud = _viewModel.MC_FechaSolicitud,
-                            MC_IDProblema = _viewModel.MC_IDProblema,
-                            MC_IDCiudadano = _viewModel.MC_IDCiudadano,
-                            MC_Procedencia = _viewModel.MC_Procedencia,
-                            MC_IDTipoTramite=_viewModel.MC_IDTipoTramite,
-                            MC_Ingreso =_viewModel.MC_Ingreso
+                            var _entidad = UoW.ModificacionesCredito.Alta(new ModificacionesCredito
+                            {
+                                MC_IDModificacionesCredito = _viewModel.MC_IDModificacionesCredito,
+                                MC_IDCreditoInicial = _viewModel.MC_IDCreditoInicial,
+                                MC_FolioSolicitud = _viewModel.MC_FolioSolicitud,
+                                MC_FechaCaptura = _viewModel.MC_FechaCaptura,
+                                MC_FechaSolicitud = _viewModel.MC_FechaSolicitud,
+                                MC_IDProblema = _viewModel.MC_IDProblema,
+                                MC_IDCiudadano = _viewModel.MC_IDCiudadano,
+                                MC_Procedencia = _viewModel.MC_Procedencia,
+                                MC_IDTipoTramite = _viewModel.MC_IDTipoTramite,
+                                MC_Ingreso = _viewModel.MC_Ingreso
 
-                        });
-                        UoW.ModificacionesCredito.TxScope.Complete();
+                            });
+                            UoW.ModificacionesCredito.TxScope.Complete();
+                        }
                     }
 
                 }
@@ -270,6 +276,34 @@ namespace Negocio
                 ModelState.AddModelError(string.Empty, ex.Message + "Service : EditModificacionesCredito");
             }
         }
+
+        public bool ValidarMC(int id)
+        {
+            try
+            {
+                bool validacion = true;
+                var listadoCI = Listado_CI(id);
+                foreach (var _mc in listadoCI)
+                {
+
+                    var estatus = EstatusMC(_mc.MC_IDModificacionesCredito);
+                    var cadena = estatus.Resultado.Split('-');
+                    if (cadena[3] == "2" || !cadena.Contains("4"))
+                    {
+                        validacion = false;
+                    }
+                }
+                return validacion;
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message + "Service : EditCreditoSustentabilidad");
+            }
+
+            return false;
+        }
+
+
         #endregion
     }
 }
