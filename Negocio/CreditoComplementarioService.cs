@@ -86,6 +86,7 @@ namespace Negocio
                     var cadena = estatus.Resultado.Split('-');
                     if (cadena[3] == "2")
                     {
+                        if(ValidarCC( ( int) _temp.CI_ID))
                         _viewModel.ListadoCI.Add(_temp);
                     }
                     
@@ -259,6 +260,46 @@ namespace Negocio
                 ModelState.AddModelError(string.Empty, ex.Message + "Service : EditCreditoComplementario");
             }
         }
+
+        public bool ValidarCC(int id)
+        {
+            try
+            {
+                bool validacion = true;
+                int sumatoria_terminados = 0;
+                int sumatoria_tramite = 0;
+                var listadoCI = Listado_CI(id);
+                foreach (var _cc in listadoCI)
+                {
+                    var estatus = EstatusCC(_cc.CC_IDCreditoComplementario);
+                    var cadena = estatus.Resultado.Split('-');
+                    if (cadena[3] == "2" )
+                    {
+                        sumatoria_terminados++;
+                    }
+                    else
+                    {
+                        if (!cadena.Contains("4"))
+                        {
+                            sumatoria_tramite++;
+                        }
+                    }
+                }
+
+                if (sumatoria_terminados + sumatoria_tramite >= 2)
+                {
+                    validacion = false;
+                }
+                return validacion;
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message + "Service : EditCreditoSustentabilidad");
+            }
+
+            return false;
+        }
+
         #endregion
 
 
