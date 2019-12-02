@@ -32,7 +32,19 @@ jQuery.validator.setDefaults({
     unhighlight: function (element) {
         $(element).closest('.form-group').removeClass('has-error');
         $(element).closest('.form-group').addClass('has-success');
-    }
+    },
+    errorPlacement: function (error, element) {
+        if (element[0].type === 'select-one') {
+            $(element).closest('.form-group').append(error);
+        } else {
+            error.insertAfter(element);
+        }
+    },
+    focusInvalid: true
 });
 
+
+$('select.select2').change(function () {
+    $(this).valid();
+});
 
