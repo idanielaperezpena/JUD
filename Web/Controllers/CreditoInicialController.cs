@@ -87,14 +87,14 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetDomicilioViewModel(int? ID =null)
+        public ActionResult GetDomicilioViewModel(string ID =null)
         {
             ViewBag.Adicional = "En donde se pretende aplicar el crédito";
             var vm = new DomicilioFormViewModel();
             if (ID == null)
                 vm = _service.GetDomicilioViewModel();
             else
-                vm =  _service.GetDomicilioViewModel(ID);
+                vm =  _service.GetDomicilioViewModel(Int32.Parse(ID));
 
             return PartialView("../Domicilio/_Insertar", vm);
         }

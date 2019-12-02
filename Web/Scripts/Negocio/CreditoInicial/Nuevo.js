@@ -1,6 +1,23 @@
 ﻿
-//Grupos vulnerables
+var validator;
+// #region Init-FuncionesVista
 
+$(document).ready(function () {
+    $('.select2').select2();
+    $('[data-toggle="popover"]').popover();
+
+});
+
+$('#CadenaBusqueda').keypress(function (e) {
+    if (e.which == 13) {
+        $("#btn_Buscar").trigger('click');
+    }
+});
+
+// #endregion
+
+
+// #region Grupos Vulnerables
 $(document).on('change', '#CIU_FechaNacimiento', function (e) {
     var fecha_nacimiento = new Date($(this).val());
     var ageDifMs = Date.now() - fecha_nacimiento;
@@ -39,7 +56,7 @@ $(document).on('change', '#CIU_IDDiscapacidad', function (e) {
         quitar_GP(5);
     }
 });
-
+// #endregion
 
 function agregar_GP(id) {
     var ids = $('#CIU_IDGruposPrioritarios').val();
@@ -172,10 +189,18 @@ $("#nuevo_ciudadano").click(function (e) {
 $(document).on('change',"#CIU_IDEstadoCivil", function (e) {
     var val = $(this).val();
     if (val == 1 || val == 8) {
+        Swal.fire({
+            title: 'Cargando...',
+            allowOutsideClick: false,
+            onBeforeOpen: () => {
+                Swal.showLoading()
+            }
+        });
         $.ajax({
             type: "POST",
             url: "/CreditoInicial/GetParejaViewModel",
             success: function (e) {
+                Swal.close();
                 $('#ParejaViewModel').html(e);
                 $("form").each(function () { $.data($(this)[0], 'validator', false); });
                 $.validator.unobtrusive.parse("form");
@@ -190,10 +215,18 @@ $(document).on('change',"#CIU_IDEstadoCivil", function (e) {
 
 $(document).on('change',"#DiferenteDomicilio",function (e) {
     if ($(this).is(":checked")) {
+        Swal.fire({
+            title: 'Cargando...',
+            allowOutsideClick: false,
+            onBeforeOpen: () => {
+                Swal.showLoading()
+            }
+        });
         $.ajax({
             type: "POST",
             url: "/CreditoInicial/GetDomicilioViewModel",
             success: function (e) {
+                Swal.close();
                 var html = '<div class="box box-success"> ' + e + '</div>';
                 $('#DomicilioViewModel').html(html);
                 $("form").each(function () { $.data($(this)[0], 'validator', false); });
@@ -294,9 +327,12 @@ $(document).on('click', '#guardar', function (e) {
 
 //Funcionamiento siguiente anterior
 $(document).on('click', '.siguiente', function (e) {
+    validator = $(this).closest('form').validate();
     if ($(this).closest('form').valid()) {
         var step = $(this).attr('data-step');
         $(this).closest('fieldset').slideUp('slow');
         $('#step' + step).slideDown('slow');
+    } else {
+        validator.focusInvalid();
     }
 });

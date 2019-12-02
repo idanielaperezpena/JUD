@@ -14,7 +14,7 @@
                 <div class="input-group ">
                     @Html.EditorFor(m => m.CadenaBusqueda, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
                     <span class="input-group-btn">
-                        <button type="submit" id="btn_Buscar" class="btn btn-info btn-flat">Buscar</button>
+                        <button type="button" id="btn_Buscar" class="btn bg-green-active btn-flat"><i class="fas fa-search"></i> &nbsp; Buscar  </button>
                     </span>
                 </div>
                 @Html.ValidationMessageFor(m => m.CadenaBusqueda, "")
@@ -29,7 +29,7 @@
     </div>
     <div class="box-footer">
         <div class="col-lg-12">
-            <button type="button" id="nuevo_ciudadano" class="btn btn-primary">Agregar Nuevo Ciudadano</button>
+            <button type="button" id="nuevo_ciudadano" class="btn bg-green"><i class="fas fa-user-plus"></i> &nbsp; Agregar Nuevo Ciudadano</button>
         </div>
 
     </div>
