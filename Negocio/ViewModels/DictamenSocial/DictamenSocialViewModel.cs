@@ -71,6 +71,7 @@ namespace Negocio.ViewModels.DictamenSocial
         public int IDInsalubridad { get; set; }
 
         [Display(Name = "Otro (especifique)")]
+        [StringLength(10)]
         public string OtroInsalubridad { get; set; }
 
         [CustomRequired]
@@ -80,10 +81,12 @@ namespace Negocio.ViewModels.DictamenSocial
         public DateTime FechaVisita { get; set; }
 
         [Display(Name = "Se verificó que la (el) solicitante *")]
+        [StringLength(10)]
         public string Observaciones { get; set; }
 
         [CustomRequired]
         [Display(Name = "No. Empleada(o)*")]
+        [StringLength(10)]
         public string NoEmpleadoVisita { get; set; }
 
         [CustomRequired]
@@ -96,6 +99,7 @@ namespace Negocio.ViewModels.DictamenSocial
 
         [CustomRequired]
         [Display(Name = "Motivos*")]
+        [StringLength(10)]
         public string MotivosProcedencia { get; set; }
 
         [CustomRequired]

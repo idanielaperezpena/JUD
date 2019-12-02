@@ -17,17 +17,21 @@ namespace Negocio.ViewModels.Ciudadanos
         public int? DEU_IDDomicilioTrabajo { get; set; }
 
         [CustomRequired]
+        [StringLength(18)]
         [Display(Name = "CURP *")]
         public string DEU_CURP { get; set; }
 
         [CustomRequired]
+        [StringLength(70)]
         [Display(Name = "Nombre *")]
         public string DEU_Nombre { get; set; }
 
         [CustomRequired]
+        [StringLength(50)]
         [Display(Name = "Apellido Paterno *")]
         public string DEU_ApellidoPaterno { get; set; }
 
+        [StringLength(50)]
         [Display(Name = "Apellido Materno")]
         public string DEU_ApellidoMaterno { get; set; }
 
@@ -40,6 +44,7 @@ namespace Negocio.ViewModels.Ciudadanos
         public int DEU_IDEstadoCivil { get; set; }
 
         [CustomRequired]
+        [StringLength(20)]
         [Display(Name = "Tel. Particular *")]
         public string DEU_Telefono { get; set; }
 
@@ -50,6 +55,7 @@ namespace Negocio.ViewModels.Ciudadanos
         public int DEU_IDProfesion { get; set; }
 
         [Display(Name = "Dependencia, empresa o negocio")]
+        [StringLength(50)]
         public string DEU_NombreTrabajo { get; set; }
 
 

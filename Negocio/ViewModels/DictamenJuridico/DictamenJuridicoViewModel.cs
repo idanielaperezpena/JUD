@@ -23,6 +23,7 @@ namespace Negocio.ViewModels.DictamenJuridico
 
         [CustomRequired]
         [Display(Name = "No de Documento de Propiedad o Posesión *")]
+        [StringLength(50)]
         public string NoDocumentoPropiedad { get; set; }
 
         [CustomRequired]
@@ -41,14 +42,17 @@ namespace Negocio.ViewModels.DictamenJuridico
 
         [CustomRequired]
         [Display(Name = "Datos del Libro *")]
+        [StringLength(50)]
         public string DatosLibro { get; set; }
 
         [CustomRequired]
+        [StringLength(50)]
         [Display(Name = "Folio del Real *")]
         public string FolioDocumento { get; set; }
 
         [CustomRequired]
         [Display(Name = "Observaciones *")]
+        [StringLength(50)]
         public string Observaciones { get; set; }
 
         [CustomRequired]
@@ -57,6 +61,7 @@ namespace Negocio.ViewModels.DictamenJuridico
 
         [CustomRequired]
         [Display(Name = "Motivos de la Procedencia o Improcedencia *")]
+        [StringLength(10)]
         public string MotivosProcedencia { get; set; }
 
         [CustomRequired]

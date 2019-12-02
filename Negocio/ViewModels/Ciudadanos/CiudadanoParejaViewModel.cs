@@ -15,13 +15,16 @@ namespace Negocio.ViewModels.Ciudadanos
         public int? PAR_IDCiudadano { get; set; }
 
         [CustomRequired]
+        [StringLength(70)]
         [Display(Name = "Nombre *")]
         public string PAR_Nombre { get; set; }
 
         [CustomRequired]
+        [StringLength(50)]
         [Display(Name = "Apellido Paterno *")]
         public string PAR_ApellidoPaterno { get; set; }
 
+        [StringLength(50)]
         [Display(Name = "Apellido Materno *")]
         public string PAR_ApellidoMaterno { get; set; }
 

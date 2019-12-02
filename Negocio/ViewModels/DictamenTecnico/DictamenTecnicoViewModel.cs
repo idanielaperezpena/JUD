@@ -20,10 +20,12 @@ namespace Negocio.ViewModels.DictamenTecnico
 
         [CustomRequired]
         [Display(Name = "Describa los motivos de procedencia o improcedencia *")]
+        [StringLength(10)]
         public string MotivosProcedencia { get; set; }
 
         [CustomRequired]
         [Display(Name = "Monto Sugerido *")]
+        [Range(1.00, Double.MaxValue, ErrorMessage = "El mínimo es 1.00")]
         public double MontoSugerido { get; set; }
 
         [CustomRequired]
@@ -34,6 +36,7 @@ namespace Negocio.ViewModels.DictamenTecnico
 
         [CustomRequired]
         [Display(Name = "Asesor Técnico *")]
+        [StringLength(10)]
         public string NoAsesorTecnico { get; set; }
 
        

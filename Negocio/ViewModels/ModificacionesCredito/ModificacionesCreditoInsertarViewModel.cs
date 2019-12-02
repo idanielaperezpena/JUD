@@ -15,6 +15,7 @@ namespace Negocio.ViewModels.ModificacionesCredito
 
         [CustomRequired] 
         [Display(Name = "Folio Solicitud *")]
+        [RegularExpression("^CR-[0-9]{3}|^CST-[0-9]{3}|FPMV34 $", ErrorMessage = "El formato del folio no es válido")]
         public string MC_FolioSolicitud { get; set; }
 
         [DataType(DataType.Date, ErrorMessage = "Favor de ingresar un formato correcto para el campo de fecha (dd/mm/yyyy)")]
@@ -43,6 +44,7 @@ namespace Negocio.ViewModels.ModificacionesCredito
 
         [CustomRequired]
         [Display(Name = "Ingreso *")]
+        [Range(1.00, double.MaxValue, ErrorMessage = "El mínimo es 1.00")]
         public double MC_Ingreso { get; set; }
 
         public ICustomSelectList<Entidades.Catalogos>Problematica { get; set; }
