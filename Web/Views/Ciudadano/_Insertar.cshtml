@@ -284,14 +284,16 @@
                                     @Html.ValidationMessageFor(m => m.DOMC_IDTipoVivienda, "")
                                 </div>
 
-                                <div id="MontoRentaDomicilio" style="display:none" class="form-group col-lg-6">
+                                <div id="MontoRentaDomicilio" class="form-group col-lg-6">
                                     @Html.LabelFor(m => m.DOMC_MontoRenta)
                                     @Html.EditorFor(m => m.DOMC_MontoRenta, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+                                    @Html.ValidationMessageFor(m => m.DOMC_MontoRenta, "")
                                 </div>
 
-                                <div id="OtroTipoVivienda" style="display:none" class="form-group col-lg-6">
+                                <div id="OtroTipoVivienda" class="form-group col-lg-6">
                                     @Html.LabelFor(m => m.DOMC_Otro)
                                     @Html.TextAreaFor(m => m.DOMC_Otro, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.DOMC_Otro, "")
                                 </div>
 
                             </div>
