@@ -13,7 +13,7 @@ namespace Negocio.ViewModels.CreditoSustentabilidad
         public int CS_IDCreditoInicial { get; set; }
         [CustomRequired]
         [Display(Name = "Folio Solicitud *")]
-        [RegularExpression("^Cs-[0-9]{4}$", ErrorMessage = "El formato del folio no es válido")]
+        [RegularExpression("^CS-[0-9]{4}$", ErrorMessage = "El formato del folio no es válido")]
         public string CS_FolioSolicitud { get; set; }
       
         public DateTime CS_FechaCaptura { get; set; }

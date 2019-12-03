@@ -31,7 +31,7 @@ $(document).on('click', '#guardar', function (e) {
                 Swal.close();
                 console.log(e)
                 Swal.fire({
-                    title: 'Crédito de Sustentabilidad ' + titulo2 + 'con éxito',
+                    title: 'Crédito de Sustentabilidad ' + titulo2 + ' con éxito',
                     allowOutsideClick: false,
                     onClose: () => {
                         window.location = "/CreditoSustentabilidad";
