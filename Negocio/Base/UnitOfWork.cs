@@ -41,6 +41,7 @@ namespace Negocio
         private CreditoComplementarioRepository _creditocomplementario;
         private CreditoSustentabilidadRepositoy _creditoSustentabilidad;
         private ModificacionesCreditoRepository _modificacionesCredito;
+        private UnidadTerritorialRepository _unidadTerritorial;
 
         private EmailUtility _emailSender;
         private EncriptarUtility _encriptador;
@@ -403,6 +404,16 @@ namespace Negocio
                 if (_modificacionesCredito == null)
                     _modificacionesCredito = new ModificacionesCreditoRepository(_context);
                 return _modificacionesCredito;
+            }
+        }
+
+        public UnidadTerritorialRepository UnidadTerritorial
+        {
+            get
+            {
+                if (_unidadTerritorial == null)
+                    _unidadTerritorial = new UnidadTerritorialRepository(_context);
+                return _unidadTerritorial;
             }
         }
     }

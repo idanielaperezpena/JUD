@@ -61,7 +61,9 @@ namespace Negocio
                     _temp.CURPCiudadano = _entidadCiudadano.CIU_CURP;
                     _temp.NombreCiudadano = _entidadCiudadano.CIU_Nombre + " " + _entidadCiudadano.CIU_ApellidoPaterno + " " + _entidadCiudadano.CIU_ApellidoMaterno;
                     _temp.CI_FechaSolicitud = _cat.CI_FechaSolicitud.Date.ToShortDateString().ToString();
-                    _temp.CI_IDSeccionElectoral = _cat.CI_IDSeccionElectoral;
+
+                    var se = UoW.SeccionElectoral.ObtenerEntidad(new SeccionElectoral { ID = _cat.CI_IDSeccionElectoral });
+                    _temp.CI_IDSeccionElectoral = se.ClaveSE;
 
                     var estatus = EstatusCI(_cat.CI_IDCreditoInicial);
 
@@ -89,7 +91,29 @@ namespace Negocio
             _viewModel.ValidarCiudadano = new CiudadanoValidarViewModel();
 
             //Listas
-            _viewModel.SeccionElectoral = UoW.SeccionElectoral.ObtenerListado(new SeccionElectoral { ID = 0 }).SelectListado();
+            var uts = UoW.UnidadTerritorial.ObtenerListado(new UnidadTerritorial ());
+            List<UnidadTerritorial> uts_filtradas = new List<UnidadTerritorial>();
+
+            foreach (var _ut in uts)
+            {
+                if (_ut.ClaveMesa == 1)
+                {
+                    uts_filtradas.Add(_ut);
+                }
+            }
+            _viewModel.UnidadTerritorial = uts_filtradas.SelectListado();
+
+            var sec = UoW.SeccionElectoral.ObtenerListado(new SeccionElectoral());
+            List<SeccionElectoral> sec_filtradas = new List<SeccionElectoral>();
+
+            foreach (var _se in sec)
+            {
+                if (_se.ClaveUT == uts_filtradas.First().Clave)
+                {
+                    sec_filtradas.Add(_se);
+                }
+            }
+            _viewModel.SeccionElectoral = sec_filtradas.SelectListado();
 
             return _viewModel;
         }
@@ -99,8 +123,46 @@ namespace Negocio
             var _viewModel = ObtenerCI(ID);
             _viewModel.ValidarCiudadano = new CiudadanoValidarViewModel();
 
-            //Listas
-            _viewModel.SeccionElectoral = UoW.SeccionElectoral.ObtenerListado(new SeccionElectoral { ID = 0 }).SelectListado();
+            var se = UoW.SeccionElectoral.ObtenerEntidad(new SeccionElectoral { ID = _viewModel.CI_IDSeccionElectoral});
+
+            var uts = UoW.UnidadTerritorial.ObtenerListado(new UnidadTerritorial());
+            List<UnidadTerritorial> uts_filtradas = new List<UnidadTerritorial>();
+
+            UnidadTerritorial Ut_Seleccionada = new UnidadTerritorial();
+
+            //obtener la ut seleccionada
+            foreach (var _ut in uts)
+            {
+                if (_ut.Clave == se.ClaveUT)
+                {
+                    Ut_Seleccionada = _ut;
+                    break;
+                }
+            }
+
+            foreach (var _ut in uts)
+            {
+                if (_ut.ClaveMesa == Ut_Seleccionada.ClaveMesa)
+                {
+                    uts_filtradas.Add(_ut);
+                }
+            }
+
+            _viewModel.UnidadTerritorial = uts_filtradas.SelectListado();
+            _viewModel.ID_UnidadTerritorial = (int) Ut_Seleccionada.ID;
+
+            //obtener secciones de acuero a la ut
+            var sec = UoW.SeccionElectoral.ObtenerListado(new SeccionElectoral());
+            List<SeccionElectoral> sec_filtradas = new List<SeccionElectoral>();
+
+            foreach (var _se in sec)
+            {
+                if (_se.ClaveUT == Ut_Seleccionada.Clave)
+                {
+                    sec_filtradas.Add(_se);
+                }
+            }
+            _viewModel.SeccionElectoral = sec_filtradas.SelectListado();
 
             return _viewModel;
         }
@@ -409,6 +471,25 @@ namespace Negocio
             }
 
             return new List<CreditoInicial>();
+        }
+
+        public ICustomSelectList<SeccionElectoral> ListadoSelectSeccionElectoral(int IDUT)
+        {
+
+            var ut = UoW.UnidadTerritorial.ObtenerEntidad(new UnidadTerritorial {  ID = IDUT });
+
+            var sec = UoW.SeccionElectoral.ObtenerListado(new SeccionElectoral { ID = 0 });
+            List<SeccionElectoral> sec_filtradas = new List<SeccionElectoral>();
+
+            foreach (var _se in sec)
+            {
+                if (_se.ClaveUT == ut.Clave)
+                {
+                    sec_filtradas.Add(_se);
+                }
+            }
+
+            return sec_filtradas.SelectListado();
         }
     }
 }

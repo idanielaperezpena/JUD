@@ -30,7 +30,7 @@ namespace Negocio.ViewModels.CreditoInicial
 
         [CustomRequired]
         [Display(Name = "Unidad Territorial *")]
-        public string UnidadTerritorial { get; set; }
+        public int ID_UnidadTerritorial { get; set; }
 
 
         public double CI_Ingreso { get; set; }
@@ -49,6 +49,7 @@ namespace Negocio.ViewModels.CreditoInicial
         public CiudadanoInsertarViewModel CiudadanoInsertar { get; set; }
 
         public ICustomSelectList<SeccionElectoral> SeccionElectoral { get; set; }
+        public ICustomSelectList<UnidadTerritorial> UnidadTerritorial { get; set; }
 
         public CreditoInicialInsertarViewModel()
         {
