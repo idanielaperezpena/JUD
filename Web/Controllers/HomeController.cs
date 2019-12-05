@@ -53,6 +53,7 @@ namespace Web.Controllers
         [AllowAnonymous]
         public ActionResult Index(HomeIndexViewModel viewModel)
         {
+           
             var _usuario = _service2.Login(viewModel);
 
             Notificacion noti = new Notificacion();

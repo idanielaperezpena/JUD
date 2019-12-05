@@ -41,6 +41,7 @@ namespace Negocio
         private CreditoComplementarioRepository _creditocomplementario;
         private CreditoSustentabilidadRepositoy _creditoSustentabilidad;
         private ModificacionesCreditoRepository _modificacionesCredito;
+        private ReporteCGMARepository _reporteCGMA;
 
         private EmailUtility _emailSender;
         private EncriptarUtility _encriptador;
@@ -404,6 +405,17 @@ namespace Negocio
                     _modificacionesCredito = new ModificacionesCreditoRepository(_context);
                 return _modificacionesCredito;
             }
+        }
+
+        public ReporteCGMARepository ReporteCGMA
+        {
+            get
+            {
+                if (_reporteCGMA == null)
+                    _reporteCGMA = new ReporteCGMARepository(_context);
+                return _reporteCGMA;
+            } 
+
         }
     }
 }

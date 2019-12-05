@@ -98,6 +98,7 @@
     <Compile Include="ParejaRepository.cs" />
     <Compile Include="PrincipalRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReporteCGMARepository.cs" />
     <Compile Include="SeccionElectoralRepository.cs" />
     <Compile Include="SeguridadSocialRepository.cs" />
     <Compile Include="UsuarioRepository.cs" />

@@ -197,6 +197,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModificacionesCreditoController.cs" />
     <Compile Include="Controllers\PrincipalController.cs" />
+    <Compile Include="Controllers\ReporteCGMAController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -269,6 +270,7 @@
     <Content Include="Views\CreditoSustentabilidad\Index.cshtml" />
     <Content Include="Views\ModificacionesCredito\Index.cshtml" />
     <Content Include="Views\ModificacionesCredito\Insertar.cshtml" />
+    <Content Include="Views\ReporteCGMA\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

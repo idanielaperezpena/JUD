@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Reporte CGMA";
+    Layout = "~/Views/Shared/_Layout-Principal.cshtml";
+}
+
+@Styles.Render("~/bundles/datatables_css")
+
+
+
+<div class="content-wrapper" style="min-height: 901px;">
+    <section class="content-header">
+        <h1>
+           Listado de Solicitudes
+            <small>Listado</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="@Url.Action("Index", "Principal")"><i class="fa fa-dashboard"></i>Menú principal</a>
+            </li>
+            <li class="active">
+                Listado de Solicitudes
+            </li>
+        </ol>
+    </section>
+
+    <section class="content">
+
+        @if (ViewBag.Error == true)
+        {
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-ban"></i> ¡Error!</h4>
+                @ViewBag.MensajeError
+            </div>
+        }
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <h3 class="box-title">Listado de Solicitudes</h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>Leyenda Dictámenes</h3>
+                        <ul style="font-size:16px;">
+                            <li><i style="color:darkgray" class="fas fa-folder-minus"></i> Sin dictaminar</li>
+                            <li><i style="color:orange" class="fas fa-hourglass-half"></i> En proceso</li>
+                            <li><i style="color:forestgreen" class="fas fa-check-square"></i> Aprobado</li>
+                            <li><i style="color:red" class="fas fa-times-circle"></i> No aprobado</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:10px;">
+                    <div class="col-lg-offset-6 col-lg-6">
+                        <button type="button" class="btn bg-green pull-right">
+                            Exportar a Excel    <i class="fa fa-file-excel-o"></i>
+                        </button>
+                    </div>
+                </div>
+                <table id="" class="table table-bordered  table-striped table-responsive">
+                  
+                </table>
+            </div>
+        </div>
+
+       
+
+
+    </section>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/datatables_js")
+   
+
+
+}
+
