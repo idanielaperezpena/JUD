@@ -13,56 +13,49 @@ namespace Web.Controllers
     [Permiso(Disabled = true)]
     public class HomeController : BaseController
     {
-        private AuthService _service2;
-
-        private CatalogosService _service;
-        
+        private AuthService _service;
 
         public HomeController()
         {
-            _service = new CatalogosService(ModelState);
-            _service2 = new AuthService(ModelState);
+            _service = new AuthService(ModelState);
         }
-
-        [HttpPost]
-        [AcceptVerbs("POST","GET")]
-        [AllowAnonymous]
-        public ActionResult Prueba(string id)
-        {
-            var resultado_catalogo = _service.Listado(id);
-            return Json(resultado_catalogo);
-        }
-
         
         [AllowAnonymous]
         [UrlReferrer(Disabled = true)]
         public ActionResult Index()
-        {
-            
+        {           
             if (Request.IsAuthenticated)
                 return AuthProvider.SignOutAndRedirect();
-
 
             ViewBag.error = 0;
             ViewBag.Titulo = "Login";
             return View();
         }
-        
+
+
+        [ChildActionOnly]
+        public Usuario GetUsuario()
+        {
+            return this.Usuario;
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
         public ActionResult Index(HomeIndexViewModel viewModel)
-        {
-            var _usuario = _service2.Login(viewModel);
-
+        {    
             Notificacion noti = new Notificacion();
 
             if (ModelState.IsValid)
             {
-                noti.Error = false;
-                noti.Mensaje = "Bienvenido " + _usuario.USU_Usuario;
-                this.SetAuthCookieAndRedirect(_usuario);
-                return Json(noti);
+                var _usuario = _service.Login(viewModel);
+                if (_usuario != null)
+                {
+                    noti.Error = false;
+                    noti.Mensaje = "Bienvenido " + _usuario.USU_Usuario;
+                    this.SetAuthCookieAndRedirect(_usuario);
+                    return Json(noti);
+                }            
             }
 
             noti.Error = true;

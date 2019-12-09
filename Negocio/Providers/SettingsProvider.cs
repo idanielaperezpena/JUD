@@ -14,6 +14,10 @@ public class SettingsProvider
     {
         get { return ConfigurationManager.AppSettings["app:titulo"]; }
     }
+    public static string AppVersion
+    {
+        get { return ConfigurationManager.AppSettings["app:version"]; }
+    }
     public static string Url
     {
         get { return ConfigurationManager.AppSettings["app:url"]; }

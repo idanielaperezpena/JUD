@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Web.Controllers
 {
-    public class ModificacionesCreditoController : Controller
+    public class ModificacionesCreditoController : BaseController
     {
         private ModificacionesCreditoService _service;
 

@@ -15,7 +15,7 @@ using Web.Models.INVI;
 namespace Web.Controllers
 {
     [Permiso(Disabled = true)]
-    public class CreditoInicialController : Controller
+    public class CreditoInicialController : BaseController
     {
         private CreditoInicialService _service;
 
@@ -35,8 +35,8 @@ namespace Web.Controllers
             {
                 ViewBag.Error = false;
             }
-            var _vm = _service.Index();
-            ViewBag.Titulo = "Lista de Creéditos Iniciales";
+            var _vm = _service.Index(Usuario);
+            ViewBag.Titulo = "Lista de Créditos Iniciales";
             return View(_vm);
         }
 

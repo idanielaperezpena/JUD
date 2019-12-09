@@ -195,6 +195,7 @@
     <Compile Include="Controllers\DictamenesController.cs" />
     <Compile Include="Controllers\ExceptionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\ModificacionesCreditoController.cs" />
     <Compile Include="Controllers\PrincipalController.cs" />
     <Compile Include="Global.asax.cs">
@@ -269,6 +270,8 @@
     <Content Include="Views\CreditoSustentabilidad\Index.cshtml" />
     <Content Include="Views\ModificacionesCredito\Index.cshtml" />
     <Content Include="Views\ModificacionesCredito\Insertar.cshtml" />
+    <Content Include="Views\Menu\_Navbar.cshtml" />
+    <Content Include="Views\Menu\_Footer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

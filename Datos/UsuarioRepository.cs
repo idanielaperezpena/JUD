@@ -35,7 +35,14 @@ namespace Datos
         public Usuario Login(Usuario pGeneric)
         {
             //throw new NotImplementedException();
-            return new Usuario { USU_Id =1 , USU_Usuario="jams", USU_Password = "1234" };
+            if (pGeneric.USU_Usuario == "jams")
+            {
+                return new Usuario { USU_Id = 1, USU_Usuario = "jams", USU_Password = "1234" , USU_Admin = true, USU_MesaTramite = 2 };
+            }
+            else
+            {
+                return new Usuario { USU_Id = 2, USU_Usuario = "prueba", USU_Password = "1234", USU_Admin = false , USU_MesaTramite = 1};
+            }
         }
 
         public List<string> ObtenerPermisos(Usuario pGeneric)

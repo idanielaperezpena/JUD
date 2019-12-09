@@ -26,6 +26,11 @@ namespace Datos
             return ObtenerPrimero("SP_SIM_Cat_SN_UnidadTerritorial_S", pGeneric.ID);
         }
 
+        public UnidadTerritorial ObtenerEntidadClave(UnidadTerritorial pGeneric)
+        {
+            return ObtenerPrimero("SP_SIM_Cat_SN_UnidadTerritorial_SC", pGeneric.Clave);
+        }
+
         public override List<UnidadTerritorial> ObtenerListado(UnidadTerritorial pGeneric)
         {
             return ObtenerLista("SP_SIM_Cat_SN_UnidadTerritorial_S", pGeneric.ID);
