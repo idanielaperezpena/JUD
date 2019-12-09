@@ -111,5 +111,11 @@ namespace Web.Controllers
             return PartialView("../DeudorSolidario/_Insertar", _service.GetDeudorSolidario());
         }
 
+        [HttpPost]
+        public ActionResult GetListadoSE(string claveSE)
+        {
+            return Json(_service.ListadoSelectSeccionElectoral(Int32.Parse(claveSE)));
+        }
+
     }
 }

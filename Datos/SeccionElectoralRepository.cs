@@ -23,12 +23,13 @@ namespace Datos
 
         public override SeccionElectoral ObtenerEntidad(SeccionElectoral pGeneric)
         {
-            throw new NotImplementedException();
+            return ObtenerPrimero("SP_SIM_CAT_03_SeccionElectoral_S", pGeneric.ID);
         }
 
         public override List<SeccionElectoral> ObtenerListado(SeccionElectoral pGeneric)
         {
             return ObtenerLista("SP_SIM_CAT_03_SeccionElectoral_S", pGeneric.ID);
         }
+
     }
 }

@@ -124,6 +124,7 @@
     <Compile Include="ReporteCGMA.cs" />
     <Compile Include="SeccionElectoral.cs" />
     <Compile Include="SeguridadSocial.cs" />
+    <Compile Include="UnidadTerritorial.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Utilidades\Catalogos\CustomSelectList.cs" />
     <Compile Include="Utilidades\Catalogos\ICustomSelectList.cs" />

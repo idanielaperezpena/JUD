@@ -101,6 +101,7 @@
     <Compile Include="ReporteCGMARepository.cs" />
     <Compile Include="SeccionElectoralRepository.cs" />
     <Compile Include="SeguridadSocialRepository.cs" />
+    <Compile Include="UnidadTerritorialRepository.cs" />
     <Compile Include="UsuarioRepository.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -56,20 +56,19 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            @Html.LabelFor(m => m.CI_IDSeccionElectoral)
-                                            @Html.CustomDropDownListFor(m => m.CI_IDSeccionElectoral, Model.SeccionElectoral, new { @class = "form-control form-control-sm select2 ", @style = "width : 100%" })
-                                            @Html.ValidationMessageFor(m => m.CI_IDSeccionElectoral, "")
+                                            @Html.LabelFor(m => m.ID_UnidadTerritorial)
+                                            @Html.CustomDropDownListFor(m => m.ID_UnidadTerritorial, Model.UnidadTerritorial, new { @class = "form-control form-control-sm select2 ", @style = "width : 100%" })
+                                            @Html.ValidationMessageFor(m => m.ID_UnidadTerritorial, "")
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            @Html.LabelFor(m => m.UnidadTerritorial)
-                                            @Html.EditorFor(m => m.UnidadTerritorial, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
-                                            @Html.ValidationMessageFor(m => m.UnidadTerritorial, "")
+                                            @Html.LabelFor(m => m.CI_IDSeccionElectoral)
+                                            @Html.CustomDropDownListFor(m => m.CI_IDSeccionElectoral, Model.SeccionElectoral, new { @class = "form-control form-control-sm select2 ", @style = "width : 100%" })
+                                            @Html.ValidationMessageFor(m => m.CI_IDSeccionElectoral, "")
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">

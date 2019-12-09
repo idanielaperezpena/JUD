@@ -16,7 +16,6 @@ $('#CadenaBusqueda').keypress(function (e) {
 
 // #endregion
 
-
 // #region Grupos Vulnerables
 $(document).on('change', '#CIU_FechaNacimiento', function (e) {
     var fecha_nacimiento = new Date($(this).val());
@@ -56,7 +55,6 @@ $(document).on('change', '#CIU_IDDiscapacidad', function (e) {
         quitar_GP(5);
     }
 });
-// #endregion
 
 function agregar_GP(id) {
     var ids = $('#CIU_IDGruposPrioritarios').val();
@@ -74,6 +72,7 @@ function quitar_GP(id) {
         $('#CIU_IDGruposPrioritarios').val(ids).trigger('change');
     }
 }
+// #endregion
 
 // Buscar Ciudadano
 $("#btn_Buscar").click(function (e) {
@@ -96,6 +95,7 @@ $("#btn_Buscar").click(function (e) {
 });
 
 //Curp datos automaticos
+// #region Curp datos automaticos
 $(document).on('change', '#CIU_CURP', function (e) {
     if ($(this).valid()) {
         var curp = $(this).val();
@@ -129,8 +129,10 @@ function nacimiento(entidad) {
         $("#CIU_IDEstado").val(jQuery.inArray(entidad, entidades_federativas) + 1)
     }
 }
+// #endregion
 
 //Cargar vistas parciales
+// #region  Cargar Vistas parciales
 $(document).on('click', '#tabla_ciudadano tbody > tr', function (e) {
     e.preventDefault();
     if ($(this).attr('class') !== 'empty-container') {
@@ -257,6 +259,32 @@ $(document).on('change', "input[name=RequiereDS]", function (e) {
         $.validator.unobtrusive.parse("form");
     }
 });
+
+$("#ID_UnidadTerritorial").change(function () {
+    $.ajax({
+        type: "POST",
+        url: "/CreditoInicial/GetListadoSE",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify({ claveSE: $("#ID_UnidadTerritorial").val() }),
+        success: function (e) {
+            console.log(e);
+            var regionsSelect = $('#CI_IDSeccionElectoral');
+            regionsSelect.empty();
+            regionsSelect.append($('<option/>', {
+                value: null,
+                text: "Seleccione ..."
+            }));
+            $.each(e, function (index, region) {
+                regionsSelect.append($('<option/>', {
+                    value: region.ID,
+                    text: region.ClaveSE
+                }));
+            });
+        }
+    });
+});
+
+// #endregion
 
 //Guardar CI con ciudadano Insertado
 $(document).on('click', '#guardar', function (e) {

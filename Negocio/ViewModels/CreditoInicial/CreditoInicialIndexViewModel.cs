@@ -38,7 +38,7 @@ namespace Negocio.ViewModels.CreditoInicial
         public String CI_FechaSolicitud { get; set; }
 
         [Display(Name = "Sección Electoral")]
-        public int? CI_IDSeccionElectoral { get; set; }
+        public String CI_IDSeccionElectoral { get; set; }
 
         [Display(Name = "Dictamen Social")]
         public string[] ImgDS { get; set; }
