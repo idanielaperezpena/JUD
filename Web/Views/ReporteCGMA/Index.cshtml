@@ -1,0 +1,159 @@
+﻿
+@{
+    ViewBag.Title = "Reporte CGMA";
+    Layout = "~/Views/Shared/_Layout-Principal.cshtml";
+}
+@model Negocio.ViewModels.ReporteCGMA.ReporteCGMAIndexViewModel
+
+@Styles.Render("~/bundles/datatables_css")
+
+
+
+<div class="content-wrapper" style="min-height: 901px;">
+    <section class="content-header">
+        <h1>
+            Listado de Solicitudes
+            <small>Listado</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="@Url.Action("Index", "Principal")"><i class="fa fa-dashboard"></i>Menú principal</a>
+            </li>
+            <li class="active">
+                Listado de Solicitudes
+            </li>
+        </ol>
+    </section>
+
+    <section class="content">
+
+        @if (ViewBag.Error == true)
+        {
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-ban"></i> ¡Error!</h4>
+                @ViewBag.MensajeError
+            </div>
+        }
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <h3 class="box-title">Listado de Solicitudes</h3>
+            </div>
+            <div class="box-body">
+                
+                @using (Html.BeginForm("IndexToExcel", "ReporteCGMA", "POST"))
+                {
+                    if (Model.Listado.Count() != 0)
+                    {
+                        <div class="row" style="margin-bottom:10px;">
+                            <div class="col-lg-offset-6 col-lg-6">
+                                <button type="submit" class="btn bg-green pull-right" id="bntExportarExcel">
+                                    Exportar a Excel    <i class="fa fa-file-excel-o"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    }
+                }
+
+
+                <table id="tabla_cgma" class="table table-bordered  table-striped table-responsive">
+                    @if (Model.Listado.Count() == 0)
+                    {
+                        @Html.CustomTableEmptyResult()
+                    }
+                    else
+                    {
+                        <thead>
+                            <tr>
+                                <th>N°</th>
+                                <th>Enviado a CGMA</th>
+                                <th>Folio CGMA</th>
+                                <th>Tramite CGMA</th>
+                                <th>Modalidad CGMA</th>
+                                <th>Tipo Solicitud CGMA</th>
+                                <th>Fecha de Entrada CGMA</th>
+                                <th>Atención CGMA</th>
+                                <th>Calificación CGMA</th>
+                                <th>Fecha Final CGMA</th>
+                                <th>Ente CGMA</th>
+                                <th>Unidad CGMA</th>
+                                <th>AAC CGMA</th>
+                                <th>Encargado CGMA</th>
+                                <th>Prioritario CGMA</th>
+                                <th>Sexo CGMA</th>
+                                <th>Personalidad CGMA</th>
+                                <th>Alcaldía CGMA</th>
+                                <th>Vulnerable CGMA</th>
+                                <th>Consecutivo Entrega CMV</th>
+                                <th>Clave Trámite CGMA</th>
+                                <th>Folio Solicitud</th>
+                                <th>Nombre Solicitante/ Acreditado</th>
+                                <th>Calificación CGMA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Listado)
+                            {
+                                <tr>
+                                    <td>@item.CGMA_ID              </td>
+                                    <td>@item.CGMA_Enviado              </td>
+                                    <td>@item.CGMA_Folio            </td>
+                                    <td>@item.CGMA_Tramite          </td>
+                                    <td>@item.CGMA_Modalidad        </td>
+                                    <td>@item.CGMA_TipoSolicitud    </td>
+                                    <td>@item.CGMA_FechaEntrada     </td>
+                                    <td>@item.CGMA_Atencion         </td>
+                                    <td>@item.CGMA_Calificacion     </td>
+                                    <td>@item.CGMA_FechaFinal       </td>
+                                    <td>@item.CGMA_Ente             </td>
+                                    <td>@item.CGMA_Unidad           </td>
+                                    <td>@item.CGMA_AAC              </td>
+                                    <td>@item.CGMA_Encargado        </td>
+                                    <td>@item.CGMA_Prioritario      </td>
+                                    <td>@item.CGMA_Sexo             </td>
+                                    <td>@item.CGMA_Personalidad     </td>
+                                    <td>@item.CGMA_Delegacion       </td>
+                                    <td>@item.CGMA_Vulnerable       </td>
+                                    <td>@item.CGMA_ConsEntregaCMV   </td>
+                                    <td>@item.CGMA_ClaveTramite     </td>
+                                    <td>@item.CGMA_FolioSolicitud   </td>
+                                    <td>@item.CGMA_NombreCiudadano  </td>
+                                    <td>@item.CGMA_CalificacionFinal</td>
+
+
+
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    }
+
+
+
+
+
+                </table>
+            </div>
+        </div>
+
+
+
+
+    </section>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/datatables_js")
+    <script src="~/Scripts/Negocio/ReporteCGMA/Index.js"></script>
+
+
+
+
+}
+

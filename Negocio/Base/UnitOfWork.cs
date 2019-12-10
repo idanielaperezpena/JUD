@@ -41,6 +41,7 @@ namespace Negocio
         private CreditoComplementarioRepository _creditocomplementario;
         private CreditoSustentabilidadRepositoy _creditoSustentabilidad;
         private ModificacionesCreditoRepository _modificacionesCredito;
+        private ReporteCGMARepository _reporteCGMA;
         private UnidadTerritorialRepository _unidadTerritorial;
 
         private EmailUtility _emailSender;
@@ -181,7 +182,7 @@ namespace Negocio
                 return _principal;
             }
         }
-        
+
 
 
         public EmailUtility EmailSender
@@ -213,9 +214,9 @@ namespace Negocio
                 if (_ciDictamenJuridico == null)
                     _ciDictamenJuridico = new CIDictamenJuridicoRepository(_context);
                 return _ciDictamenJuridico;
-                
+
             }
-           
+
         }
         public CIDictamenSocialRepository CiDictamenSocial
         {
@@ -258,9 +259,9 @@ namespace Negocio
                 if (_ccDictamenJuridico == null)
                     _ccDictamenJuridico = new CCDictamenJuridicoRepository(_context);
                 return _ccDictamenJuridico;
-                
+
             }
-           
+
         }
         public CCDictamenSocialRepository CcDictamenSocial
         {
@@ -404,6 +405,16 @@ namespace Negocio
                 if (_modificacionesCredito == null)
                     _modificacionesCredito = new ModificacionesCreditoRepository(_context);
                 return _modificacionesCredito;
+            }
+        }
+
+        public ReporteCGMARepository ReporteCGMA
+        {
+            get
+            {
+                if (_reporteCGMA == null)
+                    _reporteCGMA = new ReporteCGMARepository(_context);
+                return _reporteCGMA;
             }
         }
 

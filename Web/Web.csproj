@@ -150,6 +150,7 @@
     <Content Include="Scripts\Negocio\Dictamenes\NuevoDictamenSocial.js" />
     <Content Include="Scripts\Negocio\HomeIndexJS.js" />
     <Content Include="Scripts\Negocio\ModificacionesCredito\NuevoModificacionesCredito.js" />
+    <Content Include="Scripts\Negocio\ReporteCGMA\Index.js" />
     <Content Include="Scripts\UI\admin\adminlte.min.js" />
     <Content Include="Scripts\UI\admin\validaciones_general.js" />
     <Content Include="Scripts\UI\autoNumeric\autoNumeric-2.0.13.js" />
@@ -195,9 +196,9 @@
     <Compile Include="Controllers\DictamenesController.cs" />
     <Compile Include="Controllers\ExceptionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\ModificacionesCreditoController.cs" />
     <Compile Include="Controllers\PrincipalController.cs" />
+    <Compile Include="Controllers\ReporteCGMAController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -270,8 +271,7 @@
     <Content Include="Views\CreditoSustentabilidad\Index.cshtml" />
     <Content Include="Views\ModificacionesCredito\Index.cshtml" />
     <Content Include="Views\ModificacionesCredito\Insertar.cshtml" />
-    <Content Include="Views\Menu\_Navbar.cshtml" />
-    <Content Include="Views\Menu\_Footer.cshtml" />
+    <Content Include="Views\ReporteCGMA\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
