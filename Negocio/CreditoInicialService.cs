@@ -32,22 +32,43 @@ namespace Negocio
 
         public CreditoInicialService(ModelStateDictionary modelState,int OPC) : base(modelState)
         {
-
         }
 
 
         //Vistas
 
-        public CreditoInicialIndexViewModel Index()
+        public CreditoInicialIndexViewModel Index(Usuario user)
         {
             var viewModel = new CreditoInicialIndexViewModel();
 
             try
             {
                 var _listado = Listado();
+                List<CreditoInicial> ci_filtradas = new List<CreditoInicial>();
 
-                foreach (CreditoInicial _cat in _listado)
+                if (!user.USU_Admin)
                 {
+                    foreach (CreditoInicial _ci in ci_filtradas)
+                    {
+                        var seccion = UoW.SeccionElectoral.ObtenerEntidad(new SeccionElectoral { ID = _ci.CI_IDSeccionElectoral});
+                        var ut = UoW.UnidadTerritorial.ObtenerEntidadClave(new UnidadTerritorial { Clave = seccion.ClaveUT });
+                        if (ut.ClaveMesa == user.USU_MesaTramite)
+                        {
+                            ci_filtradas.Add(_ci);
+                        }
+
+                    }
+                }
+                else
+                {
+                    ci_filtradas = _listado;
+                }
+
+
+
+                foreach (CreditoInicial _cat in ci_filtradas)
+                {
+
                     var _entidadCiudadano = UoW.Ciudadano.ObtenerEntidad(new Ciudadano
                     {
                         CIU_IDCiudadano = _cat.CI_IDCiudadano
@@ -85,7 +106,7 @@ namespace Negocio
             return viewModel;
         }
 
-        public CreditoInicialInsertarViewModel Insertar()
+        public CreditoInicialInsertarViewModel Insertar(Usuario user)
         {
             var _viewModel = new CreditoInicialInsertarViewModel();
             _viewModel.ValidarCiudadano = new CiudadanoValidarViewModel();
@@ -96,7 +117,7 @@ namespace Negocio
 
             foreach (var _ut in uts)
             {
-                if (_ut.ClaveMesa == 1)
+                if (_ut.ClaveMesa == user.USU_MesaTramite)
                 {
                     uts_filtradas.Add(_ut);
                 }
@@ -118,7 +139,7 @@ namespace Negocio
             return _viewModel;
         }
 
-        public CreditoInicialInsertarViewModel Insertar(string ID)
+        public CreditoInicialInsertarViewModel Insertar(Usuario user,string ID)
         {
             var _viewModel = ObtenerCI(ID);
             _viewModel.ValidarCiudadano = new CiudadanoValidarViewModel();
@@ -142,7 +163,7 @@ namespace Negocio
 
             foreach (var _ut in uts)
             {
-                if (_ut.ClaveMesa == Ut_Seleccionada.ClaveMesa)
+                if (_ut.ClaveMesa == user.USU_MesaTramite)
                 {
                     uts_filtradas.Add(_ut);
                 }

@@ -14,7 +14,7 @@ using Web.Models.INVI;
 namespace Web.Controllers
 {
     [Permiso(Disabled = true)]
-    public class DictamenesController : Controller
+    public class DictamenesController : BaseController
     {
         private DictamenesService _service;
 

@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -14,7 +16,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
 </head>
-<body class="hold-transition skin-green-light sidebar-mini sidebar-collapse">
+<body class="hold-transition skin-green-light sidebar-mini ">
     <header class="main-header">
 
         <a href="@Url.Action("Index","Principal")" class="logo">
@@ -34,133 +36,20 @@
                     <li><a data-toggle="control-sidebar"><i class="fa fa-fw fa-sign-out"> </i>Cerrar Sesión</a>    </li>
                 </ul>
             </div>
-            
+
 
         </nav>
     </header>
 
-    <aside class="main-sidebar">
-        <section class="sidebar">
-            <div class="user-panel">
-                <div class="pull-left ">
-                    
-                </div>
-                <div class="pull-right info">
-                    <p>
-                        @ViewBag.Nombre
-                    </p>
-                    <p>
-                        @ViewBag.Perfil
-                    
-                    </p>
-                   
-                </div>
-            </div>
-            <ul class="sidebar-menu" data-widget="tree">
-                <li class="header">MENÚ PRINCIPAL</li>
-                <li class="active treeview menu-open">
-                    <a href="#">
-                        <i class="fa  fa-file"></i> <span>Crédito Inicial</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="@Url.Action("Insertar","CreditoInicial")"><i class="fa  fa-plus"></i>Registrar Nuevo</a></li>
-                        <li><a href="@Url.Action("Index","CreditoInicial")"><i class="fa fa-search"></i>Consultar Solicitud</a></li>
-                    </ul>
-                </li>
-                <li class="active treeview menu-open">
-                    <a href="#">
-                        <i class="fa fa-files-o"></i> <span>Crédito Complementario</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                         <li><a href="@Url.Action("Index","CreditoComplementario")"><i class="fa fa-search"></i>Consultar Solicitud</a></li>
-                    </ul>
-                </li>
-                <li class="active treeview menu-open">
-                    <a href="#">
-                        <i class="fa fa-edit"></i> <span>Modificaciones al Crédito</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="@Url.Action("Index","ModificacionesCredito")"><i class="fa fa-search"></i>Consultar Solicitud</a></li>
-                    </ul>
-                </li>
-                <li class="active treeview menu-open">
-                    <a href="#">
-                        <i class="fa fa-home"></i> <span>Crédito de Sustentabilidad</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="@Url.Action("Index","CreditoSustentabilidad")"><i class="fa fa-search"></i>Consultar Solicitud</a></li>
-                    </ul>
-                </li>
-                <li class="active">
-                    <a href="@Url.Action("Index","ReporteCGMA")">
-                        <i class="fa fa-list"></i> <span>Ver todas las solicitudes</span>
-
-                    </a>
-
-                </li>
-                <li class="active">
-                    <a href="@Url.Action("Index","Ciudadano")">
-                        <i class="fa  fa-user"></i> <span>Solicitudes por Ciudadano</span>
-
-                    </a>
-
-                </li>
-
-
-                @*@if (ViewBag.Perfil == "ADMIN")
-                {*@
-                    <li class="header">Administrador</li>
-                    <li class="active">
-                        <a href="@Url.Action("Index","Catalogos")">
-                            <i class="fa fa-dashboard"></i> <span>Catalogos</span>
-                         
-                        </a>
-                       
-                    </li>
-                @*}*@
-
-            </ul>
-</section>
-    </aside>
+    @Html.Action("_Navbar", "Menu")
 
     @RenderBody()
 
-    <footer class="main-footer">
-        <div class="row">
-            <div class="col-lg-2">
-                <strong>Empleado: @ViewBag.Nombre</strong>
-            </div>
-            <div class="col-lg-2">
-                IP : @ViewBag.IP
-            </div>
-            <div class="col-lg-4">
-                Fecha:
-            </div>
-            <div class="col-lg-4">
-                <b>Versión</b> Beta 1.0.0.0
-            </div>
-
-        </div>
-      
-    </footer>
-
- 
+    @Html.Action("_Footer", "Menu")
 
     <div class="control-sidebar-bg"></div>
 
- </body>
+</body>
 
     @Scripts.Render("~/bundles/general_js")
     @Scripts.Render("~/bundles/jquery_validate")

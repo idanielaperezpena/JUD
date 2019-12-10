@@ -1,0 +1,90 @@
+﻿@model Negocio.ViewModels.MenuViewModel
+
+<aside class="main-sidebar">
+    <section class="sidebar">
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="~/Content/user.png" class="img-circle" alt="imagen" style="margin-top: -5px;">
+            </div>
+            <div class="pull-right info">
+                <p>
+                    Usuario : @Model.Usuario.USU_Usuario
+                </p>
+            </div>
+        </div>
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">MENÚ PRINCIPAL</li>
+            <li class="active treeview menu-open">
+                <a href="#">
+                    <i class="fa  fa-file"></i> <span>Crédito Inicial</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("Insertar","CreditoInicial")"><i class="fa  fa-plus"></i>Registrar Nuevo</a></li>
+                    <li><a href="@Url.Action("Index","CreditoInicial")"><i class="fa fa-search"></i>Consultar Solicitud</a></li>
+                </ul>
+            </li>
+            <li class="active treeview menu-open">
+                <a href="#">
+                    <i class="fa fa-files-o"></i> <span>Crédito Complementario</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("Index","CreditoComplementario")"><i class="fa fa-search"></i>Consultar Solicitud</a></li>
+                </ul>
+            </li>
+            <li class="active treeview menu-open">
+                <a href="#">
+                    <i class="fa fa-edit"></i> <span>Modificaciones al Crédito</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("Index","ModificacionesCredito")"><i class="fa fa-search"></i>Consultar Solicitud</a></li>
+                </ul>
+            </li>
+            <li class="active treeview menu-open">
+                <a href="#">
+                    <i class="fa fa-home"></i> <span>Crédito de Sustentabilidad</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("Index","CreditoSustentabilidad")"><i class="fa fa-search"></i>Consultar Solicitud</a></li>
+                </ul>
+            </li>
+            <li class="active">
+                <a href="#">
+                    <i class="fa fa-list"></i> <span>Ver todas las solicitudes</span>
+
+                </a>
+
+            </li>
+            <li class="active">
+                <a href="@Url.Action("Index","Ciudadano")">
+                    <i class="fa  fa-user"></i> <span>Solicitudes por Ciudadano</span>
+
+                </a>
+
+            </li>
+
+
+            @*@if (ViewBag.Perfil == "ADMIN")
+                {*@
+            <li class="header">Administrador</li>
+            <li class="active">
+                <a href="@Url.Action("Index","Catalogos")">
+                    <i class="fa fa-dashboard"></i> <span>Catalogos</span>
+                </a>
+            </li>
+            @*}*@
+
+        </ul>
+    </section>
+</aside>

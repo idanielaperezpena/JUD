@@ -8,7 +8,7 @@ using System.Web.Mvc;
 namespace Web.Controllers
 {
     [Permiso(Disabled = true)]
-    public class PrincipalController : Controller
+    public class PrincipalController : BaseController
     {
         private PrincipalService _service;
 
@@ -21,7 +21,7 @@ namespace Web.Controllers
         public ActionResult Index()
         {
             ViewBag.Titulo = "Menú Principal";
-           var vm= _service.ObtenerPrincipal();
+            var vm= _service.ObtenerPrincipal();
             return View(vm);
         }
 

@@ -136,7 +136,9 @@
     <Compile Include="ViewModels\Domicilio\DomicilioFormViewModel.cs" />
     <Compile Include="ViewModels\ExceptionIndexViewModel.cs" />
     <Compile Include="ViewModels\ExceptionLogViewModel.cs" />
+    <Compile Include="ViewModels\FooterViewModel.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
+    <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\ModificacionesCredito\ModificacionesCreditoIndexViewModel.cs" />
     <Compile Include="ViewModels\ModificacionesCredito\ModificacionesCreditoInsertarViewModel.cs" />
     <Compile Include="ViewModels\Principal\PrincipalIndexViewModel.cs" />

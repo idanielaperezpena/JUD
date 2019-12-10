@@ -16,7 +16,6 @@ namespace Negocio
         public Usuario Login(HomeIndexViewModel viewModel)
         {
             Usuario _usuario = null;
-
             try
             {
                 if (ModelState.IsValid)
@@ -30,7 +29,6 @@ namespace Negocio
             {
                 ModelState.AddModelError(string.Empty, ex.Message);
             }
-
             return _usuario;
         }
     }

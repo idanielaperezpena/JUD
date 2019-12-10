@@ -1,0 +1,20 @@
+﻿@model Negocio.ViewModels.FooterViewModel
+
+<footer class="main-footer">
+    <div class="row">
+        <div class="col-lg-2">
+            <strong>Empleado:  @Model.Usuario.USU_Usuario</strong>
+        </div>
+        <div class="col-lg-2">
+            IP : @Model.IPAddress
+        </div>
+        <div class="col-lg-4">
+            Fecha: @Model.DateTime
+        </div>
+        <div class="col-lg-4">
+            <b>Versión</b> @SettingsProvider.AppVersion
+        </div>
+
+    </div>
+
+</footer>

@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Web.Controllers
 {
-    public class CreditoComplementarioController : Controller
+    public class CreditoComplementarioController : BaseController
     {
         private CreditoComplementarioService _service;
 
@@ -21,8 +21,8 @@ namespace Web.Controllers
         public ActionResult Index()
         {
            var _vm= _service.Index();
-           
-            return View(_vm);
+           ViewBag.Titulo = "Lista de Créditos Complementarios";
+           return View(_vm);
         }
 
         
