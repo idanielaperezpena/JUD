@@ -36,7 +36,7 @@ namespace Web.Controllers
                 ViewBag.Error = false;
             }
             var _vm = _service.Index();
-            ViewBag.Titulo = "Lista de Creéditos Iniciales";
+            ViewBag.Titulo = "Lista de Créditos Iniciales";
             return View(_vm);
         }
 

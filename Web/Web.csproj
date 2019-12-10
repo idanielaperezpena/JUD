@@ -150,6 +150,7 @@
     <Content Include="Scripts\Negocio\Dictamenes\NuevoDictamenSocial.js" />
     <Content Include="Scripts\Negocio\HomeIndexJS.js" />
     <Content Include="Scripts\Negocio\ModificacionesCredito\NuevoModificacionesCredito.js" />
+    <Content Include="Scripts\Negocio\ReporteCGMA\Index.js" />
     <Content Include="Scripts\UI\admin\adminlte.min.js" />
     <Content Include="Scripts\UI\admin\validaciones_general.js" />
     <Content Include="Scripts\UI\autoNumeric\autoNumeric-2.0.13.js" />

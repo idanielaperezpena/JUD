@@ -14,9 +14,12 @@ namespace Datos
         }
 
         public override ReporteCGMA Alta(ReporteCGMA pGeneric)
+
         {
             throw new NotImplementedException();
+
         }
+
 
         public override void Baja(ReporteCGMA pGeneric)
         {
@@ -30,7 +33,10 @@ namespace Datos
 
         public override List<ReporteCGMA> ObtenerListado(ReporteCGMA pGeneric)
         {
-            return ObtenerLista("a");
+            var lista= ObtenerLista("SP_SIM_ReporteCGMA_S");
+
+            return lista;
         }
     }
 }
+

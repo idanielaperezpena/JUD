@@ -80,4 +80,3 @@ C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Entidades\obj\Debug\Entidades.csproj.Cor
 C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Entidades\obj\Debug\Entidades.csproj.CopyComplete
 C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Entidades\obj\Debug\Entidades.dll
 C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Entidades\obj\Debug\Entidades.pdb
-C:\Users\JUDMB\Desktop\SOCIALISMO_JUDMB\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
