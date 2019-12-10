@@ -43,9 +43,9 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            @Html.LabelFor(m => m.CI_FolioSolicitud) 
+                                            @Html.LabelFor(m => m.CI_FolioSolicitud)
                                             <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus"
-                                                data-content="Ejemplo: CI-12345">
+                                               data-content="Ejemplo: CI-12345">
                                                 <i class="fa fa-info-circle" aria-hidden="true"></i>
                                             </a>
                                             @Html.EditorFor(m => m.CI_FolioSolicitud, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
@@ -111,15 +111,19 @@
                             </div>
                         </div>
                     </div>
+                    @if (Model.CI_IDCreditoInicial.HasValue)
+                    {
+                        <div class="col-md-12" id="div_buscar_ciudadano">
+                            @Html.Partial("../Ciudadano/_Validar", Model.ValidarCiudadano)
+                        </div>
+                    }
 
-                    <div class="col-md-12" id="div_buscar_ciudadano">
-                        @Html.Partial("../Ciudadano/_Validar", Model.ValidarCiudadano)
-                    </div>
                 </div>
 
                 @Html.HiddenFor(m => m.CI_IDCreditoInicial)
 
             </fieldset>
+
 
         }
     </section>
@@ -140,7 +144,7 @@
                     }
                 })
                 var IDCiudadano = "@Model.CI_IDCiudadanoEncriptado";
-                $.ajax({
+                var ajax =$.ajax({
                     type: "POST",
                     url: "/CreditoInicial/GetCiudadanoInsertar",
                     contentType: "application/json; charset=utf-8",
@@ -149,7 +153,6 @@
                         $('#div_buscar_ciudadano').slideUp();
                         $('form').append(e);
                         $('#CIU_IDGruposPrioritarios').select2({ multiple: true });
-
                         $.ajax({
                             type: "POST",
                             url: "/CreditoInicial/GetDomicilioViewModel",
@@ -162,15 +165,24 @@
                                 $.validator.unobtrusive.parse("form");
                             }
                         });
-
                         $('#foo').select2({ multiple: true });
                         $("form").each(function () { $.data($(this)[0], 'validator', false); });
                         $.validator.unobtrusive.parse("form");
-                        Swal.close();
+                       
                     }
                 });
+
+                $.when(ajax).done(function () {
+                @if (!Model.Editar_Admin)
+                {
+                    <text> $('#div_guardar_ciudadano').remove();</text>
+                }
+                Swal.close();
+                });
+
             });
         </script>
 
     }
 }
+

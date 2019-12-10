@@ -15,7 +15,6 @@ namespace Negocio.ViewModels.Ciudadanos
     {
         //Variables de vista
         #region  Variables de vista
-        public bool CiudadanoExistente { get; set; }
         public bool CreditoInicial { get; set; }
         #endregion
 

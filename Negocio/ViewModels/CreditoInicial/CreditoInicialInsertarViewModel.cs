@@ -11,6 +11,8 @@ namespace Negocio.ViewModels.CreditoInicial
 {
     public class CreditoInicialInsertarViewModel
     {
+        public bool Editar_Admin { get; set; }
+
         public int? CI_IDCreditoInicial { get; set; }
 
         [CustomRequired]

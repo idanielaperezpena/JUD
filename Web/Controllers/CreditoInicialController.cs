@@ -45,9 +45,9 @@ namespace Web.Controllers
         {
             var _vm = new CreditoInicialInsertarViewModel();
             if (String.IsNullOrEmpty(ID))
-                _vm = _service.Insertar();
+                _vm = _service.Insertar(Usuario);
             else
-                _vm = _service.Insertar(ID);
+                _vm = _service.Insertar(Usuario ,ID);
             ViewBag.Titulo = "Crédito Inicial";
             return View(_vm);
         }

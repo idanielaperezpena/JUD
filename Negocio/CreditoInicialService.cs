@@ -48,7 +48,7 @@ namespace Negocio
 
                 if (!user.USU_Admin)
                 {
-                    foreach (CreditoInicial _ci in ci_filtradas)
+                    foreach (CreditoInicial _ci in _listado)
                     {
                         var seccion = UoW.SeccionElectoral.ObtenerEntidad(new SeccionElectoral { ID = _ci.CI_IDSeccionElectoral});
                         var ut = UoW.UnidadTerritorial.ObtenerEntidadClave(new UnidadTerritorial { Clave = seccion.ClaveUT });
@@ -161,12 +161,20 @@ namespace Negocio
                 }
             }
 
-            foreach (var _ut in uts)
+            if (user.USU_Admin)
             {
-                if (_ut.ClaveMesa == user.USU_MesaTramite)
+                uts_filtradas = uts;
+            }
+            else
+            {
+                foreach (var _ut in uts)
                 {
-                    uts_filtradas.Add(_ut);
+                    if (_ut.ClaveMesa == user.USU_MesaTramite)
+                    {
+                        uts_filtradas.Add(_ut);
+                    }
                 }
+
             }
 
             _viewModel.UnidadTerritorial = uts_filtradas.SelectListado();
@@ -184,6 +192,15 @@ namespace Negocio
                 }
             }
             _viewModel.SeccionElectoral = sec_filtradas.SelectListado();
+
+            if (user.USU_Admin)
+            {
+                _viewModel.Editar_Admin = true;
+            }
+            else
+            {
+                _viewModel.Editar_Admin = false;
+            }
 
             return _viewModel;
         }
@@ -300,7 +317,7 @@ namespace Negocio
                     var CiudadanoInsertado = _serviceCiudadano.EditarCiudadano(viewModel.CiudadanoInsertar);
                     if (CiudadanoInsertado.CIU_IDCiudadano != null)
                     {
-                        if (ValidarCI((int)CiudadanoInsertado.CIU_IDCiudadano))
+                        if (ValidarCI((int)CiudadanoInsertado.CIU_IDCiudadano, viewModel.CI_IDCreditoInicial))
                         {
                             viewModel.CI_IDCiudadano = CiudadanoInsertado.CIU_IDCiudadano;
                             viewModel.CiudadanoInsertar.ID_Encriptado = CiudadanoInsertado.CIU_IDCiudadano.ToString();
@@ -332,7 +349,7 @@ namespace Negocio
                                     CI_IDCreditoInicial = viewModel.CI_IDCreditoInicial,
                                     CI_FolioSolicitud = viewModel.CI_FolioSolicitud,
                                     CI_IDCiudadano = viewModel.CI_IDCiudadano,
-                                    CI_FechaCaptura = viewModel.CI_FechaCaptura,
+                                    CI_FechaCaptura = DateTime.Now,
                                     CI_FechaSolicitud = viewModel.CI_FechaSolicitud,
                                     CI_IDSeccionElectoral = viewModel.CI_IDSeccionElectoral,
                                     CI_IDDomicilio = viewModel.CI_IDDomicilio,
@@ -437,7 +454,7 @@ namespace Negocio
             return new Principal();
         }
 
-        public bool ValidarCI(int id)
+        public bool ValidarCI(int id, int? ID_CI)
         {
             try
             {
@@ -445,12 +462,18 @@ namespace Negocio
                 var listadoCI = Listado_Ciudadano(id);
                 foreach (var _ci in listadoCI)
                 {
-                    var estatus = EstatusCI(_ci.CI_IDCreditoInicial);
-                    var cadena = estatus.Resultado.Split('-');
-                    if (cadena[3] == "2" || !cadena.Contains("4"))
+                    if (ID_CI != _ci.CI_IDCreditoInicial)
                     {
-                        validacion = false;
+                        var estatus = EstatusCI(_ci.CI_IDCreditoInicial);
+                        var cadena = estatus.Resultado.Split('-');
+                        if (cadena[3] == "2" || !cadena.Contains("4"))
+                        {
+                            validacion = false;
+                            ModelState.AddModelError(string.Empty, "El ciudadano ya tiene un credito inicial en proceso");
+                            break;
+                        }
                     }
+                    
                 }
                 return validacion;
             }
@@ -499,7 +522,7 @@ namespace Negocio
 
             var ut = UoW.UnidadTerritorial.ObtenerEntidad(new UnidadTerritorial {  ID = IDUT });
 
-            var sec = UoW.SeccionElectoral.ObtenerListado(new SeccionElectoral { ID = 0 });
+            var sec = UoW.SeccionElectoral.ObtenerListado(new SeccionElectoral ());
             List<SeccionElectoral> sec_filtradas = new List<SeccionElectoral>();
 
             foreach (var _se in sec)
