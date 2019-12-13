@@ -111,13 +111,9 @@
                             </div>
                         </div>
                     </div>
-                    @if (Model.CI_IDCreditoInicial.HasValue)
-                    {
-                        <div class="col-md-12" id="div_buscar_ciudadano">
-                            @Html.Partial("../Ciudadano/_Validar", Model.ValidarCiudadano)
-                        </div>
-                    }
-
+                    <div class="col-md-12" id="div_buscar_ciudadano">
+                        @Html.Partial("../Ciudadano/_Validar", Model.ValidarCiudadano)
+                    </div>
                 </div>
 
                 @Html.HiddenFor(m => m.CI_IDCreditoInicial)
