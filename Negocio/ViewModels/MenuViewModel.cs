@@ -10,5 +10,8 @@ namespace Negocio.ViewModels
     public class MenuViewModel
     {
         public Usuario Usuario { get; set; }
+
+        public IEnumerable<Modulo> ModulosAdmin { get; set; }
+        public IEnumerable<Modulo> ModulosUsuario { get; set; }
     }
 }

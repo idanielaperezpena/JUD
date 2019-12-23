@@ -11,8 +11,9 @@ namespace Entidades
         public int? USU_Id { get; set; }
         public string USU_Usuario { get; set; }
         public string USU_Password { get; set; }
-        public int? USU_MesaTramite { get; set; }
-        public bool USU_Admin { get; set; }
+        public int? USU_MesaTramite_Id { get; set; }
+        public int USU_PRF_Id { get; set; }
+        public string USU_Correo { get; set; }
 
         public int? MDL_Default { get; set; }
         public string MDL_DefaultController { get; set; }

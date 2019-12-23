@@ -19,11 +19,27 @@ namespace Negocio
             try
             {
                 if (ModelState.IsValid)
+                {
                     _usuario = UoW.Usuarios.Login(new Usuario
                     {
-                        USU_Usuario = viewModel.USU_Usuario,
-                        USU_Password = viewModel.USU_Password
+                        USU_Usuario = viewModel.USU_Usuario
                     });
+
+                    if (_usuario != null)
+                    {
+                        if(_usuario.USU_Password != viewModel.USU_Password)
+                        {
+                            ModelState.AddModelError(string.Empty, "Las credenciales son incorrectas");
+                            _usuario = null;
+                        }
+                            
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "No existe el usuario");
+                    }
+                }
+                    
             }
             catch (Exception ex)
             {
@@ -31,5 +47,23 @@ namespace Negocio
             }
             return _usuario;
         }
+
+        public ModulosHelper InitModulos(Usuario usuario)
+        {
+            var _modulos = new ModulosHelper();
+
+            try
+            {
+                _modulos.Init(UoW.Usuarios.ObtenerModulos(usuario));
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+
+            return _modulos;
+        }
+
+
     }
 }

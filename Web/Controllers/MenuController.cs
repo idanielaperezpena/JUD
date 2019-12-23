@@ -1,4 +1,5 @@
-﻿using Negocio;
+﻿using Entidades;
+using Negocio;
 using Negocio.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -21,8 +22,13 @@ namespace Web.Controllers
         [ChildActionOnly]
         public ActionResult _Navbar()
         {
+            if (SessionProvider.Modulos == null)
+                SessionProvider.Modulos = _service.InitModulos(Usuario);
+
             var _vm = new MenuViewModel
             {
+                ModulosUsuario = SessionProvider.Modulos[EnumTipoMenu.Lateral],
+                ModulosAdmin = SessionProvider.Modulos[EnumTipoMenu.Administrador],
                 Usuario = Usuario
             };
             return PartialView(_vm);

@@ -11,10 +11,10 @@ namespace Web
     {
         public static void RegisterFilters(GlobalFilterCollection filters)
         {
-            //filters.Add(new AuthorizeAttribute());
-            //filters.Add(new ExceptionAttribute());
-            //filters.Add(new UrlReferrerAttribute());
-            //filters.Add(new PermisoAttribute());
+            filters.Add(new AuthorizeAttribute());
+            filters.Add(new ExceptionAttribute());
+            filters.Add(new UrlReferrerAttribute());
+            filters.Add(new PermisoAttribute());
         }
     }
 }

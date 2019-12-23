@@ -46,13 +46,13 @@ namespace Negocio
                 var _listado = Listado();
                 List<CreditoInicial> ci_filtradas = new List<CreditoInicial>();
 
-                if (!user.USU_Admin)
+                if (user.USU_PRF_Id != 1 )
                 {
                     foreach (CreditoInicial _ci in _listado)
                     {
                         var seccion = UoW.SeccionElectoral.ObtenerEntidad(new SeccionElectoral { ID = _ci.CI_IDSeccionElectoral});
                         var ut = UoW.UnidadTerritorial.ObtenerEntidadClave(new UnidadTerritorial { Clave = seccion.ClaveUT });
-                        if (ut.ClaveMesa == user.USU_MesaTramite)
+                        if (ut.ClaveMesa == user.USU_MesaTramite_Id)
                         {
                             ci_filtradas.Add(_ci);
                         }
@@ -117,7 +117,7 @@ namespace Negocio
 
             foreach (var _ut in uts)
             {
-                if (_ut.ClaveMesa == user.USU_MesaTramite)
+                if (_ut.ClaveMesa == user.USU_MesaTramite_Id)
                 {
                     uts_filtradas.Add(_ut);
                 }
@@ -161,7 +161,7 @@ namespace Negocio
                 }
             }
 
-            if (user.USU_Admin)
+            if (user.USU_PRF_Id == 1)
             {
                 uts_filtradas = uts;
             }
@@ -169,7 +169,7 @@ namespace Negocio
             {
                 foreach (var _ut in uts)
                 {
-                    if (_ut.ClaveMesa == user.USU_MesaTramite)
+                    if (_ut.ClaveMesa == user.USU_MesaTramite_Id)
                     {
                         uts_filtradas.Add(_ut);
                     }
@@ -193,7 +193,7 @@ namespace Negocio
             }
             _viewModel.SeccionElectoral = sec_filtradas.SelectListado();
 
-            if (user.USU_Admin)
+            if (user.USU_PRF_Id == 1)
             {
                 _viewModel.Editar_Admin = true;
             }

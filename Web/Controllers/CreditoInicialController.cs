@@ -14,7 +14,6 @@ using Web.Models.INVI;
 
 namespace Web.Controllers
 {
-    [Permiso(Disabled = true)]
     public class CreditoInicialController : BaseController
     {
         private CreditoInicialService _service;

@@ -56,11 +56,16 @@
                         </ul>
                     </div>
                 </div>
-                <div class="row" style="margin-bottom:25px;">
-                    <div class="col-lg-offset-6 pull-right col-lg-6" >
-                        <a class="btn btn-success pull-right" href="@Url.Action("Insertar", "CreditoInicial")">Nuevo &nbsp; <i class="fa fa-plus"></i> </a>
+                @if (this[EnumModuloPermiso.Alta])
+                {
+                    <div class="row" style="margin-bottom:25px;">
+                        <div class="col-lg-offset-6 pull-right col-lg-6">
+                            <a class="btn btn-success pull-right" href="@Url.Action("Insertar", "CreditoInicial")">Nuevo &nbsp; <i class="fa fa-plus"></i> </a>
+                        </div>
                     </div>
-                </div>
+                }
+
+                
                 <div class="table-responsive no-padding">
                     <table id="tabla_ci" class="table table-bordered  table-striped">
                         @if (Model.Listado.Count() == 0)
