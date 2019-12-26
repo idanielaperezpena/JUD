@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,5 +16,7 @@ namespace Negocio.ViewModels.Principal
         public int TotalCreditosDictaminados { get; set; }
 
         public int TotalCreditosNuevos { get; set; }
+
+        public Usuario user { get; set; }
     }
 }

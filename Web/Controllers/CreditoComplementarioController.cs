@@ -22,7 +22,8 @@ namespace Web.Controllers
         {
            var _vm= _service.Index();
            ViewBag.Titulo = "Lista de Créditos Complementarios";
-           return View(_vm);
+            _vm.user = this.Usuario;
+            return View(_vm);
         }
 
         
@@ -39,6 +40,7 @@ namespace Web.Controllers
         }
 
         [HttpPost]
+        [Permiso(Disabled = true)]
         public ActionResult Insertar(CreditoComplementarioInsertarViewModel _viewModel)
         {
             _service.EditCreditoComplementario(_viewModel);

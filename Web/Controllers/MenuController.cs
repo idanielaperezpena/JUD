@@ -20,6 +20,7 @@ namespace Web.Controllers
         }
 
         [ChildActionOnly]
+        [Permiso(Disabled = true)]
         public ActionResult _Navbar()
         {
             if (SessionProvider.Modulos == null)
@@ -35,6 +36,7 @@ namespace Web.Controllers
         }
 
         [ChildActionOnly]
+        [Permiso(Disabled = true)]
         public ActionResult _Footer()
         {
             string IPAddress = "";

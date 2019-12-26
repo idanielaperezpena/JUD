@@ -36,10 +36,11 @@ namespace Web.Controllers
             }
             var _vm = _service.Index(Usuario);
             ViewBag.Titulo = "Lista de Créditos Iniciales";
+            _vm.user = this.Usuario;
             return View(_vm);
         }
 
-
+        
         public ActionResult Insertar(String ID )
         {
             var _vm = new CreditoInicialInsertarViewModel();
@@ -54,6 +55,7 @@ namespace Web.Controllers
         //Acciones
 
         [HttpPost]
+        [Permiso(Disabled = true)]
         public ActionResult Insertar(CreditoInicialInsertarViewModel viewModel)
         {
             _service.EditarCreditoInicial(viewModel);
@@ -80,12 +82,14 @@ namespace Web.Controllers
 
         //Get partial Views
         [HttpPost]
+        [Permiso(Disabled = true)]
         public ActionResult GetParejaViewModel()
         {
             return PartialView("../Pareja/_Insertar", _service.GetParejaViewModel());
         }
 
         [HttpPost]
+        [Permiso(Disabled = true)]
         public ActionResult GetDomicilioViewModel(string ID =null)
         {
             ViewBag.Adicional = "En donde se pretende aplicar el crédito";
@@ -99,18 +103,21 @@ namespace Web.Controllers
         }
 
         [HttpPost]
+        [Permiso(Disabled = true)]
         public ActionResult GetCiudadanoInsertar(string ID = null)
         {
             return PartialView("../Ciudadano/_Insertar", _service.CiudadanoInsertar(ID));
         }
 
         [HttpPost]
+        [Permiso(Disabled = true)]
         public ActionResult GetDeudorSolidarioViewModel()
         {
             return PartialView("../DeudorSolidario/_Insertar", _service.GetDeudorSolidario());
         }
 
         [HttpPost]
+        [Permiso(Disabled = true)]
         public ActionResult GetListadoSE(string claveSE)
         {
             return Json(_service.ListadoSelectSeccionElectoral(Int32.Parse(claveSE)));

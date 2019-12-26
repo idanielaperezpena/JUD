@@ -22,6 +22,7 @@ namespace Web.Controllers
         {
             ViewBag.Titulo = "Menú Principal";
             var vm= _service.ObtenerPrincipal();
+            vm.user = this.Usuario;
             return View(vm);
         }
 

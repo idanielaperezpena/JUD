@@ -21,7 +21,8 @@ namespace Web.Controllers
         public ActionResult Index()
         {
             var _vm = _service.Index();
-
+            ViewBag.Titulo = "Lista de Modificaciones de Credito";
+            _vm.user = this.Usuario;
             return View(_vm);
         }
         // GET: ModificacionesCredito/insertar
@@ -37,6 +38,7 @@ namespace Web.Controllers
         }
 
         [HttpPost]
+        [Permiso(Disabled = true)]
         public ActionResult Insertar(ModificacionesCreditoInsertarViewModel _viewModel)
         {
             _service.EditModificacionesCredito(_viewModel);

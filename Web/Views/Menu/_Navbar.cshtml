@@ -33,7 +33,7 @@
             {
                 <li class="header">Administrador</li>
                 <li class="active">
-                    <a href="@Url.Action("Index","Catalogos")">
+                    <a href="@Url.Action("Index","Catalogos", new { m = Encriptador.Encriptar(6) })">
                         <i class="fa fa-dashboard"></i> <span>Catalogos</span>
                     </a>
                 </li>

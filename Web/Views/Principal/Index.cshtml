@@ -1,9 +1,11 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout-Principal.cshtml";
+        Layout = "~/Views/Shared/_Layout-Principal.cshtml";
+
+        var perfiles = new List<int> {1,2,7,8};
 }
 
-@model Negocio.ViewModels.Principal.PrincipalIndexViewModel
-
+    @model Negocio.ViewModels.Principal.PrincipalIndexViewModel
+    
 <div class="content-wrapper" style="min-height: 901px;">
     <section class="content-header">
         <h1>
@@ -71,21 +73,25 @@
             </div>
             <div class="box-body">
                 <div class="row">
-                    <div class="col-lg-6 col-xs-12">
-                        <div class="small-box bg-green">
-                            <div class="inner">
-                                <h3>Nuevo trámite</h3>
+                    @if (perfiles.Find(x => x == Model.user.USU_PRF_Id) != 0)
+                    {
+                        <div class="col-lg-6 col-xs-12">
+                            <div class="small-box bg-green">
+                                <div class="inner">
+                                    <h3>Nuevo trámite</h3>
 
-                                <p>Dar de alta una nueva solicitud</p>
+                                    <p>Dar de alta una nueva solicitud</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <a href="@Url.Action("Insertar","CreditoInicial", new { m = Encriptador.Encriptar(2) })" class="small-box-footer">
+                                    Acceder <i class="fa fa-arrow-circle-right"></i>
+                                </a>
                             </div>
-                            <div class="icon">
-                                <i class="fa fa-plus"></i>
-                            </div>
-                            <a href="@Url.Action("Insertar","CreditoInicial")" class="small-box-footer">
-                                Acceder <i class="fa fa-arrow-circle-right"></i>
-                            </a>
                         </div>
-                    </div>
+                    }
+
                     <div class="col-lg-6 col-xs-12">
                         <div class="small-box bg-teal">
                             <div class="inner">
@@ -96,7 +102,7 @@
                             <div class="icon">
                                 <i class="fa fa-search"></i>
                             </div>
-                            <a href="@Url.Action("Index","CreditoInicial")" class="small-box-footer">
+                            <a href="@Url.Action("Index","CreditoInicial", new { m = Encriptador.Encriptar(2) })" class="small-box-footer">
                                 Acceder <i class="fa fa-arrow-circle-right"></i>
                             </a>
                         </div>
@@ -112,7 +118,7 @@
                             <div class="icon">
                                 <i class="far fa-file"></i>
                             </div>
-                            <a href="@Url.Action("Index","CreditoComplementario")" class="small-box-footer">
+                            <a href="@Url.Action("Index","CreditoComplementario", new { m = Encriptador.Encriptar(3) })" class="small-box-footer">
                                 Acceder <i class="fa fa-arrow-circle-right"></i>
                             </a>
                         </div>
@@ -128,7 +134,7 @@
                             <div class="icon">
                                 <i class="fas fa-pen-square"></i>
                             </div>
-                            <a href="@Url.Action("Index","ModificacionesCredito")" class="small-box-footer">
+                            <a href="@Url.Action("Index","ModificacionesCredito", new { m = Encriptador.Encriptar(5) })" class="small-box-footer">
                                 Acceder <i class="fa fa-arrow-circle-right"></i>
                             </a>
                         </div>
@@ -144,7 +150,7 @@
                             <div class="icon">
                                 <i class="fas fa-people-carry"></i>
                             </div>
-                            <a href="@Url.Action("Index","CreditoSustentabilidad")" class="small-box-footer">
+                            <a href="@Url.Action("Index","CreditoSustentabilidad", new { m = Encriptador.Encriptar(4) })" class="small-box-footer">
                                 Acceder <i class="fa fa-arrow-circle-right"></i>
                             </a>
                         </div>

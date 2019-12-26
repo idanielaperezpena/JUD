@@ -19,11 +19,11 @@ namespace Web.Controllers
         {
             _service = new AuthService(ModelState);
         }
-        
+
         [AllowAnonymous]
         [UrlReferrer(Disabled = true)]
         public ActionResult Index()
-        {           
+        {
             if (Request.IsAuthenticated)
                 return AuthProvider.SignOutAndRedirect();
 
@@ -53,7 +53,7 @@ namespace Web.Controllers
                 var errors = ModelState.Select(x => x.Value.Errors)
                            .Where(y => y.Count > 0)
                            .ToList();
-                
+
                 if (errors.Count > 0)
                 {
                     notificacion.Error = true;
@@ -70,10 +70,15 @@ namespace Web.Controllers
                     notificacion.Error = false;
                     notificacion.Mensaje = "Bienvenido " + _usuario.USU_Usuario;
                     this.SetAuthCookieAndRedirect(_usuario);
-                }         
+                }
             }
             return Json(notificacion);
         }
 
+        [Permiso(Disabled = true)]
+        public ActionResult CerrarSesion()
+        {
+            return AuthProvider.SignOutAndRedirect();
+        }
     }
 }

@@ -1,8 +1,15 @@
 ﻿@{
-    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout-Principal.cshtml";
+
+    var ListaS = new List<int> { 2, 1, 7, 8 };
+    var ListaT = new List<int> { 4, 1, 7, 8 };
+    var ListaJ = new List<int> { 3, 1, 7, 8 };
+    var ListaF = new List<int> { 6, 1, 7, 8 };
 }
+
 @model Negocio.ViewModels.CreditoComplementario.CreditoComplementarioIndexViewModel
+
+
 @section estilos{
     @Styles.Render("~/bundles/datatables_css")
 }
@@ -55,156 +62,191 @@
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:10px;">
-                    <div class="col-lg-offset-6 col-lg-6 ">
-                        <button type="button" id="open_modal" class="btn bg-green pull-right">
-                            Nuevo <i class="fa fa-plus"></i>
-                        </button>
-                    </div>
+
+                    @if (this[EnumModuloPermiso.Alta])
+                    {
+                        <div class="col-lg-offset-6 col-lg-6 ">
+                            <button type="button" id="open_modal" class="btn bg-green pull-right">
+                                Nuevo <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    }
+
                 </div>
-                <table id="tabla_cc" class="table table-bordered  table-striped table-responsive">
-                    @if (Model.Listado.Count() == 0)
-                    {
-                        @Html.CustomTableEmptyResult()
-                    }
-                    else
-                    {
-                        <thead>
-                            <tr>
-                                <th>Folio Solicitud</th>
-                                <th>Folio Crédito Inicial</th>
-                                <th>CURP</th>
-                                <th>Nombre del Ciudadano</th>
-                                <th>Fecha de solicitud</th>
-                                <th>Dictamen Social</th>
-                                <th>Dictamen Técnico</th>
-                                <th>Dictamen Jurídico</th>
-                                <th>Dictamen Financiero</th>
-                                <th>Revisar Solicitud Completa</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model.Listado)
-                            {
+                <div class="no-padding table-responsive">
+                    <table id="tabla_cc" class="table table-bordered  table-striped table-responsive">
+                        @if (Model.Listado.Count() == 0)
+                        {
+                            @Html.CustomTableEmptyResult()
+                        }
+                        else
+                        {
+                            <thead>
                                 <tr>
-                                    <td>@item.CC_FolioSolicitud</td>
-                                    <td>@item.CI_FolioSolicitud</td>
-                                    <td>@item.CI_CURP</td>
-                                    <td>@item.NombreCiudadano</td>
-                                    <td>@item.CC_FechaSolicitud</td>
+                                    <th>Folio Solicitud</th>
+                                    <th>Folio Crédito Inicial</th>
+                                    <th>CURP</th>
+                                    <th>Nombre del Ciudadano</th>
+                                    <th>Fecha de solicitud</th>
+                                    <th>Dictamen Social</th>
+                                    <th>Dictamen Técnico</th>
+                                    <th>Dictamen Jurídico</th>
+                                    <th>Dictamen Financiero</th>
+                                    <th>Revisar Solicitud Completa</th>
 
-                                    <td>
-                                        <div class="text-center icono_tabla">
-                                            <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenSocial","Dictamenes", new { TipoCredito= "CC", ID = @item.CC_IDCreditoComplementario})">
-                                                <i style="color:@item.ImgDS[0]" class="@item.ImgDS[1]"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center icono_tabla">
-                                            <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenTecnico","Dictamenes", new { TipoCredito= "CC", ID = @item.CC_IDCreditoComplementario})">
-                                                <i style="color:@item.ImgDT[0]" class="@item.ImgDT[1]"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center icono_tabla">
-                                            <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenJuridico","Dictamenes", new { TipoCredito= "CC", ID = @item.CC_IDCreditoComplementario})">
-                                                <i style="color:@item.ImgDJ[0]" class="@item.ImgDJ[1]"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center icono_tabla">
-                                            @if (item.ImgDS[0] == "forestgreen" && item.ImgDS[0] == "forestgreen" && item.ImgDJ[0] == "forestgreen")
-                                            {
-                                                <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenFinanciero","Dictamenes", new { TipoCredito= "CC", ID = @item.CC_IDCreditoComplementario})">
-                                                    <i style="color:@item.ImgDF[0]" class="@item.ImgDF[1]"></i>
-                                                </a>
-                                            }
-                                            else
-                                            {
-                                                <i style="color:@item.ImgDF[0]" class="@item.ImgDF[1]"></i>
-                                            }
-
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center">
-                                            <a class="btn bg-primary solicitudes" href="@Url.Action("Insertar","CreditoComplementario", new {IDCreditoInicial = @item.CC_IDCreditoInicial, IDCreditoComplementario=@item.CC_IDCreditoComplementario})">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                        </div>
-                                    </td>
                                 </tr>
-                            }
-
-
-                        </tbody>
-                    }
-
-                </table>
-            </div>
-        </div>
-
-        <div class="modal fade" id="modal-nuevo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content" id="modal-cuerpo">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                        <h4 class="modal-title">Nuevo Credito Complementario</h4>
-                    </div>
-                    <div class="modal-body">
-                        <table id="tabla_ci" class="table table-bordered  table-striped table-responsive">
-                            @if (Model.ListadoCI.Count() == 0)
-                            {
-                                @Html.CustomTableEmptyResult()
-                            }
-                            else
-                            {
-                                <thead>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Listado)
+                                {
                                     <tr>
-                                        <th>Folio Solicitud</th>
-                                        <th>CURP</th>
-                                        <th>Nombre del Ciudadano</th>
-                                        <th>Fecha de solicitud</th>
-                                        <th>Sección Electoral</th>
-                                        <th>Elegir</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var item in Model.ListadoCI)
-                                    {
-                                    <tr>
+                                        <td>@item.CC_FolioSolicitud</td>
                                         <td>@item.CI_FolioSolicitud</td>
-                                        <td>@item.CURPCiudadano</td>
+                                        <td>@item.CI_CURP</td>
                                         <td>@item.NombreCiudadano</td>
-                                        <td>@item.CI_FechaSolicitud</td>
-                                        <td>@item.CI_IDSeccionElectoral</td>
+                                        <td>@item.CC_FechaSolicitud</td>
+
+                                        <td>
+                                            <div class="text-center icono_tabla">
+
+                                                @if (ListaS.Find(x => x == Model.user.USU_PRF_Id) != 0)
+                                                {
+                                                    <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenSocial","Dictamenes", new { TipoCredito= "CC", ID = @item.CC_IDCreditoComplementario, m = Encriptador.Encriptar(11)})">
+                                                        <i style="color:@item.ImgDS[0]" class="@item.ImgDS[1]"></i>
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <i style="color:@item.ImgDS[0]" class="@item.ImgDS[1]"></i>
+                                                }
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="text-center icono_tabla">
+                                                @if (ListaT.Find(x => x == Model.user.USU_PRF_Id) != 0)
+                                                {
+                                                    <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenTecnico","Dictamenes", new { TipoCredito= "CC", ID = @item.CC_IDCreditoComplementario, m = Encriptador.Encriptar(14)})">
+                                                        <i style="color:@item.ImgDT[0]" class="@item.ImgDT[1]"></i>
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <i style="color:@item.ImgDT[0]" class="@item.ImgDT[1]"></i>
+                                                }
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="text-center icono_tabla">
+                                                @if (ListaJ.Find(x => x == Model.user.USU_PRF_Id) != 0)
+                                                {
+                                                    <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenJuridico","Dictamenes", new { TipoCredito= "CC", ID = @item.CC_IDCreditoComplementario, m = Encriptador.Encriptar(15)})">
+                                                        <i style="color:@item.ImgDJ[0]" class="@item.ImgDJ[1]"></i>
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <i style="color:@item.ImgDJ[0]" class="@item.ImgDJ[1]"></i>
+                                                }
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="text-center icono_tabla">
+                                                @if (ListaF.Find(x => x == Model.user.USU_PRF_Id) != 0 && item.ImgDS[0] == "forestgreen" && item.ImgDT[0] == "forestgreen" && item.ImgDJ[0] == "forestgreen")
+                                                {
+                                                    <a class="btn bg-gray solicitudes" href="@Url.Action("InsertarDictamenFinanciero","Dictamenes", new { TipoCredito= "CC", ID = @item.CC_IDCreditoComplementario,m = Encriptador.Encriptar(16)})">
+                                                        <i style="color:@item.ImgDF[0]" class="@item.ImgDF[1]"></i>
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <i style="color:@item.ImgDF[0]" class="@item.ImgDF[1]"></i>
+                                                }
+
+                                            </div>
+                                        </td>
                                         <td>
                                             <div class="text-center">
-                                                <a class="btn bg-primary solicitudes" href="@Url.Action("Insertar","CreditoComplementario", new {IDCreditoInicial = @item.CI_ID})">
-                                                    <i class="fas fa-eye"></i>
-                                                </a>
+                                                @if (this[EnumModuloPermiso.Alta] || this[EnumModuloPermiso.Edicion])
+                                                {
+                                                    <a class="btn bg-primary solicitudes" href="@Url.Action("Insertar","CreditoComplementario", new {IDCreditoInicial = @item.CC_IDCreditoInicial, IDCreditoComplementario=@item.CC_IDCreditoComplementario, m = Encriptador.Encriptar(3)})">
+                                                        <i class="fas fa-eye"></i>
+                                                    </a>
+                                                }
+
                                             </div>
                                         </td>
                                     </tr>
-                                    }
-                                </tbody>
-                            }
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
-                    </div>
+                                }
+
+
+                            </tbody>
+                        }
+
+                    </table>
+
                 </div>
             </div>
         </div>
-        
-        
-    </section>
+        @if (this[EnumModuloPermiso.Alta] )
+        {
+            <div class="modal fade" id="modal-nuevo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content" id="modal-cuerpo">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4 class="modal-title">Nuevo Credito Complementario</h4>
+                        </div>
+                        <div class="modal-body">
+                            <table id="tabla_ci" class="table table-bordered  table-striped table-responsive">
+                                @if (Model.ListadoCI.Count() == 0)
+                                {
+                                    @Html.CustomTableEmptyResult()
+                                }
+                                else
+                                {
+                                    <thead>
+                                        <tr>
+                                            <th>Folio Solicitud</th>
+                                            <th>CURP</th>
+                                            <th>Nombre del Ciudadano</th>
+                                            <th>Fecha de solicitud</th>
+                                            <th>Sección Electoral</th>
+                                            <th>Elegir</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.ListadoCI)
+                                        {
+                                            <tr>
+                                                <td>@item.CI_FolioSolicitud</td>
+                                                <td>@item.CURPCiudadano</td>
+                                                <td>@item.NombreCiudadano</td>
+                                                <td>@item.CI_FechaSolicitud</td>
+                                                <td>@item.CI_IDSeccionElectoral</td>
+                                                <td>
+                                                    <div class="text-center">
+                                                        <a class="btn bg-primary solicitudes" href="@Url.Action("Insertar", "CreditoComplementario", new { IDCreditoInicial = @item.CI_ID, m = Encriptador.Encriptar(3) })">
+                                                            <i class="fas fa-eye"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                }
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        </section>
 </div>
 
 @section scripts{

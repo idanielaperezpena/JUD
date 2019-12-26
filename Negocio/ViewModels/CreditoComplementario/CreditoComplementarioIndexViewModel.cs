@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace Negocio.ViewModels.CreditoComplementario
 
         public List<CreditoComplementarioIndexCIListadoViewModel> ListadoCI { get; set; }
 
+        public Usuario user { get; set; }
 
         public CreditoComplementarioIndexViewModel()
         {
