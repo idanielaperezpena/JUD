@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace Negocio.ViewModels.CreditoSustentabilidad
         public List<CreditoSustentabilidadIndexListadoViewModel> Listado { get; set; }
 
         public List<CreditoSustentabilidadIndexCIListadoViewModel> ListadoCI { get; set; }
+
+        public Usuario user { get; set; }
 
         public CreditoSustentabilidadIndexViewModel()
         {

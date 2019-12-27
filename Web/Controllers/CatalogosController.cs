@@ -11,7 +11,6 @@ using Web.Models.INVI;
 
 namespace Web.Controllers
 {
-    [Permiso(Disabled = true)]
     public class CatalogosController : BaseController
     {
         private CatalogosService _service;
@@ -57,6 +56,7 @@ namespace Web.Controllers
         //Funciones
 
         [HttpPost]
+        [Permiso(Disabled = true)]
         public ActionResult GetVistaModal(string Tabla,int ID)
         {
             var _vm = _service.GetModal(Tabla, ID);

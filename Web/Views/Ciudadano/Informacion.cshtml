@@ -80,7 +80,7 @@
 
             </div>
             <div class="box-footer">
-                <a class="btn bg-primary" href="@Url.Action("Insertar","Ciudadano", new { ID = Model.ciudadano.ID_Encriptado})">
+                <a class="btn bg-primary" href="@Url.Action("Insertar","Ciudadano", new { ID = Model.ciudadano.ID_Encriptado,m = Encriptador.Encriptar(9)})">
                     Editar Información / Ver toda la Información
                 </a>
             </div>

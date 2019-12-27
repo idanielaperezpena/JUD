@@ -19,7 +19,7 @@
                 <a href="@Url.Action("Index", "Principal")"><i class="fa fa-dashboard"></i>Menu principal</a>
             </li>
             <li>
-                <a href="@Url.Action("Index", "Catalogos")">Catálogos</a>
+                <a href="@Url.Action("Index", "Catalogos", new { m = Encriptador.Encriptar(6)})">Catálogos</a>
             </li>
             <li class="active">
                 Mostrar

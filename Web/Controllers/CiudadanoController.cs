@@ -11,7 +11,7 @@ using System.Web.Mvc;
 using Web.Models.INVI;
 namespace Web.Controllers
 {
-    [Permiso(Disabled = true)]
+
     public class CiudadanoController : BaseController
     {
 
@@ -76,6 +76,7 @@ namespace Web.Controllers
         }
 
         [HttpPost]
+        [Permiso(Disabled = true)]
         public ActionResult Insertar(CiudadanoInsertarViewModel viewModel)
         {
             _service.Edit(viewModel);
@@ -86,18 +87,21 @@ namespace Web.Controllers
         }
 
         [HttpPost]
+        [Permiso(Disabled = true)]
         public ActionResult GetParejaViewModel()
         {
             return PartialView("../Pareja/_Insertar", _service.GetParejaCiudadano());
         }
 
         [HttpPost]
+        [Permiso(Disabled = true)]
         public ActionResult GetDomicilioViewModel()
         {
             return PartialView("../Domicilio/_Insertar", _service.GetDomicilio());
         }
 
         [HttpPost]
+        [Permiso(Disabled = true)]
         public ActionResult BusquedaExistente(string CadenaBusqueda)
         {
             return PartialView("../Ciudadano/_ValidarTabla", _service.BusquedaCURPNOMBRE(CadenaBusqueda));

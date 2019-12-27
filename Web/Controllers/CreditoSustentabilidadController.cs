@@ -21,7 +21,8 @@ namespace Web.Controllers
         public ActionResult Index()
         {
             var _vm = _service.Index();
-
+            ViewBag.Titulo = "Lista de Creditos de Sustentabilidad";
+            _vm.user = this.Usuario;
             return View(_vm);
         }
 
@@ -38,6 +39,7 @@ namespace Web.Controllers
         }
 
         [HttpPost]
+        [Permiso(Disabled = true)]
         public ActionResult Insertar(CreditoSustentabilidadInsertarViewModel _viewModel)
         {
             _service.EditCreditoSustentabilidad(_viewModel);
